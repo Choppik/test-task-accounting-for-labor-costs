@@ -14,6 +14,7 @@
   "dependencies": {
     "@blueprintjs/core": "^3.53.0",
     "@blueprintjs/icons": "^3.17.0",
+    "@blueprintjs/select": "^3.19.0",
     "ag-grid-community": "^26.2.0",
     "ag-grid-react": "^26.2.0",
     "formik": "^2.2.9",

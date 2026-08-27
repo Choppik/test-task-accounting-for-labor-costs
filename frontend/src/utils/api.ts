@@ -53,3 +53,11 @@ export function fetchEmployees() {
 export function fetchProjects() {
     return fetchJson(`${API_BASE}/api/projects`);
 }
+
+export async function getProjectReport(year: string, month: string) {
+    return fetchJson(`${API_BASE}/api/reports/projects`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ year, month })
+    });
+}

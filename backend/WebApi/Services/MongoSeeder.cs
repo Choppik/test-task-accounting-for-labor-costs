@@ -28,7 +28,6 @@ namespace WebApi.Services
             //await periods.DeleteManyAsync(Builders<ClosedPeriod>.Filter.Empty);
             //await timeEntries.DeleteManyAsync(Builders<TimeEntry>.Filter.Empty);
 
-            // Создание индексов
             await projects.Indexes.CreateOneAsync(new CreateIndexModel<Project>(
                 Builders<Project>.IndexKeys.Ascending(p => p.Code),
                 new CreateIndexOptions { Unique = true }));
@@ -48,8 +47,9 @@ namespace WebApi.Services
                 Builders<ClosedPeriod>.IndexKeys.Ascending(p => p.Year).Ascending(p => p.Month),
                 new CreateIndexOptions { Unique = true }));
 
-            var projectsCount = await projects.EstimatedDocumentCountAsync();
-            if (projectsCount == 0)
+            var progCountBefore = await projects.EstimatedDocumentCountAsync();
+            Console.WriteLine($"[SEED] Projects count before seed: {progCountBefore}");
+            if (progCountBefore == 0)
             {
                 var hireRek1 = new DateTime(2026, 1, 1, 0, 0, 0, DateTimeKind.Utc);
                 var hireRek2 = new DateTime(2026, 3, 31, 0, 0, 0, DateTimeKind.Utc);
@@ -57,14 +57,18 @@ namespace WebApi.Services
 
                 var seedProjects = new List<Project>
                 {
-                    new() { Code = "П-001", Name = "Реконструкция цеха", BudgetRub =  20_000m, StartDate = hireRek1, EndDate =  hireRek2},
+                    new() { Code = "П-001", Name = "Реконструкция цеха", BudgetRub = 20_000m, StartDate = hireRek1, EndDate = hireRek2 },
                     new() { Code = "П-002", Name = "Инженерные сети", BudgetRub = 5_000m, StartDate = hireIn1 }
                 };
+
                 await projects.InsertManyAsync(seedProjects);
+                var progCountAfter = await projects.EstimatedDocumentCountAsync();
+                Console.WriteLine($"[SEED] Projects count after seed: {progCountAfter}");
             }
 
-            var empCount = await employees.EstimatedDocumentCountAsync();
-            if (empCount == 0)
+            var empCountBefore = await employees.EstimatedDocumentCountAsync();
+            Console.WriteLine($"[SEED] Employees count before seed: {empCountBefore}");
+            if (empCountBefore == 0)
             {
                 var hireIv1 = new DateTime(2026, 1, 1, 0, 0, 0, DateTimeKind.Utc);
                 var hireIv2 = new DateTime(2026, 3, 1, 0, 0, 0, DateTimeKind.Utc);
@@ -79,11 +83,15 @@ namespace WebApi.Services
                     new() { FullName = "Петрова А. С.", Department = "Проектный",
                         SalaryHistory = new List<SalaryHistory>{ new() { HourlyRate = 700m, EffectiveFrom = hirePet1 } } },
                 };
+
                 await employees.InsertManyAsync(seedEmployees);
+                var empCountAfter = await projects.EstimatedDocumentCountAsync();
+                Console.WriteLine($"[SEED] Employees count after seed: {empCountAfter}");
             }
 
-            var timeEntriesCount = await timeEntries.EstimatedDocumentCountAsync();
-            if (timeEntriesCount == 0)
+            var tsCountBefore = await timeEntries.EstimatedDocumentCountAsync();
+            Console.WriteLine($"[SEED] TimeEntry count before seed: {tsCountBefore}");
+            if (tsCountBefore == 0)
             {
                 var empList = await employees.Find(Builders<Employee>.Filter.Empty).ToListAsync();
                 var projList = await projects.Find(Builders<Project>.Filter.Empty).ToListAsync();
@@ -142,6 +150,8 @@ namespace WebApi.Services
                 };
 
                 await timeEntries.InsertManyAsync(seedList);
+                var tsCountAfter = await projects.EstimatedDocumentCountAsync();
+                Console.WriteLine($"[SEED] TimeEntry count after seed: {tsCountAfter}");
             }
         }
     }

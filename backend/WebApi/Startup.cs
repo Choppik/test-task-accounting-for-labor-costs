@@ -25,7 +25,6 @@ namespace WebApi
 
         public void ConfigureServices(IServiceCollection services)
         {
-            // CORS для разработки (frontend на localhost:3000)
             services.AddCors(options =>
             {
                 options.AddPolicy(DevCorsPolicy, builder =>
@@ -73,8 +72,6 @@ namespace WebApi
 
             app.UseRouting();
 
-            app.UseAuthorization();
-
             app.UseSwagger();
             app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "AccountingForLaborCosts API V1"));
 
@@ -87,7 +84,17 @@ namespace WebApi
             using (var scope = app.ApplicationServices.CreateScope())
             {
                 var seeder = scope.ServiceProvider.GetService<MongoSeeder>();
-                seeder?.SeedAsync().GetAwaiter().GetResult();
+                try
+                {
+                    Console.WriteLine("=== Starting DB Seed ===");
+                    seeder?.SeedAsync().GetAwaiter().GetResult();
+                    Console.WriteLine("=== DB Seed Completed Successfully ===");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("=== ERROR during DB Seed ===");
+                    Console.WriteLine(ex.ToString());
+                }
             }
         }
     }

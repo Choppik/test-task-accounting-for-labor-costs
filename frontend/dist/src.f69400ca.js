@@ -25576,24 +25576,24 @@ if (typeof process !== "undefined") {
   NS = (_d = (_b = (_a = process.env) === null || _a === void 0 ? void 0 : _a.BLUEPRINT_NAMESPACE) !== null && _b !== void 0 ? _b : (_c = process.env) === null || _c === void 0 ? void 0 : _c.REACT_APP_BLUEPRINT_NAMESPACE) !== null && _d !== void 0 ? _d : NS;
 }
 // modifiers
-var ACTIVE = exports.ACTIVE = NS + "-active";
-var ALIGN_LEFT = exports.ALIGN_LEFT = NS + "-align-left";
-var ALIGN_RIGHT = exports.ALIGN_RIGHT = NS + "-align-right";
-var DARK = exports.DARK = NS + "-dark";
-var DISABLED = exports.DISABLED = NS + "-disabled";
-var FILL = exports.FILL = NS + "-fill";
-var FIXED = exports.FIXED = NS + "-fixed";
-var FIXED_TOP = exports.FIXED_TOP = NS + "-fixed-top";
-var INLINE = exports.INLINE = NS + "-inline";
-var INTERACTIVE = exports.INTERACTIVE = NS + "-interactive";
-var LARGE = exports.LARGE = NS + "-large";
-var LOADING = exports.LOADING = NS + "-loading";
-var MINIMAL = exports.MINIMAL = NS + "-minimal";
-var OUTLINED = exports.OUTLINED = NS + "-outlined";
-var MULTILINE = exports.MULTILINE = NS + "-multiline";
-var ROUND = exports.ROUND = NS + "-round";
-var SMALL = exports.SMALL = NS + "-small";
-var VERTICAL = exports.VERTICAL = NS + "-vertical";
+var ACTIVE = exports.ACTIVE = "".concat(NS, "-active");
+var ALIGN_LEFT = exports.ALIGN_LEFT = "".concat(NS, "-align-left");
+var ALIGN_RIGHT = exports.ALIGN_RIGHT = "".concat(NS, "-align-right");
+var DARK = exports.DARK = "".concat(NS, "-dark");
+var DISABLED = exports.DISABLED = "".concat(NS, "-disabled");
+var FILL = exports.FILL = "".concat(NS, "-fill");
+var FIXED = exports.FIXED = "".concat(NS, "-fixed");
+var FIXED_TOP = exports.FIXED_TOP = "".concat(NS, "-fixed-top");
+var INLINE = exports.INLINE = "".concat(NS, "-inline");
+var INTERACTIVE = exports.INTERACTIVE = "".concat(NS, "-interactive");
+var LARGE = exports.LARGE = "".concat(NS, "-large");
+var LOADING = exports.LOADING = "".concat(NS, "-loading");
+var MINIMAL = exports.MINIMAL = "".concat(NS, "-minimal");
+var OUTLINED = exports.OUTLINED = "".concat(NS, "-outlined");
+var MULTILINE = exports.MULTILINE = "".concat(NS, "-multiline");
+var ROUND = exports.ROUND = "".concat(NS, "-round");
+var SMALL = exports.SMALL = "".concat(NS, "-small");
+var VERTICAL = exports.VERTICAL = "".concat(NS, "-vertical");
 var POSITION_TOP = exports.POSITION_TOP = positionClass(_position.Position.TOP);
 var POSITION_BOTTOM = exports.POSITION_BOTTOM = positionClass(_position.Position.BOTTOM);
 var POSITION_LEFT = exports.POSITION_LEFT = positionClass(_position.Position.LEFT);
@@ -25607,214 +25607,214 @@ var INTENT_PRIMARY = exports.INTENT_PRIMARY = intentClass(_intent.Intent.PRIMARY
 var INTENT_SUCCESS = exports.INTENT_SUCCESS = intentClass(_intent.Intent.SUCCESS);
 var INTENT_WARNING = exports.INTENT_WARNING = intentClass(_intent.Intent.WARNING);
 var INTENT_DANGER = exports.INTENT_DANGER = intentClass(_intent.Intent.DANGER);
-var FOCUS_DISABLED = exports.FOCUS_DISABLED = NS + "-focus-disabled";
+var FOCUS_DISABLED = exports.FOCUS_DISABLED = "".concat(NS, "-focus-disabled");
 // text utilities
-var UI_TEXT = exports.UI_TEXT = NS + "-ui-text";
-var RUNNING_TEXT = exports.RUNNING_TEXT = NS + "-running-text";
-var MONOSPACE_TEXT = exports.MONOSPACE_TEXT = NS + "-monospace-text";
-var TEXT_LARGE = exports.TEXT_LARGE = NS + "-text-large";
-var TEXT_SMALL = exports.TEXT_SMALL = NS + "-text-small";
-var TEXT_MUTED = exports.TEXT_MUTED = NS + "-text-muted";
-var TEXT_DISABLED = exports.TEXT_DISABLED = NS + "-text-disabled";
-var TEXT_OVERFLOW_ELLIPSIS = exports.TEXT_OVERFLOW_ELLIPSIS = NS + "-text-overflow-ellipsis";
+var UI_TEXT = exports.UI_TEXT = "".concat(NS, "-ui-text");
+var RUNNING_TEXT = exports.RUNNING_TEXT = "".concat(NS, "-running-text");
+var MONOSPACE_TEXT = exports.MONOSPACE_TEXT = "".concat(NS, "-monospace-text");
+var TEXT_LARGE = exports.TEXT_LARGE = "".concat(NS, "-text-large");
+var TEXT_SMALL = exports.TEXT_SMALL = "".concat(NS, "-text-small");
+var TEXT_MUTED = exports.TEXT_MUTED = "".concat(NS, "-text-muted");
+var TEXT_DISABLED = exports.TEXT_DISABLED = "".concat(NS, "-text-disabled");
+var TEXT_OVERFLOW_ELLIPSIS = exports.TEXT_OVERFLOW_ELLIPSIS = "".concat(NS, "-text-overflow-ellipsis");
 // textual elements
-var BLOCKQUOTE = exports.BLOCKQUOTE = NS + "-blockquote";
-var CODE = exports.CODE = NS + "-code";
-var CODE_BLOCK = exports.CODE_BLOCK = NS + "-code-block";
-var HEADING = exports.HEADING = NS + "-heading";
-var LIST = exports.LIST = NS + "-list";
-var LIST_UNSTYLED = exports.LIST_UNSTYLED = NS + "-list-unstyled";
-var RTL = exports.RTL = NS + "-rtl";
+var BLOCKQUOTE = exports.BLOCKQUOTE = "".concat(NS, "-blockquote");
+var CODE = exports.CODE = "".concat(NS, "-code");
+var CODE_BLOCK = exports.CODE_BLOCK = "".concat(NS, "-code-block");
+var HEADING = exports.HEADING = "".concat(NS, "-heading");
+var LIST = exports.LIST = "".concat(NS, "-list");
+var LIST_UNSTYLED = exports.LIST_UNSTYLED = "".concat(NS, "-list-unstyled");
+var RTL = exports.RTL = "".concat(NS, "-rtl");
 // layout utilities
 /**
  * @see https://developer.mozilla.org/en-US/docs/Web/CSS/Containing_block#identifying_the_containing_block
  * @deprecated this is no longer needed for ContextMenu2, will be removed in v4.0
  */
-var FIXED_POSITIONING_CONTAINING_BLOCK = exports.FIXED_POSITIONING_CONTAINING_BLOCK = NS + "-fixed-positioning-containing-block";
+var FIXED_POSITIONING_CONTAINING_BLOCK = exports.FIXED_POSITIONING_CONTAINING_BLOCK = "".concat(NS, "-fixed-positioning-containing-block");
 // components
-var ALERT = exports.ALERT = NS + "-alert";
-var ALERT_BODY = exports.ALERT_BODY = ALERT + "-body";
-var ALERT_CONTENTS = exports.ALERT_CONTENTS = ALERT + "-contents";
-var ALERT_FOOTER = exports.ALERT_FOOTER = ALERT + "-footer";
-var BREADCRUMB = exports.BREADCRUMB = NS + "-breadcrumb";
-var BREADCRUMB_CURRENT = exports.BREADCRUMB_CURRENT = BREADCRUMB + "-current";
-var BREADCRUMBS = exports.BREADCRUMBS = BREADCRUMB + "s";
-var BREADCRUMBS_COLLAPSED = exports.BREADCRUMBS_COLLAPSED = BREADCRUMB + "s-collapsed";
-var BUTTON = exports.BUTTON = NS + "-button";
-var BUTTON_GROUP = exports.BUTTON_GROUP = BUTTON + "-group";
-var BUTTON_SPINNER = exports.BUTTON_SPINNER = BUTTON + "-spinner";
-var BUTTON_TEXT = exports.BUTTON_TEXT = BUTTON + "-text";
-var CALLOUT = exports.CALLOUT = NS + "-callout";
-var CALLOUT_ICON = exports.CALLOUT_ICON = CALLOUT + "-icon";
-var CARD = exports.CARD = NS + "-card";
-var COLLAPSE = exports.COLLAPSE = NS + "-collapse";
-var COLLAPSE_BODY = exports.COLLAPSE_BODY = COLLAPSE + "-body";
-var COLLAPSIBLE_LIST = exports.COLLAPSIBLE_LIST = NS + "-collapse-list";
-var CONTEXT_MENU = exports.CONTEXT_MENU = NS + "-context-menu";
-var CONTEXT_MENU_POPOVER_TARGET = exports.CONTEXT_MENU_POPOVER_TARGET = CONTEXT_MENU + "-popover-target";
-var CONTROL_GROUP = exports.CONTROL_GROUP = NS + "-control-group";
-var DIALOG = exports.DIALOG = NS + "-dialog";
-var DIALOG_CONTAINER = exports.DIALOG_CONTAINER = DIALOG + "-container";
-var DIALOG_BODY = exports.DIALOG_BODY = DIALOG + "-body";
-var DIALOG_CLOSE_BUTTON = exports.DIALOG_CLOSE_BUTTON = DIALOG + "-close-button";
-var DIALOG_FOOTER = exports.DIALOG_FOOTER = DIALOG + "-footer";
-var DIALOG_FOOTER_ACTIONS = exports.DIALOG_FOOTER_ACTIONS = DIALOG + "-footer-actions";
-var DIALOG_HEADER = exports.DIALOG_HEADER = DIALOG + "-header";
-var DIALOG_STEP = exports.DIALOG_STEP = NS + "-dialog-step";
-var DIALOG_STEP_CONTAINER = exports.DIALOG_STEP_CONTAINER = DIALOG_STEP + "-container";
-var DIALOG_STEP_TITLE = exports.DIALOG_STEP_TITLE = DIALOG_STEP + "-title";
-var DIALOG_STEP_ICON = exports.DIALOG_STEP_ICON = DIALOG_STEP + "-icon";
-var DIALOG_STEP_VIEWED = exports.DIALOG_STEP_VIEWED = DIALOG_STEP + "-viewed";
-var DIVIDER = exports.DIVIDER = NS + "-divider";
-var DRAWER = exports.DRAWER = NS + "-drawer";
-var DRAWER_BODY = exports.DRAWER_BODY = DRAWER + "-body";
-var DRAWER_FOOTER = exports.DRAWER_FOOTER = DRAWER + "-footer";
-var DRAWER_HEADER = exports.DRAWER_HEADER = DRAWER + "-header";
-var EDITABLE_TEXT = exports.EDITABLE_TEXT = NS + "-editable-text";
-var EDITABLE_TEXT_CONTENT = exports.EDITABLE_TEXT_CONTENT = EDITABLE_TEXT + "-content";
-var EDITABLE_TEXT_EDITING = exports.EDITABLE_TEXT_EDITING = EDITABLE_TEXT + "-editing";
-var EDITABLE_TEXT_INPUT = exports.EDITABLE_TEXT_INPUT = EDITABLE_TEXT + "-input";
-var EDITABLE_TEXT_PLACEHOLDER = exports.EDITABLE_TEXT_PLACEHOLDER = EDITABLE_TEXT + "-placeholder";
-var FLEX_EXPANDER = exports.FLEX_EXPANDER = NS + "-flex-expander";
-var HTML_SELECT = exports.HTML_SELECT = NS + "-html-select";
+var ALERT = exports.ALERT = "".concat(NS, "-alert");
+var ALERT_BODY = exports.ALERT_BODY = "".concat(ALERT, "-body");
+var ALERT_CONTENTS = exports.ALERT_CONTENTS = "".concat(ALERT, "-contents");
+var ALERT_FOOTER = exports.ALERT_FOOTER = "".concat(ALERT, "-footer");
+var BREADCRUMB = exports.BREADCRUMB = "".concat(NS, "-breadcrumb");
+var BREADCRUMB_CURRENT = exports.BREADCRUMB_CURRENT = "".concat(BREADCRUMB, "-current");
+var BREADCRUMBS = exports.BREADCRUMBS = "".concat(BREADCRUMB, "s");
+var BREADCRUMBS_COLLAPSED = exports.BREADCRUMBS_COLLAPSED = "".concat(BREADCRUMB, "s-collapsed");
+var BUTTON = exports.BUTTON = "".concat(NS, "-button");
+var BUTTON_GROUP = exports.BUTTON_GROUP = "".concat(BUTTON, "-group");
+var BUTTON_SPINNER = exports.BUTTON_SPINNER = "".concat(BUTTON, "-spinner");
+var BUTTON_TEXT = exports.BUTTON_TEXT = "".concat(BUTTON, "-text");
+var CALLOUT = exports.CALLOUT = "".concat(NS, "-callout");
+var CALLOUT_ICON = exports.CALLOUT_ICON = "".concat(CALLOUT, "-icon");
+var CARD = exports.CARD = "".concat(NS, "-card");
+var COLLAPSE = exports.COLLAPSE = "".concat(NS, "-collapse");
+var COLLAPSE_BODY = exports.COLLAPSE_BODY = "".concat(COLLAPSE, "-body");
+var COLLAPSIBLE_LIST = exports.COLLAPSIBLE_LIST = "".concat(NS, "-collapse-list");
+var CONTEXT_MENU = exports.CONTEXT_MENU = "".concat(NS, "-context-menu");
+var CONTEXT_MENU_POPOVER_TARGET = exports.CONTEXT_MENU_POPOVER_TARGET = "".concat(CONTEXT_MENU, "-popover-target");
+var CONTROL_GROUP = exports.CONTROL_GROUP = "".concat(NS, "-control-group");
+var DIALOG = exports.DIALOG = "".concat(NS, "-dialog");
+var DIALOG_CONTAINER = exports.DIALOG_CONTAINER = "".concat(DIALOG, "-container");
+var DIALOG_BODY = exports.DIALOG_BODY = "".concat(DIALOG, "-body");
+var DIALOG_CLOSE_BUTTON = exports.DIALOG_CLOSE_BUTTON = "".concat(DIALOG, "-close-button");
+var DIALOG_FOOTER = exports.DIALOG_FOOTER = "".concat(DIALOG, "-footer");
+var DIALOG_FOOTER_ACTIONS = exports.DIALOG_FOOTER_ACTIONS = "".concat(DIALOG, "-footer-actions");
+var DIALOG_HEADER = exports.DIALOG_HEADER = "".concat(DIALOG, "-header");
+var DIALOG_STEP = exports.DIALOG_STEP = "".concat(NS, "-dialog-step");
+var DIALOG_STEP_CONTAINER = exports.DIALOG_STEP_CONTAINER = "".concat(DIALOG_STEP, "-container");
+var DIALOG_STEP_TITLE = exports.DIALOG_STEP_TITLE = "".concat(DIALOG_STEP, "-title");
+var DIALOG_STEP_ICON = exports.DIALOG_STEP_ICON = "".concat(DIALOG_STEP, "-icon");
+var DIALOG_STEP_VIEWED = exports.DIALOG_STEP_VIEWED = "".concat(DIALOG_STEP, "-viewed");
+var DIVIDER = exports.DIVIDER = "".concat(NS, "-divider");
+var DRAWER = exports.DRAWER = "".concat(NS, "-drawer");
+var DRAWER_BODY = exports.DRAWER_BODY = "".concat(DRAWER, "-body");
+var DRAWER_FOOTER = exports.DRAWER_FOOTER = "".concat(DRAWER, "-footer");
+var DRAWER_HEADER = exports.DRAWER_HEADER = "".concat(DRAWER, "-header");
+var EDITABLE_TEXT = exports.EDITABLE_TEXT = "".concat(NS, "-editable-text");
+var EDITABLE_TEXT_CONTENT = exports.EDITABLE_TEXT_CONTENT = "".concat(EDITABLE_TEXT, "-content");
+var EDITABLE_TEXT_EDITING = exports.EDITABLE_TEXT_EDITING = "".concat(EDITABLE_TEXT, "-editing");
+var EDITABLE_TEXT_INPUT = exports.EDITABLE_TEXT_INPUT = "".concat(EDITABLE_TEXT, "-input");
+var EDITABLE_TEXT_PLACEHOLDER = exports.EDITABLE_TEXT_PLACEHOLDER = "".concat(EDITABLE_TEXT, "-placeholder");
+var FLEX_EXPANDER = exports.FLEX_EXPANDER = "".concat(NS, "-flex-expander");
+var HTML_SELECT = exports.HTML_SELECT = "".concat(NS, "-html-select");
 /** @deprecated prefer `<HTMLSelect>` component */
-var SELECT = exports.SELECT = NS + "-select";
-var HTML_TABLE = exports.HTML_TABLE = NS + "-html-table";
-var HTML_TABLE_BORDERED = exports.HTML_TABLE_BORDERED = HTML_TABLE + "-bordered";
-var HTML_TABLE_CONDENSED = exports.HTML_TABLE_CONDENSED = HTML_TABLE + "-condensed";
-var HTML_TABLE_STRIPED = exports.HTML_TABLE_STRIPED = HTML_TABLE + "-striped";
-var INPUT = exports.INPUT = NS + "-input";
-var INPUT_GHOST = exports.INPUT_GHOST = INPUT + "-ghost";
-var INPUT_GROUP = exports.INPUT_GROUP = INPUT + "-group";
-var INPUT_LEFT_CONTAINER = exports.INPUT_LEFT_CONTAINER = INPUT + "-left-container";
-var INPUT_ACTION = exports.INPUT_ACTION = INPUT + "-action";
-var CONTROL = exports.CONTROL = NS + "-control";
-var CONTROL_INDICATOR = exports.CONTROL_INDICATOR = CONTROL + "-indicator";
-var CONTROL_INDICATOR_CHILD = exports.CONTROL_INDICATOR_CHILD = CONTROL_INDICATOR + "-child";
-var CHECKBOX = exports.CHECKBOX = NS + "-checkbox";
-var RADIO = exports.RADIO = NS + "-radio";
-var SWITCH = exports.SWITCH = NS + "-switch";
-var SWITCH_INNER_TEXT = exports.SWITCH_INNER_TEXT = SWITCH + "-inner-text";
-var FILE_INPUT = exports.FILE_INPUT = NS + "-file-input";
-var FILE_INPUT_HAS_SELECTION = exports.FILE_INPUT_HAS_SELECTION = NS + "-file-input-has-selection";
-var FILE_UPLOAD_INPUT = exports.FILE_UPLOAD_INPUT = NS + "-file-upload-input";
-var FILE_UPLOAD_INPUT_CUSTOM_TEXT = exports.FILE_UPLOAD_INPUT_CUSTOM_TEXT = NS + "-file-upload-input-custom-text";
-var KEY = exports.KEY = NS + "-key";
-var KEY_COMBO = exports.KEY_COMBO = KEY + "-combo";
-var MODIFIER_KEY = exports.MODIFIER_KEY = NS + "-modifier-key";
-var HOTKEY = exports.HOTKEY = NS + "-hotkey";
-var HOTKEY_LABEL = exports.HOTKEY_LABEL = HOTKEY + "-label";
-var HOTKEY_COLUMN = exports.HOTKEY_COLUMN = HOTKEY + "-column";
-var HOTKEY_DIALOG = exports.HOTKEY_DIALOG = HOTKEY + "-dialog";
-var LABEL = exports.LABEL = NS + "-label";
-var FORM_GROUP = exports.FORM_GROUP = NS + "-form-group";
-var FORM_CONTENT = exports.FORM_CONTENT = NS + "-form-content";
-var FORM_HELPER_TEXT = exports.FORM_HELPER_TEXT = NS + "-form-helper-text";
-var FORM_GROUP_SUB_LABEL = exports.FORM_GROUP_SUB_LABEL = NS + "-form-group-sub-label";
-var MENU = exports.MENU = NS + "-menu";
-var MENU_ITEM = exports.MENU_ITEM = MENU + "-item";
-var MENU_ITEM_LABEL = exports.MENU_ITEM_LABEL = MENU_ITEM + "-label";
-var MENU_SUBMENU = exports.MENU_SUBMENU = NS + "-submenu";
-var MENU_DIVIDER = exports.MENU_DIVIDER = MENU + "-divider";
-var MENU_HEADER = exports.MENU_HEADER = MENU + "-header";
-var MULTISTEP_DIALOG = exports.MULTISTEP_DIALOG = NS + "-multistep-dialog";
-var MULTISTEP_DIALOG_PANELS = exports.MULTISTEP_DIALOG_PANELS = MULTISTEP_DIALOG + "-panels";
-var MULTISTEP_DIALOG_LEFT_PANEL = exports.MULTISTEP_DIALOG_LEFT_PANEL = MULTISTEP_DIALOG + "-left-panel";
-var MULTISTEP_DIALOG_RIGHT_PANEL = exports.MULTISTEP_DIALOG_RIGHT_PANEL = MULTISTEP_DIALOG + "-right-panel";
-var MULTISTEP_DIALOG_FOOTER = exports.MULTISTEP_DIALOG_FOOTER = MULTISTEP_DIALOG + "-footer";
-var NAVBAR = exports.NAVBAR = NS + "-navbar";
-var NAVBAR_GROUP = exports.NAVBAR_GROUP = NAVBAR + "-group";
-var NAVBAR_HEADING = exports.NAVBAR_HEADING = NAVBAR + "-heading";
-var NAVBAR_DIVIDER = exports.NAVBAR_DIVIDER = NAVBAR + "-divider";
-var NON_IDEAL_STATE = exports.NON_IDEAL_STATE = NS + "-non-ideal-state";
-var NON_IDEAL_STATE_VISUAL = exports.NON_IDEAL_STATE_VISUAL = NON_IDEAL_STATE + "-visual";
-var NUMERIC_INPUT = exports.NUMERIC_INPUT = NS + "-numeric-input";
-var OVERFLOW_LIST = exports.OVERFLOW_LIST = NS + "-overflow-list";
-var OVERFLOW_LIST_SPACER = exports.OVERFLOW_LIST_SPACER = OVERFLOW_LIST + "-spacer";
-var OVERLAY = exports.OVERLAY = NS + "-overlay";
-var OVERLAY_BACKDROP = exports.OVERLAY_BACKDROP = OVERLAY + "-backdrop";
-var OVERLAY_CONTAINER = exports.OVERLAY_CONTAINER = OVERLAY + "-container";
-var OVERLAY_CONTENT = exports.OVERLAY_CONTENT = OVERLAY + "-content";
-var OVERLAY_INLINE = exports.OVERLAY_INLINE = OVERLAY + "-inline";
-var OVERLAY_OPEN = exports.OVERLAY_OPEN = OVERLAY + "-open";
-var OVERLAY_SCROLL_CONTAINER = exports.OVERLAY_SCROLL_CONTAINER = OVERLAY + "-scroll-container";
-var OVERLAY_START_FOCUS_TRAP = exports.OVERLAY_START_FOCUS_TRAP = OVERLAY + "-start-focus-trap";
-var OVERLAY_END_FOCUS_TRAP = exports.OVERLAY_END_FOCUS_TRAP = OVERLAY + "-end-focus-trap";
-var PANEL_STACK = exports.PANEL_STACK = NS + "-panel-stack";
-var PANEL_STACK_HEADER = exports.PANEL_STACK_HEADER = PANEL_STACK + "-header";
-var PANEL_STACK_HEADER_BACK = exports.PANEL_STACK_HEADER_BACK = PANEL_STACK + "-header-back";
-var PANEL_STACK_VIEW = exports.PANEL_STACK_VIEW = PANEL_STACK + "-view";
-var PANEL_STACK2 = exports.PANEL_STACK2 = NS + "-panel-stack2";
-var PANEL_STACK2_HEADER = exports.PANEL_STACK2_HEADER = PANEL_STACK + "-header";
-var PANEL_STACK2_HEADER_BACK = exports.PANEL_STACK2_HEADER_BACK = PANEL_STACK + "-header-back";
-var PANEL_STACK2_VIEW = exports.PANEL_STACK2_VIEW = PANEL_STACK + "-view";
-var POPOVER = exports.POPOVER = NS + "-popover";
-var POPOVER_ARROW = exports.POPOVER_ARROW = POPOVER + "-arrow";
-var POPOVER_BACKDROP = exports.POPOVER_BACKDROP = POPOVER + "-backdrop";
-var POPOVER_CAPTURING_DISMISS = exports.POPOVER_CAPTURING_DISMISS = POPOVER + "-capturing-dismiss";
-var POPOVER_CONTENT = exports.POPOVER_CONTENT = POPOVER + "-content";
-var POPOVER_CONTENT_SIZING = exports.POPOVER_CONTENT_SIZING = POPOVER_CONTENT + "-sizing";
-var POPOVER_DISMISS = exports.POPOVER_DISMISS = POPOVER + "-dismiss";
-var POPOVER_DISMISS_OVERRIDE = exports.POPOVER_DISMISS_OVERRIDE = POPOVER_DISMISS + "-override";
-var POPOVER_OPEN = exports.POPOVER_OPEN = POPOVER + "-open";
-var POPOVER_OUT_OF_BOUNDARIES = exports.POPOVER_OUT_OF_BOUNDARIES = POPOVER + "-out-of-boundaries";
-var POPOVER_TARGET = exports.POPOVER_TARGET = POPOVER + "-target";
-var POPOVER_WRAPPER = exports.POPOVER_WRAPPER = POPOVER + "-wrapper";
-var TRANSITION_CONTAINER = exports.TRANSITION_CONTAINER = NS + "-transition-container";
-var PROGRESS_BAR = exports.PROGRESS_BAR = NS + "-progress-bar";
-var PROGRESS_METER = exports.PROGRESS_METER = NS + "-progress-meter";
-var PROGRESS_NO_STRIPES = exports.PROGRESS_NO_STRIPES = NS + "-no-stripes";
-var PROGRESS_NO_ANIMATION = exports.PROGRESS_NO_ANIMATION = NS + "-no-animation";
-var PORTAL = exports.PORTAL = NS + "-portal";
-var SKELETON = exports.SKELETON = NS + "-skeleton";
-var SLIDER = exports.SLIDER = NS + "-slider";
-var SLIDER_AXIS = exports.SLIDER_AXIS = SLIDER + "-axis";
-var SLIDER_HANDLE = exports.SLIDER_HANDLE = SLIDER + "-handle";
-var SLIDER_LABEL = exports.SLIDER_LABEL = SLIDER + "-label";
-var SLIDER_TRACK = exports.SLIDER_TRACK = SLIDER + "-track";
-var SLIDER_PROGRESS = exports.SLIDER_PROGRESS = SLIDER + "-progress";
-var START = exports.START = NS + "-start";
-var END = exports.END = NS + "-end";
-var SPINNER = exports.SPINNER = NS + "-spinner";
-var SPINNER_ANIMATION = exports.SPINNER_ANIMATION = SPINNER + "-animation";
-var SPINNER_HEAD = exports.SPINNER_HEAD = SPINNER + "-head";
-var SPINNER_NO_SPIN = exports.SPINNER_NO_SPIN = NS + "-no-spin";
-var SPINNER_TRACK = exports.SPINNER_TRACK = SPINNER + "-track";
-var TAB = exports.TAB = NS + "-tab";
-var TAB_INDICATOR = exports.TAB_INDICATOR = TAB + "-indicator";
-var TAB_INDICATOR_WRAPPER = exports.TAB_INDICATOR_WRAPPER = TAB_INDICATOR + "-wrapper";
-var TAB_LIST = exports.TAB_LIST = TAB + "-list";
-var TAB_PANEL = exports.TAB_PANEL = TAB + "-panel";
-var TABS = exports.TABS = TAB + "s";
-var TAG = exports.TAG = NS + "-tag";
-var TAG_REMOVE = exports.TAG_REMOVE = TAG + "-remove";
-var TAG_INPUT = exports.TAG_INPUT = NS + "-tag-input";
-var TAG_INPUT_ICON = exports.TAG_INPUT_ICON = TAG_INPUT + "-icon";
-var TAG_INPUT_VALUES = exports.TAG_INPUT_VALUES = TAG_INPUT + "-values";
-var TOAST = exports.TOAST = NS + "-toast";
-var TOAST_CONTAINER = exports.TOAST_CONTAINER = TOAST + "-container";
-var TOAST_MESSAGE = exports.TOAST_MESSAGE = TOAST + "-message";
-var TOOLTIP = exports.TOOLTIP = NS + "-tooltip";
-var TOOLTIP_INDICATOR = exports.TOOLTIP_INDICATOR = TOOLTIP + "-indicator";
-var TREE = exports.TREE = NS + "-tree";
-var TREE_NODE = exports.TREE_NODE = NS + "-tree-node";
-var TREE_NODE_CARET = exports.TREE_NODE_CARET = TREE_NODE + "-caret";
-var TREE_NODE_CARET_CLOSED = exports.TREE_NODE_CARET_CLOSED = TREE_NODE_CARET + "-closed";
-var TREE_NODE_CARET_NONE = exports.TREE_NODE_CARET_NONE = TREE_NODE_CARET + "-none";
-var TREE_NODE_CARET_OPEN = exports.TREE_NODE_CARET_OPEN = TREE_NODE_CARET + "-open";
-var TREE_NODE_CONTENT = exports.TREE_NODE_CONTENT = TREE_NODE + "-content";
-var TREE_NODE_EXPANDED = exports.TREE_NODE_EXPANDED = TREE_NODE + "-expanded";
-var TREE_NODE_ICON = exports.TREE_NODE_ICON = TREE_NODE + "-icon";
-var TREE_NODE_LABEL = exports.TREE_NODE_LABEL = TREE_NODE + "-label";
-var TREE_NODE_LIST = exports.TREE_NODE_LIST = TREE_NODE + "-list";
-var TREE_NODE_SECONDARY_LABEL = exports.TREE_NODE_SECONDARY_LABEL = TREE_NODE + "-secondary-label";
-var TREE_NODE_SELECTED = exports.TREE_NODE_SELECTED = TREE_NODE + "-selected";
-var TREE_ROOT = exports.TREE_ROOT = NS + "-tree-root";
-var ICON = exports.ICON = NS + "-icon";
+var SELECT = exports.SELECT = "".concat(NS, "-select");
+var HTML_TABLE = exports.HTML_TABLE = "".concat(NS, "-html-table");
+var HTML_TABLE_BORDERED = exports.HTML_TABLE_BORDERED = "".concat(HTML_TABLE, "-bordered");
+var HTML_TABLE_CONDENSED = exports.HTML_TABLE_CONDENSED = "".concat(HTML_TABLE, "-condensed");
+var HTML_TABLE_STRIPED = exports.HTML_TABLE_STRIPED = "".concat(HTML_TABLE, "-striped");
+var INPUT = exports.INPUT = "".concat(NS, "-input");
+var INPUT_GHOST = exports.INPUT_GHOST = "".concat(INPUT, "-ghost");
+var INPUT_GROUP = exports.INPUT_GROUP = "".concat(INPUT, "-group");
+var INPUT_LEFT_CONTAINER = exports.INPUT_LEFT_CONTAINER = "".concat(INPUT, "-left-container");
+var INPUT_ACTION = exports.INPUT_ACTION = "".concat(INPUT, "-action");
+var CONTROL = exports.CONTROL = "".concat(NS, "-control");
+var CONTROL_INDICATOR = exports.CONTROL_INDICATOR = "".concat(CONTROL, "-indicator");
+var CONTROL_INDICATOR_CHILD = exports.CONTROL_INDICATOR_CHILD = "".concat(CONTROL_INDICATOR, "-child");
+var CHECKBOX = exports.CHECKBOX = "".concat(NS, "-checkbox");
+var RADIO = exports.RADIO = "".concat(NS, "-radio");
+var SWITCH = exports.SWITCH = "".concat(NS, "-switch");
+var SWITCH_INNER_TEXT = exports.SWITCH_INNER_TEXT = "".concat(SWITCH, "-inner-text");
+var FILE_INPUT = exports.FILE_INPUT = "".concat(NS, "-file-input");
+var FILE_INPUT_HAS_SELECTION = exports.FILE_INPUT_HAS_SELECTION = "".concat(NS, "-file-input-has-selection");
+var FILE_UPLOAD_INPUT = exports.FILE_UPLOAD_INPUT = "".concat(NS, "-file-upload-input");
+var FILE_UPLOAD_INPUT_CUSTOM_TEXT = exports.FILE_UPLOAD_INPUT_CUSTOM_TEXT = "".concat(NS, "-file-upload-input-custom-text");
+var KEY = exports.KEY = "".concat(NS, "-key");
+var KEY_COMBO = exports.KEY_COMBO = "".concat(KEY, "-combo");
+var MODIFIER_KEY = exports.MODIFIER_KEY = "".concat(NS, "-modifier-key");
+var HOTKEY = exports.HOTKEY = "".concat(NS, "-hotkey");
+var HOTKEY_LABEL = exports.HOTKEY_LABEL = "".concat(HOTKEY, "-label");
+var HOTKEY_COLUMN = exports.HOTKEY_COLUMN = "".concat(HOTKEY, "-column");
+var HOTKEY_DIALOG = exports.HOTKEY_DIALOG = "".concat(HOTKEY, "-dialog");
+var LABEL = exports.LABEL = "".concat(NS, "-label");
+var FORM_GROUP = exports.FORM_GROUP = "".concat(NS, "-form-group");
+var FORM_CONTENT = exports.FORM_CONTENT = "".concat(NS, "-form-content");
+var FORM_HELPER_TEXT = exports.FORM_HELPER_TEXT = "".concat(NS, "-form-helper-text");
+var FORM_GROUP_SUB_LABEL = exports.FORM_GROUP_SUB_LABEL = "".concat(NS, "-form-group-sub-label");
+var MENU = exports.MENU = "".concat(NS, "-menu");
+var MENU_ITEM = exports.MENU_ITEM = "".concat(MENU, "-item");
+var MENU_ITEM_LABEL = exports.MENU_ITEM_LABEL = "".concat(MENU_ITEM, "-label");
+var MENU_SUBMENU = exports.MENU_SUBMENU = "".concat(NS, "-submenu");
+var MENU_DIVIDER = exports.MENU_DIVIDER = "".concat(MENU, "-divider");
+var MENU_HEADER = exports.MENU_HEADER = "".concat(MENU, "-header");
+var MULTISTEP_DIALOG = exports.MULTISTEP_DIALOG = "".concat(NS, "-multistep-dialog");
+var MULTISTEP_DIALOG_PANELS = exports.MULTISTEP_DIALOG_PANELS = "".concat(MULTISTEP_DIALOG, "-panels");
+var MULTISTEP_DIALOG_LEFT_PANEL = exports.MULTISTEP_DIALOG_LEFT_PANEL = "".concat(MULTISTEP_DIALOG, "-left-panel");
+var MULTISTEP_DIALOG_RIGHT_PANEL = exports.MULTISTEP_DIALOG_RIGHT_PANEL = "".concat(MULTISTEP_DIALOG, "-right-panel");
+var MULTISTEP_DIALOG_FOOTER = exports.MULTISTEP_DIALOG_FOOTER = "".concat(MULTISTEP_DIALOG, "-footer");
+var NAVBAR = exports.NAVBAR = "".concat(NS, "-navbar");
+var NAVBAR_GROUP = exports.NAVBAR_GROUP = "".concat(NAVBAR, "-group");
+var NAVBAR_HEADING = exports.NAVBAR_HEADING = "".concat(NAVBAR, "-heading");
+var NAVBAR_DIVIDER = exports.NAVBAR_DIVIDER = "".concat(NAVBAR, "-divider");
+var NON_IDEAL_STATE = exports.NON_IDEAL_STATE = "".concat(NS, "-non-ideal-state");
+var NON_IDEAL_STATE_VISUAL = exports.NON_IDEAL_STATE_VISUAL = "".concat(NON_IDEAL_STATE, "-visual");
+var NUMERIC_INPUT = exports.NUMERIC_INPUT = "".concat(NS, "-numeric-input");
+var OVERFLOW_LIST = exports.OVERFLOW_LIST = "".concat(NS, "-overflow-list");
+var OVERFLOW_LIST_SPACER = exports.OVERFLOW_LIST_SPACER = "".concat(OVERFLOW_LIST, "-spacer");
+var OVERLAY = exports.OVERLAY = "".concat(NS, "-overlay");
+var OVERLAY_BACKDROP = exports.OVERLAY_BACKDROP = "".concat(OVERLAY, "-backdrop");
+var OVERLAY_CONTAINER = exports.OVERLAY_CONTAINER = "".concat(OVERLAY, "-container");
+var OVERLAY_CONTENT = exports.OVERLAY_CONTENT = "".concat(OVERLAY, "-content");
+var OVERLAY_INLINE = exports.OVERLAY_INLINE = "".concat(OVERLAY, "-inline");
+var OVERLAY_OPEN = exports.OVERLAY_OPEN = "".concat(OVERLAY, "-open");
+var OVERLAY_SCROLL_CONTAINER = exports.OVERLAY_SCROLL_CONTAINER = "".concat(OVERLAY, "-scroll-container");
+var OVERLAY_START_FOCUS_TRAP = exports.OVERLAY_START_FOCUS_TRAP = "".concat(OVERLAY, "-start-focus-trap");
+var OVERLAY_END_FOCUS_TRAP = exports.OVERLAY_END_FOCUS_TRAP = "".concat(OVERLAY, "-end-focus-trap");
+var PANEL_STACK = exports.PANEL_STACK = "".concat(NS, "-panel-stack");
+var PANEL_STACK_HEADER = exports.PANEL_STACK_HEADER = "".concat(PANEL_STACK, "-header");
+var PANEL_STACK_HEADER_BACK = exports.PANEL_STACK_HEADER_BACK = "".concat(PANEL_STACK, "-header-back");
+var PANEL_STACK_VIEW = exports.PANEL_STACK_VIEW = "".concat(PANEL_STACK, "-view");
+var PANEL_STACK2 = exports.PANEL_STACK2 = "".concat(NS, "-panel-stack2");
+var PANEL_STACK2_HEADER = exports.PANEL_STACK2_HEADER = "".concat(PANEL_STACK, "-header");
+var PANEL_STACK2_HEADER_BACK = exports.PANEL_STACK2_HEADER_BACK = "".concat(PANEL_STACK, "-header-back");
+var PANEL_STACK2_VIEW = exports.PANEL_STACK2_VIEW = "".concat(PANEL_STACK, "-view");
+var POPOVER = exports.POPOVER = "".concat(NS, "-popover");
+var POPOVER_ARROW = exports.POPOVER_ARROW = "".concat(POPOVER, "-arrow");
+var POPOVER_BACKDROP = exports.POPOVER_BACKDROP = "".concat(POPOVER, "-backdrop");
+var POPOVER_CAPTURING_DISMISS = exports.POPOVER_CAPTURING_DISMISS = "".concat(POPOVER, "-capturing-dismiss");
+var POPOVER_CONTENT = exports.POPOVER_CONTENT = "".concat(POPOVER, "-content");
+var POPOVER_CONTENT_SIZING = exports.POPOVER_CONTENT_SIZING = "".concat(POPOVER_CONTENT, "-sizing");
+var POPOVER_DISMISS = exports.POPOVER_DISMISS = "".concat(POPOVER, "-dismiss");
+var POPOVER_DISMISS_OVERRIDE = exports.POPOVER_DISMISS_OVERRIDE = "".concat(POPOVER_DISMISS, "-override");
+var POPOVER_OPEN = exports.POPOVER_OPEN = "".concat(POPOVER, "-open");
+var POPOVER_OUT_OF_BOUNDARIES = exports.POPOVER_OUT_OF_BOUNDARIES = "".concat(POPOVER, "-out-of-boundaries");
+var POPOVER_TARGET = exports.POPOVER_TARGET = "".concat(POPOVER, "-target");
+var POPOVER_WRAPPER = exports.POPOVER_WRAPPER = "".concat(POPOVER, "-wrapper");
+var TRANSITION_CONTAINER = exports.TRANSITION_CONTAINER = "".concat(NS, "-transition-container");
+var PROGRESS_BAR = exports.PROGRESS_BAR = "".concat(NS, "-progress-bar");
+var PROGRESS_METER = exports.PROGRESS_METER = "".concat(NS, "-progress-meter");
+var PROGRESS_NO_STRIPES = exports.PROGRESS_NO_STRIPES = "".concat(NS, "-no-stripes");
+var PROGRESS_NO_ANIMATION = exports.PROGRESS_NO_ANIMATION = "".concat(NS, "-no-animation");
+var PORTAL = exports.PORTAL = "".concat(NS, "-portal");
+var SKELETON = exports.SKELETON = "".concat(NS, "-skeleton");
+var SLIDER = exports.SLIDER = "".concat(NS, "-slider");
+var SLIDER_AXIS = exports.SLIDER_AXIS = "".concat(SLIDER, "-axis");
+var SLIDER_HANDLE = exports.SLIDER_HANDLE = "".concat(SLIDER, "-handle");
+var SLIDER_LABEL = exports.SLIDER_LABEL = "".concat(SLIDER, "-label");
+var SLIDER_TRACK = exports.SLIDER_TRACK = "".concat(SLIDER, "-track");
+var SLIDER_PROGRESS = exports.SLIDER_PROGRESS = "".concat(SLIDER, "-progress");
+var START = exports.START = "".concat(NS, "-start");
+var END = exports.END = "".concat(NS, "-end");
+var SPINNER = exports.SPINNER = "".concat(NS, "-spinner");
+var SPINNER_ANIMATION = exports.SPINNER_ANIMATION = "".concat(SPINNER, "-animation");
+var SPINNER_HEAD = exports.SPINNER_HEAD = "".concat(SPINNER, "-head");
+var SPINNER_NO_SPIN = exports.SPINNER_NO_SPIN = "".concat(NS, "-no-spin");
+var SPINNER_TRACK = exports.SPINNER_TRACK = "".concat(SPINNER, "-track");
+var TAB = exports.TAB = "".concat(NS, "-tab");
+var TAB_INDICATOR = exports.TAB_INDICATOR = "".concat(TAB, "-indicator");
+var TAB_INDICATOR_WRAPPER = exports.TAB_INDICATOR_WRAPPER = "".concat(TAB_INDICATOR, "-wrapper");
+var TAB_LIST = exports.TAB_LIST = "".concat(TAB, "-list");
+var TAB_PANEL = exports.TAB_PANEL = "".concat(TAB, "-panel");
+var TABS = exports.TABS = "".concat(TAB, "s");
+var TAG = exports.TAG = "".concat(NS, "-tag");
+var TAG_REMOVE = exports.TAG_REMOVE = "".concat(TAG, "-remove");
+var TAG_INPUT = exports.TAG_INPUT = "".concat(NS, "-tag-input");
+var TAG_INPUT_ICON = exports.TAG_INPUT_ICON = "".concat(TAG_INPUT, "-icon");
+var TAG_INPUT_VALUES = exports.TAG_INPUT_VALUES = "".concat(TAG_INPUT, "-values");
+var TOAST = exports.TOAST = "".concat(NS, "-toast");
+var TOAST_CONTAINER = exports.TOAST_CONTAINER = "".concat(TOAST, "-container");
+var TOAST_MESSAGE = exports.TOAST_MESSAGE = "".concat(TOAST, "-message");
+var TOOLTIP = exports.TOOLTIP = "".concat(NS, "-tooltip");
+var TOOLTIP_INDICATOR = exports.TOOLTIP_INDICATOR = "".concat(TOOLTIP, "-indicator");
+var TREE = exports.TREE = "".concat(NS, "-tree");
+var TREE_NODE = exports.TREE_NODE = "".concat(NS, "-tree-node");
+var TREE_NODE_CARET = exports.TREE_NODE_CARET = "".concat(TREE_NODE, "-caret");
+var TREE_NODE_CARET_CLOSED = exports.TREE_NODE_CARET_CLOSED = "".concat(TREE_NODE_CARET, "-closed");
+var TREE_NODE_CARET_NONE = exports.TREE_NODE_CARET_NONE = "".concat(TREE_NODE_CARET, "-none");
+var TREE_NODE_CARET_OPEN = exports.TREE_NODE_CARET_OPEN = "".concat(TREE_NODE_CARET, "-open");
+var TREE_NODE_CONTENT = exports.TREE_NODE_CONTENT = "".concat(TREE_NODE, "-content");
+var TREE_NODE_EXPANDED = exports.TREE_NODE_EXPANDED = "".concat(TREE_NODE, "-expanded");
+var TREE_NODE_ICON = exports.TREE_NODE_ICON = "".concat(TREE_NODE, "-icon");
+var TREE_NODE_LABEL = exports.TREE_NODE_LABEL = "".concat(TREE_NODE, "-label");
+var TREE_NODE_LIST = exports.TREE_NODE_LIST = "".concat(TREE_NODE, "-list");
+var TREE_NODE_SECONDARY_LABEL = exports.TREE_NODE_SECONDARY_LABEL = "".concat(TREE_NODE, "-secondary-label");
+var TREE_NODE_SELECTED = exports.TREE_NODE_SELECTED = "".concat(TREE_NODE, "-selected");
+var TREE_ROOT = exports.TREE_ROOT = "".concat(NS, "-tree-root");
+var ICON = exports.ICON = "".concat(NS, "-icon");
 /** @deprecated use <Icon> components and iconName prop APIs instead */
-var ICON_STANDARD = exports.ICON_STANDARD = ICON + "-standard";
+var ICON_STANDARD = exports.ICON_STANDARD = "".concat(ICON, "-standard");
 /** @deprecated use <Icon> components and iconName prop APIs instead */
-var ICON_LARGE = exports.ICON_LARGE = ICON + "-large";
+var ICON_LARGE = exports.ICON_LARGE = "".concat(ICON, "-large");
 /**
  * Returns the namespace prefix for all Blueprint CSS classes.
  * Customize this namespace at build time with the `process.env.BLUEPRINT_NAMESPACE` environment variable.
@@ -25837,25 +25837,25 @@ function elevationClass(elevation) {
   if (elevation === undefined) {
     return undefined;
   }
-  return NS + "-elevation-" + elevation;
+  return "".concat(NS, "-elevation-").concat(elevation);
 }
 function iconClass(iconName) {
   if (iconName == null) {
     return undefined;
   }
-  return iconName.indexOf(NS + "-icon-") === 0 ? iconName : NS + "-icon-" + iconName;
+  return iconName.indexOf("".concat(NS, "-icon-")) === 0 ? iconName : "".concat(NS, "-icon-").concat(iconName);
 }
 function intentClass(intent) {
   if (intent == null || intent === _intent.Intent.NONE) {
     return undefined;
   }
-  return NS + "-intent-" + intent.toLowerCase();
+  return "".concat(NS, "-intent-").concat(intent.toLowerCase());
 }
 function positionClass(position) {
   if (position === undefined) {
     return undefined;
   }
-  return NS + "-position-" + position;
+  return "".concat(NS, "-position-").concat(position);
 }
 },{"./alignment":"../node_modules/@blueprintjs/core/lib/esm/common/alignment.js","./elevation":"../node_modules/@blueprintjs/core/lib/esm/common/elevation.js","./intent":"../node_modules/@blueprintjs/core/lib/esm/common/intent.js","./position":"../node_modules/@blueprintjs/core/lib/esm/common/position.js","process":"../node_modules/process/browser.js"}],"../node_modules/@blueprintjs/core/lib/esm/common/interactionMode.js":[function(require,module,exports) {
 "use strict";
@@ -26009,7 +26009,7 @@ exports.__await = __await;
 exports.__awaiter = __awaiter;
 exports.__classPrivateFieldGet = __classPrivateFieldGet;
 exports.__classPrivateFieldSet = __classPrivateFieldSet;
-exports.__createBinding = __createBinding;
+exports.__createBinding = void 0;
 exports.__decorate = __decorate;
 exports.__exportStar = __exportStar;
 exports.__extends = __extends;
@@ -26022,6 +26022,7 @@ exports.__param = __param;
 exports.__read = __read;
 exports.__rest = __rest;
 exports.__spread = __spread;
+exports.__spreadArray = __spreadArray;
 exports.__spreadArrays = __spreadArrays;
 exports.__values = __values;
 /*! *****************************************************************************
@@ -26046,11 +26047,12 @@ var extendStatics = function (d, b) {
   } instanceof Array && function (d, b) {
     d.__proto__ = b;
   } || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p];
   };
   return extendStatics(d, b);
 };
 function __extends(d, b) {
+  if (typeof b !== "function" && b !== null) throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
   extendStatics(d, b);
   function __() {
     this.constructor = d;
@@ -26206,12 +26208,20 @@ function __generator(thisArg, body) {
     };
   }
 }
-function __createBinding(o, m, k, k2) {
+var __createBinding = exports.__createBinding = Object.create ? function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  Object.defineProperty(o, k2, {
+    enumerable: true,
+    get: function () {
+      return m[k];
+    }
+  });
+} : function (o, m, k, k2) {
   if (k2 === undefined) k2 = k;
   o[k2] = m[k];
-}
-function __exportStar(m, exports) {
-  for (var p in m) if (p !== "default" && !exports.hasOwnProperty(p)) exports[p] = m[p];
+};
+function __exportStar(m, o) {
+  for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(o, p)) __createBinding(o, m, p);
 }
 function __values(o) {
   var s = typeof Symbol === "function" && Symbol.iterator,
@@ -26251,16 +26261,28 @@ function __read(o, n) {
   }
   return ar;
 }
+
+/** @deprecated */
 function __spread() {
   for (var ar = [], i = 0; i < arguments.length; i++) ar = ar.concat(__read(arguments[i]));
   return ar;
 }
+
+/** @deprecated */
 function __spreadArrays() {
   for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
   for (var r = Array(s), k = 0, i = 0; i < il; i++) for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++) r[k] = a[j];
   return r;
 }
-;
+function __spreadArray(to, from, pack) {
+  if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+    if (ar || !(i in from)) {
+      if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+      ar[i] = from[i];
+    }
+  }
+  return to.concat(ar || Array.prototype.slice.call(from));
+}
 function __await(v) {
   return this instanceof __await ? (this.v = v, this) : new __await(v);
 }
@@ -26349,11 +26371,19 @@ function __makeTemplateObject(cooked, raw) {
   return cooked;
 }
 ;
+var __setModuleDefault = Object.create ? function (o, v) {
+  Object.defineProperty(o, "default", {
+    enumerable: true,
+    value: v
+  });
+} : function (o, v) {
+  o["default"] = v;
+};
 function __importStar(mod) {
   if (mod && mod.__esModule) return mod;
   var result = {};
-  if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
-  result.default = mod;
+  if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+  __setModuleDefault(result, mod);
   return result;
 }
 function __importDefault(mod) {
@@ -26361,18 +26391,16 @@ function __importDefault(mod) {
     default: mod
   };
 }
-function __classPrivateFieldGet(receiver, privateMap) {
-  if (!privateMap.has(receiver)) {
-    throw new TypeError("attempted to get private field on non-instance");
-  }
-  return privateMap.get(receiver);
+function __classPrivateFieldGet(receiver, state, kind, f) {
+  if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a getter");
+  if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
+  return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
 }
-function __classPrivateFieldSet(receiver, privateMap, value) {
-  if (!privateMap.has(receiver)) {
-    throw new TypeError("attempted to set private field on non-instance");
-  }
-  privateMap.set(receiver, value);
-  return value;
+function __classPrivateFieldSet(receiver, state, value, kind, f) {
+  if (kind === "m") throw new TypeError("Private method is not writable");
+  if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a setter");
+  if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot write private member to an object whose class did not declare it");
+  return kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value), value;
 }
 },{}],"../node_modules/@blueprintjs/core/lib/esm/common/utils/compareUtils.js":[function(require,module,exports) {
 "use strict";
@@ -26878,7 +26906,7 @@ function uniqueId(namespace) {
   var _a;
   var curCount = (_a = uniqueCountForNamespace.get(namespace)) !== null && _a !== void 0 ? _a : 0;
   uniqueCountForNamespace.set(namespace, curCount + 1);
-  return namespace + "-" + curCount;
+  return "".concat(namespace, "-").concat(curCount);
 }
 },{"../errors":"../node_modules/@blueprintjs/core/lib/esm/common/errors.js","process":"../node_modules/process/browser.js"}],"../node_modules/@blueprintjs/core/lib/esm/common/utils/reactUtils.js":[function(require,module,exports) {
 "use strict";
@@ -28069,7 +28097,7 @@ function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r
  */
 
 function isDarkTheme(element) {
-  return element != null && element instanceof Element && element.closest("." + Classes.DARK) != null;
+  return element != null && element instanceof Element && element.closest(".".concat(Classes.DARK)) != null;
 }
 },{"../configureDom4":"../node_modules/@blueprintjs/core/lib/esm/common/configureDom4.js","../classes":"../node_modules/@blueprintjs/core/lib/esm/common/classes.js"}],"../node_modules/@blueprintjs/core/lib/esm/common/refs.js":[function(require,module,exports) {
 "use strict";
@@ -37105,7 +37133,7 @@ var Portal = exports.Portal = /** @class */function (_super) {
     }
     ReactDOM.unstable_renderSubtreeIntoContainer(/* parentComponent */this, React.createElement("div", null, this.props.children), this.portalElement);
   };
-  Portal.displayName = _props.DISPLAYNAME_PREFIX + ".Portal";
+  Portal.displayName = "".concat(_props.DISPLAYNAME_PREFIX, ".Portal");
   Portal.contextTypes = REACT_CONTEXT_TYPES;
   Portal.defaultProps = {
     container: typeof document !== "undefined" ? document.body : undefined
@@ -37568,7 +37596,7 @@ var Overlay = exports.Overlay = /** @class */function (_super) {
     this.lastActiveElementBeforeOpened = document.activeElement;
   };
   var Overlay_1;
-  Overlay.displayName = _props.DISPLAYNAME_PREFIX + ".Overlay";
+  Overlay.displayName = "".concat(_props.DISPLAYNAME_PREFIX, ".Overlay");
   Overlay.defaultProps = {
     autoFocus: true,
     backdropProps: {},
@@ -37590,961 +37618,779 @@ var Overlay = exports.Overlay = /** @class */function (_super) {
   Overlay = Overlay_1 = (0, _tslib.__decorate)([_reactLifecyclesCompat.polyfill], Overlay);
   return Overlay;
 }(_common.AbstractPureComponent2);
-},{"tslib":"../node_modules/@blueprintjs/core/node_modules/tslib/tslib.es6.js","classnames":"../node_modules/classnames/index.js","react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","react-lifecycles-compat":"../node_modules/react-lifecycles-compat/react-lifecycles-compat.es.js","react-transition-group":"../node_modules/react-transition-group/index.js","../../common":"../node_modules/@blueprintjs/core/lib/esm/common/index.js","../../common/props":"../node_modules/@blueprintjs/core/lib/esm/common/props.js","../../common/utils":"../node_modules/@blueprintjs/core/lib/esm/common/utils/index.js","../portal/portal":"../node_modules/@blueprintjs/core/lib/esm/components/portal/portal.js"}],"../node_modules/resize-observer-polyfill/dist/ResizeObserver.es.js":[function(require,module,exports) {
-var global = arguments[3];
+},{"tslib":"../node_modules/@blueprintjs/core/node_modules/tslib/tslib.es6.js","classnames":"../node_modules/classnames/index.js","react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","react-lifecycles-compat":"../node_modules/react-lifecycles-compat/react-lifecycles-compat.es.js","react-transition-group":"../node_modules/react-transition-group/index.js","../../common":"../node_modules/@blueprintjs/core/lib/esm/common/index.js","../../common/props":"../node_modules/@blueprintjs/core/lib/esm/common/props.js","../../common/utils":"../node_modules/@blueprintjs/core/lib/esm/common/utils/index.js","../portal/portal":"../node_modules/@blueprintjs/core/lib/esm/components/portal/portal.js"}],"../node_modules/@juggle/resize-observer/lib/utils/resizeObservers.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
-/**
- * A collection of shims that provide minimal functionality of the ES6 collections.
- *
- * These implementations are not meant to be used outside of the ResizeObserver
- * modules as they cover only a limited range of use cases.
- */
-/* eslint-disable require-jsdoc, valid-jsdoc */
-var MapShim = function () {
-  if (typeof Map !== 'undefined') {
-    return Map;
-  }
-  /**
-   * Returns index in provided array that matches the specified key.
-   *
-   * @param {Array<Array>} arr
-   * @param {*} key
-   * @returns {number}
-   */
-  function getIndex(arr, key) {
-    var result = -1;
-    arr.some(function (entry, index) {
-      if (entry[0] === key) {
-        result = index;
-        return true;
-      }
-      return false;
-    });
-    return result;
-  }
-  return /** @class */function () {
-    function class_1() {
-      this.__entries__ = [];
-    }
-    Object.defineProperty(class_1.prototype, "size", {
-      /**
-       * @returns {boolean}
-       */
-      get: function () {
-        return this.__entries__.length;
-      },
-      enumerable: true,
-      configurable: true
-    });
-    /**
-     * @param {*} key
-     * @returns {*}
-     */
-    class_1.prototype.get = function (key) {
-      var index = getIndex(this.__entries__, key);
-      var entry = this.__entries__[index];
-      return entry && entry[1];
-    };
-    /**
-     * @param {*} key
-     * @param {*} value
-     * @returns {void}
-     */
-    class_1.prototype.set = function (key, value) {
-      var index = getIndex(this.__entries__, key);
-      if (~index) {
-        this.__entries__[index][1] = value;
-      } else {
-        this.__entries__.push([key, value]);
-      }
-    };
-    /**
-     * @param {*} key
-     * @returns {void}
-     */
-    class_1.prototype.delete = function (key) {
-      var entries = this.__entries__;
-      var index = getIndex(entries, key);
-      if (~index) {
-        entries.splice(index, 1);
-      }
-    };
-    /**
-     * @param {*} key
-     * @returns {void}
-     */
-    class_1.prototype.has = function (key) {
-      return !!~getIndex(this.__entries__, key);
-    };
-    /**
-     * @returns {void}
-     */
-    class_1.prototype.clear = function () {
-      this.__entries__.splice(0);
-    };
-    /**
-     * @param {Function} callback
-     * @param {*} [ctx=null]
-     * @returns {void}
-     */
-    class_1.prototype.forEach = function (callback, ctx) {
-      if (ctx === void 0) {
-        ctx = null;
-      }
-      for (var _i = 0, _a = this.__entries__; _i < _a.length; _i++) {
-        var entry = _a[_i];
-        callback.call(ctx, entry[1], entry[0]);
-      }
-    };
-    return class_1;
-  }();
-}();
+exports.resizeObservers = void 0;
+var resizeObservers = exports.resizeObservers = [];
+},{}],"../node_modules/@juggle/resize-observer/lib/algorithms/hasActiveObservations.js":[function(require,module,exports) {
+"use strict";
 
-/**
- * Detects whether window and document objects are available in current environment.
- */
-var isBrowser = typeof window !== 'undefined' && typeof document !== 'undefined' && window.document === document;
-
-// Returns global object of a current environment.
-var global$1 = function () {
-  if (typeof global !== 'undefined' && global.Math === Math) {
-    return global;
-  }
-  if (typeof self !== 'undefined' && self.Math === Math) {
-    return self;
-  }
-  if (typeof window !== 'undefined' && window.Math === Math) {
-    return window;
-  }
-  // eslint-disable-next-line no-new-func
-  return Function('return this')();
-}();
-
-/**
- * A shim for the requestAnimationFrame which falls back to the setTimeout if
- * first one is not supported.
- *
- * @returns {number} Requests' identifier.
- */
-var requestAnimationFrame$1 = function () {
-  if (typeof requestAnimationFrame === 'function') {
-    // It's required to use a bounded function because IE sometimes throws
-    // an "Invalid calling object" error if rAF is invoked without the global
-    // object on the left hand side.
-    return requestAnimationFrame.bind(global$1);
-  }
-  return function (callback) {
-    return setTimeout(function () {
-      return callback(Date.now());
-    }, 1000 / 60);
-  };
-}();
-
-// Defines minimum timeout before adding a trailing call.
-var trailingTimeout = 2;
-/**
- * Creates a wrapper function which ensures that provided callback will be
- * invoked only once during the specified delay period.
- *
- * @param {Function} callback - Function to be invoked after the delay period.
- * @param {number} delay - Delay after which to invoke callback.
- * @returns {Function}
- */
-function throttle(callback, delay) {
-  var leadingCall = false,
-    trailingCall = false,
-    lastCallTime = 0;
-  /**
-   * Invokes the original callback function and schedules new invocation if
-   * the "proxy" was called during current request.
-   *
-   * @returns {void}
-   */
-  function resolvePending() {
-    if (leadingCall) {
-      leadingCall = false;
-      callback();
-    }
-    if (trailingCall) {
-      proxy();
-    }
-  }
-  /**
-   * Callback invoked after the specified delay. It will further postpone
-   * invocation of the original function delegating it to the
-   * requestAnimationFrame.
-   *
-   * @returns {void}
-   */
-  function timeoutCallback() {
-    requestAnimationFrame$1(resolvePending);
-  }
-  /**
-   * Schedules invocation of the original function.
-   *
-   * @returns {void}
-   */
-  function proxy() {
-    var timeStamp = Date.now();
-    if (leadingCall) {
-      // Reject immediately following calls.
-      if (timeStamp - lastCallTime < trailingTimeout) {
-        return;
-      }
-      // Schedule new call to be in invoked when the pending one is resolved.
-      // This is important for "transitions" which never actually start
-      // immediately so there is a chance that we might miss one if change
-      // happens amids the pending invocation.
-      trailingCall = true;
-    } else {
-      leadingCall = true;
-      trailingCall = false;
-      setTimeout(timeoutCallback, delay);
-    }
-    lastCallTime = timeStamp;
-  }
-  return proxy;
-}
-
-// Minimum delay before invoking the update of observers.
-var REFRESH_DELAY = 20;
-// A list of substrings of CSS properties used to find transition events that
-// might affect dimensions of observed elements.
-var transitionKeys = ['top', 'right', 'bottom', 'left', 'width', 'height', 'size', 'weight'];
-// Check if MutationObserver is available.
-var mutationObserverSupported = typeof MutationObserver !== 'undefined';
-/**
- * Singleton controller class which handles updates of ResizeObserver instances.
- */
-var ResizeObserverController = /** @class */function () {
-  /**
-   * Creates a new instance of ResizeObserverController.
-   *
-   * @private
-   */
-  function ResizeObserverController() {
-    /**
-     * Indicates whether DOM listeners have been added.
-     *
-     * @private {boolean}
-     */
-    this.connected_ = false;
-    /**
-     * Tells that controller has subscribed for Mutation Events.
-     *
-     * @private {boolean}
-     */
-    this.mutationEventsAdded_ = false;
-    /**
-     * Keeps reference to the instance of MutationObserver.
-     *
-     * @private {MutationObserver}
-     */
-    this.mutationsObserver_ = null;
-    /**
-     * A list of connected observers.
-     *
-     * @private {Array<ResizeObserverSPI>}
-     */
-    this.observers_ = [];
-    this.onTransitionEnd_ = this.onTransitionEnd_.bind(this);
-    this.refresh = throttle(this.refresh.bind(this), REFRESH_DELAY);
-  }
-  /**
-   * Adds observer to observers list.
-   *
-   * @param {ResizeObserverSPI} observer - Observer to be added.
-   * @returns {void}
-   */
-  ResizeObserverController.prototype.addObserver = function (observer) {
-    if (!~this.observers_.indexOf(observer)) {
-      this.observers_.push(observer);
-    }
-    // Add listeners if they haven't been added yet.
-    if (!this.connected_) {
-      this.connect_();
-    }
-  };
-  /**
-   * Removes observer from observers list.
-   *
-   * @param {ResizeObserverSPI} observer - Observer to be removed.
-   * @returns {void}
-   */
-  ResizeObserverController.prototype.removeObserver = function (observer) {
-    var observers = this.observers_;
-    var index = observers.indexOf(observer);
-    // Remove observer if it's present in registry.
-    if (~index) {
-      observers.splice(index, 1);
-    }
-    // Remove listeners if controller has no connected observers.
-    if (!observers.length && this.connected_) {
-      this.disconnect_();
-    }
-  };
-  /**
-   * Invokes the update of observers. It will continue running updates insofar
-   * it detects changes.
-   *
-   * @returns {void}
-   */
-  ResizeObserverController.prototype.refresh = function () {
-    var changesDetected = this.updateObservers_();
-    // Continue running updates if changes have been detected as there might
-    // be future ones caused by CSS transitions.
-    if (changesDetected) {
-      this.refresh();
-    }
-  };
-  /**
-   * Updates every observer from observers list and notifies them of queued
-   * entries.
-   *
-   * @private
-   * @returns {boolean} Returns "true" if any observer has detected changes in
-   *      dimensions of it's elements.
-   */
-  ResizeObserverController.prototype.updateObservers_ = function () {
-    // Collect observers that have active observations.
-    var activeObservers = this.observers_.filter(function (observer) {
-      return observer.gatherActive(), observer.hasActive();
-    });
-    // Deliver notifications in a separate cycle in order to avoid any
-    // collisions between observers, e.g. when multiple instances of
-    // ResizeObserver are tracking the same element and the callback of one
-    // of them changes content dimensions of the observed target. Sometimes
-    // this may result in notifications being blocked for the rest of observers.
-    activeObservers.forEach(function (observer) {
-      return observer.broadcastActive();
-    });
-    return activeObservers.length > 0;
-  };
-  /**
-   * Initializes DOM listeners.
-   *
-   * @private
-   * @returns {void}
-   */
-  ResizeObserverController.prototype.connect_ = function () {
-    // Do nothing if running in a non-browser environment or if listeners
-    // have been already added.
-    if (!isBrowser || this.connected_) {
-      return;
-    }
-    // Subscription to the "Transitionend" event is used as a workaround for
-    // delayed transitions. This way it's possible to capture at least the
-    // final state of an element.
-    document.addEventListener('transitionend', this.onTransitionEnd_);
-    window.addEventListener('resize', this.refresh);
-    if (mutationObserverSupported) {
-      this.mutationsObserver_ = new MutationObserver(this.refresh);
-      this.mutationsObserver_.observe(document, {
-        attributes: true,
-        childList: true,
-        characterData: true,
-        subtree: true
-      });
-    } else {
-      document.addEventListener('DOMSubtreeModified', this.refresh);
-      this.mutationEventsAdded_ = true;
-    }
-    this.connected_ = true;
-  };
-  /**
-   * Removes DOM listeners.
-   *
-   * @private
-   * @returns {void}
-   */
-  ResizeObserverController.prototype.disconnect_ = function () {
-    // Do nothing if running in a non-browser environment or if listeners
-    // have been already removed.
-    if (!isBrowser || !this.connected_) {
-      return;
-    }
-    document.removeEventListener('transitionend', this.onTransitionEnd_);
-    window.removeEventListener('resize', this.refresh);
-    if (this.mutationsObserver_) {
-      this.mutationsObserver_.disconnect();
-    }
-    if (this.mutationEventsAdded_) {
-      document.removeEventListener('DOMSubtreeModified', this.refresh);
-    }
-    this.mutationsObserver_ = null;
-    this.mutationEventsAdded_ = false;
-    this.connected_ = false;
-  };
-  /**
-   * "Transitionend" event handler.
-   *
-   * @private
-   * @param {TransitionEvent} event
-   * @returns {void}
-   */
-  ResizeObserverController.prototype.onTransitionEnd_ = function (_a) {
-    var _b = _a.propertyName,
-      propertyName = _b === void 0 ? '' : _b;
-    // Detect whether transition may affect dimensions of an element.
-    var isReflowProperty = transitionKeys.some(function (key) {
-      return !!~propertyName.indexOf(key);
-    });
-    if (isReflowProperty) {
-      this.refresh();
-    }
-  };
-  /**
-   * Returns instance of the ResizeObserverController.
-   *
-   * @returns {ResizeObserverController}
-   */
-  ResizeObserverController.getInstance = function () {
-    if (!this.instance_) {
-      this.instance_ = new ResizeObserverController();
-    }
-    return this.instance_;
-  };
-  /**
-   * Holds reference to the controller's instance.
-   *
-   * @private {ResizeObserverController}
-   */
-  ResizeObserverController.instance_ = null;
-  return ResizeObserverController;
-}();
-
-/**
- * Defines non-writable/enumerable properties of the provided target object.
- *
- * @param {Object} target - Object for which to define properties.
- * @param {Object} props - Properties to be defined.
- * @returns {Object} Target object.
- */
-var defineConfigurable = function (target, props) {
-  for (var _i = 0, _a = Object.keys(props); _i < _a.length; _i++) {
-    var key = _a[_i];
-    Object.defineProperty(target, key, {
-      value: props[key],
-      enumerable: false,
-      writable: false,
-      configurable: true
-    });
-  }
-  return target;
-};
-
-/**
- * Returns the global object associated with provided element.
- *
- * @param {Object} target
- * @returns {Object}
- */
-var getWindowOf = function (target) {
-  // Assume that the element is an instance of Node, which means that it
-  // has the "ownerDocument" property from which we can retrieve a
-  // corresponding global object.
-  var ownerGlobal = target && target.ownerDocument && target.ownerDocument.defaultView;
-  // Return the local global object if it's not possible extract one from
-  // provided element.
-  return ownerGlobal || global$1;
-};
-
-// Placeholder of an empty content rectangle.
-var emptyRect = createRectInit(0, 0, 0, 0);
-/**
- * Converts provided string to a number.
- *
- * @param {number|string} value
- * @returns {number}
- */
-function toFloat(value) {
-  return parseFloat(value) || 0;
-}
-/**
- * Extracts borders size from provided styles.
- *
- * @param {CSSStyleDeclaration} styles
- * @param {...string} positions - Borders positions (top, right, ...)
- * @returns {number}
- */
-function getBordersSize(styles) {
-  var positions = [];
-  for (var _i = 1; _i < arguments.length; _i++) {
-    positions[_i - 1] = arguments[_i];
-  }
-  return positions.reduce(function (size, position) {
-    var value = styles['border-' + position + '-width'];
-    return size + toFloat(value);
-  }, 0);
-}
-/**
- * Extracts paddings sizes from provided styles.
- *
- * @param {CSSStyleDeclaration} styles
- * @returns {Object} Paddings box.
- */
-function getPaddings(styles) {
-  var positions = ['top', 'right', 'bottom', 'left'];
-  var paddings = {};
-  for (var _i = 0, positions_1 = positions; _i < positions_1.length; _i++) {
-    var position = positions_1[_i];
-    var value = styles['padding-' + position];
-    paddings[position] = toFloat(value);
-  }
-  return paddings;
-}
-/**
- * Calculates content rectangle of provided SVG element.
- *
- * @param {SVGGraphicsElement} target - Element content rectangle of which needs
- *      to be calculated.
- * @returns {DOMRectInit}
- */
-function getSVGContentRect(target) {
-  var bbox = target.getBBox();
-  return createRectInit(0, 0, bbox.width, bbox.height);
-}
-/**
- * Calculates content rectangle of provided HTMLElement.
- *
- * @param {HTMLElement} target - Element for which to calculate the content rectangle.
- * @returns {DOMRectInit}
- */
-function getHTMLElementContentRect(target) {
-  // Client width & height properties can't be
-  // used exclusively as they provide rounded values.
-  var clientWidth = target.clientWidth,
-    clientHeight = target.clientHeight;
-  // By this condition we can catch all non-replaced inline, hidden and
-  // detached elements. Though elements with width & height properties less
-  // than 0.5 will be discarded as well.
-  //
-  // Without it we would need to implement separate methods for each of
-  // those cases and it's not possible to perform a precise and performance
-  // effective test for hidden elements. E.g. even jQuery's ':visible' filter
-  // gives wrong results for elements with width & height less than 0.5.
-  if (!clientWidth && !clientHeight) {
-    return emptyRect;
-  }
-  var styles = getWindowOf(target).getComputedStyle(target);
-  var paddings = getPaddings(styles);
-  var horizPad = paddings.left + paddings.right;
-  var vertPad = paddings.top + paddings.bottom;
-  // Computed styles of width & height are being used because they are the
-  // only dimensions available to JS that contain non-rounded values. It could
-  // be possible to utilize the getBoundingClientRect if only it's data wasn't
-  // affected by CSS transformations let alone paddings, borders and scroll bars.
-  var width = toFloat(styles.width),
-    height = toFloat(styles.height);
-  // Width & height include paddings and borders when the 'border-box' box
-  // model is applied (except for IE).
-  if (styles.boxSizing === 'border-box') {
-    // Following conditions are required to handle Internet Explorer which
-    // doesn't include paddings and borders to computed CSS dimensions.
-    //
-    // We can say that if CSS dimensions + paddings are equal to the "client"
-    // properties then it's either IE, and thus we don't need to subtract
-    // anything, or an element merely doesn't have paddings/borders styles.
-    if (Math.round(width + horizPad) !== clientWidth) {
-      width -= getBordersSize(styles, 'left', 'right') + horizPad;
-    }
-    if (Math.round(height + vertPad) !== clientHeight) {
-      height -= getBordersSize(styles, 'top', 'bottom') + vertPad;
-    }
-  }
-  // Following steps can't be applied to the document's root element as its
-  // client[Width/Height] properties represent viewport area of the window.
-  // Besides, it's as well not necessary as the <html> itself neither has
-  // rendered scroll bars nor it can be clipped.
-  if (!isDocumentElement(target)) {
-    // In some browsers (only in Firefox, actually) CSS width & height
-    // include scroll bars size which can be removed at this step as scroll
-    // bars are the only difference between rounded dimensions + paddings
-    // and "client" properties, though that is not always true in Chrome.
-    var vertScrollbar = Math.round(width + horizPad) - clientWidth;
-    var horizScrollbar = Math.round(height + vertPad) - clientHeight;
-    // Chrome has a rather weird rounding of "client" properties.
-    // E.g. for an element with content width of 314.2px it sometimes gives
-    // the client width of 315px and for the width of 314.7px it may give
-    // 314px. And it doesn't happen all the time. So just ignore this delta
-    // as a non-relevant.
-    if (Math.abs(vertScrollbar) !== 1) {
-      width -= vertScrollbar;
-    }
-    if (Math.abs(horizScrollbar) !== 1) {
-      height -= horizScrollbar;
-    }
-  }
-  return createRectInit(paddings.left, paddings.top, width, height);
-}
-/**
- * Checks whether provided element is an instance of the SVGGraphicsElement.
- *
- * @param {Element} target - Element to be checked.
- * @returns {boolean}
- */
-var isSVGGraphicsElement = function () {
-  // Some browsers, namely IE and Edge, don't have the SVGGraphicsElement
-  // interface.
-  if (typeof SVGGraphicsElement !== 'undefined') {
-    return function (target) {
-      return target instanceof getWindowOf(target).SVGGraphicsElement;
-    };
-  }
-  // If it's so, then check that element is at least an instance of the
-  // SVGElement and that it has the "getBBox" method.
-  // eslint-disable-next-line no-extra-parens
-  return function (target) {
-    return target instanceof getWindowOf(target).SVGElement && typeof target.getBBox === 'function';
-  };
-}();
-/**
- * Checks whether provided element is a document element (<html>).
- *
- * @param {Element} target - Element to be checked.
- * @returns {boolean}
- */
-function isDocumentElement(target) {
-  return target === getWindowOf(target).document.documentElement;
-}
-/**
- * Calculates an appropriate content rectangle for provided html or svg element.
- *
- * @param {Element} target - Element content rectangle of which needs to be calculated.
- * @returns {DOMRectInit}
- */
-function getContentRect(target) {
-  if (!isBrowser) {
-    return emptyRect;
-  }
-  if (isSVGGraphicsElement(target)) {
-    return getSVGContentRect(target);
-  }
-  return getHTMLElementContentRect(target);
-}
-/**
- * Creates rectangle with an interface of the DOMRectReadOnly.
- * Spec: https://drafts.fxtf.org/geometry/#domrectreadonly
- *
- * @param {DOMRectInit} rectInit - Object with rectangle's x/y coordinates and dimensions.
- * @returns {DOMRectReadOnly}
- */
-function createReadOnlyRect(_a) {
-  var x = _a.x,
-    y = _a.y,
-    width = _a.width,
-    height = _a.height;
-  // If DOMRectReadOnly is available use it as a prototype for the rectangle.
-  var Constr = typeof DOMRectReadOnly !== 'undefined' ? DOMRectReadOnly : Object;
-  var rect = Object.create(Constr.prototype);
-  // Rectangle's properties are not writable and non-enumerable.
-  defineConfigurable(rect, {
-    x: x,
-    y: y,
-    width: width,
-    height: height,
-    top: y,
-    right: x + width,
-    bottom: height + y,
-    left: x
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.hasActiveObservations = void 0;
+var _resizeObservers = require("../utils/resizeObservers");
+var hasActiveObservations = function () {
+  return _resizeObservers.resizeObservers.some(function (ro) {
+    return ro.activeTargets.length > 0;
   });
-  return rect;
-}
-/**
- * Creates DOMRectInit object based on the provided dimensions and the x/y coordinates.
- * Spec: https://drafts.fxtf.org/geometry/#dictdef-domrectinit
- *
- * @param {number} x - X coordinate.
- * @param {number} y - Y coordinate.
- * @param {number} width - Rectangle's width.
- * @param {number} height - Rectangle's height.
- * @returns {DOMRectInit}
- */
-function createRectInit(x, y, width, height) {
-  return {
-    x: x,
-    y: y,
-    width: width,
-    height: height
-  };
-}
+};
+exports.hasActiveObservations = hasActiveObservations;
+},{"../utils/resizeObservers":"../node_modules/@juggle/resize-observer/lib/utils/resizeObservers.js"}],"../node_modules/@juggle/resize-observer/lib/algorithms/hasSkippedObservations.js":[function(require,module,exports) {
+"use strict";
 
-/**
- * Class that is responsible for computations of the content rectangle of
- * provided DOM element and for keeping track of it's changes.
- */
-var ResizeObservation = /** @class */function () {
-  /**
-   * Creates an instance of ResizeObservation.
-   *
-   * @param {Element} target - Element to be observed.
-   */
-  function ResizeObservation(target) {
-    /**
-     * Broadcasted width of content rectangle.
-     *
-     * @type {number}
-     */
-    this.broadcastWidth = 0;
-    /**
-     * Broadcasted height of content rectangle.
-     *
-     * @type {number}
-     */
-    this.broadcastHeight = 0;
-    /**
-     * Reference to the last observed content rectangle.
-     *
-     * @private {DOMRectInit}
-     */
-    this.contentRect_ = createRectInit(0, 0, 0, 0);
-    this.target = target;
-  }
-  /**
-   * Updates content rectangle and tells whether it's width or height properties
-   * have changed since the last broadcast.
-   *
-   * @returns {boolean}
-   */
-  ResizeObservation.prototype.isActive = function () {
-    var rect = getContentRect(this.target);
-    this.contentRect_ = rect;
-    return rect.width !== this.broadcastWidth || rect.height !== this.broadcastHeight;
-  };
-  /**
-   * Updates 'broadcastWidth' and 'broadcastHeight' properties with a data
-   * from the corresponding properties of the last observed content rectangle.
-   *
-   * @returns {DOMRectInit} Last observed content rectangle.
-   */
-  ResizeObservation.prototype.broadcastRect = function () {
-    var rect = this.contentRect_;
-    this.broadcastWidth = rect.width;
-    this.broadcastHeight = rect.height;
-    return rect;
-  };
-  return ResizeObservation;
-}();
-var ResizeObserverEntry = /** @class */function () {
-  /**
-   * Creates an instance of ResizeObserverEntry.
-   *
-   * @param {Element} target - Element that is being observed.
-   * @param {DOMRectInit} rectInit - Data of the element's content rectangle.
-   */
-  function ResizeObserverEntry(target, rectInit) {
-    var contentRect = createReadOnlyRect(rectInit);
-    // According to the specification following properties are not writable
-    // and are also not enumerable in the native implementation.
-    //
-    // Property accessors are not being used as they'd require to define a
-    // private WeakMap storage which may cause memory leaks in browsers that
-    // don't support this type of collections.
-    defineConfigurable(this, {
-      target: target,
-      contentRect: contentRect
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.hasSkippedObservations = void 0;
+var _resizeObservers = require("../utils/resizeObservers");
+var hasSkippedObservations = function () {
+  return _resizeObservers.resizeObservers.some(function (ro) {
+    return ro.skippedTargets.length > 0;
+  });
+};
+exports.hasSkippedObservations = hasSkippedObservations;
+},{"../utils/resizeObservers":"../node_modules/@juggle/resize-observer/lib/utils/resizeObservers.js"}],"../node_modules/@juggle/resize-observer/lib/algorithms/deliverResizeLoopError.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.deliverResizeLoopError = void 0;
+var msg = 'ResizeObserver loop completed with undelivered notifications.';
+var deliverResizeLoopError = function () {
+  var event;
+  if (typeof ErrorEvent === 'function') {
+    event = new ErrorEvent('error', {
+      message: msg
     });
+  } else {
+    event = document.createEvent('Event');
+    event.initEvent('error', false, false);
+    event.message = msg;
+  }
+  window.dispatchEvent(event);
+};
+exports.deliverResizeLoopError = deliverResizeLoopError;
+},{}],"../node_modules/@juggle/resize-observer/lib/ResizeObserverBoxOptions.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.ResizeObserverBoxOptions = void 0;
+var ResizeObserverBoxOptions;
+(function (ResizeObserverBoxOptions) {
+  ResizeObserverBoxOptions["BORDER_BOX"] = "border-box";
+  ResizeObserverBoxOptions["CONTENT_BOX"] = "content-box";
+  ResizeObserverBoxOptions["DEVICE_PIXEL_CONTENT_BOX"] = "device-pixel-content-box";
+})(ResizeObserverBoxOptions || (exports.ResizeObserverBoxOptions = ResizeObserverBoxOptions = {}));
+},{}],"../node_modules/@juggle/resize-observer/lib/utils/freeze.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.freeze = void 0;
+var freeze = function (obj) {
+  return Object.freeze(obj);
+};
+exports.freeze = freeze;
+},{}],"../node_modules/@juggle/resize-observer/lib/ResizeObserverSize.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.ResizeObserverSize = void 0;
+var _freeze = require("./utils/freeze");
+var ResizeObserverSize = exports.ResizeObserverSize = function () {
+  function ResizeObserverSize(inlineSize, blockSize) {
+    this.inlineSize = inlineSize;
+    this.blockSize = blockSize;
+    (0, _freeze.freeze)(this);
+  }
+  return ResizeObserverSize;
+}();
+},{"./utils/freeze":"../node_modules/@juggle/resize-observer/lib/utils/freeze.js"}],"../node_modules/@juggle/resize-observer/lib/DOMRectReadOnly.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.DOMRectReadOnly = void 0;
+var _freeze = require("./utils/freeze");
+var DOMRectReadOnly = exports.DOMRectReadOnly = function () {
+  function DOMRectReadOnly(x, y, width, height) {
+    this.x = x;
+    this.y = y;
+    this.width = width;
+    this.height = height;
+    this.top = this.y;
+    this.left = this.x;
+    this.bottom = this.top + this.height;
+    this.right = this.left + this.width;
+    return (0, _freeze.freeze)(this);
+  }
+  DOMRectReadOnly.prototype.toJSON = function () {
+    var _a = this,
+      x = _a.x,
+      y = _a.y,
+      top = _a.top,
+      right = _a.right,
+      bottom = _a.bottom,
+      left = _a.left,
+      width = _a.width,
+      height = _a.height;
+    return {
+      x: x,
+      y: y,
+      top: top,
+      right: right,
+      bottom: bottom,
+      left: left,
+      width: width,
+      height: height
+    };
+  };
+  DOMRectReadOnly.fromRect = function (rectangle) {
+    return new DOMRectReadOnly(rectangle.x, rectangle.y, rectangle.width, rectangle.height);
+  };
+  return DOMRectReadOnly;
+}();
+},{"./utils/freeze":"../node_modules/@juggle/resize-observer/lib/utils/freeze.js"}],"../node_modules/@juggle/resize-observer/lib/utils/element.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.isSVG = exports.isReplacedElement = exports.isHidden = exports.isElement = void 0;
+var isSVG = function (target) {
+  return target instanceof SVGElement && 'getBBox' in target;
+};
+exports.isSVG = isSVG;
+var isHidden = function (target) {
+  if (isSVG(target)) {
+    var _a = target.getBBox(),
+      width = _a.width,
+      height = _a.height;
+    return !width && !height;
+  }
+  var _b = target,
+    offsetWidth = _b.offsetWidth,
+    offsetHeight = _b.offsetHeight;
+  return !(offsetWidth || offsetHeight || target.getClientRects().length);
+};
+exports.isHidden = isHidden;
+var isElement = function (obj) {
+  var _a;
+  if (obj instanceof Element) {
+    return true;
+  }
+  var scope = (_a = obj === null || obj === void 0 ? void 0 : obj.ownerDocument) === null || _a === void 0 ? void 0 : _a.defaultView;
+  return !!(scope && obj instanceof scope.Element);
+};
+exports.isElement = isElement;
+var isReplacedElement = function (target) {
+  switch (target.tagName) {
+    case 'INPUT':
+      if (target.type !== 'image') {
+        break;
+      }
+    case 'VIDEO':
+    case 'AUDIO':
+    case 'EMBED':
+    case 'OBJECT':
+    case 'CANVAS':
+    case 'IFRAME':
+    case 'IMG':
+      return true;
+  }
+  return false;
+};
+exports.isReplacedElement = isReplacedElement;
+},{}],"../node_modules/@juggle/resize-observer/lib/utils/global.js":[function(require,module,exports) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.global = void 0;
+var global = exports.global = typeof window !== 'undefined' ? window : {};
+},{}],"../node_modules/@juggle/resize-observer/lib/algorithms/calculateBoxSize.js":[function(require,module,exports) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.calculateBoxSizes = exports.calculateBoxSize = void 0;
+var _ResizeObserverBoxOptions = require("../ResizeObserverBoxOptions");
+var _ResizeObserverSize = require("../ResizeObserverSize");
+var _DOMRectReadOnly = require("../DOMRectReadOnly");
+var _element = require("../utils/element");
+var _freeze = require("../utils/freeze");
+var _global = require("../utils/global");
+var cache = new WeakMap();
+var scrollRegexp = /auto|scroll/;
+var verticalRegexp = /^tb|vertical/;
+var IE = /msie|trident/i.test(_global.global.navigator && _global.global.navigator.userAgent);
+var parseDimension = function (pixel) {
+  return parseFloat(pixel || '0');
+};
+var size = function (inlineSize, blockSize, switchSizes) {
+  if (inlineSize === void 0) {
+    inlineSize = 0;
+  }
+  if (blockSize === void 0) {
+    blockSize = 0;
+  }
+  if (switchSizes === void 0) {
+    switchSizes = false;
+  }
+  return new _ResizeObserverSize.ResizeObserverSize((switchSizes ? blockSize : inlineSize) || 0, (switchSizes ? inlineSize : blockSize) || 0);
+};
+var zeroBoxes = (0, _freeze.freeze)({
+  devicePixelContentBoxSize: size(),
+  borderBoxSize: size(),
+  contentBoxSize: size(),
+  contentRect: new _DOMRectReadOnly.DOMRectReadOnly(0, 0, 0, 0)
+});
+var calculateBoxSizes = function (target, forceRecalculation) {
+  if (forceRecalculation === void 0) {
+    forceRecalculation = false;
+  }
+  if (cache.has(target) && !forceRecalculation) {
+    return cache.get(target);
+  }
+  if ((0, _element.isHidden)(target)) {
+    cache.set(target, zeroBoxes);
+    return zeroBoxes;
+  }
+  var cs = getComputedStyle(target);
+  var svg = (0, _element.isSVG)(target) && target.ownerSVGElement && target.getBBox();
+  var removePadding = !IE && cs.boxSizing === 'border-box';
+  var switchSizes = verticalRegexp.test(cs.writingMode || '');
+  var canScrollVertically = !svg && scrollRegexp.test(cs.overflowY || '');
+  var canScrollHorizontally = !svg && scrollRegexp.test(cs.overflowX || '');
+  var paddingTop = svg ? 0 : parseDimension(cs.paddingTop);
+  var paddingRight = svg ? 0 : parseDimension(cs.paddingRight);
+  var paddingBottom = svg ? 0 : parseDimension(cs.paddingBottom);
+  var paddingLeft = svg ? 0 : parseDimension(cs.paddingLeft);
+  var borderTop = svg ? 0 : parseDimension(cs.borderTopWidth);
+  var borderRight = svg ? 0 : parseDimension(cs.borderRightWidth);
+  var borderBottom = svg ? 0 : parseDimension(cs.borderBottomWidth);
+  var borderLeft = svg ? 0 : parseDimension(cs.borderLeftWidth);
+  var horizontalPadding = paddingLeft + paddingRight;
+  var verticalPadding = paddingTop + paddingBottom;
+  var horizontalBorderArea = borderLeft + borderRight;
+  var verticalBorderArea = borderTop + borderBottom;
+  var horizontalScrollbarThickness = !canScrollHorizontally ? 0 : target.offsetHeight - verticalBorderArea - target.clientHeight;
+  var verticalScrollbarThickness = !canScrollVertically ? 0 : target.offsetWidth - horizontalBorderArea - target.clientWidth;
+  var widthReduction = removePadding ? horizontalPadding + horizontalBorderArea : 0;
+  var heightReduction = removePadding ? verticalPadding + verticalBorderArea : 0;
+  var contentWidth = svg ? svg.width : parseDimension(cs.width) - widthReduction - verticalScrollbarThickness;
+  var contentHeight = svg ? svg.height : parseDimension(cs.height) - heightReduction - horizontalScrollbarThickness;
+  var borderBoxWidth = contentWidth + horizontalPadding + verticalScrollbarThickness + horizontalBorderArea;
+  var borderBoxHeight = contentHeight + verticalPadding + horizontalScrollbarThickness + verticalBorderArea;
+  var boxes = (0, _freeze.freeze)({
+    devicePixelContentBoxSize: size(Math.round(contentWidth * devicePixelRatio), Math.round(contentHeight * devicePixelRatio), switchSizes),
+    borderBoxSize: size(borderBoxWidth, borderBoxHeight, switchSizes),
+    contentBoxSize: size(contentWidth, contentHeight, switchSizes),
+    contentRect: new _DOMRectReadOnly.DOMRectReadOnly(paddingLeft, paddingTop, contentWidth, contentHeight)
+  });
+  cache.set(target, boxes);
+  return boxes;
+};
+exports.calculateBoxSizes = calculateBoxSizes;
+var calculateBoxSize = function (target, observedBox, forceRecalculation) {
+  var _a = calculateBoxSizes(target, forceRecalculation),
+    borderBoxSize = _a.borderBoxSize,
+    contentBoxSize = _a.contentBoxSize,
+    devicePixelContentBoxSize = _a.devicePixelContentBoxSize;
+  switch (observedBox) {
+    case _ResizeObserverBoxOptions.ResizeObserverBoxOptions.DEVICE_PIXEL_CONTENT_BOX:
+      return devicePixelContentBoxSize;
+    case _ResizeObserverBoxOptions.ResizeObserverBoxOptions.BORDER_BOX:
+      return borderBoxSize;
+    default:
+      return contentBoxSize;
+  }
+};
+exports.calculateBoxSize = calculateBoxSize;
+},{"../ResizeObserverBoxOptions":"../node_modules/@juggle/resize-observer/lib/ResizeObserverBoxOptions.js","../ResizeObserverSize":"../node_modules/@juggle/resize-observer/lib/ResizeObserverSize.js","../DOMRectReadOnly":"../node_modules/@juggle/resize-observer/lib/DOMRectReadOnly.js","../utils/element":"../node_modules/@juggle/resize-observer/lib/utils/element.js","../utils/freeze":"../node_modules/@juggle/resize-observer/lib/utils/freeze.js","../utils/global":"../node_modules/@juggle/resize-observer/lib/utils/global.js"}],"../node_modules/@juggle/resize-observer/lib/ResizeObserverEntry.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.ResizeObserverEntry = void 0;
+var _calculateBoxSize = require("./algorithms/calculateBoxSize");
+var _freeze = require("./utils/freeze");
+var ResizeObserverEntry = exports.ResizeObserverEntry = function () {
+  function ResizeObserverEntry(target) {
+    var boxes = (0, _calculateBoxSize.calculateBoxSizes)(target);
+    this.target = target;
+    this.contentRect = boxes.contentRect;
+    this.borderBoxSize = (0, _freeze.freeze)([boxes.borderBoxSize]);
+    this.contentBoxSize = (0, _freeze.freeze)([boxes.contentBoxSize]);
+    this.devicePixelContentBoxSize = (0, _freeze.freeze)([boxes.devicePixelContentBoxSize]);
   }
   return ResizeObserverEntry;
 }();
-var ResizeObserverSPI = /** @class */function () {
-  /**
-   * Creates a new instance of ResizeObserver.
-   *
-   * @param {ResizeObserverCallback} callback - Callback function that is invoked
-   *      when one of the observed elements changes it's content dimensions.
-   * @param {ResizeObserverController} controller - Controller instance which
-   *      is responsible for the updates of observer.
-   * @param {ResizeObserver} callbackCtx - Reference to the public
-   *      ResizeObserver instance which will be passed to callback function.
-   */
-  function ResizeObserverSPI(callback, controller, callbackCtx) {
-    /**
-     * Collection of resize observations that have detected changes in dimensions
-     * of elements.
-     *
-     * @private {Array<ResizeObservation>}
-     */
-    this.activeObservations_ = [];
-    /**
-     * Registry of the ResizeObservation instances.
-     *
-     * @private {Map<Element, ResizeObservation>}
-     */
-    this.observations_ = new MapShim();
-    if (typeof callback !== 'function') {
-      throw new TypeError('The callback provided as parameter 1 is not a function.');
-    }
-    this.callback_ = callback;
-    this.controller_ = controller;
-    this.callbackCtx_ = callbackCtx;
+},{"./algorithms/calculateBoxSize":"../node_modules/@juggle/resize-observer/lib/algorithms/calculateBoxSize.js","./utils/freeze":"../node_modules/@juggle/resize-observer/lib/utils/freeze.js"}],"../node_modules/@juggle/resize-observer/lib/algorithms/calculateDepthForNode.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.calculateDepthForNode = void 0;
+var _element = require("../utils/element");
+var calculateDepthForNode = function (node) {
+  if ((0, _element.isHidden)(node)) {
+    return Infinity;
   }
-  /**
-   * Starts observing provided element.
-   *
-   * @param {Element} target - Element to be observed.
-   * @returns {void}
-   */
-  ResizeObserverSPI.prototype.observe = function (target) {
-    if (!arguments.length) {
-      throw new TypeError('1 argument required, but only 0 present.');
-    }
-    // Do nothing if current environment doesn't have the Element interface.
-    if (typeof Element === 'undefined' || !(Element instanceof Object)) {
+  var depth = 0;
+  var parent = node.parentNode;
+  while (parent) {
+    depth += 1;
+    parent = parent.parentNode;
+  }
+  return depth;
+};
+exports.calculateDepthForNode = calculateDepthForNode;
+},{"../utils/element":"../node_modules/@juggle/resize-observer/lib/utils/element.js"}],"../node_modules/@juggle/resize-observer/lib/algorithms/broadcastActiveObservations.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.broadcastActiveObservations = void 0;
+var _resizeObservers = require("../utils/resizeObservers");
+var _ResizeObserverEntry = require("../ResizeObserverEntry");
+var _calculateDepthForNode = require("./calculateDepthForNode");
+var _calculateBoxSize = require("./calculateBoxSize");
+var broadcastActiveObservations = function () {
+  var shallowestDepth = Infinity;
+  var callbacks = [];
+  _resizeObservers.resizeObservers.forEach(function processObserver(ro) {
+    if (ro.activeTargets.length === 0) {
       return;
     }
-    if (!(target instanceof getWindowOf(target).Element)) {
-      throw new TypeError('parameter 1 is not of type "Element".');
-    }
-    var observations = this.observations_;
-    // Do nothing if element is already being observed.
-    if (observations.has(target)) {
-      return;
-    }
-    observations.set(target, new ResizeObservation(target));
-    this.controller_.addObserver(this);
-    // Force the update of observations.
-    this.controller_.refresh();
-  };
-  /**
-   * Stops observing provided element.
-   *
-   * @param {Element} target - Element to stop observing.
-   * @returns {void}
-   */
-  ResizeObserverSPI.prototype.unobserve = function (target) {
-    if (!arguments.length) {
-      throw new TypeError('1 argument required, but only 0 present.');
-    }
-    // Do nothing if current environment doesn't have the Element interface.
-    if (typeof Element === 'undefined' || !(Element instanceof Object)) {
-      return;
-    }
-    if (!(target instanceof getWindowOf(target).Element)) {
-      throw new TypeError('parameter 1 is not of type "Element".');
-    }
-    var observations = this.observations_;
-    // Do nothing if element is not being observed.
-    if (!observations.has(target)) {
-      return;
-    }
-    observations.delete(target);
-    if (!observations.size) {
-      this.controller_.removeObserver(this);
-    }
-  };
-  /**
-   * Stops observing all elements.
-   *
-   * @returns {void}
-   */
-  ResizeObserverSPI.prototype.disconnect = function () {
-    this.clearActive();
-    this.observations_.clear();
-    this.controller_.removeObserver(this);
-  };
-  /**
-   * Collects observation instances the associated element of which has changed
-   * it's content rectangle.
-   *
-   * @returns {void}
-   */
-  ResizeObserverSPI.prototype.gatherActive = function () {
+    var entries = [];
+    ro.activeTargets.forEach(function processTarget(ot) {
+      var entry = new _ResizeObserverEntry.ResizeObserverEntry(ot.target);
+      var targetDepth = (0, _calculateDepthForNode.calculateDepthForNode)(ot.target);
+      entries.push(entry);
+      ot.lastReportedSize = (0, _calculateBoxSize.calculateBoxSize)(ot.target, ot.observedBox);
+      if (targetDepth < shallowestDepth) {
+        shallowestDepth = targetDepth;
+      }
+    });
+    callbacks.push(function resizeObserverCallback() {
+      ro.callback.call(ro.observer, entries, ro.observer);
+    });
+    ro.activeTargets.splice(0, ro.activeTargets.length);
+  });
+  for (var _i = 0, callbacks_1 = callbacks; _i < callbacks_1.length; _i++) {
+    var callback = callbacks_1[_i];
+    callback();
+  }
+  return shallowestDepth;
+};
+exports.broadcastActiveObservations = broadcastActiveObservations;
+},{"../utils/resizeObservers":"../node_modules/@juggle/resize-observer/lib/utils/resizeObservers.js","../ResizeObserverEntry":"../node_modules/@juggle/resize-observer/lib/ResizeObserverEntry.js","./calculateDepthForNode":"../node_modules/@juggle/resize-observer/lib/algorithms/calculateDepthForNode.js","./calculateBoxSize":"../node_modules/@juggle/resize-observer/lib/algorithms/calculateBoxSize.js"}],"../node_modules/@juggle/resize-observer/lib/algorithms/gatherActiveObservationsAtDepth.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.gatherActiveObservationsAtDepth = void 0;
+var _resizeObservers = require("../utils/resizeObservers");
+var _calculateDepthForNode = require("./calculateDepthForNode");
+var gatherActiveObservationsAtDepth = function (depth) {
+  _resizeObservers.resizeObservers.forEach(function processObserver(ro) {
+    ro.activeTargets.splice(0, ro.activeTargets.length);
+    ro.skippedTargets.splice(0, ro.skippedTargets.length);
+    ro.observationTargets.forEach(function processTarget(ot) {
+      if (ot.isActive()) {
+        if ((0, _calculateDepthForNode.calculateDepthForNode)(ot.target) > depth) {
+          ro.activeTargets.push(ot);
+        } else {
+          ro.skippedTargets.push(ot);
+        }
+      }
+    });
+  });
+};
+exports.gatherActiveObservationsAtDepth = gatherActiveObservationsAtDepth;
+},{"../utils/resizeObservers":"../node_modules/@juggle/resize-observer/lib/utils/resizeObservers.js","./calculateDepthForNode":"../node_modules/@juggle/resize-observer/lib/algorithms/calculateDepthForNode.js"}],"../node_modules/@juggle/resize-observer/lib/utils/process.js":[function(require,module,exports) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.process = void 0;
+var _hasActiveObservations = require("../algorithms/hasActiveObservations");
+var _hasSkippedObservations = require("../algorithms/hasSkippedObservations");
+var _deliverResizeLoopError = require("../algorithms/deliverResizeLoopError");
+var _broadcastActiveObservations = require("../algorithms/broadcastActiveObservations");
+var _gatherActiveObservationsAtDepth = require("../algorithms/gatherActiveObservationsAtDepth");
+var process = function () {
+  var depth = 0;
+  (0, _gatherActiveObservationsAtDepth.gatherActiveObservationsAtDepth)(depth);
+  while ((0, _hasActiveObservations.hasActiveObservations)()) {
+    depth = (0, _broadcastActiveObservations.broadcastActiveObservations)();
+    (0, _gatherActiveObservationsAtDepth.gatherActiveObservationsAtDepth)(depth);
+  }
+  if ((0, _hasSkippedObservations.hasSkippedObservations)()) {
+    (0, _deliverResizeLoopError.deliverResizeLoopError)();
+  }
+  return depth > 0;
+};
+exports.process = process;
+},{"../algorithms/hasActiveObservations":"../node_modules/@juggle/resize-observer/lib/algorithms/hasActiveObservations.js","../algorithms/hasSkippedObservations":"../node_modules/@juggle/resize-observer/lib/algorithms/hasSkippedObservations.js","../algorithms/deliverResizeLoopError":"../node_modules/@juggle/resize-observer/lib/algorithms/deliverResizeLoopError.js","../algorithms/broadcastActiveObservations":"../node_modules/@juggle/resize-observer/lib/algorithms/broadcastActiveObservations.js","../algorithms/gatherActiveObservationsAtDepth":"../node_modules/@juggle/resize-observer/lib/algorithms/gatherActiveObservationsAtDepth.js"}],"../node_modules/@juggle/resize-observer/lib/utils/queueMicroTask.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.queueMicroTask = void 0;
+var trigger;
+var callbacks = [];
+var notify = function () {
+  return callbacks.splice(0).forEach(function (cb) {
+    return cb();
+  });
+};
+var queueMicroTask = function (callback) {
+  if (!trigger) {
+    var toggle_1 = 0;
+    var el_1 = document.createTextNode('');
+    var config = {
+      characterData: true
+    };
+    new MutationObserver(function () {
+      return notify();
+    }).observe(el_1, config);
+    trigger = function () {
+      el_1.textContent = "".concat(toggle_1 ? toggle_1-- : toggle_1++);
+    };
+  }
+  callbacks.push(callback);
+  trigger();
+};
+exports.queueMicroTask = queueMicroTask;
+},{}],"../node_modules/@juggle/resize-observer/lib/utils/queueResizeObserver.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.queueResizeObserver = void 0;
+var _queueMicroTask = require("./queueMicroTask");
+var queueResizeObserver = function (cb) {
+  (0, _queueMicroTask.queueMicroTask)(function ResizeObserver() {
+    requestAnimationFrame(cb);
+  });
+};
+exports.queueResizeObserver = queueResizeObserver;
+},{"./queueMicroTask":"../node_modules/@juggle/resize-observer/lib/utils/queueMicroTask.js"}],"../node_modules/@juggle/resize-observer/lib/utils/scheduler.js":[function(require,module,exports) {
+
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.updateCount = exports.scheduler = void 0;
+var _process = require("./process");
+var _global = require("./global");
+var _queueResizeObserver = require("./queueResizeObserver");
+var watching = 0;
+var isWatching = function () {
+  return !!watching;
+};
+var CATCH_PERIOD = 250;
+var observerConfig = {
+  attributes: true,
+  characterData: true,
+  childList: true,
+  subtree: true
+};
+var events = ['resize', 'load', 'transitionend', 'animationend', 'animationstart', 'animationiteration', 'keyup', 'keydown', 'mouseup', 'mousedown', 'mouseover', 'mouseout', 'blur', 'focus'];
+var time = function (timeout) {
+  if (timeout === void 0) {
+    timeout = 0;
+  }
+  return Date.now() + timeout;
+};
+var scheduled = false;
+var Scheduler = function () {
+  function Scheduler() {
     var _this = this;
-    this.clearActive();
-    this.observations_.forEach(function (observation) {
-      if (observation.isActive()) {
-        _this.activeObservations_.push(observation);
+    this.stopped = true;
+    this.listener = function () {
+      return _this.schedule();
+    };
+  }
+  Scheduler.prototype.run = function (timeout) {
+    var _this = this;
+    if (timeout === void 0) {
+      timeout = CATCH_PERIOD;
+    }
+    if (scheduled) {
+      return;
+    }
+    scheduled = true;
+    var until = time(timeout);
+    (0, _queueResizeObserver.queueResizeObserver)(function () {
+      var elementsHaveResized = false;
+      try {
+        elementsHaveResized = (0, _process.process)();
+      } finally {
+        scheduled = false;
+        timeout = until - time();
+        if (!isWatching()) {
+          return;
+        }
+        if (elementsHaveResized) {
+          _this.run(1000);
+        } else if (timeout > 0) {
+          _this.run(timeout);
+        } else {
+          _this.start();
+        }
       }
     });
   };
-  /**
-   * Invokes initial callback function with a list of ResizeObserverEntry
-   * instances collected from active resize observations.
-   *
-   * @returns {void}
-   */
-  ResizeObserverSPI.prototype.broadcastActive = function () {
-    // Do nothing if observer doesn't have active observations.
-    if (!this.hasActive()) {
-      return;
+  Scheduler.prototype.schedule = function () {
+    this.stop();
+    this.run();
+  };
+  Scheduler.prototype.observe = function () {
+    var _this = this;
+    var cb = function () {
+      return _this.observer && _this.observer.observe(document.body, observerConfig);
+    };
+    document.body ? cb() : _global.global.addEventListener('DOMContentLoaded', cb);
+  };
+  Scheduler.prototype.start = function () {
+    var _this = this;
+    if (this.stopped) {
+      this.stopped = false;
+      this.observer = new MutationObserver(this.listener);
+      this.observe();
+      events.forEach(function (name) {
+        return _global.global.addEventListener(name, _this.listener, true);
+      });
     }
-    var ctx = this.callbackCtx_;
-    // Create ResizeObserverEntry instance for every active observation.
-    var entries = this.activeObservations_.map(function (observation) {
-      return new ResizeObserverEntry(observation.target, observation.broadcastRect());
-    });
-    this.callback_.call(ctx, entries, ctx);
-    this.clearActive();
   };
-  /**
-   * Clears the collection of active observations.
-   *
-   * @returns {void}
-   */
-  ResizeObserverSPI.prototype.clearActive = function () {
-    this.activeObservations_.splice(0);
+  Scheduler.prototype.stop = function () {
+    var _this = this;
+    if (!this.stopped) {
+      this.observer && this.observer.disconnect();
+      events.forEach(function (name) {
+        return _global.global.removeEventListener(name, _this.listener, true);
+      });
+      this.stopped = true;
+    }
   };
-  /**
-   * Tells whether observer has active observations.
-   *
-   * @returns {boolean}
-   */
-  ResizeObserverSPI.prototype.hasActive = function () {
-    return this.activeObservations_.length > 0;
-  };
-  return ResizeObserverSPI;
+  return Scheduler;
 }();
+var scheduler = exports.scheduler = new Scheduler();
+var updateCount = function (n) {
+  !watching && n > 0 && scheduler.start();
+  watching += n;
+  !watching && scheduler.stop();
+};
+exports.updateCount = updateCount;
+},{"./process":"../node_modules/@juggle/resize-observer/lib/utils/process.js","./global":"../node_modules/@juggle/resize-observer/lib/utils/global.js","./queueResizeObserver":"../node_modules/@juggle/resize-observer/lib/utils/queueResizeObserver.js"}],"../node_modules/@juggle/resize-observer/lib/ResizeObservation.js":[function(require,module,exports) {
+"use strict";
 
-// Registry of internal observers. If WeakMap is not available use current shim
-// for the Map collection as it has all required methods and because WeakMap
-// can't be fully polyfilled anyway.
-var observers = typeof WeakMap !== 'undefined' ? new WeakMap() : new MapShim();
-/**
- * ResizeObserver API. Encapsulates the ResizeObserver SPI implementation
- * exposing only those methods and properties that are defined in the spec.
- */
-var ResizeObserver = /** @class */function () {
-  /**
-   * Creates a new instance of ResizeObserver.
-   *
-   * @param {ResizeObserverCallback} callback - Callback that is invoked when
-   *      dimensions of the observed elements change.
-   */
-  function ResizeObserver(callback) {
-    if (!(this instanceof ResizeObserver)) {
-      throw new TypeError('Cannot call a class as a function.');
-    }
-    if (!arguments.length) {
-      throw new TypeError('1 argument required, but only 0 present.');
-    }
-    var controller = ResizeObserverController.getInstance();
-    var observer = new ResizeObserverSPI(callback, controller, this);
-    observers.set(this, observer);
-  }
-  return ResizeObserver;
-}();
-// Expose public methods of ResizeObserver.
-['observe', 'unobserve', 'disconnect'].forEach(function (method) {
-  ResizeObserver.prototype[method] = function () {
-    var _a;
-    return (_a = observers.get(this))[method].apply(_a, arguments);
-  };
+Object.defineProperty(exports, "__esModule", {
+  value: true
 });
-var index = function () {
-  // Export existing implementation if available.
-  if (typeof global$1.ResizeObserver !== 'undefined') {
-    return global$1.ResizeObserver;
+exports.ResizeObservation = void 0;
+var _ResizeObserverBoxOptions = require("./ResizeObserverBoxOptions");
+var _calculateBoxSize = require("./algorithms/calculateBoxSize");
+var _element = require("./utils/element");
+var skipNotifyOnElement = function (target) {
+  return !(0, _element.isSVG)(target) && !(0, _element.isReplacedElement)(target) && getComputedStyle(target).display === 'inline';
+};
+var ResizeObservation = exports.ResizeObservation = function () {
+  function ResizeObservation(target, observedBox) {
+    this.target = target;
+    this.observedBox = observedBox || _ResizeObserverBoxOptions.ResizeObserverBoxOptions.CONTENT_BOX;
+    this.lastReportedSize = {
+      inlineSize: 0,
+      blockSize: 0
+    };
   }
+  ResizeObservation.prototype.isActive = function () {
+    var size = (0, _calculateBoxSize.calculateBoxSize)(this.target, this.observedBox, true);
+    if (skipNotifyOnElement(this.target)) {
+      this.lastReportedSize = size;
+    }
+    if (this.lastReportedSize.inlineSize !== size.inlineSize || this.lastReportedSize.blockSize !== size.blockSize) {
+      return true;
+    }
+    return false;
+  };
+  return ResizeObservation;
+}();
+},{"./ResizeObserverBoxOptions":"../node_modules/@juggle/resize-observer/lib/ResizeObserverBoxOptions.js","./algorithms/calculateBoxSize":"../node_modules/@juggle/resize-observer/lib/algorithms/calculateBoxSize.js","./utils/element":"../node_modules/@juggle/resize-observer/lib/utils/element.js"}],"../node_modules/@juggle/resize-observer/lib/ResizeObserverDetail.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.ResizeObserverDetail = void 0;
+var ResizeObserverDetail = exports.ResizeObserverDetail = function () {
+  function ResizeObserverDetail(resizeObserver, callback) {
+    this.activeTargets = [];
+    this.skippedTargets = [];
+    this.observationTargets = [];
+    this.observer = resizeObserver;
+    this.callback = callback;
+  }
+  return ResizeObserverDetail;
+}();
+},{}],"../node_modules/@juggle/resize-observer/lib/ResizeObserverController.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.ResizeObserverController = void 0;
+var _scheduler = require("./utils/scheduler");
+var _ResizeObservation = require("./ResizeObservation");
+var _ResizeObserverDetail = require("./ResizeObserverDetail");
+var _resizeObservers = require("./utils/resizeObservers");
+var observerMap = new WeakMap();
+var getObservationIndex = function (observationTargets, target) {
+  for (var i = 0; i < observationTargets.length; i += 1) {
+    if (observationTargets[i].target === target) {
+      return i;
+    }
+  }
+  return -1;
+};
+var ResizeObserverController = exports.ResizeObserverController = function () {
+  function ResizeObserverController() {}
+  ResizeObserverController.connect = function (resizeObserver, callback) {
+    var detail = new _ResizeObserverDetail.ResizeObserverDetail(resizeObserver, callback);
+    observerMap.set(resizeObserver, detail);
+  };
+  ResizeObserverController.observe = function (resizeObserver, target, options) {
+    var detail = observerMap.get(resizeObserver);
+    var firstObservation = detail.observationTargets.length === 0;
+    if (getObservationIndex(detail.observationTargets, target) < 0) {
+      firstObservation && _resizeObservers.resizeObservers.push(detail);
+      detail.observationTargets.push(new _ResizeObservation.ResizeObservation(target, options && options.box));
+      (0, _scheduler.updateCount)(1);
+      _scheduler.scheduler.schedule();
+    }
+  };
+  ResizeObserverController.unobserve = function (resizeObserver, target) {
+    var detail = observerMap.get(resizeObserver);
+    var index = getObservationIndex(detail.observationTargets, target);
+    var lastObservation = detail.observationTargets.length === 1;
+    if (index >= 0) {
+      lastObservation && _resizeObservers.resizeObservers.splice(_resizeObservers.resizeObservers.indexOf(detail), 1);
+      detail.observationTargets.splice(index, 1);
+      (0, _scheduler.updateCount)(-1);
+    }
+  };
+  ResizeObserverController.disconnect = function (resizeObserver) {
+    var _this = this;
+    var detail = observerMap.get(resizeObserver);
+    detail.observationTargets.slice().forEach(function (ot) {
+      return _this.unobserve(resizeObserver, ot.target);
+    });
+    detail.activeTargets.splice(0, detail.activeTargets.length);
+  };
+  return ResizeObserverController;
+}();
+},{"./utils/scheduler":"../node_modules/@juggle/resize-observer/lib/utils/scheduler.js","./ResizeObservation":"../node_modules/@juggle/resize-observer/lib/ResizeObservation.js","./ResizeObserverDetail":"../node_modules/@juggle/resize-observer/lib/ResizeObserverDetail.js","./utils/resizeObservers":"../node_modules/@juggle/resize-observer/lib/utils/resizeObservers.js"}],"../node_modules/@juggle/resize-observer/lib/ResizeObserver.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.ResizeObserver = void 0;
+var _ResizeObserverController = require("./ResizeObserverController");
+var _element = require("./utils/element");
+var ResizeObserver = exports.ResizeObserver = function () {
+  function ResizeObserver(callback) {
+    if (arguments.length === 0) {
+      throw new TypeError("Failed to construct 'ResizeObserver': 1 argument required, but only 0 present.");
+    }
+    if (typeof callback !== 'function') {
+      throw new TypeError("Failed to construct 'ResizeObserver': The callback provided as parameter 1 is not a function.");
+    }
+    _ResizeObserverController.ResizeObserverController.connect(this, callback);
+  }
+  ResizeObserver.prototype.observe = function (target, options) {
+    if (arguments.length === 0) {
+      throw new TypeError("Failed to execute 'observe' on 'ResizeObserver': 1 argument required, but only 0 present.");
+    }
+    if (!(0, _element.isElement)(target)) {
+      throw new TypeError("Failed to execute 'observe' on 'ResizeObserver': parameter 1 is not of type 'Element");
+    }
+    _ResizeObserverController.ResizeObserverController.observe(this, target, options);
+  };
+  ResizeObserver.prototype.unobserve = function (target) {
+    if (arguments.length === 0) {
+      throw new TypeError("Failed to execute 'unobserve' on 'ResizeObserver': 1 argument required, but only 0 present.");
+    }
+    if (!(0, _element.isElement)(target)) {
+      throw new TypeError("Failed to execute 'unobserve' on 'ResizeObserver': parameter 1 is not of type 'Element");
+    }
+    _ResizeObserverController.ResizeObserverController.unobserve(this, target);
+  };
+  ResizeObserver.prototype.disconnect = function () {
+    _ResizeObserverController.ResizeObserverController.disconnect(this);
+  };
+  ResizeObserver.toString = function () {
+    return 'function ResizeObserver () { [polyfill code] }';
+  };
   return ResizeObserver;
 }();
-var _default = exports.default = index;
-},{}],"../node_modules/@blueprintjs/core/lib/esm/components/resize-sensor/resizeSensor.js":[function(require,module,exports) {
+},{"./ResizeObserverController":"../node_modules/@juggle/resize-observer/lib/ResizeObserverController.js","./utils/element":"../node_modules/@juggle/resize-observer/lib/utils/element.js"}],"../node_modules/@juggle/resize-observer/lib/exports/resize-observer.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+Object.defineProperty(exports, "ResizeObserver", {
+  enumerable: true,
+  get: function () {
+    return _ResizeObserver.ResizeObserver;
+  }
+});
+Object.defineProperty(exports, "ResizeObserverEntry", {
+  enumerable: true,
+  get: function () {
+    return _ResizeObserverEntry.ResizeObserverEntry;
+  }
+});
+Object.defineProperty(exports, "ResizeObserverSize", {
+  enumerable: true,
+  get: function () {
+    return _ResizeObserverSize.ResizeObserverSize;
+  }
+});
+var _ResizeObserver = require("../ResizeObserver");
+var _ResizeObserverEntry = require("../ResizeObserverEntry");
+var _ResizeObserverSize = require("../ResizeObserverSize");
+},{"../ResizeObserver":"../node_modules/@juggle/resize-observer/lib/ResizeObserver.js","../ResizeObserverEntry":"../node_modules/@juggle/resize-observer/lib/ResizeObserverEntry.js","../ResizeObserverSize":"../node_modules/@juggle/resize-observer/lib/ResizeObserverSize.js"}],"../node_modules/@blueprintjs/core/lib/esm/components/resize-sensor/resizeSensor.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -38552,13 +38398,12 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.ResizeSensor = void 0;
 var _tslib = require("tslib");
+var _resizeObserver = require("@juggle/resize-observer");
 var React = _interopRequireWildcard(require("react"));
 var _reactDom = require("react-dom");
 var _reactLifecyclesCompat = require("react-lifecycles-compat");
-var _resizeObserverPolyfill = _interopRequireDefault(require("resize-observer-polyfill"));
 var _common = require("../../common");
 var _props = require("../../common/props");
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function (e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, default: e }; if (null === e || "object" != typeof e && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (const t in e) "default" !== t && {}.hasOwnProperty.call(e, t) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, t)) && (i.get || i.set) ? o(f, t, i) : f[t] = e[t]); return f; })(e, t); }
 /*
  * Copyright 2018 Palantir Technologies, Inc. All rights reserved.
@@ -38582,7 +38427,7 @@ var ResizeSensor = exports.ResizeSensor = /** @class */function (_super) {
   function ResizeSensor() {
     var _this = _super !== null && _super.apply(this, arguments) || this;
     _this.element = null;
-    _this.observer = new _resizeObserverPolyfill.default(function (entries) {
+    _this.observer = new _resizeObserver.ResizeObserver(function (entries) {
       var _a, _b;
       return (_b = (_a = _this.props).onResize) === null || _b === void 0 ? void 0 : _b.call(_a, entries);
     });
@@ -38648,11 +38493,11 @@ var ResizeSensor = exports.ResizeSensor = /** @class */function (_super) {
       return null;
     }
   };
-  ResizeSensor.displayName = _props.DISPLAYNAME_PREFIX + ".ResizeSensor";
+  ResizeSensor.displayName = "".concat(_props.DISPLAYNAME_PREFIX, ".ResizeSensor");
   ResizeSensor = (0, _tslib.__decorate)([_reactLifecyclesCompat.polyfill], ResizeSensor);
   return ResizeSensor;
 }(_common.AbstractPureComponent2);
-},{"tslib":"../node_modules/@blueprintjs/core/node_modules/tslib/tslib.es6.js","react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","react-lifecycles-compat":"../node_modules/react-lifecycles-compat/react-lifecycles-compat.es.js","resize-observer-polyfill":"../node_modules/resize-observer-polyfill/dist/ResizeObserver.es.js","../../common":"../node_modules/@blueprintjs/core/lib/esm/common/index.js","../../common/props":"../node_modules/@blueprintjs/core/lib/esm/common/props.js"}],"../node_modules/@blueprintjs/core/lib/esm/components/tooltip/tooltip.js":[function(require,module,exports) {
+},{"tslib":"../node_modules/@blueprintjs/core/node_modules/tslib/tslib.es6.js","@juggle/resize-observer":"../node_modules/@juggle/resize-observer/lib/exports/resize-observer.js","react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","react-lifecycles-compat":"../node_modules/react-lifecycles-compat/react-lifecycles-compat.es.js","../../common":"../node_modules/@blueprintjs/core/lib/esm/common/index.js","../../common/props":"../node_modules/@blueprintjs/core/lib/esm/common/props.js"}],"../node_modules/@blueprintjs/core/lib/esm/components/tooltip/tooltip.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -38728,7 +38573,7 @@ var Tooltip = exports.Tooltip = /** @class */function (_super) {
       this.popover.reposition();
     }
   };
-  Tooltip.displayName = _props.DISPLAYNAME_PREFIX + ".Tooltip";
+  Tooltip.displayName = "".concat(_props.DISPLAYNAME_PREFIX, ".Tooltip");
   Tooltip.defaultProps = {
     hoverCloseDelay: 0,
     hoverOpenDelay: 100,
@@ -38806,13 +38651,13 @@ function getAlignment(placement) {
 function getTransformOrigin(data) {
   var position = getPosition(data.placement);
   if (data.arrowElement == null) {
-    return isVerticalPosition(position) ? getOppositePosition(position) + " " + getAlignment(position) : getAlignment(position) + " " + getOppositePosition(position);
+    return isVerticalPosition(position) ? "".concat(getOppositePosition(position), " ").concat(getAlignment(position)) : "".concat(getAlignment(position), " ").concat(getOppositePosition(position));
   } else {
     var arrowSizeShift = data.arrowElement.clientHeight / 2;
     var arrow = data.offsets.arrow;
     // can use keyword for dimension without the arrow, to ease computation burden.
     // move origin by half arrow's height to keep it centered.
-    return isVerticalPosition(position) ? getOppositePosition(position) + " " + (arrow.top + arrowSizeShift) + "px" : arrow.left + arrowSizeShift + "px " + getOppositePosition(position);
+    return isVerticalPosition(position) ? "".concat(getOppositePosition(position), " ").concat(arrow.top + arrowSizeShift, "px") : "".concat(arrow.left + arrowSizeShift, "px ").concat(getOppositePosition(position));
   }
 }
 // additional space between arrow and edge of target
@@ -38904,7 +38749,7 @@ var PopoverArrow = function (_a) {
   }, React.createElement("svg", {
     viewBox: "0 0 30 30",
     style: {
-      transform: "rotate(" + getArrowAngle(placement) + "deg)"
+      transform: "rotate(".concat(getArrowAngle(placement), "deg)")
     }
   }, React.createElement("path", {
     className: Classes.POPOVER_ARROW + "-border",
@@ -38915,7 +38760,7 @@ var PopoverArrow = function (_a) {
   })));
 };
 exports.PopoverArrow = PopoverArrow;
-PopoverArrow.displayName = _props.DISPLAYNAME_PREFIX + ".PopoverArrow";
+PopoverArrow.displayName = "".concat(_props.DISPLAYNAME_PREFIX, ".PopoverArrow");
 },{"react":"../node_modules/react/index.js","../../common/classes":"../node_modules/@blueprintjs/core/lib/esm/common/classes.js","../../common/props":"../node_modules/@blueprintjs/core/lib/esm/common/props.js","./popperUtils":"../node_modules/@blueprintjs/core/lib/esm/components/popover/popperUtils.js"}],"../node_modules/@blueprintjs/core/lib/esm/components/popover/popoverMigrationUtils.js":[function(require,module,exports) {
 "use strict";
 
@@ -39221,13 +39066,13 @@ var Popover = exports.Popover = /** @class */function (_super) {
     };
     _this.handlePopoverClick = function (e) {
       var eventTarget = e.target;
-      var eventPopover = eventTarget.closest("." + _common.Classes.POPOVER);
+      var eventPopover = eventTarget.closest(".".concat(_common.Classes.POPOVER));
       var isEventFromSelf = eventPopover === _this.popoverRef.current;
       var isEventPopoverCapturing = eventPopover === null || eventPopover === void 0 ? void 0 : eventPopover.classList.contains(_common.Classes.POPOVER_CAPTURING_DISMISS);
       // an OVERRIDE inside a DISMISS does not dismiss, and a DISMISS inside an OVERRIDE will dismiss.
-      var dismissElement = eventTarget.closest("." + _common.Classes.POPOVER_DISMISS + ", ." + _common.Classes.POPOVER_DISMISS_OVERRIDE);
+      var dismissElement = eventTarget.closest(".".concat(_common.Classes.POPOVER_DISMISS, ", .").concat(_common.Classes.POPOVER_DISMISS_OVERRIDE));
       var shouldDismiss = dismissElement != null && dismissElement.classList.contains(_common.Classes.POPOVER_DISMISS);
-      var isDisabled = eventTarget.closest(":disabled, ." + _common.Classes.DISABLED) != null;
+      var isDisabled = eventTarget.closest(":disabled, .".concat(_common.Classes.DISABLED)) != null;
       if (shouldDismiss && !isDisabled && (!isEventPopoverCapturing || isEventFromSelf)) {
         _this.setOpenState(false, e);
       }
@@ -39383,7 +39228,7 @@ var Popover = exports.Popover = /** @class */function (_super) {
   };
   Popover.prototype.updateDarkParent = function () {
     if (this.props.usePortal && this.state.isOpen) {
-      var hasDarkParent = this.targetElement != null && this.targetElement.closest("." + _common.Classes.DARK) != null;
+      var hasDarkParent = this.targetElement != null && this.targetElement.closest(".".concat(_common.Classes.DARK)) != null;
       this.setState({
         hasDarkParent: hasDarkParent
       });
@@ -39483,7 +39328,7 @@ var Popover = exports.Popover = /** @class */function (_super) {
   Popover.prototype.isHoverInteractionKind = function () {
     return this.props.interactionKind === PopoverInteractionKind.HOVER || this.props.interactionKind === PopoverInteractionKind.HOVER_TARGET_ONLY;
   };
-  Popover.displayName = _props.DISPLAYNAME_PREFIX + ".Popover";
+  Popover.displayName = "".concat(_props.DISPLAYNAME_PREFIX, ".Popover");
   Popover.defaultProps = {
     boundary: "scrollParent",
     captureDismiss: false,
@@ -39600,7 +39445,7 @@ var ContextMenu = /** @class */function (_super) {
     // https://github.com/palantir/blueprint/issues/692
     // Generate key based on offset so a new Popover instance is created
     // when offset changes, to force recomputing position.
-    var key = this.state.offset === undefined ? "" : this.state.offset.left + "x" + this.state.offset.top;
+    var key = this.state.offset === undefined ? "" : "".concat(this.state.offset.left, "x").concat(this.state.offset.top);
     // wrap the popover in a positioned div to make sure it is properly
     // offset on the screen.
     /* eslint-disable deprecation/deprecation */
@@ -41945,7 +41790,7 @@ var Icon = exports.Icon = /** @class */function (_super) {
     var paths = this.renderSvgPaths(pixelGridSize, icon);
     // eslint-disable-next-line deprecation/deprecation
     var classes = (0, _classnames.default)(_common.Classes.ICON, _common.Classes.iconClass(icon), _common.Classes.intentClass(intent), className);
-    var viewBox = "0 0 " + pixelGridSize + " " + pixelGridSize;
+    var viewBox = "0 0 ".concat(pixelGridSize, " ").concat(pixelGridSize);
     return React.createElement(tagName, (0, _tslib.__assign)((0, _tslib.__assign)({}, htmlprops), {
       "aria-hidden": title ? undefined : true,
       className: classes,
@@ -41973,7 +41818,7 @@ var Icon = exports.Icon = /** @class */function (_super) {
       });
     });
   };
-  Icon.displayName = _common.DISPLAYNAME_PREFIX + ".Icon";
+  Icon.displayName = "".concat(_common.DISPLAYNAME_PREFIX, ".Icon");
   /** @deprecated use IconSize.STANDARD */
   Icon.SIZE_STANDARD = IconSize.STANDARD;
   /** @deprecated use IconSize.LARGE */
@@ -42022,7 +41867,7 @@ var SpinnerSize;
 })(SpinnerSize || (exports.SpinnerSize = SpinnerSize = {}));
 // see http://stackoverflow.com/a/18473154/3124288 for calculating arc path
 var R = 45;
-var SPINNER_TRACK = "M 50,50 m 0,-" + R + " a " + R + "," + R + " 0 1 1 0," + R * 2 + " a " + R + "," + R + " 0 1 1 0,-" + R * 2;
+var SPINNER_TRACK = "M 50,50 m 0,-".concat(R, " a ").concat(R, ",").concat(R, " 0 1 1 0,").concat(R * 2, " a ").concat(R, ",").concat(R, " 0 1 1 0,-").concat(R * 2);
 // unitless total length of SVG path, to which stroke-dash* properties are relative.
 // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/pathLength
 // this value is the result of `<path d={SPINNER_TRACK} />.getTotalLength()` and works in all browsers:
@@ -42074,7 +41919,7 @@ var Spinner = exports.Spinner = /** @class */function (_super) {
       className: _common.Classes.SPINNER_HEAD,
       d: SPINNER_TRACK,
       pathLength: PATH_LENGTH,
-      strokeDasharray: PATH_LENGTH + " " + PATH_LENGTH,
+      strokeDasharray: "".concat(PATH_LENGTH, " ").concat(PATH_LENGTH),
       strokeDashoffset: strokeOffset
     }))));
   };
@@ -42111,9 +41956,9 @@ var Spinner = exports.Spinner = /** @class */function (_super) {
     var radius = R + strokeWidth / 2;
     var viewBoxX = (50 - radius).toFixed(2);
     var viewBoxWidth = (radius * 2).toFixed(2);
-    return viewBoxX + " " + viewBoxX + " " + viewBoxWidth + " " + viewBoxWidth;
+    return "".concat(viewBoxX, " ").concat(viewBoxX, " ").concat(viewBoxWidth, " ").concat(viewBoxWidth);
   };
-  Spinner.displayName = _props.DISPLAYNAME_PREFIX + ".Spinner";
+  Spinner.displayName = "".concat(_props.DISPLAYNAME_PREFIX, ".Spinner");
   /** @deprecated use SpinnerSize.SMALL */
   Spinner.SIZE_SMALL = SpinnerSize.SMALL;
   /** @deprecated use SpinnerSize.STANDARD */
@@ -42235,14 +42080,19 @@ var AbstractButton = exports.AbstractButton = /** @class */function (_super) {
       loading = _a.loading,
       rightIcon = _a.rightIcon,
       text = _a.text;
+    var maybeHasText = !_common.Utils.isReactNodeEmpty(text) || !_common.Utils.isReactNodeEmpty(children);
     return [loading && React.createElement(_spinner.Spinner, {
       key: "loading",
       className: _common.Classes.BUTTON_SPINNER,
       size: _icon.IconSize.LARGE
-    }), React.createElement(_icon.Icon, {
+    }),
+    // The icon is purely decorative if text is provided
+    React.createElement(_icon.Icon, {
       key: "leftIcon",
-      icon: icon
-    }), (!_common.Utils.isReactNodeEmpty(text) || !_common.Utils.isReactNodeEmpty(children)) && React.createElement("span", {
+      icon: icon,
+      "aria-hidden": maybeHasText,
+      tabIndex: maybeHasText ? -1 : 0
+    }), maybeHasText && React.createElement("span", {
       key: "text",
       className: _common.Classes.BUTTON_TEXT
     }, text, children), React.createElement(_icon.Icon, {
@@ -42306,7 +42156,7 @@ var Button = exports.Button = /** @class */function (_super) {
       (0, _refs.setRef)(this.props.elementRef, this.buttonRef);
     }
   };
-  Button.displayName = _props.DISPLAYNAME_PREFIX + ".Button";
+  Button.displayName = "".concat(_props.DISPLAYNAME_PREFIX, ".Button");
   return Button;
 }(_abstractButton.AbstractButton);
 var AnchorButton = exports.AnchorButton = /** @class */function (_super) {
@@ -42339,7 +42189,7 @@ var AnchorButton = exports.AnchorButton = /** @class */function (_super) {
       (0, _refs.setRef)(this.props.elementRef, this.buttonRef);
     }
   };
-  AnchorButton.displayName = _props.DISPLAYNAME_PREFIX + ".AnchorButton";
+  AnchorButton.displayName = "".concat(_props.DISPLAYNAME_PREFIX, ".AnchorButton");
   return AnchorButton;
 }(_abstractButton.AbstractButton);
 },{"tslib":"../node_modules/@blueprintjs/core/node_modules/tslib/tslib.es6.js","react":"../node_modules/react/index.js","../../common/props":"../node_modules/@blueprintjs/core/lib/esm/common/props.js","../../common/refs":"../node_modules/@blueprintjs/core/lib/esm/common/refs.js","./abstractButton":"../node_modules/@blueprintjs/core/lib/esm/components/button/abstractButton.js"}],"../node_modules/@blueprintjs/core/lib/esm/components/html/html.js":[function(require,module,exports) {
@@ -42441,7 +42291,7 @@ var Dialog = exports.Dialog = /** @class */function (_super) {
   function Dialog(props) {
     var _this = _super.call(this, props) || this;
     var id = (0, _utils.uniqueId)("bp-dialog");
-    _this.titleId = "title-" + id;
+    _this.titleId = "title-".concat(id);
     return _this;
   }
   Dialog.prototype.render = function () {
@@ -42497,7 +42347,9 @@ var Dialog = exports.Dialog = /** @class */function (_super) {
       className: _common.Classes.DIALOG_HEADER
     }, React.createElement(_icon.Icon, {
       icon: icon,
-      size: _icon.IconSize.LARGE
+      size: _icon.IconSize.LARGE,
+      "aria-hidden": true,
+      tabIndex: -1
     }), React.createElement(_html.H4, {
       id: this.titleId
     }, title), this.maybeRenderCloseButton());
@@ -42506,7 +42358,7 @@ var Dialog = exports.Dialog = /** @class */function (_super) {
     canOutsideClickClose: true,
     isOpen: false
   };
-  Dialog.displayName = _props.DISPLAYNAME_PREFIX + ".Dialog";
+  Dialog.displayName = "".concat(_props.DISPLAYNAME_PREFIX, ".Dialog");
   Dialog = (0, _tslib.__decorate)([_reactLifecyclesCompat.polyfill], Dialog);
   return Dialog;
 }(_common.AbstractPureComponent2);
@@ -42624,7 +42476,7 @@ var Alert = exports.Alert = /** @class */function (_super) {
     isOpen: false,
     loading: false
   };
-  Alert.displayName = _common.DISPLAYNAME_PREFIX + ".Alert";
+  Alert.displayName = "".concat(_common.DISPLAYNAME_PREFIX, ".Alert");
   Alert = (0, _tslib.__decorate)([_reactLifecyclesCompat.polyfill], Alert);
   return Alert;
 }(_common.AbstractPureComponent2);
@@ -42730,7 +42582,7 @@ var MenuDivider = exports.MenuDivider = /** @class */function (_super) {
       }, React.createElement(_html.H6, null, title));
     }
   };
-  MenuDivider.displayName = _props.DISPLAYNAME_PREFIX + ".MenuDivider";
+  MenuDivider.displayName = "".concat(_props.DISPLAYNAME_PREFIX, ".MenuDivider");
   return MenuDivider;
 }(React.Component);
 },{"tslib":"../node_modules/@blueprintjs/core/node_modules/tslib/tslib.es6.js","classnames":"../node_modules/classnames/index.js","react":"../node_modules/react/index.js","../../common/classes":"../node_modules/@blueprintjs/core/lib/esm/common/classes.js","../../common/props":"../node_modules/@blueprintjs/core/lib/esm/common/props.js","../html/html":"../node_modules/@blueprintjs/core/lib/esm/components/html/html.js"}],"../node_modules/@blueprintjs/core/lib/esm/components/text/text.js":[function(require,module,exports) {
@@ -42812,7 +42664,7 @@ var Text = exports.Text = /** @class */function (_super) {
     };
     this.setState(newState);
   };
-  Text.displayName = _props.DISPLAYNAME_PREFIX + ".Text";
+  Text.displayName = "".concat(_props.DISPLAYNAME_PREFIX, ".Text");
   Text.defaultProps = {
     ellipsize: false
   };
@@ -42892,7 +42744,9 @@ var MenuItem = exports.MenuItem = /** @class */function (_super) {
     }, htmlProps), disabled ? DISABLED_PROPS : {}), {
       className: anchorClasses
     }), React.createElement(_icon.Icon, {
-      icon: icon
+      icon: icon,
+      "aria-hidden": true,
+      tabIndex: -1
     }), React.createElement(_text.Text, {
       className: (0, _classnames.default)(_common.Classes.FILL, textClassName),
       ellipsize: !multiline,
@@ -42948,7 +42802,7 @@ var MenuItem = exports.MenuItem = /** @class */function (_super) {
     shouldDismissPopover: true,
     text: ""
   };
-  MenuItem.displayName = _props.DISPLAYNAME_PREFIX + ".MenuItem";
+  MenuItem.displayName = "".concat(_props.DISPLAYNAME_PREFIX, ".MenuItem");
   MenuItem = (0, _tslib.__decorate)([_reactLifecyclesCompat.polyfill], MenuItem);
   return MenuItem;
 }(_common.AbstractPureComponent2);
@@ -43031,7 +42885,7 @@ var Menu = exports.Menu = /** @class */function (_super) {
       ref: ulRef
     }), children);
   };
-  Menu.displayName = _props.DISPLAYNAME_PREFIX + ".Menu";
+  Menu.displayName = "".concat(_props.DISPLAYNAME_PREFIX, ".Menu");
   /** @deprecated use MenuDivider */
   Menu.Divider = _menuDivider.MenuDivider;
   /** @deprecated use MenuItem*/
@@ -43144,7 +42998,7 @@ var OverflowList = exports.OverflowList = /** @class */function (_super) {
     if (
     // if a resize operation has just completed (transition to NONE)
     direction === OverflowDirection.NONE && direction !== prevState.direction && overflow.length !== lastOverflowCount) {
-      (_b = (_a = this.props).onOverflow) === null || _b === void 0 ? void 0 : _b.call(_a, overflow);
+      (_b = (_a = this.props).onOverflow) === null || _b === void 0 ? void 0 : _b.call(_a, overflow.slice());
     }
   };
   OverflowList.prototype.render = function () {
@@ -43177,7 +43031,7 @@ var OverflowList = exports.OverflowList = /** @class */function (_super) {
     if (overflow.length === 0 && !this.props.alwaysRenderOverflow) {
       return null;
     }
-    return this.props.overflowRenderer(overflow);
+    return this.props.overflowRenderer(overflow.slice());
   };
   OverflowList.prototype.repartition = function (growing) {
     var _this = this;
@@ -43194,7 +43048,7 @@ var OverflowList = exports.OverflowList = /** @class */function (_super) {
           visible: _this.props.items
         };
       });
-    } else if (this.spacer.getBoundingClientRect().width < 0.9) {
+    } else if (this.spacer.offsetWidth < 0.9) {
       // spacer has flex-shrink and width 1px so if it's much smaller then we know to shrink
       this.setState(function (state) {
         if (state.visible.length <= _this.props.minVisibleItems) {
@@ -43206,7 +43060,7 @@ var OverflowList = exports.OverflowList = /** @class */function (_super) {
         if (next === undefined) {
           return null;
         }
-        var overflow = collapseFromStart ? (0, _tslib.__spreadArrays)(state.overflow, [next]) : (0, _tslib.__spreadArrays)([next], state.overflow);
+        var overflow = collapseFromStart ? (0, _tslib.__spreadArray)((0, _tslib.__spreadArray)([], state.overflow, true), [next], false) : (0, _tslib.__spreadArray)([next], state.overflow, true);
         return {
           // set SHRINK mode unless a GROW is already in progress.
           // GROW shows all items then shrinks until it settles, so we
@@ -43223,7 +43077,7 @@ var OverflowList = exports.OverflowList = /** @class */function (_super) {
       });
     }
   };
-  OverflowList.displayName = _props.DISPLAYNAME_PREFIX + ".OverflowList";
+  OverflowList.displayName = "".concat(_props.DISPLAYNAME_PREFIX, ".OverflowList");
   OverflowList.defaultProps = {
     alwaysRenderOverflow: false,
     collapseFrom: _boundary.Boundary.START,
@@ -43399,7 +43253,7 @@ var ButtonGroup = exports.ButtonGroup = /** @class */function (_super) {
       className: buttonGroupClasses
     }), this.props.children);
   };
-  ButtonGroup.displayName = _props.DISPLAYNAME_PREFIX + ".ButtonGroup";
+  ButtonGroup.displayName = "".concat(_props.DISPLAYNAME_PREFIX, ".ButtonGroup");
   ButtonGroup = (0, _tslib.__decorate)([_reactLifecyclesCompat.polyfill], ButtonGroup);
   return ButtonGroup;
 }(_common.AbstractPureComponent2);
@@ -43456,7 +43310,9 @@ var Callout = exports.Callout = /** @class */function (_super) {
       className: classes
     }, htmlProps), iconName && React.createElement(_icon.Icon, {
       icon: iconName,
-      size: _icon.IconSize.LARGE
+      size: _icon.IconSize.LARGE,
+      "aria-hidden": true,
+      tabIndex: -1
     }), title && React.createElement(_html.H4, null, title), children);
   };
   Callout.prototype.getIconName = function (icon, intent) {
@@ -43482,7 +43338,7 @@ var Callout = exports.Callout = /** @class */function (_super) {
         return undefined;
     }
   };
-  Callout.displayName = _common.DISPLAYNAME_PREFIX + ".Callout";
+  Callout.displayName = "".concat(_common.DISPLAYNAME_PREFIX, ".Callout");
   Callout = (0, _tslib.__decorate)([_reactLifecyclesCompat.polyfill], Callout);
   return Callout;
 }(_common.AbstractPureComponent2);
@@ -43534,7 +43390,7 @@ var Card = exports.Card = /** @class */function (_super) {
       className: classes
     }, htmlProps));
   };
-  Card.displayName = _props.DISPLAYNAME_PREFIX + ".Card";
+  Card.displayName = "".concat(_props.DISPLAYNAME_PREFIX, ".Card");
   Card.defaultProps = {
     elevation: _common.Elevation.ZERO,
     interactive: false
@@ -43630,7 +43486,7 @@ var Collapse = exports.Collapse = /** @class */function (_super) {
         var height = _this.contents.clientHeight;
         _this.setState({
           animationState: _this.props.isOpen ? AnimationStates.OPEN : AnimationStates.CLOSED,
-          height: height === 0 ? undefined : height + "px",
+          height: height === 0 ? undefined : "".concat(height, "px"),
           heightWhenOpen: height === 0 ? undefined : height
         });
       }
@@ -43665,7 +43521,7 @@ var Collapse = exports.Collapse = /** @class */function (_super) {
           // need to set an explicit height so that transition can work
           return {
             animationState: AnimationStates.CLOSING_START,
-            height: state.heightWhenOpen + "px"
+            height: "".concat(state.heightWhenOpen, "px")
           };
       }
     }
@@ -43684,7 +43540,7 @@ var Collapse = exports.Collapse = /** @class */function (_super) {
     };
     var contentsStyle = {
       // only use heightWhenOpen while closing
-      transform: displayWithTransform ? "translateY(0)" : "translateY(-" + this.state.heightWhenOpen + "px)",
+      transform: displayWithTransform ? "translateY(0)" : "translateY(-".concat(this.state.heightWhenOpen, "px)"),
       // transitions don't work with height: auto
       transition: isAutoHeight ? "none" : undefined
     };
@@ -43726,7 +43582,7 @@ var Collapse = exports.Collapse = /** @class */function (_super) {
       var clientHeight = this.contents.clientHeight;
       this.setState({
         animationState: AnimationStates.OPENING,
-        height: clientHeight + "px",
+        height: "".concat(clientHeight, "px"),
         heightWhenOpen: clientHeight
       });
       this.setTimeout(function () {
@@ -43763,7 +43619,7 @@ var Collapse = exports.Collapse = /** @class */function (_super) {
         break;
     }
   };
-  Collapse.displayName = _props.DISPLAYNAME_PREFIX + ".Collapse";
+  Collapse.displayName = "".concat(_props.DISPLAYNAME_PREFIX, ".Collapse");
   Collapse.defaultProps = {
     component: "div",
     isOpen: false,
@@ -43858,7 +43714,7 @@ var CollapsibleList = exports.CollapsibleList = /** @class */function (_super) {
         throw new Error(Errors.COLLAPSIBLE_LIST_INVALID_CHILD);
       }
       return React.cloneElement(child, {
-        key: "visible-" + index
+        key: "visible-".concat(index)
       });
     });
     if (childrenArray == null) {
@@ -43871,7 +43727,7 @@ var CollapsibleList = exports.CollapsibleList = /** @class */function (_super) {
     var visibleItemCount = this.props.visibleItemCount;
     return [childrenArray.slice(0, visibleItemCount), childrenArray.slice(visibleItemCount)];
   };
-  CollapsibleList.displayName = _props.DISPLAYNAME_PREFIX + ".CollapsibleList";
+  CollapsibleList.displayName = "".concat(_props.DISPLAYNAME_PREFIX, ".CollapsibleList");
   CollapsibleList.defaultProps = {
     collapseFrom: _boundary.Boundary.START,
     visibleItemCount: 3
@@ -43958,7 +43814,7 @@ function ContextMenuTarget(WrappedComponent) {
       });
     };
     return ContextMenuTargetClass;
-  }(WrappedComponent), _a.displayName = "ContextMenuTarget(" + (0, _utils.getDisplayName)(WrappedComponent) + ")", _a;
+  }(WrappedComponent), _a.displayName = "ContextMenuTarget(".concat((0, _utils.getDisplayName)(WrappedComponent), ")"), _a;
 }
 },{"tslib":"../node_modules/@blueprintjs/core/node_modules/tslib/tslib.es6.js","react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","../../common/errors":"../node_modules/@blueprintjs/core/lib/esm/common/errors.js","../../common/utils":"../node_modules/@blueprintjs/core/lib/esm/common/utils/index.js","../../common/utils/isDarkTheme":"../node_modules/@blueprintjs/core/lib/esm/common/utils/isDarkTheme.js","./contextMenu":"../node_modules/@blueprintjs/core/lib/esm/components/context-menu/contextMenu.js"}],"../node_modules/@blueprintjs/core/lib/esm/components/dialog/dialogStep.js":[function(require,module,exports) {
 "use strict";
@@ -44007,7 +43863,7 @@ var DialogStep = exports.DialogStep = /** @class */function (_super) {
       role: "dialogsteplist"
     }));
   };
-  DialogStep.displayName = _props.DISPLAYNAME_PREFIX + ".DialogStep";
+  DialogStep.displayName = "".concat(_props.DISPLAYNAME_PREFIX, ".DialogStep");
   DialogStep = (0, _tslib.__decorate)([_reactLifecyclesCompat.polyfill], DialogStep);
   return DialogStep;
 }(_common.AbstractPureComponent2);
@@ -44205,7 +44061,7 @@ var MultistepDialog = exports.MultistepDialog = /** @class */function (_super) {
       };
     }
   };
-  MultistepDialog.displayName = _props.DISPLAYNAME_PREFIX + ".MultistepDialog";
+  MultistepDialog.displayName = "".concat(_props.DISPLAYNAME_PREFIX, ".MultistepDialog");
   MultistepDialog.defaultProps = {
     canOutsideClickClose: true,
     isOpen: false,
@@ -44268,7 +44124,7 @@ var Divider = exports.Divider = /** @class */function (_super) {
       className: classes
     }));
   };
-  Divider.displayName = _props.DISPLAYNAME_PREFIX + ".Divider";
+  Divider.displayName = "".concat(_props.DISPLAYNAME_PREFIX, ".Divider");
   Divider = (0, _tslib.__decorate)([_reactLifecyclesCompat.polyfill], Divider);
   return Divider;
 }(_common.AbstractPureComponent2);
@@ -44390,7 +44246,7 @@ var Drawer = exports.Drawer = /** @class */function (_super) {
       size: _icon.IconSize.LARGE
     }), React.createElement(_html.H4, null, title), this.maybeRenderCloseButton());
   };
-  Drawer.displayName = _props.DISPLAYNAME_PREFIX + ".Drawer";
+  Drawer.displayName = "".concat(_props.DISPLAYNAME_PREFIX, ".Drawer");
   Drawer.defaultProps = {
     canOutsideClickClose: true,
     isOpen: false,
@@ -44645,7 +44501,7 @@ var EditableText = exports.EditableText = /** @class */function (_super) {
       // minWidth only applies in single line mode (multiline == width 100%)
       contentStyle = {
         height: this.state.inputHeight,
-        lineHeight: this.state.inputHeight != null ? this.state.inputHeight + "px" : undefined,
+        lineHeight: this.state.inputHeight != null ? "".concat(this.state.inputHeight, "px") : undefined,
         minWidth: this.props.minWidth
       };
     }
@@ -44718,7 +44574,7 @@ var EditableText = exports.EditableText = /** @class */function (_super) {
     if (inputHeight !== 0 && inputWidth !== 0) {
       props.style = {
         height: inputHeight,
-        lineHeight: !multiline && inputHeight != null ? inputHeight + "px" : undefined,
+        lineHeight: !multiline && inputHeight != null ? "".concat(inputHeight, "px") : undefined,
         width: multiline ? "100%" : inputWidth
       };
     }
@@ -44765,12 +44621,12 @@ var EditableText = exports.EditableText = /** @class */function (_super) {
       // synchronizes the ::before pseudo-element's height while editing for Chrome 53
       if (multiline && this.state.isEditing) {
         this.setTimeout(function () {
-          return parentElement_1.style.height = scrollHeight_1 + "px";
+          return parentElement_1.style.height = "".concat(scrollHeight_1, "px");
         });
       }
     }
   };
-  EditableText.displayName = _props.DISPLAYNAME_PREFIX + ".EditableText";
+  EditableText.displayName = "".concat(_props.DISPLAYNAME_PREFIX, ".EditableText");
   EditableText.defaultProps = {
     alwaysRenderInput: false,
     confirmOnEnterKey: false,
@@ -44816,7 +44672,7 @@ function insertAtCaret(el, text) {
     var before_1 = value.substring(0, selectionStart);
     var after_1 = value.substring(selectionEnd, value.length);
     var len = text.length;
-    el.value = "" + before_1 + text + after_1;
+    el.value = "".concat(before_1).concat(text).concat(after_1);
     el.selectionStart = selectionStart + len;
     el.selectionEnd = selectionStart + len;
   }
@@ -44889,7 +44745,7 @@ var ControlGroup = exports.ControlGroup = /** @class */function (_super) {
       className: rootClasses
     }), children);
   };
-  ControlGroup.displayName = _props.DISPLAYNAME_PREFIX + ".ControlGroup";
+  ControlGroup.displayName = "".concat(_props.DISPLAYNAME_PREFIX, ".ControlGroup");
   ControlGroup = (0, _tslib.__decorate)([_reactLifecyclesCompat.polyfill], ControlGroup);
   return ControlGroup;
 }(_common.AbstractPureComponent2);
@@ -44987,7 +44843,7 @@ var Switch = exports.Switch = /** @class */function (_super) {
       indicatorChildren: switchLabels
     }));
   };
-  Switch.displayName = _props.DISPLAYNAME_PREFIX + ".Switch";
+  Switch.displayName = "".concat(_props.DISPLAYNAME_PREFIX, ".Switch");
   Switch = (0, _tslib.__decorate)([_reactLifecyclesCompat.polyfill], Switch);
   return Switch;
 }(_common.AbstractPureComponent2);
@@ -45002,7 +44858,7 @@ var Radio = exports.Radio = /** @class */function (_super) {
       typeClassName: _common.Classes.RADIO
     }));
   };
-  Radio.displayName = _props.DISPLAYNAME_PREFIX + ".Radio";
+  Radio.displayName = "".concat(_props.DISPLAYNAME_PREFIX, ".Radio");
   Radio = (0, _tslib.__decorate)([_reactLifecyclesCompat.polyfill], Radio);
   return Radio;
 }(_common.AbstractPureComponent2);
@@ -45068,7 +44924,7 @@ var Checkbox = exports.Checkbox = /** @class */function (_super) {
       this.input.indeterminate = this.state.indeterminate;
     }
   };
-  Checkbox.displayName = _props.DISPLAYNAME_PREFIX + ".Checkbox";
+  Checkbox.displayName = "".concat(_props.DISPLAYNAME_PREFIX, ".Checkbox");
   Checkbox = (0, _tslib.__decorate)([_reactLifecyclesCompat.polyfill], Checkbox);
   return Checkbox;
 }(_common.AbstractPureComponent2);
@@ -45131,7 +44987,7 @@ var FileInput = exports.FileInput = /** @class */function (_super) {
       htmlProps = (0, _tslib.__rest)(_d, ["buttonText", "className", "disabled", "fill", "hasSelection", "inputProps", "large", "onInputChange", "text"]);
     var rootClasses = (0, _classnames.default)(_common.Classes.FILE_INPUT, (_a = {}, _a[_common.Classes.FILE_INPUT_HAS_SELECTION] = hasSelection, _a[_common.Classes.DISABLED] = disabled, _a[_common.Classes.FILL] = fill, _a[_common.Classes.LARGE] = large, _a), className);
     var NS = _common.Classes.getClassNamespace();
-    var uploadProps = (_b = {}, _b[NS + "-button-text"] = buttonText, _b.className = (0, _classnames.default)(_common.Classes.FILE_UPLOAD_INPUT, (_c = {}, _c[_common.Classes.FILE_UPLOAD_INPUT_CUSTOM_TEXT] = !!buttonText, _c)), _b);
+    var uploadProps = (_b = {}, _b["".concat(NS, "-button-text")] = buttonText, _b.className = (0, _classnames.default)(_common.Classes.FILE_UPLOAD_INPUT, (_c = {}, _c[_common.Classes.FILE_UPLOAD_INPUT_CUSTOM_TEXT] = !!buttonText, _c)), _b);
     return React.createElement("label", (0, _tslib.__assign)({}, htmlProps, {
       className: rootClasses
     }), React.createElement("input", (0, _tslib.__assign)({}, inputProps, {
@@ -45140,7 +44996,7 @@ var FileInput = exports.FileInput = /** @class */function (_super) {
       disabled: disabled
     })), React.createElement("span", (0, _tslib.__assign)({}, uploadProps), text));
   };
-  FileInput.displayName = _props.DISPLAYNAME_PREFIX + ".FileInput";
+  FileInput.displayName = "".concat(_props.DISPLAYNAME_PREFIX, ".FileInput");
   FileInput.defaultProps = {
     hasSelection: false,
     inputProps: {},
@@ -45220,7 +45076,7 @@ var FormGroup = exports.FormGroup = /** @class */function (_super) {
       intent = _b.intent;
     return (0, _classnames.default)(_common.Classes.FORM_GROUP, _common.Classes.intentClass(intent), (_a = {}, _a[_common.Classes.DISABLED] = disabled, _a[_common.Classes.INLINE] = inline, _a), className);
   };
-  FormGroup.displayName = _props.DISPLAYNAME_PREFIX + ".FormGroup";
+  FormGroup.displayName = "".concat(_props.DISPLAYNAME_PREFIX, ".FormGroup");
   FormGroup = (0, _tslib.__decorate)([_reactLifecyclesCompat.polyfill], FormGroup);
   return FormGroup;
 }(_common.AbstractPureComponent2);
@@ -45234,7 +45090,7 @@ exports.AsyncControllableInput = void 0;
 var _tslib = require("tslib");
 var React = _interopRequireWildcard(require("react"));
 var _reactLifecyclesCompat = require("react-lifecycles-compat");
-var _props = require("../../common/props");
+var _common = require("../../common");
 function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function (e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, default: e }; if (null === e || "object" != typeof e && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (const t in e) "default" !== t && {}.hasOwnProperty.call(e, t) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, t)) && (i.get || i.set) ? o(f, t, i) : f[t] = e[t]); return f; })(e, t); }
 /* !
  * Copyright 2020 Palantir Technologies, Inc. All rights reserved.
@@ -45271,21 +45127,27 @@ var AsyncControllableInput = exports.AsyncControllableInput = /** @class */funct
       nextValue: _this.props.value,
       value: _this.props.value
     };
+    _this.cancelPendingCompositionEnd = null;
     _this.handleCompositionStart = function (e) {
-      var _a, _b;
+      var _a, _b, _c;
+      (_a = _this.cancelPendingCompositionEnd) === null || _a === void 0 ? void 0 : _a.call(_this);
       _this.setState({
-        isComposing: true,
-        // Make sure that localValue matches externalValue, in case externalValue
-        // has changed since the last onChange event.
-        nextValue: _this.state.value
+        isComposing: true
       });
-      (_b = (_a = _this.props).onCompositionStart) === null || _b === void 0 ? void 0 : _b.call(_a, e);
+      (_c = (_b = _this.props).onCompositionStart) === null || _c === void 0 ? void 0 : _c.call(_b, e);
     };
     _this.handleCompositionEnd = function (e) {
       var _a, _b;
-      _this.setState({
-        isComposing: false
-      });
+      // In some non-latin languages, a keystroke can end a composition event and immediately afterwards start another.
+      // This can lead to unexpected characters showing up in the text input. In order to circumvent this problem, we
+      // use a timeout which creates a delay which merges the two composition events, creating a more natural and predictable UX.
+      // `this.state.nextValue` will become "locked" (it cannot be overwritten by the `value` prop) until a delay (10ms) has
+      // passed without a new composition event starting.
+      _this.cancelPendingCompositionEnd = _this.setTimeout(function () {
+        return _this.setState({
+          isComposing: false
+        });
+      }, AsyncControllableInput_1.COMPOSITION_END_DELAY);
       (_b = (_a = _this.props).onCompositionEnd) === null || _b === void 0 ? void 0 : _b.call(_a, e);
     };
     _this.handleChange = function (e) {
@@ -45298,6 +45160,7 @@ var AsyncControllableInput = exports.AsyncControllableInput = /** @class */funct
     };
     return _this;
   }
+  AsyncControllableInput_1 = AsyncControllableInput;
   AsyncControllableInput.getDerivedStateFromProps = function (nextProps, nextState) {
     if (nextState.isComposing || nextProps.value === undefined) {
       // don't derive anything from props if:
@@ -45364,11 +45227,17 @@ var AsyncControllableInput = exports.AsyncControllableInput = /** @class */funct
       onChange: this.handleChange
     }));
   };
-  AsyncControllableInput.displayName = _props.DISPLAYNAME_PREFIX + ".AsyncControllableInput";
-  AsyncControllableInput = (0, _tslib.__decorate)([_reactLifecyclesCompat.polyfill], AsyncControllableInput);
+  var AsyncControllableInput_1;
+  AsyncControllableInput.displayName = "".concat(_common.DISPLAYNAME_PREFIX, ".AsyncControllableInput");
+  /**
+   * The amount of time (in milliseconds) which the input will wait after a compositionEnd event before
+   * unlocking its state value for external updates via props. See `handleCompositionEnd` for more details.
+   */
+  AsyncControllableInput.COMPOSITION_END_DELAY = 10;
+  AsyncControllableInput = AsyncControllableInput_1 = (0, _tslib.__decorate)([_reactLifecyclesCompat.polyfill], AsyncControllableInput);
   return AsyncControllableInput;
-}(React.PureComponent);
-},{"tslib":"../node_modules/@blueprintjs/core/node_modules/tslib/tslib.es6.js","react":"../node_modules/react/index.js","react-lifecycles-compat":"../node_modules/react-lifecycles-compat/react-lifecycles-compat.es.js","../../common/props":"../node_modules/@blueprintjs/core/lib/esm/common/props.js"}],"../node_modules/@blueprintjs/core/lib/esm/components/forms/inputGroup.js":[function(require,module,exports) {
+}(_common.AbstractPureComponent2);
+},{"tslib":"../node_modules/@blueprintjs/core/node_modules/tslib/tslib.es6.js","react":"../node_modules/react/index.js","react-lifecycles-compat":"../node_modules/react-lifecycles-compat/react-lifecycles-compat.es.js","../../common":"../node_modules/@blueprintjs/core/lib/esm/common/index.js"}],"../node_modules/@blueprintjs/core/lib/esm/components/forms/inputGroup.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -45478,7 +45347,9 @@ var InputGroup = exports.InputGroup = /** @class */function (_super) {
       }, leftElement);
     } else if (leftIcon != null) {
       return React.createElement(_icon.Icon, {
-        icon: leftIcon
+        icon: leftIcon,
+        "aria-hidden": true,
+        tabIndex: -1
       });
     }
     return undefined;
@@ -45524,7 +45395,7 @@ var InputGroup = exports.InputGroup = /** @class */function (_super) {
       });
     }
   };
-  InputGroup.displayName = _props.DISPLAYNAME_PREFIX + ".InputGroup";
+  InputGroup.displayName = "".concat(_props.DISPLAYNAME_PREFIX, ".InputGroup");
   InputGroup = (0, _tslib.__decorate)([_reactLifecyclesCompat.polyfill], InputGroup);
   return InputGroup;
 }(_common.AbstractPureComponent2);
@@ -45565,7 +45436,7 @@ function getDecimalSeparator(locale) {
   var testText = testNumber.toLocaleString(locale);
   var one = 1 .toLocaleString(locale);
   var nine = 9 .toLocaleString(locale);
-  var pattern = one + "(.+)" + nine;
+  var pattern = "".concat(one, "(.+)").concat(nine);
   var result = new RegExp(pattern).exec(testText);
   return result && result[1] || ".";
 }
@@ -45750,8 +45621,9 @@ var NON_HTML_PROPS = ["allowNumericCharactersOnly", "buttonPosition", "clampValu
 var NumericInput = exports.NumericInput = /** @class */function (_super) {
   (0, _tslib.__extends)(NumericInput, _super);
   function NumericInput() {
+    var _this = this;
     var _a;
-    var _this = _super.apply(this, arguments) || this;
+    _this = _super.apply(this, arguments) || this;
     _this.state = {
       currentImeInputInvalid: false,
       shouldSelectAfterUpdate: false,
@@ -46146,7 +46018,7 @@ var NumericInput = exports.NumericInput = /** @class */function (_super) {
     return this.delta;
   };
   var NumericInput_1;
-  NumericInput.displayName = _common.DISPLAYNAME_PREFIX + ".NumericInput";
+  NumericInput.displayName = "".concat(_common.DISPLAYNAME_PREFIX, ".NumericInput");
   NumericInput.VALUE_EMPTY = "";
   NumericInput.VALUE_ZERO = "0";
   NumericInput.defaultProps = {
@@ -46200,7 +46072,7 @@ function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r
 
 var counter = 0;
 function nextName() {
-  return RadioGroup.displayName + "-" + counter++;
+  return "".concat(RadioGroup.displayName, "-").concat(counter++);
 }
 var RadioGroup = exports.RadioGroup = /** @class */function (_super) {
   (0, _tslib.__extends)(RadioGroup, _super);
@@ -46258,7 +46130,7 @@ var RadioGroup = exports.RadioGroup = /** @class */function (_super) {
       value: value
     };
   };
-  RadioGroup.displayName = _props.DISPLAYNAME_PREFIX + ".RadioGroup";
+  RadioGroup.displayName = "".concat(_props.DISPLAYNAME_PREFIX, ".RadioGroup");
   RadioGroup = (0, _tslib.__decorate)([_reactLifecyclesCompat.polyfill], RadioGroup);
   return RadioGroup;
 }(_common.AbstractPureComponent2);
@@ -46351,7 +46223,7 @@ var TextArea = exports.TextArea = /** @class */function (_super) {
       // this style object becomes non-extensible when mounted (at least in the enzyme renderer),
       // so we make a new one to add a property
       style = (0, _tslib.__assign)((0, _tslib.__assign)({}, style), {
-        height: this.state.height + "px"
+        height: "".concat(this.state.height, "px")
       });
     }
     return React.createElement("textarea", (0, _tslib.__assign)({}, htmlProps, {
@@ -46361,7 +46233,7 @@ var TextArea = exports.TextArea = /** @class */function (_super) {
       style: style
     }));
   };
-  TextArea.displayName = _props.DISPLAYNAME_PREFIX + ".TextArea";
+  TextArea.displayName = "".concat(_props.DISPLAYNAME_PREFIX, ".TextArea");
   TextArea = (0, _tslib.__decorate)([_reactLifecyclesCompat.polyfill], TextArea);
   return TextArea;
 }(_common.AbstractPureComponent2);
@@ -46682,7 +46554,7 @@ var parseKeyCombo = function (combo) {
   for (var _i = 0, pieces_1 = pieces; _i < pieces_1.length; _i++) {
     var piece = pieces_1[_i];
     if (piece === "") {
-      throw new Error("Failed to parse key combo \"" + combo + "\".\n                Valid key combos look like \"cmd + plus\", \"shift+p\", or \"!\"");
+      throw new Error("Failed to parse key combo \"".concat(combo, "\".\n                Valid key combos look like \"cmd + plus\", \"shift+p\", or \"!\""));
     }
     if (Aliases[piece] != null) {
       piece = Aliases[piece];
@@ -46789,8 +46661,10 @@ var normalizeKeyCombo = function (combo, platformOverride) {
 };
 exports.normalizeKeyCombo = normalizeKeyCombo;
 function isMac(platformOverride) {
-  var platform = platformOverride != null ? platformOverride : typeof navigator !== "undefined" ? navigator.platform : undefined;
-  return platform == null ? false : /Mac|iPod|iPhone|iPad/.test(platform);
+  // HACKHACK: see https://github.com/palantir/blueprint/issues/5174
+  // eslint-disable-next-line deprecation/deprecation
+  var platform = platformOverride !== null && platformOverride !== void 0 ? platformOverride : typeof navigator !== "undefined" ? navigator.platform : undefined;
+  return platform === undefined ? false : /Mac|iPod|iPhone|iPad/.test(platform);
 }
 },{}],"../node_modules/@blueprintjs/core/lib/esm/components/hotkeys/keyCombo.js":[function(require,module,exports) {
 "use strict";
@@ -46877,7 +46751,7 @@ var KeyCombo = exports.KeyCombo = /** @class */function (_super) {
     _this.renderKey = function (key, index) {
       var _a;
       var icon = KeyIcons[key];
-      var reactKey = "key-" + index;
+      var reactKey = "key-".concat(index);
       return React.createElement("kbd", {
         className: (0, _classnames.default)(_common.Classes.KEY, (_a = {}, _a[_common.Classes.MODIFIER_KEY] = icon != null, _a)),
         key: reactKey
@@ -46891,7 +46765,7 @@ var KeyCombo = exports.KeyCombo = /** @class */function (_super) {
       return icon == null ? key : React.createElement(_icon.Icon, {
         icon: icon.icon,
         title: icon.iconTitle,
-        key: "key-" + index
+        key: "key-".concat(index)
       });
     };
     return _this;
@@ -46908,7 +46782,7 @@ var KeyCombo = exports.KeyCombo = /** @class */function (_super) {
       className: (0, _classnames.default)(_common.Classes.KEY_COMBO, className)
     }, keys);
   };
-  KeyCombo.displayName = _common.DISPLAYNAME_PREFIX + ".KeyCombo";
+  KeyCombo.displayName = "".concat(_common.DISPLAYNAME_PREFIX, ".KeyCombo");
   KeyCombo = (0, _tslib.__decorate)([_reactLifecyclesCompat.polyfill], KeyCombo);
   return KeyCombo;
 }(_common.AbstractPureComponent2);
@@ -46965,7 +46839,7 @@ var Hotkey = exports.Hotkey = /** @class */function (_super) {
       console.error("non-global <Hotkey>s must define a group");
     }
   };
-  Hotkey.displayName = _common.DISPLAYNAME_PREFIX + ".Hotkey";
+  Hotkey.displayName = "".concat(_common.DISPLAYNAME_PREFIX, ".Hotkey");
   Hotkey.defaultProps = {
     allowInInput: false,
     disabled: false,
@@ -47036,7 +46910,7 @@ var Hotkeys = exports.Hotkeys = /** @class */function (_super) {
       var groupLabel = hotkey.group;
       if (groupLabel !== lastGroup) {
         elems.push(React.createElement(_html.H4, {
-          key: "group-" + elems.length
+          key: "group-".concat(elems.length)
         }, groupLabel));
         lastGroup = groupLabel;
       }
@@ -47059,7 +46933,7 @@ var Hotkeys = exports.Hotkeys = /** @class */function (_super) {
       }
     });
   };
-  Hotkeys.displayName = _common.DISPLAYNAME_PREFIX + ".Hotkeys";
+  Hotkeys.displayName = "".concat(_common.DISPLAYNAME_PREFIX, ".Hotkeys");
   Hotkeys.defaultProps = {
     tabIndex: 0
   };
@@ -47460,7 +47334,7 @@ function HotkeysTarget(WrappedComponent) {
       return element;
     };
     return HotkeysTargetClass;
-  }(WrappedComponent), _a.displayName = "HotkeysTarget(" + (0, _utils.getDisplayName)(WrappedComponent) + ")", _a;
+  }(WrappedComponent), _a.displayName = "HotkeysTarget(".concat((0, _utils.getDisplayName)(WrappedComponent), ")"), _a;
 }
 },{"tslib":"../node_modules/@blueprintjs/core/node_modules/tslib/tslib.es6.js","react":"../node_modules/react/index.js","../../common/errors":"../node_modules/@blueprintjs/core/lib/esm/common/errors.js","../../common/utils":"../node_modules/@blueprintjs/core/lib/esm/common/utils/index.js","./hotkeysEvents":"../node_modules/@blueprintjs/core/lib/esm/components/hotkeys/hotkeysEvents.js"}],"../node_modules/@blueprintjs/core/lib/esm/components/hotkeys/hotkeysDialog2.js":[function(require,module,exports) {
 "use strict";
@@ -47578,7 +47452,7 @@ var hotkeysReducer = function (state, action) {
         }
       }
       return (0, _tslib.__assign)((0, _tslib.__assign)({}, state), {
-        hotkeys: (0, _tslib.__spreadArrays)(state.hotkeys, newUniqueHotkeys)
+        hotkeys: (0, _tslib.__spreadArray)((0, _tslib.__spreadArray)([], state.hotkeys, true), newUniqueHotkeys, true)
       });
     case "REMOVE_HOTKEYS":
       return (0, _tslib.__assign)((0, _tslib.__assign)({}, state), {
@@ -47715,11 +47589,11 @@ function useHotkeys(keys, options) {
   var _c = React.useContext(_context.HotkeysContext),
     dispatch = _c[1];
   React.useEffect(function () {
-    var payload = (0, _tslib.__spreadArrays)(globalKeys.map(function (k) {
+    var payload = (0, _tslib.__spreadArray)((0, _tslib.__spreadArray)([], globalKeys.map(function (k) {
       return k.config;
-    }), localKeys.map(function (k) {
+    }), true), localKeys.map(function (k) {
       return k.config;
-    }));
+    }), true);
     dispatch({
       type: "ADD_HOTKEYS",
       payload: payload
@@ -48061,7 +47935,7 @@ var NavbarDivider = exports.NavbarDivider = /** @class */function (_super) {
       className: (0, _classnames.default)(_common.Classes.NAVBAR_DIVIDER, className)
     }, htmlProps));
   };
-  NavbarDivider.displayName = _props.DISPLAYNAME_PREFIX + ".NavbarDivider";
+  NavbarDivider.displayName = "".concat(_props.DISPLAYNAME_PREFIX, ".NavbarDivider");
   NavbarDivider = (0, _tslib.__decorate)([_reactLifecyclesCompat.polyfill], NavbarDivider);
   return NavbarDivider;
 }(_common.AbstractPureComponent2);
@@ -48114,7 +47988,7 @@ var NavbarGroup = exports.NavbarGroup = /** @class */function (_super) {
       className: classes
     }, htmlProps), children);
   };
-  NavbarGroup.displayName = _props.DISPLAYNAME_PREFIX + ".NavbarGroup";
+  NavbarGroup.displayName = "".concat(_props.DISPLAYNAME_PREFIX, ".NavbarGroup");
   NavbarGroup.defaultProps = {
     align: _common.Alignment.LEFT
   };
@@ -48168,7 +48042,7 @@ var NavbarHeading = exports.NavbarHeading = /** @class */function (_super) {
       className: (0, _classnames.default)(_common.Classes.NAVBAR_HEADING, className)
     }, htmlProps), children);
   };
-  NavbarHeading.displayName = _props.DISPLAYNAME_PREFIX + ".NavbarHeading";
+  NavbarHeading.displayName = "".concat(_props.DISPLAYNAME_PREFIX, ".NavbarHeading");
   NavbarHeading = (0, _tslib.__decorate)([_reactLifecyclesCompat.polyfill], NavbarHeading);
   return NavbarHeading;
 }(_common.AbstractPureComponent2);
@@ -48225,7 +48099,7 @@ var Navbar = exports.Navbar = /** @class */function (_super) {
       className: classes
     }, htmlProps), children);
   };
-  Navbar.displayName = _props.DISPLAYNAME_PREFIX + ".Navbar";
+  Navbar.displayName = "".concat(_props.DISPLAYNAME_PREFIX, ".Navbar");
   Navbar.Divider = _navbarDivider.NavbarDivider;
   Navbar.Group = _navbarGroup.NavbarGroup;
   Navbar.Heading = _navbarHeading.NavbarHeading;
@@ -48292,11 +48166,13 @@ var NonIdealState = exports.NonIdealState = /** @class */function (_super) {
         className: Classes.NON_IDEAL_STATE_VISUAL
       }, React.createElement(_icon.Icon, {
         icon: icon,
-        size: _icon.IconSize.LARGE * 3
+        size: _icon.IconSize.LARGE * 3,
+        "aria-hidden": true,
+        tabIndex: -1
       }));
     }
   };
-  NonIdealState.displayName = _props.DISPLAYNAME_PREFIX + ".NonIdealState";
+  NonIdealState.displayName = "".concat(_props.DISPLAYNAME_PREFIX, ".NonIdealState");
   NonIdealState = (0, _tslib.__decorate)([_reactLifecyclesCompat.polyfill], NonIdealState);
   return NonIdealState;
 }(_common.AbstractPureComponent2);
@@ -48480,7 +48356,7 @@ var PanelStack = exports.PanelStack = /** @class */function (_super) {
         _this.setState(function (state) {
           return {
             direction: "push",
-            stack: (0, _tslib.__spreadArrays)([panel], state.stack)
+            stack: (0, _tslib.__spreadArray)([panel], state.stack, true)
           };
         });
       }
@@ -48505,7 +48381,7 @@ var PanelStack = exports.PanelStack = /** @class */function (_super) {
     }
   };
   PanelStack.prototype.render = function () {
-    var classes = (0, _classnames.default)(_common.Classes.PANEL_STACK, _common.Classes.PANEL_STACK + "-" + this.state.direction, this.props.className);
+    var classes = (0, _classnames.default)(_common.Classes.PANEL_STACK, "".concat(_common.Classes.PANEL_STACK, "-").concat(this.state.direction), this.props.className);
     return React.createElement(_reactTransitionGroup.TransitionGroup, {
       className: classes,
       component: "div"
@@ -48603,7 +48479,7 @@ var PanelView2 = function (props) {
   }, props.panel.title), React.createElement("span", null)), React.createElement(PanelWrapper, null));
 };
 exports.PanelView2 = PanelView2;
-PanelView2.displayName = _common.DISPLAYNAME_PREFIX + ".PanelView2";
+PanelView2.displayName = "".concat(_common.DISPLAYNAME_PREFIX, ".PanelView2");
 },{"tslib":"../node_modules/@blueprintjs/core/node_modules/tslib/tslib.es6.js","react":"../node_modules/react/index.js","../../common":"../node_modules/@blueprintjs/core/lib/esm/common/index.js","../button/buttons":"../node_modules/@blueprintjs/core/lib/esm/components/button/buttons.js","../text/text":"../node_modules/@blueprintjs/core/lib/esm/components/text/text.js"}],"../node_modules/@blueprintjs/core/lib/esm/components/panel-stack2/panelStack2.js":[function(require,module,exports) {
 "use strict";
 
@@ -48667,7 +48543,7 @@ var PanelStack2 = function (props) {
     (_a = props.onOpen) === null || _a === void 0 ? void 0 : _a.call(props, panel);
     if (props.stack == null) {
       setLocalStack(function (prevStack) {
-        return (0, _tslib.__spreadArrays)([panel], prevStack);
+        return (0, _tslib.__spreadArray)([panel], prevStack, true);
       });
     }
   }, [props.onOpen]);
@@ -48710,14 +48586,14 @@ var PanelStack2 = function (props) {
       showHeader: showPanelHeader
     }));
   }).reverse();
-  var classes = (0, _classnames.default)(_common.Classes.PANEL_STACK2, _common.Classes.PANEL_STACK2 + "-" + direction, props.className);
+  var classes = (0, _classnames.default)(_common.Classes.PANEL_STACK2, "".concat(_common.Classes.PANEL_STACK2, "-").concat(direction), props.className);
   return React.createElement(_reactTransitionGroup.TransitionGroup, {
     className: classes,
     component: "div"
   }, panels);
 };
 exports.PanelStack2 = PanelStack2;
-PanelStack2.displayName = _common.DISPLAYNAME_PREFIX + ".PanelStack2";
+PanelStack2.displayName = "".concat(_common.DISPLAYNAME_PREFIX, ".PanelStack2");
 },{"tslib":"../node_modules/@blueprintjs/core/node_modules/tslib/tslib.es6.js","classnames":"../node_modules/classnames/index.js","react":"../node_modules/react/index.js","react-transition-group":"../node_modules/react-transition-group/index.js","../../common":"../node_modules/@blueprintjs/core/lib/esm/common/index.js","./panelView2":"../node_modules/@blueprintjs/core/lib/esm/components/panel-stack2/panelView2.js"}],"../node_modules/@blueprintjs/core/lib/esm/components/popover/popoverSharedProps.js":[function(require,module,exports) {
 "use strict";
 
@@ -48813,7 +48689,7 @@ var ProgressBar = exports.ProgressBar = /** @class */function (_super) {
       }
     }));
   };
-  ProgressBar.displayName = _props.DISPLAYNAME_PREFIX + ".ProgressBar";
+  ProgressBar.displayName = "".concat(_props.DISPLAYNAME_PREFIX, ".ProgressBar");
   ProgressBar = (0, _tslib.__decorate)([_reactLifecyclesCompat.polyfill], ProgressBar);
   return ProgressBar;
 }(_common.AbstractPureComponent2);
@@ -48890,7 +48766,7 @@ exports.formatPercentage = formatPercentage;
  */
 /** Helper function for formatting ratios as CSS percentage values. */
 function formatPercentage(ratio) {
-  return (ratio * 100).toFixed(2) + "%";
+  return "".concat((ratio * 100).toFixed(2), "%");
 }
 /**
  * Mutates the values array by filling all the values between start and end index (inclusive) with the fill value.
@@ -49004,7 +48880,7 @@ var Handle = exports.Handle = /** @class */function (_super) {
         vertical = _a.vertical;
       var handleMidpoint = _this.getHandleMidpointAndOffset(_this.handleElement, true).handleMidpoint;
       var offsetRatio = (value - min) * tickSizeRatio;
-      var offsetCalc = "calc(" + (0, _sliderUtils.formatPercentage)(offsetRatio) + " - " + handleMidpoint + "px)";
+      var offsetCalc = "calc(".concat((0, _sliderUtils.formatPercentage)(offsetRatio), " - ").concat(handleMidpoint, "px)");
       return vertical ? {
         bottom: offsetCalc
       } : {
@@ -49124,7 +49000,7 @@ var Handle = exports.Handle = /** @class */function (_super) {
     for (var _i = 0, NUMBER_PROPS_1 = NUMBER_PROPS; _i < NUMBER_PROPS_1.length; _i++) {
       var prop = NUMBER_PROPS_1[_i];
       if (typeof props[prop] !== "number") {
-        throw new Error("[Blueprint] <Handle> requires number value for " + prop + " prop");
+        throw new Error("[Blueprint] <Handle> requires number value for ".concat(prop, " prop"));
       }
     }
   };
@@ -49178,7 +49054,7 @@ var Handle = exports.Handle = /** @class */function (_super) {
     document.removeEventListener("touchend", this.endHandleTouchMovement);
     document.removeEventListener("touchcancel", this.endHandleTouchMovement);
   };
-  Handle.displayName = _props.DISPLAYNAME_PREFIX + ".SliderHandle";
+  Handle.displayName = "".concat(_props.DISPLAYNAME_PREFIX, ".SliderHandle");
   Handle = (0, _tslib.__decorate)([_reactLifecyclesCompat.polyfill], Handle);
   return Handle;
 }(_common.AbstractPureComponent2);
@@ -49225,7 +49101,7 @@ function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e
 var MultiSliderHandle = function () {
   return null;
 };
-MultiSliderHandle.displayName = _props.DISPLAYNAME_PREFIX + ".MultiSliderHandle";
+MultiSliderHandle.displayName = "".concat(_props.DISPLAYNAME_PREFIX, ".MultiSliderHandle");
 var MultiSlider = exports.MultiSlider = /** @class */function (_super) {
   (0, _tslib.__extends)(MultiSlider, _super);
   function MultiSlider() {
@@ -49265,7 +49141,7 @@ var MultiSlider = exports.MultiSlider = /** @class */function (_super) {
     _this.canHandleTrackEvent = function (event) {
       var target = event.target;
       // ensure event does not come from inside the handle
-      return !_this.props.disabled && target.closest("." + _common.Classes.SLIDER_HANDLE) == null;
+      return !_this.props.disabled && target.closest(".".concat(_common.Classes.SLIDER_HANDLE)) == null;
     };
     _this.getHandlerForIndex = function (index, callback) {
       return function (newValue) {
@@ -49323,7 +49199,7 @@ var MultiSlider = exports.MultiSlider = /** @class */function (_super) {
   MultiSlider.prototype.render = function () {
     var _a;
     var _this = this;
-    var classes = (0, _classnames.default)(_common.Classes.SLIDER, (_a = {}, _a[_common.Classes.DISABLED] = this.props.disabled, _a[_common.Classes.SLIDER + "-unlabeled"] = this.props.labelRenderer === false, _a[_common.Classes.VERTICAL] = this.props.vertical, _a), this.props.className);
+    var classes = (0, _classnames.default)(_common.Classes.SLIDER, (_a = {}, _a[_common.Classes.DISABLED] = this.props.disabled, _a["".concat(_common.Classes.SLIDER, "-unlabeled")] = this.props.labelRenderer === false, _a[_common.Classes.VERTICAL] = this.props.vertical, _a), this.props.className);
     return React.createElement("div", {
       className: classes,
       onMouseDown: this.maybeHandleTrackClick,
@@ -49442,7 +49318,7 @@ var MultiSlider = exports.MultiSlider = /** @class */function (_super) {
     var style = (0, _tslib.__assign)((0, _tslib.__assign)({}, orientationStyle), start.trackStyleAfter || end.trackStyleBefore || {});
     var classes = (0, _classnames.default)(_common.Classes.SLIDER_PROGRESS, _common.Classes.intentClass(this.getTrackIntent(start, end)));
     return React.createElement("div", {
-      key: "track-" + index,
+      key: "track-".concat(index),
       className: classes,
       style: style
     });
@@ -49467,7 +49343,7 @@ var MultiSlider = exports.MultiSlider = /** @class */function (_super) {
       return React.createElement(_handle.Handle, {
         className: (0, _classnames.default)((_b = {}, _b[_common.Classes.START] = type === _handleProps.HandleType.START, _b[_common.Classes.END] = type === _handleProps.HandleType.END, _b), className),
         disabled: disabled,
-        key: index + "-" + handleProps.length,
+        key: "".concat(index, "-").concat(handleProps.length),
         label: _this.formatLabel(value, true),
         max: max,
         min: min,
@@ -49530,7 +49406,7 @@ var MultiSlider = exports.MultiSlider = /** @class */function (_super) {
       max = _a.max;
     var values = [];
     if (labelValues !== undefined) {
-      values = labelValues;
+      values = labelValues.slice();
     } else {
       for (var i = min; i < max || Utils.approxEqual(i, max); i += labelStepSize !== null && labelStepSize !== void 0 ? labelStepSize : 1) {
         values.push(i);
@@ -49575,7 +49451,7 @@ var MultiSlider = exports.MultiSlider = /** @class */function (_super) {
   MultiSlider.defaultProps = (0, _tslib.__assign)((0, _tslib.__assign)({}, MultiSlider_1.defaultSliderProps), {
     defaultTrackIntent: _common.Intent.NONE
   });
-  MultiSlider.displayName = _props.DISPLAYNAME_PREFIX + ".MultiSlider";
+  MultiSlider.displayName = "".concat(_props.DISPLAYNAME_PREFIX, ".MultiSlider");
   MultiSlider.Handle = MultiSliderHandle;
   MultiSlider = MultiSlider_1 = (0, _tslib.__decorate)([_reactLifecyclesCompat.polyfill], MultiSlider);
   return MultiSlider;
@@ -49675,7 +49551,7 @@ var RangeSlider = exports.RangeSlider = /** @class */function (_super) {
     intent: _common.Intent.PRIMARY,
     value: [0, 10]
   });
-  RangeSlider.displayName = _props.DISPLAYNAME_PREFIX + ".RangeSlider";
+  RangeSlider.displayName = "".concat(_props.DISPLAYNAME_PREFIX, ".RangeSlider");
   RangeSlider = (0, _tslib.__decorate)([_reactLifecyclesCompat.polyfill], RangeSlider);
   return RangeSlider;
 }(_common.AbstractPureComponent2);
@@ -49738,7 +49614,7 @@ var Slider = exports.Slider = /** @class */function (_super) {
     intent: _common.Intent.PRIMARY,
     value: 0
   });
-  Slider.displayName = _props.DISPLAYNAME_PREFIX + ".Slider";
+  Slider.displayName = "".concat(_props.DISPLAYNAME_PREFIX, ".Slider");
   Slider = (0, _tslib.__decorate)([_reactLifecyclesCompat.polyfill], Slider);
   return Slider;
 }(_common.AbstractPureComponent2);
@@ -49792,7 +49668,7 @@ var Tab = exports.Tab = /** @class */function (_super) {
   Tab.defaultProps = {
     disabled: false
   };
-  Tab.displayName = _props.DISPLAYNAME_PREFIX + ".Tab";
+  Tab.displayName = "".concat(_props.DISPLAYNAME_PREFIX, ".Tab");
   Tab = (0, _tslib.__decorate)([_reactLifecyclesCompat.polyfill], Tab);
   return Tab;
 }(_common.AbstractPureComponent2);
@@ -49861,15 +49737,15 @@ var TabTitle = exports.TabTitle = /** @class */function (_super) {
       tabIndex: disabled ? undefined : selected ? 0 : -1
     }), title, children);
   };
-  TabTitle.displayName = _props.DISPLAYNAME_PREFIX + ".TabTitle";
+  TabTitle.displayName = "".concat(_props.DISPLAYNAME_PREFIX, ".TabTitle");
   TabTitle = (0, _tslib.__decorate)([_reactLifecyclesCompat.polyfill], TabTitle);
   return TabTitle;
 }(_common.AbstractPureComponent2);
 function generateTabPanelId(parentId, tabId) {
-  return _common.Classes.TAB_PANEL + "_" + parentId + "_" + tabId;
+  return "".concat(_common.Classes.TAB_PANEL, "_").concat(parentId, "_").concat(tabId);
 }
 function generateTabTitleId(parentId, tabId) {
-  return _common.Classes.TAB + "-title_" + parentId + "_" + tabId;
+  return "".concat(_common.Classes.TAB, "-title_").concat(parentId, "_").concat(tabId);
 }
 },{"tslib":"../node_modules/@blueprintjs/core/node_modules/tslib/tslib.es6.js","classnames":"../node_modules/classnames/index.js","react":"../node_modules/react/index.js","react-lifecycles-compat":"../node_modules/react-lifecycles-compat/react-lifecycles-compat.es.js","../../common":"../node_modules/@blueprintjs/core/lib/esm/common/index.js","../../common/props":"../node_modules/@blueprintjs/core/lib/esm/common/props.js"}],"../node_modules/@blueprintjs/core/lib/esm/components/tabs/tabs.js":[function(require,module,exports) {
 "use strict";
@@ -49911,7 +49787,7 @@ var Expander = function () {
   });
 };
 exports.Expander = Expander;
-var TAB_SELECTOR = "." + _common.Classes.TAB;
+var TAB_SELECTOR = ".".concat(_common.Classes.TAB);
 // HACKHACK: https://github.com/palantir/blueprint/issues/4342
 // eslint-disable-next-line deprecation/deprecation
 var Tabs = exports.Tabs = /** @class */function (_super) {
@@ -50111,7 +49987,7 @@ var Tabs = exports.Tabs = /** @class */function (_super) {
     if (this.tablistElement == null || !this.props.animate) {
       return;
     }
-    var tabIdSelector = TAB_SELECTOR + "[data-tab-id=\"" + this.state.selectedTabId + "\"]";
+    var tabIdSelector = "".concat(TAB_SELECTOR, "[data-tab-id=\"").concat(this.state.selectedTabId, "\"]");
     var selectedTabElement = this.tablistElement.querySelector(tabIdSelector);
     var indicatorWrapperStyle = {
       display: "none"
@@ -50123,7 +49999,7 @@ var Tabs = exports.Tabs = /** @class */function (_super) {
         offsetTop = selectedTabElement.offsetTop;
       indicatorWrapperStyle = {
         height: clientHeight,
-        transform: "translateX(" + Math.floor(offsetLeft) + "px) translateY(" + Math.floor(offsetTop) + "px)",
+        transform: "translateX(".concat(Math.floor(offsetLeft), "px) translateY(").concat(Math.floor(offsetTop), "px)"),
         width: clientWidth
       };
       if (!animate) {
@@ -50143,7 +50019,7 @@ var Tabs = exports.Tabs = /** @class */function (_super) {
     renderActiveTabPanelOnly: false,
     vertical: false
   };
-  Tabs.displayName = _props.DISPLAYNAME_PREFIX + ".Tabs";
+  Tabs.displayName = "".concat(_props.DISPLAYNAME_PREFIX, ".Tabs");
   Tabs = (0, _tslib.__decorate)([_reactLifecyclesCompat.polyfill], Tabs);
   return Tabs;
 }(_common.AbstractPureComponent2);
@@ -50251,7 +50127,7 @@ var Tag = exports.Tag = /** @class */function (_super) {
       icon: rightIcon
     }), removeButton);
   };
-  Tag.displayName = _common.DISPLAYNAME_PREFIX + ".Tag";
+  Tag.displayName = "".concat(_common.DISPLAYNAME_PREFIX, ".Tag");
   Tag = (0, _tslib.__decorate)([_reactLifecyclesCompat.polyfill], Tag);
   return Tag;
 }(_common.AbstractPureComponent2);
@@ -50314,7 +50190,7 @@ var TagInput = exports.TagInput = /** @class */function (_super) {
       var shouldClearInput = (onAdd === null || onAdd === void 0 ? void 0 : onAdd(newValues, method)) !== false && inputValue === undefined;
       // avoid a potentially expensive computation if this prop is omitted
       if (_common.Utils.isFunction(onChange)) {
-        shouldClearInput = onChange((0, _tslib.__spreadArrays)(values, newValues)) !== false && shouldClearInput;
+        shouldClearInput = onChange((0, _tslib.__spreadArray)((0, _tslib.__spreadArray)([], values, true), newValues, true)) !== false && shouldClearInput;
       }
       // only explicit return false cancels text clearing
       if (shouldClearInput) {
@@ -50564,7 +50440,7 @@ var TagInput = exports.TagInput = /** @class */function (_super) {
   TagInput.prototype.isValidIndex = function (index) {
     return index !== NONE && index < this.props.values.length;
   };
-  TagInput.displayName = _props.DISPLAYNAME_PREFIX + ".TagInput";
+  TagInput.displayName = "".concat(_props.DISPLAYNAME_PREFIX, ".TagInput");
   TagInput.defaultProps = {
     addOnBlur: false,
     addOnPaste: true,
@@ -50692,7 +50568,7 @@ var Toast = exports.Toast = /** @class */function (_super) {
     message: "",
     timeout: 5000
   };
-  Toast.displayName = _props.DISPLAYNAME_PREFIX + ".Toast";
+  Toast.displayName = "".concat(_props.DISPLAYNAME_PREFIX, ".Toast");
   Toast = (0, _tslib.__decorate)([_reactLifecyclesCompat.polyfill], Toast);
   return Toast;
 }(_common.AbstractPureComponent2);
@@ -50793,7 +50669,7 @@ var Toaster = exports.Toaster = /** @class */function (_super) {
     if (key === undefined || this.isNewToastKey(key)) {
       this.setState(function (prevState) {
         return {
-          toasts: (0, _tslib.__spreadArrays)([options], prevState.toasts)
+          toasts: (0, _tslib.__spreadArray)([options], prevState.toasts, true)
         };
       });
     } else {
@@ -50875,7 +50751,7 @@ var Toaster = exports.Toaster = /** @class */function (_super) {
   };
   Toaster.prototype.createToastOptions = function (props, key) {
     if (key === void 0) {
-      key = "toast-" + this.toastId++;
+      key = "toast-".concat(this.toastId++);
     }
     // clone the object before adding the key prop to avoid leaking the mutation
     return (0, _tslib.__assign)((0, _tslib.__assign)({}, props), {
@@ -50885,12 +50761,12 @@ var Toaster = exports.Toaster = /** @class */function (_super) {
   Toaster.prototype.getPositionClasses = function () {
     var positions = this.props.position.split("-");
     // NOTE that there is no -center class because that's the default style
-    return (0, _tslib.__spreadArrays)(positions.map(function (p) {
-      return _common.Classes.TOAST_CONTAINER + "-" + p.toLowerCase();
-    }), [_common.Classes.TOAST_CONTAINER + "-" + (this.props.usePortal ? "in-portal" : "inline")]);
+    return (0, _tslib.__spreadArray)((0, _tslib.__spreadArray)([], positions.map(function (p) {
+      return "".concat(_common.Classes.TOAST_CONTAINER, "-").concat(p.toLowerCase());
+    }), true), ["".concat(_common.Classes.TOAST_CONTAINER, "-").concat(this.props.usePortal ? "in-portal" : "inline")], false);
   };
   var Toaster_1;
-  Toaster.displayName = _props.DISPLAYNAME_PREFIX + ".Toaster";
+  Toaster.displayName = "".concat(_props.DISPLAYNAME_PREFIX, ".Toaster");
   Toaster.defaultProps = {
     autoFocus: false,
     canEscapeKeyClear: true,
@@ -50987,7 +50863,7 @@ var TreeNode = exports.TreeNode = /** @class */function (_super) {
       isSelected = _b.isSelected,
       label = _b.label;
     var classes = (0, _classnames.default)(Classes.TREE_NODE, (_a = {}, _a[Classes.DISABLED] = disabled, _a[Classes.TREE_NODE_SELECTED] = isSelected, _a[Classes.TREE_NODE_EXPANDED] = isExpanded, _a), className);
-    var contentClasses = (0, _classnames.default)(Classes.TREE_NODE_CONTENT, Classes.TREE_NODE_CONTENT + "-" + this.props.depth);
+    var contentClasses = (0, _classnames.default)(Classes.TREE_NODE_CONTENT, "".concat(Classes.TREE_NODE_CONTENT, "-").concat(this.props.depth));
     var eventHandlers = disabled === true ? {} : {
       onClick: this.handleClick,
       onContextMenu: this.handleContextMenu,
@@ -51002,7 +50878,9 @@ var TreeNode = exports.TreeNode = /** @class */function (_super) {
       ref: this.handleContentRef
     }, eventHandlers), this.maybeRenderCaret(), React.createElement(_icon.Icon, {
       className: Classes.TREE_NODE_ICON,
-      icon: icon
+      icon: icon,
+      "aria-hidden": true,
+      tabIndex: -1
     }), React.createElement("span", {
       className: Classes.TREE_NODE_LABEL
     }, label), this.maybeRenderSecondaryLabel()), React.createElement(_collapse.Collapse, {
@@ -51039,7 +50917,7 @@ var TreeNode = exports.TreeNode = /** @class */function (_super) {
       return undefined;
     }
   };
-  TreeNode.displayName = _props.DISPLAYNAME_PREFIX + ".TreeNode";
+  TreeNode.displayName = "".concat(_props.DISPLAYNAME_PREFIX, ".TreeNode");
   return TreeNode;
 }(React.Component);
 },{"tslib":"../node_modules/@blueprintjs/core/node_modules/tslib/tslib.es6.js","classnames":"../node_modules/classnames/index.js","react":"../node_modules/react/index.js","../../common/classes":"../node_modules/@blueprintjs/core/lib/esm/common/classes.js","../../common/props":"../node_modules/@blueprintjs/core/lib/esm/common/props.js","../collapse/collapse":"../node_modules/@blueprintjs/core/lib/esm/components/collapse/collapse.js","../icon/icon":"../node_modules/@blueprintjs/core/lib/esm/components/icon/icon.js"}],"../node_modules/@blueprintjs/core/lib/esm/components/tree/tree.js":[function(require,module,exports) {
@@ -51166,7 +51044,7 @@ var Tree = exports.Tree = /** @class */function (_super) {
       handlerFromProps(nodeData, node.props.path, e);
     }
   };
-  Tree.displayName = _props.DISPLAYNAME_PREFIX + ".Tree";
+  Tree.displayName = "".concat(_props.DISPLAYNAME_PREFIX, ".Tree");
   return Tree;
 }(React.Component);
 },{"tslib":"../node_modules/@blueprintjs/core/node_modules/tslib/tslib.es6.js","classnames":"../node_modules/classnames/index.js","react":"../node_modules/react/index.js","../../common/classes":"../node_modules/@blueprintjs/core/lib/esm/common/classes.js","../../common/props":"../node_modules/@blueprintjs/core/lib/esm/common/props.js","../../common/utils":"../node_modules/@blueprintjs/core/lib/esm/common/utils/index.js","./treeNode":"../node_modules/@blueprintjs/core/lib/esm/components/tree/treeNode.js"}],"../node_modules/@blueprintjs/core/lib/esm/components/index.js":[function(require,module,exports) {
@@ -110889,6 +110767,7 @@ exports.fetchJson = fetchJson;
 exports.fetchProjects = fetchProjects;
 exports.fetchTimeEntries = fetchTimeEntries;
 exports.fetchTimeEntriesFallback = void 0;
+exports.getProjectReport = getProjectReport;
 exports.updateTimeEntry = updateTimeEntry;
 function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return _regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i.return) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), _regeneratorDefine2(u), _regeneratorDefine2(u, o, "Generator"), _regeneratorDefine2(u, n, function () { return this; }), _regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
 function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); } r ? i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n : (o("next", 0), o("throw", 1), o("return", 2)); }, _regeneratorDefine2(e, r, n, t); }
@@ -110969,6 +110848,29 @@ function fetchEmployees() {
 }
 function fetchProjects() {
   return fetchJson("".concat(API_BASE, "/api/projects"));
+}
+function getProjectReport(_x3, _x4) {
+  return _getProjectReport.apply(this, arguments);
+}
+function _getProjectReport() {
+  _getProjectReport = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee2(year, month) {
+    return _regenerator().w(function (_context2) {
+      while (1) switch (_context2.n) {
+        case 0:
+          return _context2.a(2, fetchJson("".concat(API_BASE, "/api/reports/projects"), {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              year: year,
+              month: month
+            })
+          }));
+      }
+    }, _callee2);
+  }));
+  return _getProjectReport.apply(this, arguments);
 }
 },{}],"stores/useStore.tsx":[function(require,module,exports) {
 "use strict";
@@ -140317,7 +140219,328 @@ var TimeEntryList = function TimeEntryList(_ref) {
   }));
 };
 var _default = exports.default = TimeEntryList;
-},{"react":"../node_modules/react/index.js","ag-grid-react":"../node_modules/ag-grid-react/main.js","@blueprintjs/core":"../node_modules/@blueprintjs/core/lib/esm/index.js","../utils/api":"utils/api.ts","../stores/useStore":"stores/useStore.tsx","./TimeEntry":"components/TimeEntry.tsx","mobx-state-tree":"../node_modules/mobx-state-tree/dist/mobx-state-tree.module.js"}],"components/Home.tsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","ag-grid-react":"../node_modules/ag-grid-react/main.js","@blueprintjs/core":"../node_modules/@blueprintjs/core/lib/esm/index.js","../utils/api":"utils/api.ts","../stores/useStore":"stores/useStore.tsx","./TimeEntry":"components/TimeEntry.tsx","mobx-state-tree":"../node_modules/mobx-state-tree/dist/mobx-state-tree.module.js"}],"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+var bundleURL = null;
+function getBundleURLCached() {
+  if (!bundleURL) {
+    bundleURL = getBundleURL();
+  }
+  return bundleURL;
+}
+function getBundleURL() {
+  // Attempt to find the URL of the current script and use that as the base URL
+  try {
+    throw new Error();
+  } catch (err) {
+    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
+    if (matches) {
+      return getBaseURL(matches[0]);
+    }
+  }
+  return '/';
+}
+function getBaseURL(url) {
+  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)?\/[^/]+(?:\?.*)?$/, '$1') + '/';
+}
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+},{}],"../node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
+var bundle = require('./bundle-url');
+function updateLink(link) {
+  var newLink = link.cloneNode();
+  newLink.onload = function () {
+    link.remove();
+  };
+  newLink.href = link.href.split('?')[0] + '?' + Date.now();
+  link.parentNode.insertBefore(newLink, link.nextSibling);
+}
+var cssTimeout = null;
+function reloadCSS() {
+  if (cssTimeout) {
+    return;
+  }
+  cssTimeout = setTimeout(function () {
+    var links = document.querySelectorAll('link[rel="stylesheet"]');
+    for (var i = 0; i < links.length; i++) {
+      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
+        updateLink(links[i]);
+      }
+    }
+    cssTimeout = null;
+  }, 50);
+}
+module.exports = reloadCSS;
+},{"./bundle-url":"../node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"../node_modules/ag-grid-community/dist/styles/ag-grid.css":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../node_modules/ag-grid-community/dist/styles/ag-theme-alpine.css":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/ReportProject.tsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _react = _interopRequireWildcard(require("react"));
+var _agGridReact = require("ag-grid-react");
+require("ag-grid-community/dist/styles/ag-grid.css");
+require("ag-grid-community/dist/styles/ag-theme-alpine.css");
+var _core = require("@blueprintjs/core");
+var api = _interopRequireWildcard(require("../utils/api"));
+var _useStore = require("../stores/useStore");
+function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function (e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, default: e }; if (null === e || "object" != typeof e && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (const t in e) "default" !== t && {}.hasOwnProperty.call(e, t) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, t)) && (i.get || i.set) ? o(f, t, i) : f[t] = e[t]); return f; })(e, t); }
+function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return _regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i.return) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), _regeneratorDefine2(u), _regeneratorDefine2(u, o, "Generator"), _regeneratorDefine2(u, n, function () { return this; }), _regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
+function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); } r ? i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n : (o("next", 0), o("throw", 1), o("return", 2)); }, _regeneratorDefine2(e, r, n, t); }
+function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
+function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+var ReportProject = function ReportProject(_ref) {
+  var onClose = _ref.onClose;
+  var store = (0, _useStore.useStore)();
+  var _useState = (0, _react.useState)(false),
+    _useState2 = _slicedToArray(_useState, 2),
+    loading = _useState2[0],
+    setLoading = _useState2[1];
+  var _useState3 = (0, _react.useState)(null),
+    _useState4 = _slicedToArray(_useState3, 2),
+    error = _useState4[0],
+    setError = _useState4[1];
+  var currentYear = new Date().getFullYear();
+  var currentMonth = String(new Date().getMonth() + 1).padStart(2, '0');
+  var _useState5 = (0, _react.useState)(String(currentYear)),
+    _useState6 = _slicedToArray(_useState5, 2),
+    year = _useState6[0],
+    setYear = _useState6[1];
+  var _useState7 = (0, _react.useState)(currentMonth),
+    _useState8 = _slicedToArray(_useState7, 2),
+    month = _useState8[0],
+    setMonth = _useState8[1];
+  var _useState9 = (0, _react.useState)([]),
+    _useState0 = _slicedToArray(_useState9, 2),
+    rows = _useState0[0],
+    setRows = _useState0[1];
+  var loadReport = /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee() {
+      var _a, _b, data, errors, message, _t;
+      return _regenerator().w(function (_context) {
+        while (1) switch (_context.p = _context.n) {
+          case 0:
+            setLoading(true);
+            setError(null);
+            _context.p = 1;
+            _context.n = 2;
+            return api.getProjectReport(year, month);
+          case 2:
+            data = _context.v;
+            setRows(data);
+            _context.n = 4;
+            break;
+          case 3:
+            _context.p = 3;
+            _t = _context.v;
+            console.error('Report load failed', _t);
+            if (_t.status === 400 && ((_a = _t.data) === null || _a === void 0 ? void 0 : _a.errors)) {
+              errors = _t.data.errors;
+              message = Object.values(errors).flat().join('; ');
+              setError("\u041E\u0448\u0438\u0431\u043A\u0430 \u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u043E\u0432: ".concat(message));
+            } else {
+              setError((_b = _t === null || _t === void 0 ? void 0 : _t.message) !== null && _b !== void 0 ? _b : 'Не удалось загрузить отчёт');
+            }
+          case 4:
+            _context.p = 4;
+            setLoading(false);
+            return _context.f(4);
+          case 5:
+            return _context.a(2);
+        }
+      }, _callee, null, [[1, 3, 4, 5]]);
+    }));
+    return function loadReport() {
+      return _ref2.apply(this, arguments);
+    };
+  }();
+  (0, _react.useEffect)(function () {
+    loadReport();
+  }, []);
+  var columnDefs = (0, _react.useMemo)(function () {
+    return [{
+      headerName: 'Проект',
+      field: 'projectName',
+      flex: 2
+    }, {
+      headerName: 'Код',
+      field: 'projectCode',
+      width: 100
+    }, {
+      headerName: 'Бюджет',
+      field: 'budgetRub',
+      width: 120,
+      valueFormatter: function valueFormatter(p) {
+        return p.value ? new Intl.NumberFormat('ru-RU').format(p.value) : '0';
+      }
+    }, {
+      headerName: 'Факт (часы)',
+      field: 'totalHours',
+      width: 120
+    }, {
+      headerName: 'Факт (стоимость)',
+      field: 'totalCost',
+      width: 140,
+      valueFormatter: function valueFormatter(p) {
+        return p.value ? new Intl.NumberFormat('ru-RU').format(p.value) : '0';
+      }
+    }, {
+      headerName: 'Освоено, %',
+      field: 'percentSpent',
+      width: 100,
+      valueFormatter: function valueFormatter(params) {
+        if (params.value === undefined || params.value === null) return '-';
+        return "".concat(params.value.toFixed(1), "%");
+      },
+      cellStyle: function cellStyle(params) {
+        var percent = Number(params.value);
+        // Если перерасход — красный фон, иначе белый/нейтральный
+        return percent > 100 ? {
+          backgroundColor: '#ffebee',
+          color: '#c62828'
+        } : null;
+      }
+    }, {
+      headerName: 'Начало',
+      field: 'startDate',
+      width: 110,
+      valueFormatter: function valueFormatter(p) {
+        return p.value ? new Date(p.value).toLocaleDateString() : '';
+      }
+    }, {
+      headerName: 'Конец',
+      field: 'endDate',
+      width: 110,
+      valueFormatter: function valueFormatter(p) {
+        return p.value ? new Date(p.value).toLocaleDateString() : '';
+      }
+    }];
+  }, []);
+  // Простая валидация прямо в обработчике — можно вынести в Yup, если нужно
+  var validateYear = function validateYear(val) {
+    return /^\d{4}$/.test(val);
+  };
+  var validateMonth = function validateMonth(val) {
+    return /^(0[1-9]|1[0-2])$/.test(val);
+  };
+  return _react.default.createElement("div", {
+    style: {
+      display: 'flex',
+      flexDirection: 'column',
+      gap: 16,
+      padding: 16,
+      maxHeight: '80vh',
+      overflow: 'hidden'
+    }
+  }, _react.default.createElement("div", {
+    style: {
+      display: 'flex',
+      gap: 16,
+      alignItems: 'flex-end'
+    }
+  }, _react.default.createElement("div", {
+    style: {
+      flex: 1
+    }
+  }, _react.default.createElement("label", {
+    style: {
+      display: 'block',
+      marginBottom: 4,
+      fontSize: 12,
+      color: '#5c7080'
+    }
+  }, "\u0413\u043E\u0434 (4 \u0446\u0438\u0444\u0440\u044B)"), _react.default.createElement("input", {
+    type: "text",
+    value: year,
+    onChange: function onChange(e) {
+      return setYear(e.target.value);
+    },
+    placeholder: "2024",
+    maxLength: 4,
+    className: _core.Classes.INPUT,
+    style: {
+      width: '100%'
+    }
+  })), _react.default.createElement("div", {
+    style: {
+      width: 150
+    }
+  }, _react.default.createElement("label", {
+    style: {
+      display: 'block',
+      marginBottom: 4,
+      fontSize: 12,
+      color: '#5c7080'
+    }
+  }, "\u041C\u0435\u0441\u044F\u0446 (01\u201312)"), _react.default.createElement("input", {
+    type: "text",
+    value: month,
+    onChange: function onChange(e) {
+      var val = e.target.value.replace(/\D/g, '').slice(0, 2);
+      // Автодополнение до двух знаков при вводе одной цифры
+      setMonth(val.length === 1 ? "0".concat(val) : val);
+    },
+    placeholder: "03",
+    maxLength: 2,
+    className: _core.Classes.INPUT,
+    style: {
+      width: '100%'
+    }
+  })), _react.default.createElement(_core.Button, {
+    intent: _core.Intent.PRIMARY,
+    onClick: loadReport,
+    loading: loading,
+    disabled: !validateYear(year) || !validateMonth(month)
+  }, "\u041F\u043E\u043A\u0430\u0437\u0430\u0442\u044C \u043E\u0442\u0447\u0451\u0442"), _react.default.createElement(_core.Button, {
+    minimal: true,
+    onClick: onClose
+  }, "\u0417\u0430\u043A\u0440\u044B\u0442\u044C")), error && _react.default.createElement("div", {
+    style: {
+      padding: 12,
+      backgroundColor: '#ffebee',
+      color: '#c62828',
+      borderRadius: 4,
+      marginBottom: 16
+    }
+  }, "\u26A0\uFE0F ", error), loading ? _react.default.createElement("div", {
+    style: {
+      textAlign: 'center',
+      padding: 40,
+      color: '#5c7080'
+    }
+  }, "\u0417\u0430\u0433\u0440\u0443\u0437\u043A\u0430 \u043E\u0442\u0447\u0451\u0442\u0430...") : _react.default.createElement("div", {
+    style: {
+      height: 500,
+      width: '100%'
+    }
+  }, _react.default.createElement(_agGridReact.AgGridReact, {
+    rowData: rows,
+    columnDefs: columnDefs,
+    defaultColDef: {
+      resizable: true,
+      sortable: true,
+      filter: true
+    },
+    pagination: true,
+    paginationPageSize: 25
+  })));
+};
+var _default = exports.default = ReportProject;
+},{"react":"../node_modules/react/index.js","ag-grid-react":"../node_modules/ag-grid-react/main.js","ag-grid-community/dist/styles/ag-grid.css":"../node_modules/ag-grid-community/dist/styles/ag-grid.css","ag-grid-community/dist/styles/ag-theme-alpine.css":"../node_modules/ag-grid-community/dist/styles/ag-theme-alpine.css","@blueprintjs/core":"../node_modules/@blueprintjs/core/lib/esm/index.js","../utils/api":"utils/api.ts","../stores/useStore":"stores/useStore.tsx"}],"components/Home.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -140327,6 +140550,7 @@ exports.default = void 0;
 var _react = _interopRequireWildcard(require("react"));
 var _core = require("@blueprintjs/core");
 var _TimeEntryList = _interopRequireDefault(require("./TimeEntryList"));
+var _ReportProject = _interopRequireDefault(require("./ReportProject"));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function (e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, default: e }; if (null === e || "object" != typeof e && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (const t in e) "default" !== t && {}.hasOwnProperty.call(e, t) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, t)) && (i.get || i.set) ? o(f, t, i) : f[t] = e[t]); return f; })(e, t); }
 function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
@@ -140338,8 +140562,12 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 var Home = function Home() {
   var _useState = (0, _react.useState)(false),
     _useState2 = _slicedToArray(_useState, 2),
-    open = _useState2[0],
-    setOpen = _useState2[1];
+    openTimeEntry = _useState2[0],
+    setOpenTimeEntry = _useState2[1];
+  var _useState3 = (0, _react.useState)(false),
+    _useState4 = _slicedToArray(_useState3, 2),
+    openReports = _useState4[0],
+    setOpenReports = _useState4[1];
   return _react.default.createElement("div", {
     style: {
       minHeight: '70vh',
@@ -140364,21 +140592,29 @@ var Home = function Home() {
       alignItems: 'center'
     }
   }, _react.default.createElement(_core.Button, {
-    intent: "primary",
-    large: true,
-    onClick: function onClick() {}
-  }, "\u0424\u0443\u043D\u043A\u0446\u0438\u044F 1 (\u043F\u043E\u043A\u0430 \u043F\u0443\u0441\u0442\u043E)"), _react.default.createElement(_core.Button, {
     intent: "success",
     large: true,
     onClick: function onClick() {
-      return setOpen(true);
+      return setOpenTimeEntry(true);
     }
-  }, "\u041F\u0440\u043E\u0441\u043C\u043E\u0442\u0440\u0435\u0442\u044C \u0437\u0430\u043F\u0438\u0441\u0438 \u0442\u0430\u0431\u0435\u043B\u044F"))), _react.default.createElement(_core.Dialog, {
+  }, "\u0417\u0430\u043F\u0438\u0441\u0438 \u0442\u0430\u0431\u0435\u043B\u044F"), _react.default.createElement(_core.Button, {
+    intent: "success",
+    large: true,
+    onClick: function onClick() {
+      return setOpenReports(true);
+    }
+  }, "\u041E\u0442\u0447\u0435\u0442\u044B"), _react.default.createElement(_core.Button, {
+    intent: "success",
+    large: true,
+    onClick: function onClick() {
+      return setOpenTimeEntry(true);
+    }
+  }, "\u0421\u043F\u0440\u0430\u0432\u043E\u0447\u043D\u0438\u043A\u0438"))), _react.default.createElement(_core.Dialog, {
     icon: "list",
-    isOpen: open,
+    isOpen: openTimeEntry,
     title: "\u0417\u0430\u043F\u0438\u0441\u0438 \u0442\u0430\u0431\u0435\u043B\u044F",
     onClose: function onClose() {
-      return setOpen(false);
+      return setOpenTimeEntry(false);
     },
     canOutsideClickClose: true,
     canEscapeKeyClose: true,
@@ -140393,12 +140629,34 @@ var Home = function Home() {
     }
   }, _react.default.createElement(_TimeEntryList.default, {
     onClose: function onClose() {
-      return setOpen(false);
+      return setOpenTimeEntry(false);
+    }
+  }))), _react.default.createElement(_core.Dialog, {
+    icon: "list",
+    isOpen: openReports,
+    title: "\u041E\u0442\u0447\u0435\u0442\u044B",
+    onClose: function onClose() {
+      return setOpenReports(false);
+    },
+    canOutsideClickClose: true,
+    canEscapeKeyClose: true,
+    style: {
+      width: '80%',
+      maxWidth: 1000
+    }
+  }, _react.default.createElement("div", {
+    className: _core.Classes.DIALOG_BODY,
+    style: {
+      padding: 12
+    }
+  }, _react.default.createElement(_ReportProject.default, {
+    onClose: function onClose() {
+      return setOpenReports(false);
     }
   }))));
 };
 var _default = exports.default = Home;
-},{"react":"../node_modules/react/index.js","@blueprintjs/core":"../node_modules/@blueprintjs/core/lib/esm/index.js","./TimeEntryList":"components/TimeEntryList.tsx"}],"stores/timeEntryStore.ts":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","@blueprintjs/core":"../node_modules/@blueprintjs/core/lib/esm/index.js","./TimeEntryList":"components/TimeEntryList.tsx","./ReportProject":"components/ReportProject.tsx"}],"stores/timeEntryStore.ts":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -140641,58 +140899,7 @@ var App = function App() {
   }, _react.default.createElement(_Home.default, null)));
 };
 var _default = exports.default = App;
-},{"react":"../node_modules/react/index.js","@blueprintjs/core":"../node_modules/@blueprintjs/core/lib/esm/index.js","./components/Home":"components/Home.tsx","./stores/rootStore":"stores/rootStore.ts","./stores/useStore":"stores/useStore.tsx"}],"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
-var bundleURL = null;
-function getBundleURLCached() {
-  if (!bundleURL) {
-    bundleURL = getBundleURL();
-  }
-  return bundleURL;
-}
-function getBundleURL() {
-  // Attempt to find the URL of the current script and use that as the base URL
-  try {
-    throw new Error();
-  } catch (err) {
-    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
-    if (matches) {
-      return getBaseURL(matches[0]);
-    }
-  }
-  return '/';
-}
-function getBaseURL(url) {
-  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)?\/[^/]+(?:\?.*)?$/, '$1') + '/';
-}
-exports.getBundleURL = getBundleURLCached;
-exports.getBaseURL = getBaseURL;
-},{}],"../node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
-var bundle = require('./bundle-url');
-function updateLink(link) {
-  var newLink = link.cloneNode();
-  newLink.onload = function () {
-    link.remove();
-  };
-  newLink.href = link.href.split('?')[0] + '?' + Date.now();
-  link.parentNode.insertBefore(newLink, link.nextSibling);
-}
-var cssTimeout = null;
-function reloadCSS() {
-  if (cssTimeout) {
-    return;
-  }
-  cssTimeout = setTimeout(function () {
-    var links = document.querySelectorAll('link[rel="stylesheet"]');
-    for (var i = 0; i < links.length; i++) {
-      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
-        updateLink(links[i]);
-      }
-    }
-    cssTimeout = null;
-  }, 50);
-}
-module.exports = reloadCSS;
-},{"./bundle-url":"../node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"../node_modules/@blueprintjs/core/lib/css/blueprint.css":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","@blueprintjs/core":"../node_modules/@blueprintjs/core/lib/esm/index.js","./components/Home":"components/Home.tsx","./stores/rootStore":"stores/rootStore.ts","./stores/useStore":"stores/useStore.tsx"}],"../node_modules/@blueprintjs/core/lib/css/blueprint.css":[function(require,module,exports) {
 
         var reloadCSS = require('_css_loader');
         module.hot.dispose(reloadCSS);
@@ -140704,15 +140911,7 @@ module.exports = reloadCSS;
         module.hot.dispose(reloadCSS);
         module.hot.accept(reloadCSS);
       
-},{"./..\\..\\resources\\icons\\icons-16.eot":[["icons-16.cb463fa1.eot","../node_modules/@blueprintjs/icons/resources/icons/icons-16.eot"],"../node_modules/@blueprintjs/icons/resources/icons/icons-16.eot"],"./..\\..\\resources\\icons\\icons-16.woff":[["icons-16.0347b35c.woff","../node_modules/@blueprintjs/icons/resources/icons/icons-16.woff"],"../node_modules/@blueprintjs/icons/resources/icons/icons-16.woff"],"./..\\..\\resources\\icons\\icons-16.ttf":[["icons-16.f39daaaa.ttf","../node_modules/@blueprintjs/icons/resources/icons/icons-16.ttf"],"../node_modules/@blueprintjs/icons/resources/icons/icons-16.ttf"],"./..\\..\\resources\\icons\\icons-20.eot":[["icons-20.603e6047.eot","../node_modules/@blueprintjs/icons/resources/icons/icons-20.eot"],"../node_modules/@blueprintjs/icons/resources/icons/icons-20.eot"],"./..\\..\\resources\\icons\\icons-20.woff":[["icons-20.8ebf1bff.woff","../node_modules/@blueprintjs/icons/resources/icons/icons-20.woff"],"../node_modules/@blueprintjs/icons/resources/icons/icons-20.woff"],"./..\\..\\resources\\icons\\icons-20.ttf":[["icons-20.73310a02.ttf","../node_modules/@blueprintjs/icons/resources/icons/icons-20.ttf"],"../node_modules/@blueprintjs/icons/resources/icons/icons-20.ttf"],"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../node_modules/ag-grid-community/dist/styles/ag-grid.css":[function(require,module,exports) {
-var reloadCSS = require('_css_loader');
-module.hot.dispose(reloadCSS);
-module.hot.accept(reloadCSS);
-},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../node_modules/ag-grid-community/dist/styles/ag-theme-alpine.css":[function(require,module,exports) {
-var reloadCSS = require('_css_loader');
-module.hot.dispose(reloadCSS);
-module.hot.accept(reloadCSS);
-},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"index.tsx":[function(require,module,exports) {
+},{"./..\\..\\resources\\icons\\icons-16.eot":[["icons-16.cb463fa1.eot","../node_modules/@blueprintjs/icons/resources/icons/icons-16.eot"],"../node_modules/@blueprintjs/icons/resources/icons/icons-16.eot"],"./..\\..\\resources\\icons\\icons-16.woff":[["icons-16.0347b35c.woff","../node_modules/@blueprintjs/icons/resources/icons/icons-16.woff"],"../node_modules/@blueprintjs/icons/resources/icons/icons-16.woff"],"./..\\..\\resources\\icons\\icons-16.ttf":[["icons-16.f39daaaa.ttf","../node_modules/@blueprintjs/icons/resources/icons/icons-16.ttf"],"../node_modules/@blueprintjs/icons/resources/icons/icons-16.ttf"],"./..\\..\\resources\\icons\\icons-20.eot":[["icons-20.603e6047.eot","../node_modules/@blueprintjs/icons/resources/icons/icons-20.eot"],"../node_modules/@blueprintjs/icons/resources/icons/icons-20.eot"],"./..\\..\\resources\\icons\\icons-20.woff":[["icons-20.8ebf1bff.woff","../node_modules/@blueprintjs/icons/resources/icons/icons-20.woff"],"../node_modules/@blueprintjs/icons/resources/icons/icons-20.woff"],"./..\\..\\resources\\icons\\icons-20.ttf":[["icons-20.73310a02.ttf","../node_modules/@blueprintjs/icons/resources/icons/icons-20.ttf"],"../node_modules/@blueprintjs/icons/resources/icons/icons-20.ttf"],"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"index.tsx":[function(require,module,exports) {
 "use strict";
 
 require("whatwg-fetch");
@@ -140750,7 +140949,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52875" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51770" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

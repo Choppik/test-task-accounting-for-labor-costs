@@ -1,6 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
+using MongoDB.Bson;
 using MongoDB.Driver;
+using System;
+using System.Linq;
 using System.Threading.Tasks;
+using WebApi.Models;
 
 namespace WebApi.Controllers
 {
@@ -8,21 +13,24 @@ namespace WebApi.Controllers
     [Route("api/[controller]")]
     public class ProjectsController : ControllerBase
     {
-        private readonly IMongoCollection<Models.Project> _col;
-        public ProjectsController(IMongoDatabase db) => _col = db.GetCollection<Models.Project>("Projects");
+        private readonly IMongoCollection<Project> _projects;
 
-        // GET /api/projects?q=П-001&page=1&pageSize=20
+        public ProjectsController(IMongoDatabase database)
+        {
+            _projects = database.GetCollection<Project>("Projects");
+        }
+
         [HttpGet]
         public async Task<IActionResult> Search([FromQuery] string q = "", int page = 1, int pageSize = 20)
         {
             var filter = string.IsNullOrWhiteSpace(q)
-                ? Builders<Models.Project>.Filter.Empty
-                : Builders<Models.Project>.Filter.Or(
-                    Builders<Models.Project>.Filter.Regex(e => e.Code, new MongoDB.Bson.BsonRegularExpression(q, "i"))
+                ? Builders<Project>.Filter.Empty
+                : Builders<Project>.Filter.Or(
+                    Builders<Project>.Filter.Regex(e => e.Code, new MongoDB.Bson.BsonRegularExpression(q, "i"))
                   );
 
             var skip = (page - 1) * pageSize;
-            var list = await _col.Find(filter)
+            var list = await _projects.Find(filter)
                                  .Project(e => new { id = e.Id, code = e.Code })
                                  .Skip(skip)
                                  .Limit(pageSize)
@@ -35,7 +43,7 @@ namespace WebApi.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(string id)
         {
-            var e = await _col.Find(x => x.Id == id)
+            var e = await _projects.Find(x => x.Id == id)
                               .Project(x => new { id = x.Id, code = x.Code })
                               .FirstOrDefaultAsync();
             if (e == null) return NotFound();

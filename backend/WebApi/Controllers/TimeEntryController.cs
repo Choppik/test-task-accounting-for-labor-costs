@@ -28,6 +28,8 @@ namespace WebApi.Controllers
             _mediator = mediator;
         }
 
+        // GET api/timeentry
+        [HttpGet]
         public async Task<ActionResult<List<TimeEntryDTO>>> GetAll()
         {
             var docs = await _ts.Find(Builders<TimeEntry>.Filter.Empty)
