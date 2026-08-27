@@ -15,7 +15,7 @@ namespace WebApi.Handlers.Timesheets
 
         public DeleteTimeEntryHandler(IMongoDatabase db)
         {
-            _ts = db.GetCollection<TimeEntry>("TimesheetEntries");
+            _ts = db.GetCollection<TimeEntry>("TimeEntries");
             _periods = db.GetCollection<ClosedPeriod>("ClosedPeriods");
         }
 

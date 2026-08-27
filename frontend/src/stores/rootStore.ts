@@ -61,46 +61,44 @@ const RootStore = types
             }
         });
 
-        const addTimesheet = flow(function* (payload: any) {
+        const addTimeEntry = flow(function* (payload: any) {
             try {
-                console.log('[store] addTimesheet payload', payload);
+                console.log('[store] addTimeEntry payload', payload);
                 const res = yield api.createTimeEntry(payload);
                 yield fetchTimeEntries();
                 return res;
             } catch (err: any) {
-                console.error('[store] addTimesheet error', err);
+                console.error('[store] addTimeEntry error', err);
                 self.lastError = err?.message ?? 'Ошибка при создании записи';
                 throw err;
             }
         });
 
-        const updateTimesheet = flow(function* (id: string, payload: any) {
+        const updateTimeEntry = flow(function* (id: string, payload: any) {
             try {
-                console.log('[store] updateTimesheet', id, payload);
+                console.log('[store] updateTimeEntry', id, payload);
                 const res = yield api.updateTimeEntry(id, payload);
                 yield fetchTimeEntries();
                 return res;
             } catch (err: any) {
-                console.error('[store] updateTimesheet error', err);
+                console.error('[store] updateTimeEntry error', err);
                 self.lastError = err?.message ?? 'Ошибка при обновлении записи';
                 throw err;
             }
         });
 
-        const deleteTimesheet = flow(function* (id: string) {
+        const deleteTimeEntry = flow(function* (id: string) {
             try {
-                console.log('[store] deleteTimesheet', id);
-                const res = yield api.deleteTimeEntry(id);
-                yield fetchTimeEntries();
-                return res;
-            } catch (err: any) {
-                console.error('[store] deleteTimesheet error', err);
-                self.lastError = err?.message ?? 'Ошибка при удалении записи';
+                yield api.deleteTimeEntry(id); // fetchJson теперь вернёт null при 204
+                if (fetchTimeEntries) yield fetchTimeEntries();
+                return true;
+            } catch (err) {
+                console.error('[store] deleteTimeEntry error', err);
                 throw err;
             }
         });
 
-        return { fetchTimeEntries, addTimesheet, updateTimesheet, deleteTimesheet };
+        return { fetchTimeEntries, addTimeEntry, updateTimeEntry, deleteTimeEntry };
     });
 
 export function createRootStore() {

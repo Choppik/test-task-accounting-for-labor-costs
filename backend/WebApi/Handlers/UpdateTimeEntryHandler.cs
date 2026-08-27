@@ -44,7 +44,7 @@ namespace WebApi.Handlers.Timesheets
                 .Set(e => e.Hours, req.Hours)
                 .Set(e => e.Comment, req.Comment)
                 .Set(e => e.ModifiedBy, req.ModifiedBy ?? "system")
-                .Set(e => e.ModifiedAt, DateTime.UtcNow)
+                .Set(e => e.ModifiedAt, req.ModifiedAt)
                 .Set(e => e.Date, entryDate.ToUniversalTime())
                 .Set(e => e.ProjectId, req.ProjectId)
                 .Set(e => e.ExpectedCost, expectedCost)

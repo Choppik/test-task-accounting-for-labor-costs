@@ -40,7 +40,6 @@ namespace WebApi.Handlers.Timesheets
             var hourlyRate = EmployeeSalaryService.GetRateAt(employee.SalaryHistory, entryDate);
             var expectedCost = Math.Round(hourlyRate * request.Hours, 2);
 
-            var now = DateTime.UtcNow;
             var entry = new TimeEntry
             {
                 EmployeeId = request.EmployeeId,
@@ -50,7 +49,7 @@ namespace WebApi.Handlers.Timesheets
                 ExpectedCost = expectedCost,
                 Comment = request.Comment,
                 CreatedBy = request.CreatedBy ?? "system",
-                CreatedAt = now,
+                CreatedAt = request.CreatedAt,
                 Version = 1
             };
 

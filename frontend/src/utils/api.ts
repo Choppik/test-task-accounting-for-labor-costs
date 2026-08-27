@@ -2,12 +2,21 @@
 
 async function fetchJson(url: string, init?: RequestInit) {
     const res = await fetch(url, init);
-    if (!res.ok) {
-        const text = await res.text();
-        throw new Error(text || res.statusText);
+    // если нет контента — вернуть null (или undefined)
+    if (res.status === 204) return null;
+
+    const text = await res.text();
+    if (!text) return null; // пустой ответ — безопасно возвращаем null
+
+    try {
+        return JSON.parse(text);
+    } catch (err) {
+        // если не JSON — пробуем вернуть raw text или бросаем
+        throw new Error('Invalid JSON response: ' + (err as Error).message);
     }
-    return res.json();
 }
+
+export { fetchJson, API_BASE };
 
 export function fetchTimeEntries() {
     return fetchJson(`${API_BASE}/api/timeentry`);

@@ -20,5 +20,7 @@ namespace WebApi.Commands
         public int Version { get; set; }
 
         public string ModifiedBy { get; set; }
+
+        public DateTime ModifiedAt { get; set; }
     }
 }

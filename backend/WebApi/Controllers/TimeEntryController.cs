@@ -15,14 +15,14 @@ namespace WebApi.Controllers
     [Route("api/[controller]")]
     public class TimeEntryController : ControllerBase
     {
-        private readonly IMongoCollection<TimeEntry> _collection;
+        private readonly IMongoCollection<TimeEntry> _ts;
         private readonly IMongoCollection<Employee> _employees;
         private readonly IMongoCollection<Project> _projects;
         private readonly IMediator _mediator;
 
         public TimeEntryController(IMediator mediator, IMongoDatabase database)
         {
-            _collection = database.GetCollection<TimeEntry>("TimeEntries");
+            _ts = database.GetCollection<TimeEntry>("TimeEntries");
             _employees = database.GetCollection<Employee>("Employees");
             _projects = database.GetCollection<Project>("Projects");
             _mediator = mediator;
@@ -30,7 +30,7 @@ namespace WebApi.Controllers
 
         public async Task<ActionResult<List<TimeEntryDTO>>> GetAll()
         {
-            var docs = await _collection.Find(Builders<TimeEntry>.Filter.Empty)
+            var docs = await _ts.Find(Builders<TimeEntry>.Filter.Empty)
                                         .Limit(1000)
                                         .ToListAsync();
 
@@ -66,17 +66,7 @@ namespace WebApi.Controllers
             var dto = await _mediator.Send(new GetTimeEntryByIdQuery { Id = id });
             if (dto != null) return Ok(dto);
 
-            var item = await _collection.Find(e => e.Id == id).FirstOrDefaultAsync();
-            if (item == null) return NotFound();
-
-            var emp = await _employees.Find(e => e.Id == item.EmployeeId).FirstOrDefaultAsync();
-            var proj = await _projects.Find(p => p.Id == item.ProjectId).FirstOrDefaultAsync();
-
-            var result = TimeEntryMapper.ToDTO(item);
-            result.EmployeeFullName = emp != null ? $"{emp.FullName}" : item.EmployeeId;
-            result.ProjectCode = proj != null ? proj.Code : item.ProjectId;
-
-            return Ok(result);
+            return NotFound();
         }
 
         // POST api/timeentry
@@ -85,7 +75,7 @@ namespace WebApi.Controllers
         {
             var id = await _mediator.Send(cmd);
 
-            var created = await _collection.Find(e => e.Id == id).FirstOrDefaultAsync();
+            var created = await _ts.Find(e => e.Id == id).FirstOrDefaultAsync();
             if (created == null) return CreatedAtAction(nameof(GetById), new { id }, new { id });
 
             var dto = TimeEntryMapper.ToDTO(created);
@@ -100,7 +90,7 @@ namespace WebApi.Controllers
             var ok = await _mediator.Send(cmd);
             if (!ok) return NotFound();
 
-            var updated = await _collection.Find(e => e.Id == id).FirstOrDefaultAsync();
+            var updated = await _ts.Find(e => e.Id == id).FirstOrDefaultAsync();
             if (updated == null) return NoContent();
 
             var dto = TimeEntryMapper.ToDTO(updated);

@@ -110875,7 +110875,125 @@ exports.AgGridReact = require('./lib/agGridReact').AgGridReact;
 exports.AgGridColumn = require('./lib/shared/agGridColumn').AgGridColumn;
 exports.ChangeDetectionStrategyType = require('./lib/shared/changeDetectionService').ChangeDetectionStrategyType;
 exports.AgGridReactUi = require('./lib/reactUi/agGridReactUi').AgGridReactUi;
-},{"./lib/agGridReact":"../node_modules/ag-grid-react/lib/agGridReact.js","./lib/shared/agGridColumn":"../node_modules/ag-grid-react/lib/shared/agGridColumn.js","./lib/shared/changeDetectionService":"../node_modules/ag-grid-react/lib/shared/changeDetectionService.js","./lib/reactUi/agGridReactUi":"../node_modules/ag-grid-react/lib/reactUi/agGridReactUi.js"}],"../node_modules/react-fast-compare/index.js":[function(require,module,exports) {
+},{"./lib/agGridReact":"../node_modules/ag-grid-react/lib/agGridReact.js","./lib/shared/agGridColumn":"../node_modules/ag-grid-react/lib/shared/agGridColumn.js","./lib/shared/changeDetectionService":"../node_modules/ag-grid-react/lib/shared/changeDetectionService.js","./lib/reactUi/agGridReactUi":"../node_modules/ag-grid-react/lib/reactUi/agGridReactUi.js"}],"utils/api.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.API_BASE = void 0;
+exports.createTimeEntry = createTimeEntry;
+exports.deleteTimeEntry = deleteTimeEntry;
+exports.fetchEmployees = fetchEmployees;
+exports.fetchJson = fetchJson;
+exports.fetchProjects = fetchProjects;
+exports.fetchTimeEntries = fetchTimeEntries;
+exports.fetchTimeEntriesFallback = void 0;
+exports.updateTimeEntry = updateTimeEntry;
+function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return _regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i.return) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), _regeneratorDefine2(u), _regeneratorDefine2(u, o, "Generator"), _regeneratorDefine2(u, n, function () { return this; }), _regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
+function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); } r ? i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n : (o("next", 0), o("throw", 1), o("return", 2)); }, _regeneratorDefine2(e, r, n, t); }
+function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
+function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
+var API_BASE = exports.API_BASE = 'http://localhost:5000';
+function fetchJson(_x, _x2) {
+  return _fetchJson.apply(this, arguments);
+}
+function _fetchJson() {
+  _fetchJson = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee(url, init) {
+    var res, text, _t;
+    return _regenerator().w(function (_context) {
+      while (1) switch (_context.p = _context.n) {
+        case 0:
+          _context.n = 1;
+          return fetch(url, init);
+        case 1:
+          res = _context.v;
+          if (!(res.status === 204)) {
+            _context.n = 2;
+            break;
+          }
+          return _context.a(2, null);
+        case 2:
+          _context.n = 3;
+          return res.text();
+        case 3:
+          text = _context.v;
+          if (text) {
+            _context.n = 4;
+            break;
+          }
+          return _context.a(2, null);
+        case 4:
+          _context.p = 4;
+          return _context.a(2, JSON.parse(text));
+        case 5:
+          _context.p = 5;
+          _t = _context.v;
+          throw new Error('Invalid JSON response: ' + _t.message);
+        case 6:
+          return _context.a(2);
+      }
+    }, _callee, null, [[4, 5]]);
+  }));
+  return _fetchJson.apply(this, arguments);
+}
+function fetchTimeEntries() {
+  return fetchJson("".concat(API_BASE, "/api/timeentry"));
+}
+var fetchTimeEntriesFallback = exports.fetchTimeEntriesFallback = fetchTimeEntries;
+function createTimeEntry(payload) {
+  return fetchJson("".concat(API_BASE, "/api/timeentry"), {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(payload)
+  });
+}
+function updateTimeEntry(id, payload) {
+  return fetchJson("".concat(API_BASE, "/api/timeentry/").concat(id), {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(payload)
+  });
+}
+function deleteTimeEntry(id) {
+  return fetchJson("".concat(API_BASE, "/api/timeentry/").concat(id), {
+    method: 'DELETE'
+  });
+}
+function fetchEmployees() {
+  return fetchJson("".concat(API_BASE, "/api/employees"));
+}
+function fetchProjects() {
+  return fetchJson("".concat(API_BASE, "/api/projects"));
+}
+},{}],"stores/useStore.tsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.StoreProvider = void 0;
+exports.useStore = useStore;
+var _react = _interopRequireDefault(require("react"));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
+var StoreContext = _react.default.createContext(null);
+var StoreProvider = exports.StoreProvider = function StoreProvider(_ref) {
+  var store = _ref.store,
+    children = _ref.children;
+  return _react.default.createElement(StoreContext.Provider, {
+    value: store
+  }, children);
+};
+function useStore() {
+  var s = _react.default.useContext(StoreContext);
+  if (!s) throw new Error('StoreProvider is missing');
+  return s;
+}
+},{"react":"../node_modules/react/index.js"}],"../node_modules/react-fast-compare/index.js":[function(require,module,exports) {
 'use strict';
 
 var isArray = Array.isArray;
@@ -124179,434 +124297,189 @@ function addMethod(schemaType, name, fn) {
   if (typeof fn !== 'function') throw new TypeError('Method function must be provided');
   schemaType.prototype[name] = fn;
 }
-},{"./mixed":"../node_modules/yup/es/mixed.js","./boolean":"../node_modules/yup/es/boolean.js","./string":"../node_modules/yup/es/string.js","./number":"../node_modules/yup/es/number.js","./date":"../node_modules/yup/es/date.js","./object":"../node_modules/yup/es/object.js","./array":"../node_modules/yup/es/array.js","./Reference":"../node_modules/yup/es/Reference.js","./Lazy":"../node_modules/yup/es/Lazy.js","./ValidationError":"../node_modules/yup/es/ValidationError.js","./util/reach":"../node_modules/yup/es/util/reach.js","./util/isSchema":"../node_modules/yup/es/util/isSchema.js","./setLocale":"../node_modules/yup/es/setLocale.js","./schema":"../node_modules/yup/es/schema.js"}],"utils/api.ts":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.createTimeEntry = createTimeEntry;
-exports.deleteTimeEntry = deleteTimeEntry;
-exports.fetchEmployees = fetchEmployees;
-exports.fetchProjects = fetchProjects;
-exports.fetchTimeEntries = fetchTimeEntries;
-exports.fetchTimeEntriesFallback = void 0;
-exports.updateTimeEntry = updateTimeEntry;
-function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return _regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i.return) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), _regeneratorDefine2(u), _regeneratorDefine2(u, o, "Generator"), _regeneratorDefine2(u, n, function () { return this; }), _regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
-function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); } r ? i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n : (o("next", 0), o("throw", 1), o("return", 2)); }, _regeneratorDefine2(e, r, n, t); }
-function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
-function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
-var API_BASE = 'http://localhost:5000';
-function fetchJson(_x, _x2) {
-  return _fetchJson.apply(this, arguments);
-}
-function _fetchJson() {
-  _fetchJson = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee(url, init) {
-    var res, text;
-    return _regenerator().w(function (_context) {
-      while (1) switch (_context.n) {
-        case 0:
-          _context.n = 1;
-          return fetch(url, init);
-        case 1:
-          res = _context.v;
-          if (res.ok) {
-            _context.n = 3;
-            break;
-          }
-          _context.n = 2;
-          return res.text();
-        case 2:
-          text = _context.v;
-          throw new Error(text || res.statusText);
-        case 3:
-          return _context.a(2, res.json());
-      }
-    }, _callee);
-  }));
-  return _fetchJson.apply(this, arguments);
-}
-function fetchTimeEntries() {
-  return fetchJson("".concat(API_BASE, "/api/timeentry"));
-}
-var fetchTimeEntriesFallback = exports.fetchTimeEntriesFallback = fetchTimeEntries;
-function createTimeEntry(payload) {
-  return fetchJson("".concat(API_BASE, "/api/timeentry"), {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(payload)
-  });
-}
-function updateTimeEntry(id, payload) {
-  return fetchJson("".concat(API_BASE, "/api/timeentry/").concat(id), {
-    method: 'PUT',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(payload)
-  });
-}
-function deleteTimeEntry(id) {
-  return fetchJson("".concat(API_BASE, "/api/timeentry/").concat(id), {
-    method: 'DELETE'
-  });
-}
-function fetchEmployees() {
-  return fetchJson("".concat(API_BASE, "/api/employees"));
-}
-function fetchProjects() {
-  return fetchJson("".concat(API_BASE, "/api/projects"));
-}
-},{}],"stores/useStore.tsx":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.StoreProvider = void 0;
-exports.useStore = useStore;
-var _react = _interopRequireDefault(require("react"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
-var StoreContext = _react.default.createContext(null);
-var StoreProvider = exports.StoreProvider = function StoreProvider(_ref) {
-  var store = _ref.store,
-    children = _ref.children;
-  return _react.default.createElement(StoreContext.Provider, {
-    value: store
-  }, children);
-};
-function useStore() {
-  var s = _react.default.useContext(StoreContext);
-  if (!s) throw new Error('StoreProvider is missing');
-  return s;
-}
-},{"react":"../node_modules/react/index.js"}],"components/TimeEntryList.tsx":[function(require,module,exports) {
+},{"./mixed":"../node_modules/yup/es/mixed.js","./boolean":"../node_modules/yup/es/boolean.js","./string":"../node_modules/yup/es/string.js","./number":"../node_modules/yup/es/number.js","./date":"../node_modules/yup/es/date.js","./object":"../node_modules/yup/es/object.js","./array":"../node_modules/yup/es/array.js","./Reference":"../node_modules/yup/es/Reference.js","./Lazy":"../node_modules/yup/es/Lazy.js","./ValidationError":"../node_modules/yup/es/ValidationError.js","./util/reach":"../node_modules/yup/es/util/reach.js","./util/isSchema":"../node_modules/yup/es/util/isSchema.js","./setLocale":"../node_modules/yup/es/setLocale.js","./schema":"../node_modules/yup/es/schema.js"}],"components/TimeEntry.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _react = _interopRequireWildcard(require("react"));
-var _agGridReact = require("ag-grid-react");
+var _react = _interopRequireDefault(require("react"));
 var _core = require("@blueprintjs/core");
 var _formik = require("formik");
 var Yup = _interopRequireWildcard(require("yup"));
 var api = _interopRequireWildcard(require("../utils/api"));
-var _useStore = require("../stores/useStore");
 function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function (e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, default: e }; if (null === e || "object" != typeof e && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (const t in e) "default" !== t && {}.hasOwnProperty.call(e, t) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, t)) && (i.get || i.set) ? o(f, t, i) : f[t] = e[t]); return f; })(e, t); }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return _regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i.return) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), _regeneratorDefine2(u), _regeneratorDefine2(u, o, "Generator"), _regeneratorDefine2(u, n, function () { return this; }), _regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
 function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); } r ? i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n : (o("next", 0), o("throw", 1), o("return", 2)); }, _regeneratorDefine2(e, r, n, t); }
 function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
 function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
-function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
-function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
-function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
-function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
-var EntrySchema = Yup.object().shape({
-  employeeId: Yup.string().required('Сотрудник обязателен'),
-  projectId: Yup.string().required('Проект обязателен'),
-  date: Yup.string().required('Дата обязательна'),
-  hours: Yup.number().required('Часы обязательны').min(0.5, 'Минимум 0.5').max(24, 'Максимум 24')
-});
-var TimeEntryList = function TimeEntryList(_ref) {
-  var onClose = _ref.onClose;
-  var store = (0, _useStore.useStore)();
-  var _useState = (0, _react.useState)(false),
-    _useState2 = _slicedToArray(_useState, 2),
-    loading = _useState2[0],
-    setLoading = _useState2[1];
-  var _useState3 = (0, _react.useState)(null),
-    _useState4 = _slicedToArray(_useState3, 2),
-    error = _useState4[0],
-    setError = _useState4[1];
-  var _useState5 = (0, _react.useState)([]),
-    _useState6 = _slicedToArray(_useState5, 2),
-    employees = _useState6[0],
-    setEmployees = _useState6[1];
-  var _useState7 = (0, _react.useState)([]),
-    _useState8 = _slicedToArray(_useState7, 2),
-    projects = _useState8[0],
-    setProjects = _useState8[1];
-  (0, _react.useEffect)(function () {
-    var mounted = true;
-    _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee() {
-      var _a, data, emps, projs, _t, _t2, _t3;
-      return _regenerator().w(function (_context) {
-        while (1) switch (_context.p = _context.n) {
-          case 0:
-            setLoading(true);
-            setError(null);
-            _context.p = 1;
-            if (!store.fetchTimeEntries) {
-              _context.n = 3;
-              break;
-            }
-            _context.n = 2;
-            return store.fetchTimeEntries();
-          case 2:
-            _context.n = 5;
-            break;
-          case 3:
-            _context.n = 4;
-            return api.fetchTimeEntries();
-          case 4:
-            data = _context.v;
-            if (Array.isArray(data) && store.timeEntries) {
-              store.timeEntries.clear();
-              data.forEach(function (t) {
-                var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q;
-                return store.timeEntries.push({
-                  id: (_b = (_a = t.id) !== null && _a !== void 0 ? _a : t._id) !== null && _b !== void 0 ? _b : '',
-                  employeeFullName: (_c = t.employeeFullName) !== null && _c !== void 0 ? _c : null,
-                  projectCode: (_d = t.projectCode) !== null && _d !== void 0 ? _d : null,
-                  employeeId: (_e = t.employeeId) !== null && _e !== void 0 ? _e : '',
-                  projectId: (_f = t.projectId) !== null && _f !== void 0 ? _f : '',
-                  date: (_g = t.date) !== null && _g !== void 0 ? _g : '',
-                  hours: (_h = t.hours) !== null && _h !== void 0 ? _h : 0,
-                  expectedCost: (_j = t.expectedCost) !== null && _j !== void 0 ? _j : 0,
-                  comment: (_k = t.comment) !== null && _k !== void 0 ? _k : null,
-                  createdBy: (_l = t.createdBy) !== null && _l !== void 0 ? _l : null,
-                  createdAt: (_m = t.createdAt) !== null && _m !== void 0 ? _m : null,
-                  modifiedBy: (_o = t.modifiedBy) !== null && _o !== void 0 ? _o : null,
-                  modifiedAt: (_p = t.modifiedAt) !== null && _p !== void 0 ? _p : null,
-                  version: (_q = t.version) !== null && _q !== void 0 ? _q : 1
-                });
-              });
-            }
-          case 5:
-            _context.p = 5;
-            _context.n = 6;
-            return api.fetchEmployees();
-          case 6:
-            emps = _context.v;
-            if (mounted) setEmployees(Array.isArray(emps) ? emps : []);
-            _context.n = 8;
-            break;
-          case 7:
-            _context.p = 7;
-            _t = _context.v;
-            console.warn('Не удалось загрузить сотрудников:', _t);
-            setEmployees([]);
-          case 8:
-            _context.p = 8;
-            _context.n = 9;
-            return api.fetchProjects();
-          case 9:
-            projs = _context.v;
-            if (mounted) setProjects(Array.isArray(projs) ? projs : []);
-            _context.n = 11;
-            break;
-          case 10:
-            _context.p = 10;
-            _t2 = _context.v;
-            console.warn('Не удалось загрузить проекты:', _t2);
-            setProjects([]);
-          case 11:
-            _context.n = 13;
-            break;
-          case 12:
-            _context.p = 12;
-            _t3 = _context.v;
-            console.error('[TimesheetList] load error', _t3);
-            setError((_a = _t3 === null || _t3 === void 0 ? void 0 : _t3.message) !== null && _a !== void 0 ? _a : 'Ошибка при загрузке записей');
-          case 13:
-            _context.p = 13;
-            if (mounted) setLoading(false);
-            return _context.f(13);
-          case 14:
-            return _context.a(2);
-        }
-      }, _callee, null, [[8, 10], [5, 7], [1, 12, 13, 14]]);
-    }))();
-    return function () {
-      mounted = false;
-    };
-  }, [store]);
-  var rows = store.timeEntries ? store.timeEntries.slice() : [];
-  var columnDefs = (0, _react.useMemo)(function () {
-    return [{
-      headerName: 'Сотрудник',
-      field: 'employeeFullName',
-      sortable: true,
-      filter: true,
-      width: 100,
-      flex: 1
-    }, {
-      headerName: 'Проект',
-      field: 'projectCode',
-      sortable: true,
-      filter: true,
-      width: 100
-    }, {
-      headerName: 'Дата',
-      field: 'date',
-      sortable: true,
-      filter: true,
-      width: 100,
-      valueFormatter: function valueFormatter(p) {
-        return p.value ? new Date(p.value).toLocaleDateString() : '';
-      }
-    }, {
-      headerName: 'Часы',
-      field: 'hours',
-      sortable: true,
-      filter: true,
-      width: 100
-    }, {
-      headerName: 'Ожидаемая стоимость',
-      field: 'expectedCost',
-      sortable: true,
-      filter: true,
-      width: 140
-    }, {
-      headerName: 'Комментарий',
-      field: 'comment',
-      width: 140
-    }, {
-      headerName: 'Создал',
-      field: 'createdBy',
-      width: 100
-    }, {
-      headerName: 'Версия',
-      field: 'version',
-      width: 100
-    }];
-  }, []);
-  console.log(projects);
-  var onSubmit = /*#__PURE__*/function () {
-    var _ref4 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee2(values, _ref3) {
-      var setSubmitting, resetForm, _a, payload, _t4;
-      return _regenerator().w(function (_context2) {
-        while (1) switch (_context2.p = _context2.n) {
-          case 0:
-            setSubmitting = _ref3.setSubmitting, resetForm = _ref3.resetForm;
-            setError(null);
-            _context2.p = 1;
-            payload = {
-              employeeId: values.employeeId,
-              projectId: values.projectId,
-              date: values.date,
-              hours: Number(values.hours),
-              comment: values.comment,
-              createdBy: 'currentUser'
-            };
-            if (!store.addTimeEntry) {
-              _context2.n = 3;
-              break;
-            }
-            _context2.n = 2;
-            return store.addTimeEntry(payload);
-          case 2:
-            _context2.n = 5;
-            break;
-          case 3:
-            _context2.n = 4;
-            return api.createTimeEntry(payload);
-          case 4:
-            if (!store.fetchTimeEntries) {
-              _context2.n = 5;
-              break;
-            }
-            _context2.n = 5;
-            return store.fetchTimeEntries();
-          case 5:
-            resetForm();
-            _context2.n = 7;
-            break;
-          case 6:
-            _context2.p = 6;
-            _t4 = _context2.v;
-            console.error('Create time entry error', _t4);
-            setError((_a = _t4 === null || _t4 === void 0 ? void 0 : _t4.message) !== null && _a !== void 0 ? _a : 'Ошибка при создании записи');
-          case 7:
-            _context2.p = 7;
-            setSubmitting(false);
-            return _context2.f(7);
-          case 8:
-            return _context2.a(2);
-        }
-      }, _callee2, null, [[1, 6, 7, 8]]);
-    }));
-    return function onSubmit(_x, _x2) {
-      return _ref4.apply(this, arguments);
-    };
-  }();
-  return _react.default.createElement("div", {
-    style: {
-      display: 'flex',
-      flexDirection: 'column',
-      gap: 12
-    }
+var isMultipleOfHalf = function isMultipleOfHalf(n) {
+  return Math.abs(Math.round(n * 2) - n * 2) < 1e-8;
+};
+var TimeEntry = function TimeEntry(_ref) {
+  var isOpen = _ref.isOpen,
+    onClose = _ref.onClose,
+    onSaved = _ref.onSaved,
+    initial = _ref.initial,
+    employees = _ref.employees,
+    projects = _ref.projects,
+    store = _ref.store;
+  var _a, _b, _c, _d, _e, _f, _g;
+  var isEdit = !!initial;
+  var getProjectById = function getProjectById(id) {
+    return projects.find(function (p) {
+      var _a, _b;
+      return ((_b = (_a = p.id) !== null && _a !== void 0 ? _a : p._id) !== null && _b !== void 0 ? _b : p.id) === id;
+    });
+  };
+  var Schema = Yup.object().shape({
+    employeeId: Yup.string().required('Сотрудник обязателен'),
+    projectId: Yup.string().required('Проект обязателен'),
+    date: Yup.string().required('Дата обязательна'),
+    hours: Yup.number().required('Часы обязательны').min(0.5, 'Минимум 0.5').max(24, 'Максимум 24').test('half', 'Часы должны быть кратны 0.5', function (v) {
+      return isMultipleOfHalf(Number(v));
+    })
+  }).test('project-date', 'Дата должна быть в диапазоне проекта', function (values) {
+    var proj = getProjectById(values.projectId);
+    if (!proj) return true;
+    var date = new Date(values.date);
+    var start = proj.startDate ? new Date(proj.startDate) : null;
+    var end = proj.endDate ? new Date(proj.endDate) : null;
+    if (start && date < start) return this.createError({
+      path: 'date',
+      message: "\u0414\u0430\u0442\u0430 \u0440\u0430\u043D\u044C\u0448\u0435 \u043D\u0430\u0447\u0430\u043B\u0430 \u043F\u0440\u043E\u0435\u043A\u0442\u0430 (".concat(start.toLocaleDateString(), ")")
+    });
+    if (end && date > end) return this.createError({
+      path: 'date',
+      message: "\u0414\u0430\u0442\u0430 \u043F\u043E\u0437\u0436\u0435 \u043E\u043A\u043E\u043D\u0447\u0430\u043D\u0438\u044F \u043F\u0440\u043E\u0435\u043A\u0442\u0430 (".concat(end.toLocaleDateString(), ")")
+    });
+    return true;
+  });
+  var initialValues = {
+    id: (_a = initial === null || initial === void 0 ? void 0 : initial.id) !== null && _a !== void 0 ? _a : '',
+    employeeId: (_b = initial === null || initial === void 0 ? void 0 : initial.employeeId) !== null && _b !== void 0 ? _b : '',
+    projectId: (_c = initial === null || initial === void 0 ? void 0 : initial.projectId) !== null && _c !== void 0 ? _c : '',
+    date: initial ? (_e = (_d = initial.date) === null || _d === void 0 ? void 0 : _d.slice(0, 10)) !== null && _e !== void 0 ? _e : '' : new Date().toISOString().slice(0, 10),
+    hours: (_f = initial === null || initial === void 0 ? void 0 : initial.hours) !== null && _f !== void 0 ? _f : 8,
+    comment: (_g = initial === null || initial === void 0 ? void 0 : initial.comment) !== null && _g !== void 0 ? _g : ''
+  };
+  return _react.default.createElement(_core.Dialog, {
+    isOpen: isOpen,
+    onClose: onClose,
+    title: isEdit ? 'Редактировать запись' : 'Создать запись'
   }, _react.default.createElement("div", {
+    className: _core.Classes.DIALOG_BODY,
     style: {
-      display: 'flex',
-      justifyContent: 'flex-end',
-      gap: 8
+      padding: 12
     }
-  }, _react.default.createElement(_core.Button, {
-    minimal: true,
-    onClick: function () {
-      var _onClick = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee3() {
-        return _regenerator().w(function (_context3) {
-          while (1) switch (_context3.p = _context3.n) {
+  }, _react.default.createElement(_formik.Formik, {
+    initialValues: initialValues,
+    validationSchema: Schema,
+    enableReinitialize: true,
+    onSubmit: function () {
+      var _onSubmit = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee(values, _ref2) {
+        var setSubmitting, _a, payload, _t;
+        return _regenerator().w(function (_context) {
+          while (1) switch (_context.p = _context.n) {
             case 0:
-              setLoading(true);
-              _context3.p = 1;
-              _context3.n = 2;
-              return store.fetchTimeEntries();
+              setSubmitting = _ref2.setSubmitting;
+              _context.p = 1;
+              payload = {
+                employeeId: values.employeeId,
+                projectId: values.projectId,
+                date: values.date,
+                hours: Number(values.hours),
+                comment: values.comment
+              };
+              if (!isEdit) {
+                _context.n = 6;
+                break;
+              }
+              if (!store.updateTimeEntry) {
+                _context.n = 3;
+                break;
+              }
+              _context.n = 2;
+              return store.updateTimeEntry(values.id, Object.assign(Object.assign({}, payload), {
+                version: initial.version,
+                modifiedBy: 'currentUserM',
+                modifiedAt: new Date().toISOString().slice(0, 10)
+              }));
             case 2:
-              _context3.p = 2;
-              setLoading(false);
-              return _context3.f(2);
+              _context.n = 5;
+              break;
             case 3:
-              return _context3.a(2);
+              _context.n = 4;
+              return api.updateTimeEntry(values.id, Object.assign(Object.assign({}, payload), {
+                modifiedBy: 'currentUserM',
+                version: initial.version,
+                modifiedAt: new Date().toISOString().slice(0, 10)
+              }));
+            case 4:
+              if (!store.fetchTimeEntries) {
+                _context.n = 5;
+                break;
+              }
+              _context.n = 5;
+              return store.fetchTimeEntries();
+            case 5:
+              _context.n = 10;
+              break;
+            case 6:
+              if (!store.addTimeEntry) {
+                _context.n = 8;
+                break;
+              }
+              _context.n = 7;
+              return store.addTimeEntry(Object.assign(Object.assign({}, payload), {
+                createdBy: 'currentUser',
+                createdAt: new Date().toISOString().slice(0, 10)
+              }));
+            case 7:
+              _context.n = 10;
+              break;
+            case 8:
+              _context.n = 9;
+              return api.createTimeEntry(Object.assign(Object.assign({}, payload), {
+                createdBy: 'currentUser',
+                createdAt: new Date().toISOString().slice(0, 10)
+              }));
+            case 9:
+              if (!store.fetchTimeEntries) {
+                _context.n = 10;
+                break;
+              }
+              _context.n = 10;
+              return store.fetchTimeEntries();
+            case 10:
+              _context.n = 11;
+              return onSaved();
+            case 11:
+              onClose();
+              _context.n = 13;
+              break;
+            case 12:
+              _context.p = 12;
+              _t = _context.v;
+              alert('Ошибка: ' + ((_a = _t === null || _t === void 0 ? void 0 : _t.message) !== null && _a !== void 0 ? _a : 'Не удалось сохранить'));
+            case 13:
+              _context.p = 13;
+              setSubmitting(false);
+              return _context.f(13);
+            case 14:
+              return _context.a(2);
           }
-        }, _callee3, null, [[1,, 2, 3]]);
+        }, _callee, null, [[1, 12, 13, 14]]);
       }));
-      function onClick() {
-        return _onClick.apply(this, arguments);
+      function onSubmit(_x, _x2) {
+        return _onSubmit.apply(this, arguments);
       }
-      return onClick;
+      return onSubmit;
     }()
-  }, "\u041E\u0431\u043D\u043E\u0432\u0438\u0442\u044C")), loading && _react.default.createElement("div", null, "\u0417\u0430\u0433\u0440\u0443\u0437\u043A\u0430..."), error && _react.default.createElement("div", {
-    style: {
-      color: 'red'
-    }
-  }, error), !loading && !error && _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
-    className: "ag-theme-alpine",
-    style: {
-      height: 360,
-      width: '100%'
-    }
-  }, _react.default.createElement(_agGridReact.AgGridReact, {
-    rowData: rows,
-    columnDefs: columnDefs,
-    pagination: true,
-    paginationPageSize: 25,
-    defaultColDef: {
-      resizable: true
-    }
-  })), _react.default.createElement("div", {
-    style: {
-      marginTop: 12
-    }
-  }, _react.default.createElement("h4", null, "\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C \u0437\u0430\u043F\u0438\u0441\u044C \u0442\u0430\u0431\u0435\u043B\u044F"), _react.default.createElement(_formik.Formik, {
-    initialValues: {
-      employeeId: '',
-      projectId: '',
-      date: new Date().toISOString().slice(0, 10),
-      hours: 8,
-      comment: ''
-    },
-    validationSchema: EntrySchema,
-    onSubmit: onSubmit
-  }, function (_ref5) {
-    var isSubmitting = _ref5.isSubmitting;
+  }, function (_ref3) {
+    var isSubmitting = _ref3.isSubmitting;
     return _react.default.createElement(_formik.Form, null, _react.default.createElement("div", {
       style: {
         display: 'grid',
@@ -124617,18 +124490,17 @@ var TimeEntryList = function TimeEntryList(_ref) {
       label: "\u0421\u043E\u0442\u0440\u0443\u0434\u043D\u0438\u043A",
       labelFor: "employeeId"
     }, _react.default.createElement(_formik.Field, {
-      name: "employeeId",
       as: "select",
-      id: "employeeId",
+      name: "employeeId",
       className: "bp3-input"
     }, _react.default.createElement("option", {
       value: ""
-    }, "-- \u0432\u044B\u0431\u0435\u0440\u0438\u0442\u0435 \u0441\u043E\u0442\u0440\u0443\u0434\u043D\u0438\u043A\u0430 --"), employees.map(function (e) {
-      var _a, _b, _c, _d, _e;
+    }, "-- \u0432\u044B\u0431\u0435\u0440\u0438\u0442\u0435 --"), employees.map(function (e) {
+      var _a, _b, _c, _d;
       return _react.default.createElement("option", {
         key: (_b = (_a = e.id) !== null && _a !== void 0 ? _a : e._id) !== null && _b !== void 0 ? _b : e.id,
         value: (_d = (_c = e.id) !== null && _c !== void 0 ? _c : e._id) !== null && _d !== void 0 ? _d : e.id
-      }, (_e = e.fullName) !== null && _e !== void 0 ? _e : '');
+      }, e.fullName);
     })), _react.default.createElement("div", {
       style: {
         color: 'red'
@@ -124639,18 +124511,17 @@ var TimeEntryList = function TimeEntryList(_ref) {
       label: "\u041F\u0440\u043E\u0435\u043A\u0442",
       labelFor: "projectId"
     }, _react.default.createElement(_formik.Field, {
-      name: "projectId",
       as: "select",
-      id: "projectId",
+      name: "projectId",
       className: "bp3-input"
     }, _react.default.createElement("option", {
       value: ""
-    }, "-- \u0432\u044B\u0431\u0435\u0440\u0438\u0442\u0435 \u043F\u0440\u043E\u0435\u043A\u0442 --"), projects.map(function (p) {
+    }, "-- \u0432\u044B\u0431\u0435\u0440\u0438\u0442\u0435 --"), projects.map(function (p) {
       var _a, _b, _c, _d, _e;
       return _react.default.createElement("option", {
         key: (_b = (_a = p.id) !== null && _a !== void 0 ? _a : p._id) !== null && _b !== void 0 ? _b : p.id,
         value: (_d = (_c = p.id) !== null && _c !== void 0 ? _c : p._id) !== null && _d !== void 0 ? _d : p.id
-      }, (_e = p.code) !== null && _e !== void 0 ? _e : p.id);
+      }, (_e = p.name) !== null && _e !== void 0 ? _e : p.code);
     })), _react.default.createElement("div", {
       style: {
         color: 'red'
@@ -124663,7 +124534,6 @@ var TimeEntryList = function TimeEntryList(_ref) {
     }, _react.default.createElement(_formik.Field, {
       name: "date",
       as: _core.InputGroup,
-      id: "date",
       type: "date"
     }), _react.default.createElement("div", {
       style: {
@@ -124677,7 +124547,6 @@ var TimeEntryList = function TimeEntryList(_ref) {
     }, _react.default.createElement(_formik.Field, {
       name: "hours",
       as: _core.InputGroup,
-      id: "hours",
       type: "number",
       step: "0.5"
     }), _react.default.createElement("div", {
@@ -124695,8 +124564,7 @@ var TimeEntryList = function TimeEntryList(_ref) {
       labelFor: "comment"
     }, _react.default.createElement(_formik.Field, {
       name: "comment",
-      as: _core.InputGroup,
-      id: "comment"
+      as: _core.InputGroup
     }))), _react.default.createElement("div", {
       style: {
         gridColumn: '1 / -1',
@@ -124708,94 +124576,13 @@ var TimeEntryList = function TimeEntryList(_ref) {
       type: "submit",
       intent: _core.Intent.PRIMARY,
       loading: isSubmitting
-    }, "\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C"), _react.default.createElement(_core.Button, {
-      type: "reset"
-    }, "\u0421\u0431\u0440\u043E\u0441"))));
-  }))));
+    }, isEdit ? 'Подтвердить' : 'Добавить'), _react.default.createElement(_core.Button, {
+      onClick: onClose
+    }, "\u041E\u0442\u043C\u0435\u043D\u0430"))));
+  })));
 };
-var _default = exports.default = TimeEntryList;
-},{"react":"../node_modules/react/index.js","ag-grid-react":"../node_modules/ag-grid-react/main.js","@blueprintjs/core":"../node_modules/@blueprintjs/core/lib/esm/index.js","formik":"../node_modules/formik/dist/formik.esm.js","yup":"../node_modules/yup/es/index.js","../utils/api":"utils/api.ts","../stores/useStore":"stores/useStore.tsx"}],"components/Home.tsx":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _react = _interopRequireWildcard(require("react"));
-var _core = require("@blueprintjs/core");
-var _TimeEntryList = _interopRequireDefault(require("./TimeEntryList"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
-function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function (e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, default: e }; if (null === e || "object" != typeof e && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (const t in e) "default" !== t && {}.hasOwnProperty.call(e, t) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, t)) && (i.get || i.set) ? o(f, t, i) : f[t] = e[t]); return f; })(e, t); }
-function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
-function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
-function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
-function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
-var Home = function Home() {
-  var _useState = (0, _react.useState)(false),
-    _useState2 = _slicedToArray(_useState, 2),
-    open = _useState2[0],
-    setOpen = _useState2[1];
-  return _react.default.createElement("div", {
-    style: {
-      minHeight: '70vh',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center'
-    }
-  }, _react.default.createElement("div", {
-    style: {
-      width: 600,
-      textAlign: 'center'
-    }
-  }, _react.default.createElement(_core.H3, {
-    style: {
-      marginBottom: 16
-    }
-  }, "\u0423\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0438\u0435"), _react.default.createElement("div", {
-    style: {
-      display: 'flex',
-      flexDirection: 'column',
-      gap: 12,
-      alignItems: 'center'
-    }
-  }, _react.default.createElement(_core.Button, {
-    intent: "primary",
-    large: true,
-    onClick: function onClick() {}
-  }, "\u0424\u0443\u043D\u043A\u0446\u0438\u044F 1 (\u043F\u043E\u043A\u0430 \u043F\u0443\u0441\u0442\u043E)"), _react.default.createElement(_core.Button, {
-    intent: "success",
-    large: true,
-    onClick: function onClick() {
-      return setOpen(true);
-    }
-  }, "\u041F\u0440\u043E\u0441\u043C\u043E\u0442\u0440\u0435\u0442\u044C \u0437\u0430\u043F\u0438\u0441\u0438 \u0442\u0430\u0431\u0435\u043B\u044F"))), _react.default.createElement(_core.Dialog, {
-    icon: "list",
-    isOpen: open,
-    title: "\u0417\u0430\u043F\u0438\u0441\u0438 \u0442\u0430\u0431\u0435\u043B\u044F",
-    onClose: function onClose() {
-      return setOpen(false);
-    },
-    canOutsideClickClose: true,
-    canEscapeKeyClose: true,
-    style: {
-      width: '80%',
-      maxWidth: 1000
-    }
-  }, _react.default.createElement("div", {
-    className: _core.Classes.DIALOG_BODY,
-    style: {
-      padding: 12
-    }
-  }, _react.default.createElement(_TimeEntryList.default, {
-    onClose: function onClose() {
-      return setOpen(false);
-    }
-  }))));
-};
-var _default = exports.default = Home;
-},{"react":"../node_modules/react/index.js","@blueprintjs/core":"../node_modules/@blueprintjs/core/lib/esm/index.js","./TimeEntryList":"components/TimeEntryList.tsx"}],"../node_modules/mobx/dist/mobx.esm.js":[function(require,module,exports) {
+var _default = exports.default = TimeEntry;
+},{"react":"../node_modules/react/index.js","@blueprintjs/core":"../node_modules/@blueprintjs/core/lib/esm/index.js","formik":"../node_modules/formik/dist/formik.esm.js","yup":"../node_modules/yup/es/index.js","../utils/api":"utils/api.ts"}],"../node_modules/mobx/dist/mobx.esm.js":[function(require,module,exports) {
 var global = arguments[3];
 "use strict";
 
@@ -140221,7 +140008,397 @@ var types = exports.types = exports.t = {
   null: nullType,
   snapshotProcessor: snapshotProcessor
 };
-},{"mobx":"../node_modules/mobx/dist/mobx.esm.js","process":"../node_modules/process/browser.js"}],"stores/timeEntryStore.ts":[function(require,module,exports) {
+},{"mobx":"../node_modules/mobx/dist/mobx.esm.js","process":"../node_modules/process/browser.js"}],"components/TimeEntryList.tsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _react = _interopRequireWildcard(require("react"));
+var _agGridReact = require("ag-grid-react");
+var _core = require("@blueprintjs/core");
+var api = _interopRequireWildcard(require("../utils/api"));
+var _useStore = require("../stores/useStore");
+var _TimeEntry = _interopRequireDefault(require("./TimeEntry"));
+var _mobxStateTree = require("mobx-state-tree");
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
+function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function (e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, default: e }; if (null === e || "object" != typeof e && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (const t in e) "default" !== t && {}.hasOwnProperty.call(e, t) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, t)) && (i.get || i.set) ? o(f, t, i) : f[t] = e[t]); return f; })(e, t); }
+function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return _regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i.return) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), _regeneratorDefine2(u), _regeneratorDefine2(u, o, "Generator"), _regeneratorDefine2(u, n, function () { return this; }), _regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
+function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); } r ? i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n : (o("next", 0), o("throw", 1), o("return", 2)); }, _regeneratorDefine2(e, r, n, t); }
+function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
+function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+var TimeEntryList = function TimeEntryList(_ref) {
+  var onClose = _ref.onClose;
+  var _a;
+  var store = (0, _useStore.useStore)();
+  var _useState = (0, _react.useState)(false),
+    _useState2 = _slicedToArray(_useState, 2),
+    loading = _useState2[0],
+    setLoading = _useState2[1];
+  var _useState3 = (0, _react.useState)(null),
+    _useState4 = _slicedToArray(_useState3, 2),
+    error = _useState4[0],
+    setError = _useState4[1];
+  var _useState5 = (0, _react.useState)([]),
+    _useState6 = _slicedToArray(_useState5, 2),
+    employees = _useState6[0],
+    setEmployees = _useState6[1];
+  var _useState7 = (0, _react.useState)([]),
+    _useState8 = _slicedToArray(_useState7, 2),
+    projects = _useState8[0],
+    setProjects = _useState8[1];
+  var _useState9 = (0, _react.useState)(null),
+    _useState0 = _slicedToArray(_useState9, 2),
+    selected = _useState0[0],
+    setSelected = _useState0[1];
+  var _useState1 = (0, _react.useState)(false),
+    _useState10 = _slicedToArray(_useState1, 2),
+    modalOpen = _useState10[0],
+    setModalOpen = _useState10[1];
+  var loadAll = /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee() {
+      var _a, _b, _c, _d, _e, emps, projs, _t;
+      return _regenerator().w(function (_context) {
+        while (1) switch (_context.p = _context.n) {
+          case 0:
+            setLoading(true);
+            setError(null);
+            _context.p = 1;
+            if (!store.fetchTimeEntries) {
+              _context.n = 2;
+              break;
+            }
+            _context.n = 2;
+            return store.fetchTimeEntries();
+          case 2:
+            _context.n = 3;
+            return api.fetchEmployees();
+          case 3:
+            emps = _context.v;
+            setEmployees(Array.isArray((_a = emps.items) !== null && _a !== void 0 ? _a : emps) ? (_b = emps.items) !== null && _b !== void 0 ? _b : emps : []);
+            _context.n = 4;
+            return api.fetchProjects();
+          case 4:
+            projs = _context.v;
+            setProjects(Array.isArray((_c = projs.items) !== null && _c !== void 0 ? _c : projs) ? (_d = projs.items) !== null && _d !== void 0 ? _d : projs : []);
+            _context.n = 6;
+            break;
+          case 5:
+            _context.p = 5;
+            _t = _context.v;
+            console.error(_t);
+            setError((_e = _t === null || _t === void 0 ? void 0 : _t.message) !== null && _e !== void 0 ? _e : 'Ошибка загрузки');
+          case 6:
+            _context.p = 6;
+            setLoading(false);
+            return _context.f(6);
+          case 7:
+            return _context.a(2);
+        }
+      }, _callee, null, [[1, 5, 6, 7]]);
+    }));
+    return function loadAll() {
+      return _ref2.apply(this, arguments);
+    };
+  }();
+  (0, _react.useEffect)(function () {
+    loadAll();
+  }, []);
+  var rows = ((_a = store.timeEntries) !== null && _a !== void 0 ? _a : []).map(function (node) {
+    try {
+      return (0, _mobxStateTree.getSnapshot)(node);
+    } catch (_a) {
+      return node;
+    }
+  });
+  // И добавьте/замените функцию обработчика:
+  var onCellClicked = function onCellClicked(event) {
+    // Если клик по колонке удаления — игнорируем открытие модального окна
+    var field = event.colDef && (event.colDef.field || event.colDef.colId);
+    if (field === 'act' || field === 'actions') {
+      return;
+    }
+    var plain = event.data;
+    try {
+      var _require = require('mobx-state-tree'),
+        _getSnapshot = _require.getSnapshot;
+      plain = _getSnapshot(event.data);
+    } catch (/* noop */_a) {/* noop */}
+    setSelected(plain);
+    setModalOpen(true);
+  };
+  var columnDefs = (0, _react.useMemo)(function () {
+    return [{
+      headerName: 'ID',
+      field: 'id',
+      hide: true
+    }, {
+      headerName: 'Сотрудник',
+      field: 'employeeFullName',
+      flex: 1
+    }, {
+      headerName: 'Проект',
+      field: 'projectCode',
+      flex: 1
+    }, {
+      headerName: 'Дата',
+      field: 'date',
+      width: 140,
+      valueFormatter: function valueFormatter(p) {
+        return p.value ? new Date(p.value).toLocaleDateString() : '';
+      }
+    }, {
+      headerName: 'Часы',
+      field: 'hours',
+      width: 100
+    }, {
+      headerName: 'Ожидаемая стоимость',
+      field: 'expectedCost',
+      width: 100
+    }, {
+      headerName: 'Комментарий',
+      field: 'comment',
+      flex: 2
+    }, {
+      headerName: 'Версия',
+      field: 'version',
+      width: 90
+    }, {
+      headerName: '',
+      field: 'act',
+      width: 100,
+      cellRendererFramework: function cellRendererFramework(params) {
+        var handleClick = /*#__PURE__*/function () {
+          var _ref3 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee2(ev) {
+            var _a, _t2;
+            return _regenerator().w(function (_context2) {
+              while (1) switch (_context2.p = _context2.n) {
+                case 0:
+                  ev.stopPropagation();
+                  if (ev.nativeEvent && ev.nativeEvent.stopImmediatePropagation) {
+                    ev.nativeEvent.stopImmediatePropagation();
+                  }
+                  _context2.p = 1;
+                  setLoading(true);
+                  if (!store.deleteTimeEntry) {
+                    _context2.n = 3;
+                    break;
+                  }
+                  _context2.n = 2;
+                  return store.deleteTimeEntry(params.data.id);
+                case 2:
+                  _context2.n = 5;
+                  break;
+                case 3:
+                  _context2.n = 4;
+                  return api.deleteTimeEntry(params.data.id);
+                case 4:
+                  if (!store.fetchTimeEntries) {
+                    _context2.n = 5;
+                    break;
+                  }
+                  _context2.n = 5;
+                  return store.fetchTimeEntries();
+                case 5:
+                  _context2.n = 7;
+                  break;
+                case 6:
+                  _context2.p = 6;
+                  _t2 = _context2.v;
+                  console.error('Delete failed', _t2);
+                  alert('Ошибка удаления: ' + ((_a = _t2 === null || _t2 === void 0 ? void 0 : _t2.message) !== null && _a !== void 0 ? _a : ''));
+                case 7:
+                  _context2.p = 7;
+                  setLoading(false);
+                  return _context2.f(7);
+                case 8:
+                  return _context2.a(2);
+              }
+            }, _callee2, null, [[1, 6, 7, 8]]);
+          }));
+          return function handleClick(_x) {
+            return _ref3.apply(this, arguments);
+          };
+        }();
+        return _react.default.createElement("button", {
+          className: "bp3-button bp3-minimal bp3-intent-danger",
+          onClick: handleClick,
+          onMouseDown: function onMouseDown(e) {
+            return e.stopPropagation();
+          },
+          onDoubleClick: function onDoubleClick(e) {
+            return e.stopPropagation();
+          }
+        }, "\u0423\u0434\u0430\u043B\u0438\u0442\u044C");
+      }
+    }];
+  }, [store]);
+  var onSaved = /*#__PURE__*/function () {
+    var _ref4 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee3() {
+      return _regenerator().w(function (_context3) {
+        while (1) switch (_context3.n) {
+          case 0:
+            _context3.n = 1;
+            return loadAll();
+          case 1:
+            return _context3.a(2);
+        }
+      }, _callee3);
+    }));
+    return function onSaved() {
+      return _ref4.apply(this, arguments);
+    };
+  }();
+  return _react.default.createElement("div", {
+    style: {
+      display: 'flex',
+      flexDirection: 'column',
+      gap: 12
+    }
+  }, _react.default.createElement("div", {
+    style: {
+      display: 'flex',
+      justifyContent: 'flex-end',
+      gap: 8
+    }
+  }, _react.default.createElement(_core.Button, {
+    minimal: true,
+    onClick: function onClick() {
+      return loadAll();
+    }
+  }, "\u041E\u0431\u043D\u043E\u0432\u0438\u0442\u044C"), _react.default.createElement(_core.Button, {
+    intent: "primary",
+    onClick: function onClick() {
+      setSelected(null);
+      setModalOpen(true);
+    }
+  }, "\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C \u0437\u0430\u043F\u0438\u0441\u044C"), _react.default.createElement(_core.Button, {
+    onClick: function onClick() {
+      return onClose === null || onClose === void 0 ? void 0 : onClose();
+    }
+  }, "\u0417\u0430\u043A\u0440\u044B\u0442\u044C")), loading && _react.default.createElement("div", null, "\u0417\u0430\u0433\u0440\u0443\u0437\u043A\u0430..."), error && _react.default.createElement("div", {
+    style: {
+      color: 'red'
+    }
+  }, error), _react.default.createElement("div", {
+    className: "ag-theme-alpine",
+    style: {
+      height: 480,
+      width: '100%'
+    }
+  }, _react.default.createElement(_agGridReact.AgGridReact, {
+    rowData: rows,
+    columnDefs: columnDefs,
+    defaultColDef: {
+      resizable: true,
+      sortable: true,
+      filter: true
+    },
+    pagination: true,
+    paginationPageSize: 25,
+    onCellClicked: onCellClicked
+  })), _react.default.createElement(_TimeEntry.default, {
+    isOpen: modalOpen,
+    onClose: function onClose() {
+      return setModalOpen(false);
+    },
+    onSaved: onSaved,
+    initial: selected,
+    employees: employees,
+    projects: projects,
+    store: store
+  }));
+};
+var _default = exports.default = TimeEntryList;
+},{"react":"../node_modules/react/index.js","ag-grid-react":"../node_modules/ag-grid-react/main.js","@blueprintjs/core":"../node_modules/@blueprintjs/core/lib/esm/index.js","../utils/api":"utils/api.ts","../stores/useStore":"stores/useStore.tsx","./TimeEntry":"components/TimeEntry.tsx","mobx-state-tree":"../node_modules/mobx-state-tree/dist/mobx-state-tree.module.js"}],"components/Home.tsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _react = _interopRequireWildcard(require("react"));
+var _core = require("@blueprintjs/core");
+var _TimeEntryList = _interopRequireDefault(require("./TimeEntryList"));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
+function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function (e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, default: e }; if (null === e || "object" != typeof e && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (const t in e) "default" !== t && {}.hasOwnProperty.call(e, t) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, t)) && (i.get || i.set) ? o(f, t, i) : f[t] = e[t]); return f; })(e, t); }
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+var Home = function Home() {
+  var _useState = (0, _react.useState)(false),
+    _useState2 = _slicedToArray(_useState, 2),
+    open = _useState2[0],
+    setOpen = _useState2[1];
+  return _react.default.createElement("div", {
+    style: {
+      minHeight: '70vh',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center'
+    }
+  }, _react.default.createElement("div", {
+    style: {
+      width: 600,
+      textAlign: 'center'
+    }
+  }, _react.default.createElement(_core.H3, {
+    style: {
+      marginBottom: 16
+    }
+  }, "\u0423\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0438\u0435"), _react.default.createElement("div", {
+    style: {
+      display: 'flex',
+      flexDirection: 'column',
+      gap: 12,
+      alignItems: 'center'
+    }
+  }, _react.default.createElement(_core.Button, {
+    intent: "primary",
+    large: true,
+    onClick: function onClick() {}
+  }, "\u0424\u0443\u043D\u043A\u0446\u0438\u044F 1 (\u043F\u043E\u043A\u0430 \u043F\u0443\u0441\u0442\u043E)"), _react.default.createElement(_core.Button, {
+    intent: "success",
+    large: true,
+    onClick: function onClick() {
+      return setOpen(true);
+    }
+  }, "\u041F\u0440\u043E\u0441\u043C\u043E\u0442\u0440\u0435\u0442\u044C \u0437\u0430\u043F\u0438\u0441\u0438 \u0442\u0430\u0431\u0435\u043B\u044F"))), _react.default.createElement(_core.Dialog, {
+    icon: "list",
+    isOpen: open,
+    title: "\u0417\u0430\u043F\u0438\u0441\u0438 \u0442\u0430\u0431\u0435\u043B\u044F",
+    onClose: function onClose() {
+      return setOpen(false);
+    },
+    canOutsideClickClose: true,
+    canEscapeKeyClose: true,
+    style: {
+      width: '80%',
+      maxWidth: 1000
+    }
+  }, _react.default.createElement("div", {
+    className: _core.Classes.DIALOG_BODY,
+    style: {
+      padding: 12
+    }
+  }, _react.default.createElement(_TimeEntryList.default, {
+    onClose: function onClose() {
+      return setOpen(false);
+    }
+  }))));
+};
+var _default = exports.default = Home;
+},{"react":"../node_modules/react/index.js","@blueprintjs/core":"../node_modules/@blueprintjs/core/lib/esm/index.js","./TimeEntryList":"components/TimeEntryList.tsx"}],"stores/timeEntryStore.ts":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -140339,13 +140516,13 @@ var RootStore = _mobxStateTree.types.model('RootStore', {
       }
     }, _callee, null, [[1, 3, 4, 5]]);
   }));
-  var addTimesheet = (0, _mobxStateTree.flow)(/*#__PURE__*/_regenerator().m(function _callee2(payload) {
+  var addTimeEntry = (0, _mobxStateTree.flow)(/*#__PURE__*/_regenerator().m(function _callee2(payload) {
     var _a, res, _t2;
     return _regenerator().w(function (_context2) {
       while (1) switch (_context2.p = _context2.n) {
         case 0:
           _context2.p = 0;
-          console.log('[store] addTimesheet payload', payload);
+          console.log('[store] addTimeEntry payload', payload);
           _context2.n = 1;
           return api.createTimeEntry(payload);
         case 1:
@@ -140357,7 +140534,7 @@ var RootStore = _mobxStateTree.types.model('RootStore', {
         case 3:
           _context2.p = 3;
           _t2 = _context2.v;
-          console.error('[store] addTimesheet error', _t2);
+          console.error('[store] addTimeEntry error', _t2);
           self.lastError = (_a = _t2 === null || _t2 === void 0 ? void 0 : _t2.message) !== null && _a !== void 0 ? _a : 'Ошибка при создании записи';
           throw _t2;
         case 4:
@@ -140365,13 +140542,13 @@ var RootStore = _mobxStateTree.types.model('RootStore', {
       }
     }, _callee2, null, [[0, 3]]);
   }));
-  var updateTimesheet = (0, _mobxStateTree.flow)(/*#__PURE__*/_regenerator().m(function _callee3(id, payload) {
+  var updateTimeEntry = (0, _mobxStateTree.flow)(/*#__PURE__*/_regenerator().m(function _callee3(id, payload) {
     var _a, res, _t3;
     return _regenerator().w(function (_context3) {
       while (1) switch (_context3.p = _context3.n) {
         case 0:
           _context3.p = 0;
-          console.log('[store] updateTimesheet', id, payload);
+          console.log('[store] updateTimeEntry', id, payload);
           _context3.n = 1;
           return api.updateTimeEntry(id, payload);
         case 1:
@@ -140383,7 +140560,7 @@ var RootStore = _mobxStateTree.types.model('RootStore', {
         case 3:
           _context3.p = 3;
           _t3 = _context3.v;
-          console.error('[store] updateTimesheet error', _t3);
+          console.error('[store] updateTimeEntry error', _t3);
           self.lastError = (_a = _t3 === null || _t3 === void 0 ? void 0 : _t3.message) !== null && _a !== void 0 ? _a : 'Ошибка при обновлении записи';
           throw _t3;
         case 4:
@@ -140391,26 +140568,27 @@ var RootStore = _mobxStateTree.types.model('RootStore', {
       }
     }, _callee3, null, [[0, 3]]);
   }));
-  var deleteTimesheet = (0, _mobxStateTree.flow)(/*#__PURE__*/_regenerator().m(function _callee4(id) {
-    var _a, res, _t4;
+  var deleteTimeEntry = (0, _mobxStateTree.flow)(/*#__PURE__*/_regenerator().m(function _callee4(id) {
+    var _t4;
     return _regenerator().w(function (_context4) {
       while (1) switch (_context4.p = _context4.n) {
         case 0:
           _context4.p = 0;
-          console.log('[store] deleteTimesheet', id);
           _context4.n = 1;
           return api.deleteTimeEntry(id);
         case 1:
-          res = _context4.v;
+          if (!fetchTimeEntries) {
+            _context4.n = 2;
+            break;
+          }
           _context4.n = 2;
           return fetchTimeEntries();
         case 2:
-          return _context4.a(2, res);
+          return _context4.a(2, true);
         case 3:
           _context4.p = 3;
           _t4 = _context4.v;
-          console.error('[store] deleteTimesheet error', _t4);
-          self.lastError = (_a = _t4 === null || _t4 === void 0 ? void 0 : _t4.message) !== null && _a !== void 0 ? _a : 'Ошибка при удалении записи';
+          console.error('[store] deleteTimeEntry error', _t4);
           throw _t4;
         case 4:
           return _context4.a(2);
@@ -140419,9 +140597,9 @@ var RootStore = _mobxStateTree.types.model('RootStore', {
   }));
   return {
     fetchTimeEntries: fetchTimeEntries,
-    addTimesheet: addTimesheet,
-    updateTimesheet: updateTimesheet,
-    deleteTimesheet: deleteTimesheet
+    addTimeEntry: addTimeEntry,
+    updateTimeEntry: updateTimeEntry,
+    deleteTimeEntry: deleteTimeEntry
   };
 });
 function createRootStore() {
@@ -140572,7 +140750,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62690" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52875" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
