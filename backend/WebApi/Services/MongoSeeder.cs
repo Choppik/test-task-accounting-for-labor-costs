@@ -22,6 +22,12 @@ namespace WebApi.Services
             var periods = _db.GetCollection<ClosedPeriod>("ClosedPeriods");
             var timeEntries = _db.GetCollection<TimeEntry>("TimeEntries");
 
+            // --- WARNING: этот код удалит/очистит коллекции при каждом старте ---
+            //await projects.DeleteManyAsync(Builders<Project>.Filter.Empty);
+            //await employees.DeleteManyAsync(Builders<Employee>.Filter.Empty);
+            //await periods.DeleteManyAsync(Builders<ClosedPeriod>.Filter.Empty);
+            //await timeEntries.DeleteManyAsync(Builders<TimeEntry>.Filter.Empty);
+
             // Создание индексов
             await projects.Indexes.CreateOneAsync(new CreateIndexModel<Project>(
                 Builders<Project>.IndexKeys.Ascending(p => p.Code),
@@ -47,7 +53,7 @@ namespace WebApi.Services
             {
                 var hireRek1 = new DateTime(2026, 1, 1, 0, 0, 0, DateTimeKind.Utc);
                 var hireRek2 = new DateTime(2026, 3, 31, 0, 0, 0, DateTimeKind.Utc);
-                var hireIn1 = new DateTime(2026, 1, 3, 0, 0, 0, DateTimeKind.Utc);
+                var hireIn1 = new DateTime(2026, 3, 1, 0, 0, 0, DateTimeKind.Utc);
 
                 var seedProjects = new List<Project>
                 {
@@ -61,8 +67,8 @@ namespace WebApi.Services
             if (empCount == 0)
             {
                 var hireIv1 = new DateTime(2026, 1, 1, 0, 0, 0, DateTimeKind.Utc);
-                var hireIv2 = new DateTime(2026, 1, 3, 0, 0, 0, DateTimeKind.Utc);
-                var hirePet1 = new DateTime(2026, 1, 2, 0, 0, 0, DateTimeKind.Utc);
+                var hireIv2 = new DateTime(2026, 3, 1, 0, 0, 0, DateTimeKind.Utc);
+                var hirePet1 = new DateTime(2026, 2, 1, 0, 0, 0, DateTimeKind.Utc);
 
                 var seedEmployees = new List<Employee>
                 {

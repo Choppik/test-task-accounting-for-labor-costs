@@ -8,11 +8,17 @@ namespace WebApi.DTO
 
         public string EmployeeId { get; set; }
 
+        public string EmployeeFullName { get; set; }
+
         public string ProjectId { get; set; }
+
+        public string ProjectCode { get; set; }
 
         public DateTime Date { get; set; }
 
         public decimal Hours { get; set; }
+
+        public decimal ExpectedCost { get; set; }
 
         public string Comment { get; set; }
 

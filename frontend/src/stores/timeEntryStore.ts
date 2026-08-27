@@ -4,6 +4,8 @@ export const TimeEntryModel = types.model('TimeEntry', {
     id: types.identifier,
     employeeId: types.string,
     projectId: types.string,
+    employeeFullName: types.string,
+    projectCode: types.string,
     date: types.string,
     hours: types.number,
     expectedCost: types.maybe(types.number),

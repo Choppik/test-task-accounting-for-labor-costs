@@ -36,3 +36,11 @@ export function deleteTimeEntry(id: string) {
         method: 'DELETE'
     });
 }
+
+export function fetchEmployees() {
+    return fetchJson(`${API_BASE}/api/employees`);
+}
+
+export function fetchProjects() {
+    return fetchJson(`${API_BASE}/api/projects`);
+}

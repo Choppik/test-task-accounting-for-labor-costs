@@ -14,6 +14,8 @@ const RootStore = types
                 id: t.id ?? t._id ?? '',
                 employeeId: t.employeeId ?? t.employee ?? '',
                 projectId: t.projectId ?? t.project ?? '',
+                employeeFullName: t.employeeFullName ?? t.employeeId ?? '',
+                projectCode: t.projectCode ?? t.projectId,
                 date: t.date ?? t.Date ?? '',
                 hours: typeof t.hours === 'number' ? t.hours : Number(t.hours ?? 0),
                 expectedCost: t.expectedCost == null ? undefined : Number(t.expectedCost),

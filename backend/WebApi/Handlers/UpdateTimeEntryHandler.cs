@@ -1,21 +1,24 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
 using MongoDB.Driver;
 using WebApi.Commands;
 using WebApi.Models;
-using System;
+using WebApi.Services;
 
-namespace WebApi.Handlers
+namespace WebApi.Handlers.Timesheets
 {
     public class UpdateTimeEntryHandler : IRequestHandler<UpdateTimeEntryCommand, bool>
     {
         private readonly IMongoCollection<TimeEntry> _ts;
+        private readonly IMongoCollection<Employee> _employees;
         private readonly IMongoCollection<ClosedPeriod> _periods;
 
         public UpdateTimeEntryHandler(IMongoDatabase db)
         {
-            _ts = db.GetCollection<TimeEntry>("TimesheetEntries");
+            _ts = db.GetCollection<TimeEntry>("TimeEntries");
+            _employees = db.GetCollection<Employee>("Employees");
             _periods = db.GetCollection<ClosedPeriod>("ClosedPeriods");
         }
 
@@ -24,9 +27,17 @@ namespace WebApi.Handlers
             var existing = await _ts.Find(e => e.Id == req.Id).FirstOrDefaultAsync(cancellationToken);
             if (existing == null) return false;
 
-            var date = req.Date.Date;
-            var closed = await _periods.Find(p => p.Year == date.Year && p.Month == date.Month && p.IsClosed).FirstOrDefaultAsync(cancellationToken);
+            var entryDate = req.Date.Date;
+
+            var closed = await _periods.Find(p => p.Year == entryDate.Year && p.Month == entryDate.Month && p.IsClosed)
+                                       .FirstOrDefaultAsync(cancellationToken);
             if (closed != null) throw new InvalidOperationException("Period is closed.");
+
+            var employee = await _employees.Find(e => e.Id == req.EmployeeId).FirstOrDefaultAsync(cancellationToken);
+            if (employee == null) throw new InvalidOperationException("Employee not found.");
+
+            var hourlyRate = EmployeeSalaryService.GetRateAt(employee.SalaryHistory, entryDate);
+            var expectedCost = Math.Round(hourlyRate * req.Hours, 2);
 
             var filter = Builders<TimeEntry>.Filter.Where(e => e.Id == req.Id && e.Version == req.Version);
             var update = Builders<TimeEntry>.Update
@@ -34,8 +45,9 @@ namespace WebApi.Handlers
                 .Set(e => e.Comment, req.Comment)
                 .Set(e => e.ModifiedBy, req.ModifiedBy ?? "system")
                 .Set(e => e.ModifiedAt, DateTime.UtcNow)
-                .Set(e => e.Date, req.Date.Date.ToUniversalTime())
+                .Set(e => e.Date, entryDate.ToUniversalTime())
                 .Set(e => e.ProjectId, req.ProjectId)
+                .Set(e => e.ExpectedCost, expectedCost)
                 .Inc(e => e.Version, 1);
 
             var result = await _ts.UpdateOneAsync(filter, update, cancellationToken: cancellationToken);
