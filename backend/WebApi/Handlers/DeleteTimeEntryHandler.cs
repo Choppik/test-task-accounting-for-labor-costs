@@ -25,8 +25,9 @@ namespace WebApi.Handlers.Timesheets
             if (existing == null) return false;
 
             var date = existing.Date;
-            var closed = await _periods.Find(p => p.Year == date.Year && p.Month == date.Month && p.IsClosed).FirstOrDefaultAsync(cancellationToken);
-            if (closed != null) throw new InvalidOperationException("Period is closed.");
+            var closed = await _periods.Find(p => p.ClosedAt.Year == date.Year && p.ClosedAt.Month == date.Month)
+                                       .FirstOrDefaultAsync(cancellationToken);
+            if (closed != null) throw new InvalidOperationException($"Период {date:yyyy-MM} закрыт.");
 
             var res = await _ts.DeleteOneAsync(e => e.Id == req.Id, cancellationToken);
             return res.DeletedCount > 0;

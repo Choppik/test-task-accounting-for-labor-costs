@@ -110841,8 +110841,11 @@ function _fetchJson() {
   }));
   return _fetchJson.apply(this, arguments);
 }
-function fetchTimeEntries() {
-  return fetchJson("".concat(API_BASE, "/api/timeentry"));
+function fetchTimeEntries(page, pageSize) {
+  var url = new URL("".concat(API_BASE, "/api/timeentry"));
+  url.searchParams.set('page', String(page));
+  url.searchParams.set('pageSize', String(pageSize));
+  return fetchJson(url.toString());
 }
 var fetchTimeEntriesFallback = exports.fetchTimeEntriesFallback = fetchTimeEntries;
 function createTimeEntry(payload) {
@@ -124268,6 +124271,10 @@ var TimeEntry = function TimeEntry(_ref) {
     _useState2 = _slicedToArray(_useState, 2),
     serverError = _useState2[0],
     setServerError = _useState2[1];
+  var handleCloseLocal = function handleCloseLocal() {
+    setServerError(null);
+    onClose();
+  };
   var Schema = Yup.object().shape({
     employeeId: Yup.string().required('Сотрудник обязателен'),
     projectId: Yup.string().required('Проект обязателен'),
@@ -124286,7 +124293,7 @@ var TimeEntry = function TimeEntry(_ref) {
   };
   return _react.default.createElement(_core.Dialog, {
     isOpen: isOpen,
-    onClose: onClose,
+    onClose: handleCloseLocal,
     title: isEdit ? 'Редактировать запись' : 'Создать запись'
   }, _react.default.createElement("div", {
     className: _core.Classes.DIALOG_BODY,
@@ -124524,12 +124531,829 @@ var TimeEntry = function TimeEntry(_ref) {
       intent: _core.Intent.PRIMARY,
       loading: isSubmitting
     }, isEdit ? 'Подтвердить' : 'Добавить'), _react.default.createElement(_core.Button, {
-      onClick: onClose
+      onClick: handleCloseLocal
     }, "\u041E\u0442\u043C\u0435\u043D\u0430"))));
   })));
 };
 var _default = exports.default = TimeEntry;
-},{"react":"../node_modules/react/index.js","@blueprintjs/core":"../node_modules/@blueprintjs/core/lib/esm/index.js","formik":"../node_modules/formik/dist/formik.esm.js","yup":"../node_modules/yup/es/index.js","../utils/api":"utils/api.ts"}],"../node_modules/mobx/dist/mobx.esm.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","@blueprintjs/core":"../node_modules/@blueprintjs/core/lib/esm/index.js","formik":"../node_modules/formik/dist/formik.esm.js","yup":"../node_modules/yup/es/index.js","../utils/api":"utils/api.ts"}],"components/TimeEntryList.tsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _react = _interopRequireWildcard(require("react"));
+var _agGridReact = require("ag-grid-react");
+var _core = require("@blueprintjs/core");
+var api = _interopRequireWildcard(require("../utils/api"));
+var _useStore = require("../stores/useStore");
+var _TimeEntry = _interopRequireDefault(require("./TimeEntry"));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
+function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function (e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, default: e }; if (null === e || "object" != typeof e && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (const t in e) "default" !== t && {}.hasOwnProperty.call(e, t) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, t)) && (i.get || i.set) ? o(f, t, i) : f[t] = e[t]); return f; })(e, t); }
+function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return _regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i.return) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), _regeneratorDefine2(u), _regeneratorDefine2(u, o, "Generator"), _regeneratorDefine2(u, n, function () { return this; }), _regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
+function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); } r ? i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n : (o("next", 0), o("throw", 1), o("return", 2)); }, _regeneratorDefine2(e, r, n, t); }
+function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
+function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+var TimeEntryList = function TimeEntryList(_ref) {
+  var onClose = _ref.onClose;
+  var store = (0, _useStore.useStore)();
+  // Локальные стейты для полей пагинации
+  var _useState = (0, _react.useState)(1),
+    _useState2 = _slicedToArray(_useState, 2),
+    page = _useState2[0],
+    setPage = _useState2[1];
+  var _useState3 = (0, _react.useState)(20),
+    _useState4 = _slicedToArray(_useState3, 2),
+    pageSize = _useState4[0],
+    setPageSize = _useState4[1];
+  var _useState5 = (0, _react.useState)([]),
+    _useState6 = _slicedToArray(_useState5, 2),
+    employees = _useState6[0],
+    setEmployees = _useState6[1];
+  var _useState7 = (0, _react.useState)([]),
+    _useState8 = _slicedToArray(_useState7, 2),
+    projects = _useState8[0],
+    setProjects = _useState8[1];
+  var _useState9 = (0, _react.useState)(null),
+    _useState0 = _slicedToArray(_useState9, 2),
+    error = _useState0[0],
+    setError = _useState0[1];
+  var _useState1 = (0, _react.useState)(null),
+    _useState10 = _slicedToArray(_useState1, 2),
+    selected = _useState10[0],
+    setSelected = _useState10[1];
+  var _useState11 = (0, _react.useState)(false),
+    _useState12 = _slicedToArray(_useState11, 2),
+    modalOpen = _useState12[0],
+    setModalOpen = _useState12[1];
+  var loadAll = /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee() {
+      var emps, projs, _t;
+      return _regenerator().w(function (_context) {
+        while (1) switch (_context.p = _context.n) {
+          case 0:
+            _context.p = 0;
+            _context.n = 1;
+            return store.fetchTimeEntries(page, pageSize);
+          case 1:
+            _context.n = 2;
+            return api.fetchEmployees();
+          case 2:
+            emps = _context.v;
+            setEmployees(Array.isArray(emps) ? emps : []);
+            _context.n = 3;
+            return api.fetchProjects();
+          case 3:
+            projs = _context.v;
+            setProjects(Array.isArray(projs) ? projs : []);
+            _context.n = 5;
+            break;
+          case 4:
+            _context.p = 4;
+            _t = _context.v;
+            console.error(_t);
+            if (!store.lastError) {
+              setError('Не удалось загрузить список записей. Проверьте соединение.');
+            }
+          case 5:
+            return _context.a(2);
+        }
+      }, _callee, null, [[0, 4]]);
+    }));
+    return function loadAll() {
+      return _ref2.apply(this, arguments);
+    };
+  }();
+  (0, _react.useEffect)(function () {
+    loadAll();
+  }, []);
+  var rows = store.timeEntries;
+  var onCellClicked = function onCellClicked(event) {
+    var field = event.colDef && (event.colDef.field || event.colDef.colId);
+    if (field === 'act' || field === 'actions') {
+      return;
+    }
+    var plain = event.data;
+    console.log(plain);
+    setSelected(plain);
+    setModalOpen(true);
+  };
+  var columnDefs = (0, _react.useMemo)(function () {
+    return [{
+      headerName: 'ID',
+      field: 'id',
+      hide: true
+    }, {
+      headerName: 'Сотрудник',
+      field: 'employeeFullName',
+      flex: 1
+    }, {
+      headerName: 'Проект',
+      field: 'projectCode',
+      flex: 1
+    }, {
+      headerName: 'Дата',
+      field: 'date',
+      width: 140,
+      valueFormatter: function valueFormatter(p) {
+        return p.value ? new Date(p.value).toLocaleDateString() : '';
+      }
+    }, {
+      headerName: 'Часы',
+      field: 'hours',
+      width: 100
+    }, {
+      headerName: 'Ожидаемая стоимость',
+      field: 'expectedCost',
+      width: 100
+    }, {
+      headerName: 'Комментарий',
+      field: 'comment',
+      flex: 2
+    }, {
+      headerName: 'Версия',
+      field: 'version',
+      width: 90
+    }, {
+      headerName: '',
+      field: 'act',
+      width: 100,
+      cellRendererFramework: function cellRendererFramework(params) {
+        var _a;
+        var id = (_a = params.data) === null || _a === void 0 ? void 0 : _a.id;
+        if (id == null) {
+          return null;
+        }
+        var handleClick = /*#__PURE__*/function () {
+          var _ref3 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee2(ev) {
+            var _a, msg, _t2;
+            return _regenerator().w(function (_context2) {
+              while (1) switch (_context2.p = _context2.n) {
+                case 0:
+                  ev.stopPropagation();
+                  if ((_a = ev.nativeEvent) === null || _a === void 0 ? void 0 : _a.stopImmediatePropagation) {
+                    ev.nativeEvent.stopImmediatePropagation();
+                  }
+                  _context2.p = 1;
+                  if (!store.deleteTimeEntry) {
+                    _context2.n = 3;
+                    break;
+                  }
+                  _context2.n = 2;
+                  return store.deleteTimeEntry(id);
+                case 2:
+                  _context2.n = 5;
+                  break;
+                case 3:
+                  _context2.n = 4;
+                  return api.deleteTimeEntry(id);
+                case 4:
+                  if (!store.fetchTimeEntries) {
+                    _context2.n = 5;
+                    break;
+                  }
+                  _context2.n = 5;
+                  return store.fetchTimeEntries(page, pageSize);
+                case 5:
+                  if (params.api) {
+                    params.api.setRowData(store.timeEntries);
+                  }
+                  setError(null);
+                  _context2.n = 7;
+                  break;
+                case 6:
+                  _context2.p = 6;
+                  _t2 = _context2.v;
+                  console.error('Delete failed', _t2);
+                  msg = (_t2 === null || _t2 === void 0 ? void 0 : _t2.message) || 'Произошла неизвестная ошибка при удалении';
+                  setError(msg);
+                case 7:
+                  return _context2.a(2);
+              }
+            }, _callee2, null, [[1, 6]]);
+          }));
+          return function handleClick(_x) {
+            return _ref3.apply(this, arguments);
+          };
+        }();
+        return _react.default.createElement("button", {
+          className: "bp3-button bp3-minimal bp3-intent-danger",
+          onClick: handleClick,
+          onMouseDown: function onMouseDown(e) {
+            return e.stopPropagation();
+          },
+          onDoubleClick: function onDoubleClick(e) {
+            return e.stopPropagation();
+          }
+        }, "X");
+      }
+    }];
+  }, [store, page, pageSize]);
+  var onSaved = /*#__PURE__*/function () {
+    var _ref4 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee3() {
+      return _regenerator().w(function (_context3) {
+        while (1) switch (_context3.n) {
+          case 0:
+            _context3.n = 1;
+            return loadAll();
+          case 1:
+            return _context3.a(2);
+        }
+      }, _callee3);
+    }));
+    return function onSaved() {
+      return _ref4.apply(this, arguments);
+    };
+  }();
+  return _react.default.createElement("div", {
+    style: {
+      display: 'flex',
+      flexDirection: 'column',
+      gap: 12,
+      height: '100%',
+      minHeight: '500px'
+    }
+  }, _react.default.createElement("div", {
+    style: {
+      display: 'flex',
+      justifyContent: 'flex-end',
+      gap: 8
+    }
+  }, _react.default.createElement(_core.Button, {
+    minimal: true,
+    onClick: function onClick() {
+      setError(null), loadAll();
+    }
+  }, "\u041E\u0431\u043D\u043E\u0432\u0438\u0442\u044C"), _react.default.createElement(_core.Button, {
+    intent: "primary",
+    onClick: function onClick() {
+      setError(null), setSelected(null);
+      setModalOpen(true);
+    }
+  }, "\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C \u0437\u0430\u043F\u0438\u0441\u044C")), store.loading && _react.default.createElement("div", {
+    style: {
+      padding: 20,
+      textAlign: 'center'
+    }
+  }, "\u0417\u0430\u0433\u0440\u0443\u0437\u043A\u0430 \u0434\u0430\u043D\u043D\u044B\u0445..."), store.lastError && _react.default.createElement("div", {
+    style: {
+      color: 'red',
+      padding: 10
+    }
+  }, store.lastError), error && _react.default.createElement("div", {
+    style: {
+      padding: 12,
+      backgroundColor: '#ffebee',
+      color: '#c62828',
+      borderRadius: 4,
+      marginBottom: 16
+    }
+  }, error), _react.default.createElement("div", {
+    className: "ag-theme-alpine",
+    style: {
+      height: '480px',
+      width: '100%',
+      border: '1px solid #ddd'
+    }
+  }, _react.default.createElement(_agGridReact.AgGridReact, {
+    key: rows.length,
+    columnDefs: columnDefs,
+    defaultColDef: {
+      resizable: true,
+      sortable: true,
+      filter: true
+    },
+    onCellClicked: onCellClicked,
+    gridOptions: {
+      suppressRowClickSelection: true,
+      rowSelection: 'none',
+      onGridReady: function onGridReady(params) {
+        params.api.setRowData(rows);
+      },
+      onFirstDataRendered: function onFirstDataRendered(params) {
+        var count = params.api.getDisplayedRowCount();
+        if (count === 0) {
+          console.error('CRITICAL: Grid rendered but has 0 rows. Check store.timeEntries content.');
+          console.log('Debug store.timeEntries:', store.timeEntries);
+        }
+      }
+    }
+  })), _react.default.createElement("div", {
+    style: {
+      display: 'flex',
+      justifyContent: 'flex-end',
+      alignItems: 'center',
+      gap: 16,
+      paddingTop: 8
+    }
+  }, _react.default.createElement("div", {
+    style: {
+      display: 'flex',
+      alignItems: 'center',
+      gap: 6
+    }
+  }, _react.default.createElement("label", {
+    style: {
+      margin: 0,
+      fontSize: 13
+    }
+  }, "\u0421\u0442\u0440\u0430\u043D\u0438\u0446\u0430:"), _react.default.createElement("input", {
+    type: "number",
+    value: page,
+    onChange: function onChange(e) {
+      return setPage(Math.max(1, Number(e.target.value) || 1));
+    },
+    style: {
+      width: 60
+    }
+  })), _react.default.createElement("div", {
+    style: {
+      display: 'flex',
+      alignItems: 'center',
+      gap: 6
+    }
+  }, _react.default.createElement("label", {
+    style: {
+      margin: 0,
+      fontSize: 13
+    }
+  }, "\u0420\u0430\u0437\u043C\u0435\u0440:"), _react.default.createElement("input", {
+    type: "number",
+    value: pageSize,
+    onChange: function onChange(e) {
+      return setPageSize(Math.max(1, Math.min(100, Number(e.target.value) || 20)));
+    },
+    style: {
+      width: 60
+    }
+  })), _react.default.createElement(_core.Button, {
+    intent: "success",
+    onClick: loadAll
+  }, "\u0417\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044C"), _react.default.createElement(_core.Button, {
+    onClick: function onClick() {
+      return onClose === null || onClose === void 0 ? void 0 : onClose();
+    }
+  }, "\u0417\u0430\u043A\u0440\u044B\u0442\u044C")), _react.default.createElement(_TimeEntry.default, {
+    isOpen: modalOpen,
+    onClose: function onClose() {
+      return setModalOpen(false);
+    },
+    onSaved: onSaved,
+    initial: selected,
+    employees: employees,
+    projects: projects,
+    store: store
+  }));
+};
+var _default = exports.default = TimeEntryList;
+},{"react":"../node_modules/react/index.js","ag-grid-react":"../node_modules/ag-grid-react/main.js","@blueprintjs/core":"../node_modules/@blueprintjs/core/lib/esm/index.js","../utils/api":"utils/api.ts","../stores/useStore":"stores/useStore.tsx","./TimeEntry":"components/TimeEntry.tsx"}],"components/ReportProject.tsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _react = _interopRequireWildcard(require("react"));
+var _agGridReact = require("ag-grid-react");
+var _core = require("@blueprintjs/core");
+var api = _interopRequireWildcard(require("../utils/api"));
+function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function (e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, default: e }; if (null === e || "object" != typeof e && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (const t in e) "default" !== t && {}.hasOwnProperty.call(e, t) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, t)) && (i.get || i.set) ? o(f, t, i) : f[t] = e[t]); return f; })(e, t); }
+function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return _regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i.return) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), _regeneratorDefine2(u), _regeneratorDefine2(u, o, "Generator"), _regeneratorDefine2(u, n, function () { return this; }), _regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
+function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); } r ? i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n : (o("next", 0), o("throw", 1), o("return", 2)); }, _regeneratorDefine2(e, r, n, t); }
+function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
+function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+var ReportProject = function ReportProject(_ref) {
+  var onClose = _ref.onClose;
+  var _useState = (0, _react.useState)(false),
+    _useState2 = _slicedToArray(_useState, 2),
+    loading = _useState2[0],
+    setLoading = _useState2[1];
+  var _useState3 = (0, _react.useState)(null),
+    _useState4 = _slicedToArray(_useState3, 2),
+    error = _useState4[0],
+    setError = _useState4[1];
+  var currentYear = new Date().getFullYear();
+  var currentMonth = String(new Date().getMonth() + 1).padStart(2, '0');
+  var _useState5 = (0, _react.useState)(String(currentYear)),
+    _useState6 = _slicedToArray(_useState5, 2),
+    year = _useState6[0],
+    setYear = _useState6[1];
+  var _useState7 = (0, _react.useState)(currentMonth),
+    _useState8 = _slicedToArray(_useState7, 2),
+    month = _useState8[0],
+    setMonth = _useState8[1];
+  var _useState9 = (0, _react.useState)([]),
+    _useState0 = _slicedToArray(_useState9, 2),
+    rows = _useState0[0],
+    setRows = _useState0[1];
+  var _useState1 = (0, _react.useState)({
+      totalHours: 0,
+      totalCost: 0
+    }),
+    _useState10 = _slicedToArray(_useState1, 2),
+    totals = _useState10[0],
+    setTotals = _useState10[1];
+  var recalculateTotals = (0, _react.useCallback)(function (data) {
+    var totalHours = 0;
+    var totalCost = 0;
+    data.forEach(function (row) {
+      var _a, _b;
+      var hours = Number((_a = row.totalHours) !== null && _a !== void 0 ? _a : 0);
+      var cost = Number((_b = row.totalCost) !== null && _b !== void 0 ? _b : 0);
+      totalHours += hours;
+      totalCost += cost;
+    });
+    setTotals({
+      totalHours: totalHours,
+      totalCost: totalCost
+    });
+  }, []);
+  var onFilterChanged = (0, _react.useCallback)(function (params) {
+    var api = params.api;
+    var visibleRows = [];
+    for (var i = 0; i < api.getDisplayedRowCount(); i++) {
+      var rowNode = api.getDisplayedRowAtIndex(i);
+      if (!rowNode) continue;
+      if (!rowNode.group) {
+        visibleRows.push(rowNode.data);
+      }
+    }
+    recalculateTotals(visibleRows);
+  }, [recalculateTotals]);
+  var gridApiRef = _react.default.useRef(null);
+  var calculateVisibleTotals = (0, _react.useCallback)(function () {
+    if (!gridApiRef.current) return;
+    var api = gridApiRef.current;
+    var visibleRows = [];
+    for (var i = 0; i < api.getDisplayedRowCount(); i++) {
+      var node = api.getDisplayedRowAtIndex(i);
+      if (!node || node.group) continue;
+      visibleRows.push(node.data);
+    }
+    recalculateTotals(visibleRows);
+  }, [recalculateTotals]);
+  var onGridReady = (0, _react.useCallback)(function (params) {
+    gridApiRef.current = params.api;
+    calculateVisibleTotals();
+  }, [calculateVisibleTotals]);
+  var loadReport = /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee() {
+      var data, userMessage, _t;
+      return _regenerator().w(function (_context) {
+        while (1) switch (_context.p = _context.n) {
+          case 0:
+            setLoading(true);
+            setError(null);
+            _context.p = 1;
+            _context.n = 2;
+            return api.getProjectReport(year, month);
+          case 2:
+            data = _context.v;
+            setRows(data);
+            _context.n = 4;
+            break;
+          case 3:
+            _context.p = 3;
+            _t = _context.v;
+            userMessage = 'Не удалось загрузить отчёт.';
+            if (_t instanceof Error) {
+              if (_t.message.includes('Failed to fetch')) {
+                userMessage = 'Нет соединения с сервером. Проверьте интернет.';
+              } else {
+                userMessage = _t.message;
+              }
+            }
+            setError(userMessage);
+          case 4:
+            _context.p = 4;
+            setLoading(false);
+            return _context.f(4);
+          case 5:
+            return _context.a(2);
+        }
+      }, _callee, null, [[1, 3, 4, 5]]);
+    }));
+    return function loadReport() {
+      return _ref2.apply(this, arguments);
+    };
+  }();
+  (0, _react.useEffect)(function () {
+    loadReport();
+  }, []);
+  var getRowStyle = (0, _react.useMemo)(function () {
+    return function (params) {
+      var _a;
+      if (((_a = params.data) === null || _a === void 0 ? void 0 : _a.projectCode) === 'Итого') {
+        return {
+          fontWeight: 'bold',
+          borderTop: '2px solid #ccc'
+        };
+      }
+      return undefined;
+    };
+  }, []);
+  var columnDefs = (0, _react.useMemo)(function () {
+    return [{
+      headerName: 'Проект',
+      field: 'projectCode',
+      flex: 2
+    }, {
+      headerName: 'Часы',
+      field: 'totalHours',
+      width: 100,
+      valueFormatter: function valueFormatter(params) {
+        return params.value ? params.value.toString() : '0';
+      }
+    }, {
+      headerName: 'Стоимость, руб',
+      field: 'totalCost',
+      width: 150,
+      valueFormatter: function valueFormatter(params) {
+        if (params.value === undefined || params.value === null) return '0';
+        return new Intl.NumberFormat('ru-RU').format(params.value);
+      }
+    }, {
+      headerName: 'Бюджет, руб',
+      field: 'budgetRub',
+      width: 150,
+      valueFormatter: function valueFormatter(params) {
+        if (params.value === undefined || params.value === null) return '';
+        return "".concat(new Intl.NumberFormat('ru-RU').format(params.value));
+      }
+    }, {
+      headerName: 'Освоено, %',
+      field: 'percentSpent',
+      width: 150,
+      valueFormatter: function valueFormatter(params) {
+        if (params.value === undefined || params.value === null) return '';
+        return "".concat(params.value.toFixed(1), "%");
+      },
+      cellStyle: function cellStyle(params) {
+        var percent = Number(params.value);
+        if (!Number.isFinite(percent)) return null;
+        if (percent > 100) {
+          return {
+            backgroundColor: '#ffebee',
+            color: '#c62828'
+          }; // Красный
+        }
+        if (percent >= 80 && percent <= 100) {
+          return {
+            backgroundColor: '#fff3e0',
+            color: '#ef6c00'
+          }; // Оранжевый
+        }
+        return null; // Нейтральный
+      }
+    }];
+  }, []);
+  var validateYear = function validateYear(val) {
+    return /^\d{4}$/.test(val);
+  };
+  var validateMonth = function validateMonth(val) {
+    return /^(0[1-9]|1[0-2])$/.test(val);
+  };
+  // Формируем строку итогов
+  var footerRow = (0, _react.useMemo)(function () {
+    return [{
+      projectCode: 'Итого',
+      totalHours: totals.totalHours,
+      totalCost: totals.totalCost,
+      budgetRub: null,
+      percentSpent: null
+    }];
+  }, [totals]);
+  return _react.default.createElement("div", {
+    style: {
+      display: 'flex',
+      flexDirection: 'column',
+      gap: 16,
+      padding: 16,
+      maxHeight: '80vh',
+      overflow: 'hidden'
+    }
+  }, _react.default.createElement("div", {
+    style: {
+      display: 'flex',
+      gap: 16,
+      alignItems: 'flex-end'
+    }
+  }, _react.default.createElement("div", {
+    style: {
+      flex: 1
+    }
+  }, _react.default.createElement("label", {
+    style: {
+      display: 'block',
+      marginBottom: 4,
+      fontSize: 12,
+      color: '#5c7080'
+    }
+  }, "\u0413\u043E\u0434 (4 \u0446\u0438\u0444\u0440\u044B)"), _react.default.createElement("input", {
+    type: "text",
+    value: year,
+    onChange: function onChange(e) {
+      return setYear(e.target.value);
+    },
+    placeholder: "2024",
+    maxLength: 4,
+    className: _core.Classes.INPUT,
+    style: {
+      width: '100%'
+    }
+  })), _react.default.createElement("div", {
+    style: {
+      width: 150
+    }
+  }, _react.default.createElement("label", {
+    style: {
+      display: 'block',
+      marginBottom: 4,
+      fontSize: 12,
+      color: '#5c7080'
+    }
+  }, "\u041C\u0435\u0441\u044F\u0446 (01\u201312)"), _react.default.createElement("input", {
+    type: "text",
+    value: month,
+    onChange: function onChange(e) {
+      var val = e.target.value.replace(/\D/g, '').slice(0, 2);
+      setMonth(val.length === 1 ? "0".concat(val) : val);
+    },
+    placeholder: "03",
+    maxLength: 2,
+    className: _core.Classes.INPUT,
+    style: {
+      width: '100%'
+    }
+  })), _react.default.createElement(_core.Button, {
+    intent: _core.Intent.PRIMARY,
+    onClick: loadReport,
+    loading: loading,
+    disabled: !validateYear(year) || !validateMonth(month)
+  }, "\u041F\u043E\u043A\u0430\u0437\u0430\u0442\u044C \u043E\u0442\u0447\u0451\u0442"), _react.default.createElement(_core.Button, {
+    minimal: true,
+    onClick: onClose
+  }, "\u0417\u0430\u043A\u0440\u044B\u0442\u044C")), error && _react.default.createElement("div", {
+    style: {
+      padding: 12,
+      backgroundColor: '#ffebee',
+      color: '#c62828',
+      borderRadius: 4,
+      marginBottom: 16
+    }
+  }, error), loading ? _react.default.createElement("div", {
+    style: {
+      textAlign: 'center',
+      padding: 40,
+      color: '#5c7080'
+    }
+  }, "\u0417\u0430\u0433\u0440\u0443\u0437\u043A\u0430 \u043E\u0442\u0447\u0451\u0442\u0430...") : _react.default.createElement("div", {
+    className: "ag-theme-alpine",
+    style: {
+      height: 500,
+      width: '100%'
+    }
+  }, _react.default.createElement(_agGridReact.AgGridReact, {
+    rowData: rows,
+    columnDefs: columnDefs,
+    defaultColDef: {
+      resizable: true,
+      sortable: true,
+      filter: true
+    },
+    enableRangeSelection: true,
+    pagination: false,
+    pinnedBottomRowData: footerRow,
+    getRowStyle: getRowStyle,
+    onFilterChanged: onFilterChanged,
+    onGridReady: onGridReady
+  })));
+};
+var _default = exports.default = ReportProject;
+},{"react":"../node_modules/react/index.js","ag-grid-react":"../node_modules/ag-grid-react/main.js","@blueprintjs/core":"../node_modules/@blueprintjs/core/lib/esm/index.js","../utils/api":"utils/api.ts"}],"components/Home.tsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _react = _interopRequireWildcard(require("react"));
+var _core = require("@blueprintjs/core");
+var _TimeEntryList = _interopRequireDefault(require("./TimeEntryList"));
+var _ReportProject = _interopRequireDefault(require("./ReportProject"));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
+function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function (e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, default: e }; if (null === e || "object" != typeof e && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (const t in e) "default" !== t && {}.hasOwnProperty.call(e, t) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, t)) && (i.get || i.set) ? o(f, t, i) : f[t] = e[t]); return f; })(e, t); }
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+var Home = function Home() {
+  var _useState = (0, _react.useState)(false),
+    _useState2 = _slicedToArray(_useState, 2),
+    openTimeEntry = _useState2[0],
+    setOpenTimeEntry = _useState2[1];
+  var _useState3 = (0, _react.useState)(false),
+    _useState4 = _slicedToArray(_useState3, 2),
+    openReports = _useState4[0],
+    setOpenReports = _useState4[1];
+  return _react.default.createElement("div", {
+    style: {
+      minHeight: '70vh',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center'
+    }
+  }, _react.default.createElement("div", {
+    style: {
+      width: 600,
+      textAlign: 'center'
+    }
+  }, _react.default.createElement(_core.H3, {
+    style: {
+      marginBottom: 16
+    }
+  }, "\u0423\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0438\u0435"), _react.default.createElement("div", {
+    style: {
+      display: 'flex',
+      flexDirection: 'column',
+      gap: 12,
+      alignItems: 'center'
+    }
+  }, _react.default.createElement(_core.Button, {
+    intent: "success",
+    large: true,
+    onClick: function onClick() {
+      return setOpenTimeEntry(true);
+    }
+  }, "\u0417\u0430\u043F\u0438\u0441\u0438 \u0442\u0430\u0431\u0435\u043B\u044F"), _react.default.createElement(_core.Button, {
+    intent: "success",
+    large: true,
+    onClick: function onClick() {
+      return setOpenReports(true);
+    }
+  }, "\u041E\u0442\u0447\u0435\u0442\u044B"))), _react.default.createElement(_core.Dialog, {
+    icon: "list",
+    isOpen: openTimeEntry,
+    title: "\u0417\u0430\u043F\u0438\u0441\u0438 \u0442\u0430\u0431\u0435\u043B\u044F",
+    onClose: function onClose() {
+      return setOpenTimeEntry(false);
+    },
+    canOutsideClickClose: true,
+    canEscapeKeyClose: true,
+    style: {
+      width: '80%',
+      maxWidth: 1000
+    }
+  }, _react.default.createElement("div", {
+    className: _core.Classes.DIALOG_BODY,
+    style: {
+      padding: 12
+    }
+  }, _react.default.createElement(_TimeEntryList.default, {
+    onClose: function onClose() {
+      return setOpenTimeEntry(false);
+    }
+  }))), _react.default.createElement(_core.Dialog, {
+    icon: "list",
+    isOpen: openReports,
+    title: "\u041E\u0442\u0447\u0435\u0442\u044B",
+    onClose: function onClose() {
+      return setOpenReports(false);
+    },
+    canOutsideClickClose: true,
+    canEscapeKeyClose: true,
+    style: {
+      width: '80%',
+      maxWidth: 1000
+    }
+  }, _react.default.createElement("div", {
+    className: _core.Classes.DIALOG_BODY,
+    style: {
+      padding: 12
+    }
+  }, _react.default.createElement(_ReportProject.default, {
+    onClose: function onClose() {
+      return setOpenReports(false);
+    }
+  }))));
+};
+var _default = exports.default = Home;
+},{"react":"../node_modules/react/index.js","@blueprintjs/core":"../node_modules/@blueprintjs/core/lib/esm/index.js","./TimeEntryList":"components/TimeEntryList.tsx","./ReportProject":"components/ReportProject.tsx"}],"../node_modules/mobx/dist/mobx.esm.js":[function(require,module,exports) {
 var global = arguments[3];
 "use strict";
 
@@ -139955,754 +140779,7 @@ var types = exports.types = exports.t = {
   null: nullType,
   snapshotProcessor: snapshotProcessor
 };
-},{"mobx":"../node_modules/mobx/dist/mobx.esm.js","process":"../node_modules/process/browser.js"}],"components/TimeEntryList.tsx":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _react = _interopRequireWildcard(require("react"));
-var _agGridReact = require("ag-grid-react");
-var _core = require("@blueprintjs/core");
-var api = _interopRequireWildcard(require("../utils/api"));
-var _useStore = require("../stores/useStore");
-var _TimeEntry = _interopRequireDefault(require("./TimeEntry"));
-var _mobxStateTree = require("mobx-state-tree");
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
-function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function (e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, default: e }; if (null === e || "object" != typeof e && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (const t in e) "default" !== t && {}.hasOwnProperty.call(e, t) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, t)) && (i.get || i.set) ? o(f, t, i) : f[t] = e[t]); return f; })(e, t); }
-function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return _regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i.return) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), _regeneratorDefine2(u), _regeneratorDefine2(u, o, "Generator"), _regeneratorDefine2(u, n, function () { return this; }), _regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
-function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); } r ? i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n : (o("next", 0), o("throw", 1), o("return", 2)); }, _regeneratorDefine2(e, r, n, t); }
-function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
-function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
-function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
-function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
-function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
-function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
-var TimeEntryList = function TimeEntryList(_ref) {
-  var onClose = _ref.onClose;
-  var _a;
-  var store = (0, _useStore.useStore)();
-  var _useState = (0, _react.useState)(false),
-    _useState2 = _slicedToArray(_useState, 2),
-    loading = _useState2[0],
-    setLoading = _useState2[1];
-  var _useState3 = (0, _react.useState)(null),
-    _useState4 = _slicedToArray(_useState3, 2),
-    error = _useState4[0],
-    setError = _useState4[1];
-  var _useState5 = (0, _react.useState)([]),
-    _useState6 = _slicedToArray(_useState5, 2),
-    employees = _useState6[0],
-    setEmployees = _useState6[1];
-  var _useState7 = (0, _react.useState)([]),
-    _useState8 = _slicedToArray(_useState7, 2),
-    projects = _useState8[0],
-    setProjects = _useState8[1];
-  var _useState9 = (0, _react.useState)(null),
-    _useState0 = _slicedToArray(_useState9, 2),
-    selected = _useState0[0],
-    setSelected = _useState0[1];
-  var _useState1 = (0, _react.useState)(false),
-    _useState10 = _slicedToArray(_useState1, 2),
-    modalOpen = _useState10[0],
-    setModalOpen = _useState10[1];
-  var loadAll = /*#__PURE__*/function () {
-    var _ref2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee() {
-      var _a, emps, projs, _t;
-      return _regenerator().w(function (_context) {
-        while (1) switch (_context.p = _context.n) {
-          case 0:
-            setLoading(true);
-            setError(null);
-            _context.p = 1;
-            if (!store.fetchTimeEntries) {
-              _context.n = 2;
-              break;
-            }
-            _context.n = 2;
-            return store.fetchTimeEntries();
-          case 2:
-            _context.n = 3;
-            return api.fetchEmployees();
-          case 3:
-            emps = _context.v;
-            setEmployees(Array.isArray(emps) ? emps : []);
-            _context.n = 4;
-            return api.fetchProjects();
-          case 4:
-            projs = _context.v;
-            setProjects(Array.isArray(projs) ? projs : []);
-            _context.n = 6;
-            break;
-          case 5:
-            _context.p = 5;
-            _t = _context.v;
-            console.error(_t);
-            setError((_a = _t === null || _t === void 0 ? void 0 : _t.message) !== null && _a !== void 0 ? _a : 'Ошибка загрузки');
-          case 6:
-            _context.p = 6;
-            setLoading(false);
-            return _context.f(6);
-          case 7:
-            return _context.a(2);
-        }
-      }, _callee, null, [[1, 5, 6, 7]]);
-    }));
-    return function loadAll() {
-      return _ref2.apply(this, arguments);
-    };
-  }();
-  (0, _react.useEffect)(function () {
-    loadAll();
-  }, []);
-  var rows = ((_a = store.timeEntries) !== null && _a !== void 0 ? _a : []).map(function (node) {
-    try {
-      return (0, _mobxStateTree.getSnapshot)(node);
-    } catch (_a) {
-      return node;
-    }
-  });
-  var onCellClicked = function onCellClicked(event) {
-    var field = event.colDef && (event.colDef.field || event.colDef.colId);
-    if (field === 'act' || field === 'actions') {
-      return;
-    }
-    var plain = event.data;
-    try {
-      var _require = require('mobx-state-tree'),
-        _getSnapshot = _require.getSnapshot;
-      plain = _getSnapshot(event.data);
-    } catch (/* noop */_a) {/* noop */}
-    setSelected(plain);
-    setModalOpen(true);
-  };
-  var columnDefs = (0, _react.useMemo)(function () {
-    return [{
-      headerName: 'ID',
-      field: 'id',
-      hide: true
-    }, {
-      headerName: 'Сотрудник',
-      field: 'employeeFullName',
-      flex: 1
-    }, {
-      headerName: 'Проект',
-      field: 'projectCode',
-      flex: 1
-    }, {
-      headerName: 'Дата',
-      field: 'date',
-      width: 140,
-      valueFormatter: function valueFormatter(p) {
-        return p.value ? new Date(p.value).toLocaleDateString() : '';
-      }
-    }, {
-      headerName: 'Часы',
-      field: 'hours',
-      width: 100
-    }, {
-      headerName: 'Ожидаемая стоимость',
-      field: 'expectedCost',
-      width: 100
-    }, {
-      headerName: 'Комментарий',
-      field: 'comment',
-      flex: 2
-    }, {
-      headerName: 'Версия',
-      field: 'version',
-      width: 90
-    }, {
-      headerName: '',
-      field: 'act',
-      width: 100,
-      cellRendererFramework: function cellRendererFramework(params) {
-        var handleClick = /*#__PURE__*/function () {
-          var _ref3 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee2(ev) {
-            var _a, _t2;
-            return _regenerator().w(function (_context2) {
-              while (1) switch (_context2.p = _context2.n) {
-                case 0:
-                  ev.stopPropagation();
-                  if (ev.nativeEvent && ev.nativeEvent.stopImmediatePropagation) {
-                    ev.nativeEvent.stopImmediatePropagation();
-                  }
-                  _context2.p = 1;
-                  setLoading(true);
-                  if (!store.deleteTimeEntry) {
-                    _context2.n = 3;
-                    break;
-                  }
-                  _context2.n = 2;
-                  return store.deleteTimeEntry(params.data.id);
-                case 2:
-                  _context2.n = 5;
-                  break;
-                case 3:
-                  _context2.n = 4;
-                  return api.deleteTimeEntry(params.data.id);
-                case 4:
-                  if (!store.fetchTimeEntries) {
-                    _context2.n = 5;
-                    break;
-                  }
-                  _context2.n = 5;
-                  return store.fetchTimeEntries();
-                case 5:
-                  _context2.n = 7;
-                  break;
-                case 6:
-                  _context2.p = 6;
-                  _t2 = _context2.v;
-                  console.error('Delete failed', _t2);
-                  alert('Ошибка удаления: ' + ((_a = _t2 === null || _t2 === void 0 ? void 0 : _t2.message) !== null && _a !== void 0 ? _a : ''));
-                case 7:
-                  _context2.p = 7;
-                  setLoading(false);
-                  return _context2.f(7);
-                case 8:
-                  return _context2.a(2);
-              }
-            }, _callee2, null, [[1, 6, 7, 8]]);
-          }));
-          return function handleClick(_x) {
-            return _ref3.apply(this, arguments);
-          };
-        }();
-        return _react.default.createElement("button", {
-          className: "bp3-button bp3-minimal bp3-intent-danger",
-          onClick: handleClick,
-          onMouseDown: function onMouseDown(e) {
-            return e.stopPropagation();
-          },
-          onDoubleClick: function onDoubleClick(e) {
-            return e.stopPropagation();
-          }
-        }, "X");
-      }
-    }];
-  }, [store]);
-  var onSaved = /*#__PURE__*/function () {
-    var _ref4 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee3() {
-      return _regenerator().w(function (_context3) {
-        while (1) switch (_context3.n) {
-          case 0:
-            _context3.n = 1;
-            return loadAll();
-          case 1:
-            return _context3.a(2);
-        }
-      }, _callee3);
-    }));
-    return function onSaved() {
-      return _ref4.apply(this, arguments);
-    };
-  }();
-  return _react.default.createElement("div", {
-    style: {
-      display: 'flex',
-      flexDirection: 'column',
-      gap: 12
-    }
-  }, _react.default.createElement("div", {
-    style: {
-      display: 'flex',
-      justifyContent: 'flex-end',
-      gap: 8
-    }
-  }, _react.default.createElement(_core.Button, {
-    minimal: true,
-    onClick: function onClick() {
-      return loadAll();
-    }
-  }, "\u041E\u0431\u043D\u043E\u0432\u0438\u0442\u044C"), _react.default.createElement(_core.Button, {
-    intent: "primary",
-    onClick: function onClick() {
-      setSelected(null);
-      setModalOpen(true);
-    }
-  }, "\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C \u0437\u0430\u043F\u0438\u0441\u044C"), _react.default.createElement(_core.Button, {
-    onClick: function onClick() {
-      return onClose === null || onClose === void 0 ? void 0 : onClose();
-    }
-  }, "\u0417\u0430\u043A\u0440\u044B\u0442\u044C")), loading && _react.default.createElement("div", null, "\u0417\u0430\u0433\u0440\u0443\u0437\u043A\u0430..."), error && _react.default.createElement("div", {
-    style: {
-      color: 'red'
-    }
-  }, error), _react.default.createElement("div", {
-    className: "ag-theme-alpine",
-    style: {
-      height: 480,
-      width: '100%'
-    }
-  }, _react.default.createElement(_agGridReact.AgGridReact, {
-    rowData: rows,
-    columnDefs: columnDefs,
-    defaultColDef: {
-      resizable: true,
-      sortable: true,
-      filter: true
-    },
-    pagination: true,
-    paginationPageSize: 20,
-    onCellClicked: onCellClicked
-  })), _react.default.createElement(_TimeEntry.default, {
-    isOpen: modalOpen,
-    onClose: function onClose() {
-      return setModalOpen(false);
-    },
-    onSaved: onSaved,
-    initial: selected,
-    employees: employees,
-    projects: projects,
-    store: store
-  }));
-};
-var _default = exports.default = TimeEntryList;
-},{"react":"../node_modules/react/index.js","ag-grid-react":"../node_modules/ag-grid-react/main.js","@blueprintjs/core":"../node_modules/@blueprintjs/core/lib/esm/index.js","../utils/api":"utils/api.ts","../stores/useStore":"stores/useStore.tsx","./TimeEntry":"components/TimeEntry.tsx","mobx-state-tree":"../node_modules/mobx-state-tree/dist/mobx-state-tree.module.js"}],"components/ReportProject.tsx":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _react = _interopRequireWildcard(require("react"));
-var _agGridReact = require("ag-grid-react");
-var _core = require("@blueprintjs/core");
-var api = _interopRequireWildcard(require("../utils/api"));
-function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function (e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, default: e }; if (null === e || "object" != typeof e && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (const t in e) "default" !== t && {}.hasOwnProperty.call(e, t) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, t)) && (i.get || i.set) ? o(f, t, i) : f[t] = e[t]); return f; })(e, t); }
-function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return _regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i.return) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), _regeneratorDefine2(u), _regeneratorDefine2(u, o, "Generator"), _regeneratorDefine2(u, n, function () { return this; }), _regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
-function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); } r ? i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n : (o("next", 0), o("throw", 1), o("return", 2)); }, _regeneratorDefine2(e, r, n, t); }
-function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
-function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
-function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
-function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
-function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
-function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
-var ReportProject = function ReportProject(_ref) {
-  var onClose = _ref.onClose;
-  var _useState = (0, _react.useState)(false),
-    _useState2 = _slicedToArray(_useState, 2),
-    loading = _useState2[0],
-    setLoading = _useState2[1];
-  var _useState3 = (0, _react.useState)(null),
-    _useState4 = _slicedToArray(_useState3, 2),
-    error = _useState4[0],
-    setError = _useState4[1];
-  var currentYear = new Date().getFullYear();
-  var currentMonth = String(new Date().getMonth() + 1).padStart(2, '0');
-  var _useState5 = (0, _react.useState)(String(currentYear)),
-    _useState6 = _slicedToArray(_useState5, 2),
-    year = _useState6[0],
-    setYear = _useState6[1];
-  var _useState7 = (0, _react.useState)(currentMonth),
-    _useState8 = _slicedToArray(_useState7, 2),
-    month = _useState8[0],
-    setMonth = _useState8[1];
-  var _useState9 = (0, _react.useState)([]),
-    _useState0 = _slicedToArray(_useState9, 2),
-    rows = _useState0[0],
-    setRows = _useState0[1];
-  var _useState1 = (0, _react.useState)({
-      totalHours: 0,
-      totalCost: 0
-    }),
-    _useState10 = _slicedToArray(_useState1, 2),
-    totals = _useState10[0],
-    setTotals = _useState10[1];
-  var recalculateTotals = (0, _react.useCallback)(function (data) {
-    var totalHours = 0;
-    var totalCost = 0;
-    data.forEach(function (row) {
-      var _a, _b;
-      var hours = Number((_a = row.totalHours) !== null && _a !== void 0 ? _a : 0);
-      var cost = Number((_b = row.totalCost) !== null && _b !== void 0 ? _b : 0);
-      totalHours += hours;
-      totalCost += cost;
-    });
-    setTotals({
-      totalHours: totalHours,
-      totalCost: totalCost
-    });
-  }, []);
-  var onFilterChanged = (0, _react.useCallback)(function (params) {
-    var api = params.api;
-    var visibleRows = [];
-    for (var i = 0; i < api.getDisplayedRowCount(); i++) {
-      var rowNode = api.getDisplayedRowAtIndex(i);
-      if (!rowNode) continue;
-      if (!rowNode.group) {
-        visibleRows.push(rowNode.data);
-      }
-    }
-    recalculateTotals(visibleRows);
-  }, [recalculateTotals]);
-  var gridApiRef = _react.default.useRef(null);
-  var calculateVisibleTotals = (0, _react.useCallback)(function () {
-    if (!gridApiRef.current) return;
-    var api = gridApiRef.current;
-    var visibleRows = [];
-    for (var i = 0; i < api.getDisplayedRowCount(); i++) {
-      var node = api.getDisplayedRowAtIndex(i);
-      if (!node || node.group) continue;
-      visibleRows.push(node.data);
-    }
-    recalculateTotals(visibleRows);
-  }, [recalculateTotals]);
-  var onGridReady = (0, _react.useCallback)(function (params) {
-    gridApiRef.current = params.api;
-    calculateVisibleTotals();
-  }, [calculateVisibleTotals]);
-  var loadReport = /*#__PURE__*/function () {
-    var _ref2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee() {
-      var data, userMessage, _t;
-      return _regenerator().w(function (_context) {
-        while (1) switch (_context.p = _context.n) {
-          case 0:
-            setLoading(true);
-            setError(null);
-            _context.p = 1;
-            _context.n = 2;
-            return api.getProjectReport(year, month);
-          case 2:
-            data = _context.v;
-            setRows(data);
-            _context.n = 4;
-            break;
-          case 3:
-            _context.p = 3;
-            _t = _context.v;
-            userMessage = 'Не удалось загрузить отчёт.';
-            if (_t instanceof Error) {
-              if (_t.message.includes('Failed to fetch')) {
-                userMessage = 'Нет соединения с сервером. Проверьте интернет.';
-              } else {
-                userMessage = _t.message;
-              }
-            }
-            setError(userMessage);
-          case 4:
-            _context.p = 4;
-            setLoading(false);
-            return _context.f(4);
-          case 5:
-            return _context.a(2);
-        }
-      }, _callee, null, [[1, 3, 4, 5]]);
-    }));
-    return function loadReport() {
-      return _ref2.apply(this, arguments);
-    };
-  }();
-  (0, _react.useEffect)(function () {
-    loadReport();
-  }, []);
-  var getRowStyle = (0, _react.useMemo)(function () {
-    return function (params) {
-      var _a;
-      if (((_a = params.data) === null || _a === void 0 ? void 0 : _a.projectCode) === 'Итого') {
-        return {
-          fontWeight: 'bold',
-          borderTop: '2px solid #ccc'
-        };
-      }
-      return undefined;
-    };
-  }, []);
-  var columnDefs = (0, _react.useMemo)(function () {
-    return [{
-      headerName: 'Проект',
-      field: 'projectCode',
-      flex: 2
-    }, {
-      headerName: 'Часы',
-      field: 'totalHours',
-      width: 100,
-      valueFormatter: function valueFormatter(params) {
-        return params.value ? params.value.toString() : '0';
-      }
-    }, {
-      headerName: 'Стоимость, руб',
-      field: 'totalCost',
-      width: 150,
-      valueFormatter: function valueFormatter(params) {
-        if (params.value === undefined || params.value === null) return '0';
-        return new Intl.NumberFormat('ru-RU').format(params.value);
-      }
-    }, {
-      headerName: 'Бюджет, руб',
-      field: 'budgetRub',
-      width: 150,
-      valueFormatter: function valueFormatter(params) {
-        if (params.value === undefined || params.value === null) return '';
-        return "".concat(new Intl.NumberFormat('ru-RU').format(params.value));
-      }
-    }, {
-      headerName: 'Освоено, %',
-      field: 'percentSpent',
-      width: 150,
-      valueFormatter: function valueFormatter(params) {
-        if (params.value === undefined || params.value === null) return '';
-        return "".concat(params.value.toFixed(1), "%");
-      },
-      cellStyle: function cellStyle(params) {
-        var percent = Number(params.value);
-        if (!Number.isFinite(percent)) return null;
-        if (percent > 100) {
-          return {
-            backgroundColor: '#ffebee',
-            color: '#c62828'
-          }; // Красный
-        }
-        if (percent >= 80 && percent <= 100) {
-          return {
-            backgroundColor: '#fff3e0',
-            color: '#ef6c00'
-          }; // Оранжевый
-        }
-        return null; // Нейтральный
-      }
-    }];
-  }, []);
-  var validateYear = function validateYear(val) {
-    return /^\d{4}$/.test(val);
-  };
-  var validateMonth = function validateMonth(val) {
-    return /^(0[1-9]|1[0-2])$/.test(val);
-  };
-  // Формируем строку итогов
-  var footerRow = (0, _react.useMemo)(function () {
-    return [{
-      projectCode: 'Итого',
-      totalHours: totals.totalHours,
-      totalCost: totals.totalCost,
-      budgetRub: null,
-      percentSpent: null
-    }];
-  }, [totals]);
-  return _react.default.createElement("div", {
-    style: {
-      display: 'flex',
-      flexDirection: 'column',
-      gap: 16,
-      padding: 16,
-      maxHeight: '80vh',
-      overflow: 'hidden'
-    }
-  }, _react.default.createElement("div", {
-    style: {
-      display: 'flex',
-      gap: 16,
-      alignItems: 'flex-end'
-    }
-  }, _react.default.createElement("div", {
-    style: {
-      flex: 1
-    }
-  }, _react.default.createElement("label", {
-    style: {
-      display: 'block',
-      marginBottom: 4,
-      fontSize: 12,
-      color: '#5c7080'
-    }
-  }, "\u0413\u043E\u0434 (4 \u0446\u0438\u0444\u0440\u044B)"), _react.default.createElement("input", {
-    type: "text",
-    value: year,
-    onChange: function onChange(e) {
-      return setYear(e.target.value);
-    },
-    placeholder: "2024",
-    maxLength: 4,
-    className: _core.Classes.INPUT,
-    style: {
-      width: '100%'
-    }
-  })), _react.default.createElement("div", {
-    style: {
-      width: 150
-    }
-  }, _react.default.createElement("label", {
-    style: {
-      display: 'block',
-      marginBottom: 4,
-      fontSize: 12,
-      color: '#5c7080'
-    }
-  }, "\u041C\u0435\u0441\u044F\u0446 (01\u201312)"), _react.default.createElement("input", {
-    type: "text",
-    value: month,
-    onChange: function onChange(e) {
-      var val = e.target.value.replace(/\D/g, '').slice(0, 2);
-      setMonth(val.length === 1 ? "0".concat(val) : val);
-    },
-    placeholder: "03",
-    maxLength: 2,
-    className: _core.Classes.INPUT,
-    style: {
-      width: '100%'
-    }
-  })), _react.default.createElement(_core.Button, {
-    intent: _core.Intent.PRIMARY,
-    onClick: loadReport,
-    loading: loading,
-    disabled: !validateYear(year) || !validateMonth(month)
-  }, "\u041F\u043E\u043A\u0430\u0437\u0430\u0442\u044C \u043E\u0442\u0447\u0451\u0442"), _react.default.createElement(_core.Button, {
-    minimal: true,
-    onClick: onClose
-  }, "\u0417\u0430\u043A\u0440\u044B\u0442\u044C")), error && _react.default.createElement("div", {
-    style: {
-      padding: 12,
-      backgroundColor: '#ffebee',
-      color: '#c62828',
-      borderRadius: 4,
-      marginBottom: 16
-    }
-  }, error), loading ? _react.default.createElement("div", {
-    style: {
-      textAlign: 'center',
-      padding: 40,
-      color: '#5c7080'
-    }
-  }, "\u0417\u0430\u0433\u0440\u0443\u0437\u043A\u0430 \u043E\u0442\u0447\u0451\u0442\u0430...") : _react.default.createElement("div", {
-    className: "ag-theme-alpine",
-    style: {
-      height: 500,
-      width: '100%'
-    }
-  }, _react.default.createElement(_agGridReact.AgGridReact, {
-    rowData: rows,
-    columnDefs: columnDefs,
-    defaultColDef: {
-      resizable: true,
-      sortable: true,
-      filter: true
-    },
-    enableRangeSelection: true,
-    pagination: false,
-    pinnedBottomRowData: footerRow,
-    getRowStyle: getRowStyle,
-    onFilterChanged: onFilterChanged,
-    onGridReady: onGridReady
-  })));
-};
-var _default = exports.default = ReportProject;
-},{"react":"../node_modules/react/index.js","ag-grid-react":"../node_modules/ag-grid-react/main.js","@blueprintjs/core":"../node_modules/@blueprintjs/core/lib/esm/index.js","../utils/api":"utils/api.ts"}],"components/Home.tsx":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _react = _interopRequireWildcard(require("react"));
-var _core = require("@blueprintjs/core");
-var _TimeEntryList = _interopRequireDefault(require("./TimeEntryList"));
-var _ReportProject = _interopRequireDefault(require("./ReportProject"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
-function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function (e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, default: e }; if (null === e || "object" != typeof e && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (const t in e) "default" !== t && {}.hasOwnProperty.call(e, t) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, t)) && (i.get || i.set) ? o(f, t, i) : f[t] = e[t]); return f; })(e, t); }
-function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
-function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
-function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
-function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
-var Home = function Home() {
-  var _useState = (0, _react.useState)(false),
-    _useState2 = _slicedToArray(_useState, 2),
-    openTimeEntry = _useState2[0],
-    setOpenTimeEntry = _useState2[1];
-  var _useState3 = (0, _react.useState)(false),
-    _useState4 = _slicedToArray(_useState3, 2),
-    openReports = _useState4[0],
-    setOpenReports = _useState4[1];
-  return _react.default.createElement("div", {
-    style: {
-      minHeight: '70vh',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center'
-    }
-  }, _react.default.createElement("div", {
-    style: {
-      width: 600,
-      textAlign: 'center'
-    }
-  }, _react.default.createElement(_core.H3, {
-    style: {
-      marginBottom: 16
-    }
-  }, "\u0423\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0438\u0435"), _react.default.createElement("div", {
-    style: {
-      display: 'flex',
-      flexDirection: 'column',
-      gap: 12,
-      alignItems: 'center'
-    }
-  }, _react.default.createElement(_core.Button, {
-    intent: "success",
-    large: true,
-    onClick: function onClick() {
-      return setOpenTimeEntry(true);
-    }
-  }, "\u0417\u0430\u043F\u0438\u0441\u0438 \u0442\u0430\u0431\u0435\u043B\u044F"), _react.default.createElement(_core.Button, {
-    intent: "success",
-    large: true,
-    onClick: function onClick() {
-      return setOpenReports(true);
-    }
-  }, "\u041E\u0442\u0447\u0435\u0442\u044B"))), _react.default.createElement(_core.Dialog, {
-    icon: "list",
-    isOpen: openTimeEntry,
-    title: "\u0417\u0430\u043F\u0438\u0441\u0438 \u0442\u0430\u0431\u0435\u043B\u044F",
-    onClose: function onClose() {
-      return setOpenTimeEntry(false);
-    },
-    canOutsideClickClose: true,
-    canEscapeKeyClose: true,
-    style: {
-      width: '80%',
-      maxWidth: 1000
-    }
-  }, _react.default.createElement("div", {
-    className: _core.Classes.DIALOG_BODY,
-    style: {
-      padding: 12
-    }
-  }, _react.default.createElement(_TimeEntryList.default, {
-    onClose: function onClose() {
-      return setOpenTimeEntry(false);
-    }
-  }))), _react.default.createElement(_core.Dialog, {
-    icon: "list",
-    isOpen: openReports,
-    title: "\u041E\u0442\u0447\u0435\u0442\u044B",
-    onClose: function onClose() {
-      return setOpenReports(false);
-    },
-    canOutsideClickClose: true,
-    canEscapeKeyClose: true,
-    style: {
-      width: '80%',
-      maxWidth: 1000
-    }
-  }, _react.default.createElement("div", {
-    className: _core.Classes.DIALOG_BODY,
-    style: {
-      padding: 12
-    }
-  }, _react.default.createElement(_ReportProject.default, {
-    onClose: function onClose() {
-      return setOpenReports(false);
-    }
-  }))));
-};
-var _default = exports.default = Home;
-},{"react":"../node_modules/react/index.js","@blueprintjs/core":"../node_modules/@blueprintjs/core/lib/esm/index.js","./TimeEntryList":"components/TimeEntryList.tsx","./ReportProject":"components/ReportProject.tsx"}],"stores/timeEntryStore.ts":[function(require,module,exports) {
+},{"mobx":"../node_modules/mobx/dist/mobx.esm.js","process":"../node_modules/process/browser.js"}],"stores/timeEntryStore.ts":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -140742,46 +140819,95 @@ function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { 
 function _createForOfIteratorHelper(r, e) { var t = "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (!t) { if (Array.isArray(r) || (t = _unsupportedIterableToArray(r)) || e && r && "number" == typeof r.length) { t && (r = t); var _n = 0, F = function F() {}; return { s: F, n: function n() { return _n >= r.length ? { done: !0 } : { done: !1, value: r[_n++] }; }, e: function e(r) { throw r; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var o, a = !0, u = !1; return { s: function s() { t = t.call(r); }, n: function n() { var r = t.next(); return a = r.done, r; }, e: function e(r) { u = !0, o = r; }, f: function f() { try { a || null == t.return || t.return(); } finally { if (u) throw o; } } }; }
 function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
 function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 var RootStore = _mobxStateTree.types.model('RootStore', {
   timeEntries: _mobxStateTree.types.array(_timeEntryStore.TimeEntryModel),
   lastError: _mobxStateTree.types.maybeNull(_mobxStateTree.types.string),
-  loading: _mobxStateTree.types.optional(_mobxStateTree.types.boolean, false)
+  loading: _mobxStateTree.types.optional(_mobxStateTree.types.boolean, false),
+  // Опционально: можно хранить текущую страницу прямо в сторе, 
+  // чтобы после удаления/добавления оставаться на той же странице.
+  currentPage: _mobxStateTree.types.optional(_mobxStateTree.types.number, 1),
+  pageSize: _mobxStateTree.types.optional(_mobxStateTree.types.number, 20)
 }).actions(function (self) {
   var normalize = function normalize(t) {
     var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o;
-    return {
-      id: (_b = (_a = t.id) !== null && _a !== void 0 ? _a : t._id) !== null && _b !== void 0 ? _b : '',
-      employeeId: (_d = (_c = t.employeeId) !== null && _c !== void 0 ? _c : t.employee) !== null && _d !== void 0 ? _d : '',
-      projectId: (_f = (_e = t.projectId) !== null && _e !== void 0 ? _e : t.project) !== null && _f !== void 0 ? _f : '',
-      employeeFullName: (_h = (_g = t.employeeFullName) !== null && _g !== void 0 ? _g : t.employeeId) !== null && _h !== void 0 ? _h : '',
-      projectCode: (_j = t.projectCode) !== null && _j !== void 0 ? _j : t.projectId,
-      date: (_l = (_k = t.date) !== null && _k !== void 0 ? _k : t.Date) !== null && _l !== void 0 ? _l : '',
-      hours: typeof t.hours === 'number' ? t.hours : Number((_m = t.hours) !== null && _m !== void 0 ? _m : 0),
-      expectedCost: t.expectedCost == null ? undefined : Number(t.expectedCost),
-      comment: t.comment == null ? null : String(t.comment),
-      createdBy: t.createdBy == null ? null : String(t.createdBy),
-      createdAt: t.createdAt == null ? null : String(t.createdAt),
-      modifiedBy: t.modifiedBy == null ? null : String(t.modifiedBy),
-      modifiedAt: t.modifiedAt == null ? null : String(t.modifiedAt),
-      version: typeof t.version === 'number' ? t.version : Number((_o = t.version) !== null && _o !== void 0 ? _o : 1)
-    };
+    // Добавлен try/catch, чтобы один битый элемент не ломал всю загрузку
+    try {
+      return {
+        id: (_b = (_a = t.id) !== null && _a !== void 0 ? _a : t._id) !== null && _b !== void 0 ? _b : '',
+        employeeId: (_d = (_c = t.employeeId) !== null && _c !== void 0 ? _c : t.employee) !== null && _d !== void 0 ? _d : '',
+        projectId: (_f = (_e = t.projectId) !== null && _e !== void 0 ? _e : t.project) !== null && _f !== void 0 ? _f : '',
+        employeeFullName: (_h = (_g = t.employeeFullName) !== null && _g !== void 0 ? _g : t.employeeId) !== null && _h !== void 0 ? _h : 'Неизвестно',
+        projectCode: (_k = (_j = t.projectCode) !== null && _j !== void 0 ? _j : t.projectId) !== null && _k !== void 0 ? _k : 'Без проекта',
+        date: (_m = (_l = t.date) !== null && _l !== void 0 ? _l : t.Date) !== null && _m !== void 0 ? _m : '',
+        // Безопасное приведение числа
+        hours: typeof t.hours === 'number' ? t.hours : (typeof t.hours === 'string' ? parseFloat(t.hours) : 0) || 0,
+        expectedCost: t.expectedCost == null ? undefined : Number(t.expectedCost),
+        comment: t.comment == null ? null : String(t.comment),
+        createdBy: t.createdBy == null ? null : String(t.createdBy),
+        createdAt: t.createdAt == null ? null : String(t.createdAt),
+        modifiedBy: t.modifiedBy == null ? null : String(t.modifiedBy),
+        modifiedAt: t.modifiedAt == null ? null : String(t.modifiedAt),
+        version: typeof t.version === 'number' ? t.version : Number((_o = t.version) !== null && _o !== void 0 ? _o : 1)
+      };
+    } catch (e) {
+      console.error('[store] normalize failed completely for item:', t, e);
+      // Возвращаем заглушку, чтобы не терять весь список
+      return {
+        id: 'unknown-' + Math.random(),
+        employeeId: '',
+        projectId: '',
+        employeeFullName: 'Ошибка данных',
+        projectCode: '',
+        date: '',
+        hours: 0,
+        expectedCost: undefined,
+        comment: null,
+        createdBy: null,
+        createdAt: null,
+        modifiedBy: null,
+        modifiedAt: null,
+        version: 1
+      };
+    }
   };
-  var fetchTimeEntries = (0, _mobxStateTree.flow)(/*#__PURE__*/_regenerator().m(function _callee() {
-    var _a, raw, _iterator, _step, item, norm, _t;
-    return _regenerator().w(function (_context) {
-      while (1) switch (_context.p = _context.n) {
-        case 0:
-          console.log('[store] fetchTimeEntries: start');
-          self.loading = true;
-          _context.p = 1;
-          _context.n = 2;
-          return api.fetchTimeEntries();
-        case 2:
-          raw = _context.v;
-          console.log('[store] fetchTimeEntries: api returned', Array.isArray(raw) ? raw.length : raw);
-          self.timeEntries.clear();
-          if (Array.isArray(raw)) {
-            _iterator = _createForOfIteratorHelper(raw);
+  // ✅ ГЛАВНОЕ ИЗМЕНЕНИЕ: теперь принимает page и pageSize
+  var fetchTimeEntries = (0, _mobxStateTree.flow)(function () {
+    var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+    var pageSize = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 20;
+    return /*#__PURE__*/_regenerator().m(function _callee() {
+      var _a, raw, itemsToProcess, _iterator, _step, item, norm, _t;
+      return _regenerator().w(function (_context) {
+        while (1) switch (_context.p = _context.n) {
+          case 0:
+            console.log('[store] fetchTimeEntries: start', {
+              page: page,
+              pageSize: pageSize
+            });
+            // Обновляем состояние стора
+            self.currentPage = page;
+            self.pageSize = pageSize;
+            self.loading = true;
+            _context.p = 1;
+            _context.n = 2;
+            return api.fetchTimeEntries(page, pageSize);
+          case 2:
+            raw = _context.v;
+            console.log('[store] fetchTimeEntries: api returned', raw);
+            self.timeEntries.clear();
+            itemsToProcess = []; // 🔍 ВАЖНО: Обрабатываем два возможных формата ответа от бэкенда
+            if (Array.isArray(raw)) {
+              // Вариант 1: Бэкенд вернул просто массив записей
+              itemsToProcess = raw;
+            } else if (raw && _typeof(raw) === 'object') {
+              // Вариант 2: Бэкенд вернул объект { TotalRowCount, Rows }
+              if (Array.isArray(raw.Rows)) {
+                itemsToProcess = raw.Rows;
+              } else {
+                console.warn('[store] Unexpected response format', raw);
+              }
+            }
+            _iterator = _createForOfIteratorHelper(itemsToProcess);
             try {
               for (_iterator.s(); !(_step = _iterator.n()).done;) {
                 item = _step.value;
@@ -140789,7 +140915,7 @@ var RootStore = _mobxStateTree.types.model('RootStore', {
                   norm = normalize(item);
                   self.timeEntries.push(norm);
                 } catch (innerErr) {
-                  console.error('[store] fetchTimeEntries: normalize/push failed for item', item, innerErr);
+                  console.error('[store] normalize failed', item, innerErr);
                 }
               }
             } catch (err) {
@@ -140797,44 +140923,42 @@ var RootStore = _mobxStateTree.types.model('RootStore', {
             } finally {
               _iterator.f();
             }
-          } else {
-            console.warn('[store] fetchTimeEntries: api returned non-array', raw);
-          }
-          console.log('[store] fetchTimeEntries: timesheets length after push', self.timeEntries.length);
-          self.lastError = null;
-          _context.n = 4;
-          break;
-        case 3:
-          _context.p = 3;
-          _t = _context.v;
-          console.error('[store] fetchTimeEntries: error', _t);
-          self.timeEntries.clear();
-          self.lastError = (_a = _t === null || _t === void 0 ? void 0 : _t.message) !== null && _a !== void 0 ? _a : 'Ошибка при загрузке записей табеля';
-        case 4:
-          _context.p = 4;
-          self.loading = false;
-          console.log('[store] fetchTimeEntries: finished, loading=false');
-          return _context.f(4);
-        case 5:
-          return _context.a(2);
-      }
-    }, _callee, null, [[1, 3, 4, 5]]);
-  }));
+            console.log('[store] fetched items count:', self.timeEntries.length);
+            self.lastError = null;
+            _context.n = 4;
+            break;
+          case 3:
+            _context.p = 3;
+            _t = _context.v;
+            console.error('[store] fetchTimeEntries error', _t);
+            self.timeEntries.clear();
+            self.lastError = (_a = _t === null || _t === void 0 ? void 0 : _t.message) !== null && _a !== void 0 ? _a : 'Ошибка при загрузке записей табеля';
+          case 4:
+            _context.p = 4;
+            self.loading = false;
+            console.log('[store] fetchTimeEntries finished');
+            return _context.f(4);
+          case 5:
+            return _context.a(2);
+        }
+      }, _callee, null, [[1, 3, 4, 5]]);
+    })();
+  });
   var addTimeEntry = (0, _mobxStateTree.flow)(/*#__PURE__*/_regenerator().m(function _callee2(payload) {
-    var _a, res, _t2;
+    var _a, _t2;
     return _regenerator().w(function (_context2) {
       while (1) switch (_context2.p = _context2.n) {
         case 0:
           _context2.p = 0;
-          console.log('[store] addTimeEntry payload', payload);
+          console.log('[store] addTimeEntry', payload);
           _context2.n = 1;
           return api.createTimeEntry(payload);
         case 1:
-          res = _context2.v;
           _context2.n = 2;
-          return fetchTimeEntries();
+          return fetchTimeEntries(self.currentPage, self.pageSize);
         case 2:
-          return _context2.a(2, res);
+          _context2.n = 4;
+          break;
         case 3:
           _context2.p = 3;
           _t2 = _context2.v;
@@ -140847,7 +140971,7 @@ var RootStore = _mobxStateTree.types.model('RootStore', {
     }, _callee2, null, [[0, 3]]);
   }));
   var updateTimeEntry = (0, _mobxStateTree.flow)(/*#__PURE__*/_regenerator().m(function _callee3(id, payload) {
-    var _a, res, _t3;
+    var _a, _t3;
     return _regenerator().w(function (_context3) {
       while (1) switch (_context3.p = _context3.n) {
         case 0:
@@ -140856,11 +140980,11 @@ var RootStore = _mobxStateTree.types.model('RootStore', {
           _context3.n = 1;
           return api.updateTimeEntry(id, payload);
         case 1:
-          res = _context3.v;
           _context3.n = 2;
-          return fetchTimeEntries();
+          return fetchTimeEntries(self.currentPage, self.pageSize);
         case 2:
-          return _context3.a(2, res);
+          _context3.n = 4;
+          break;
         case 3:
           _context3.p = 3;
           _t3 = _context3.v;
@@ -140878,17 +141002,15 @@ var RootStore = _mobxStateTree.types.model('RootStore', {
       while (1) switch (_context4.p = _context4.n) {
         case 0:
           _context4.p = 0;
+          console.log('[store] deleteTimeEntry', id);
           _context4.n = 1;
           return api.deleteTimeEntry(id);
         case 1:
-          if (!fetchTimeEntries) {
-            _context4.n = 2;
-            break;
-          }
           _context4.n = 2;
-          return fetchTimeEntries();
+          return fetchTimeEntries(self.currentPage, self.pageSize);
         case 2:
-          return _context4.a(2, true);
+          _context4.n = 4;
+          break;
         case 3:
           _context4.p = 3;
           _t4 = _context4.v;
@@ -140911,14 +141033,10 @@ function createRootStore() {
   var store = RootStore.create({
     timeEntries: [],
     lastError: null,
-    loading: false
+    loading: false,
+    currentPage: 1,
+    pageSize: 20
   });
-  try {
-    store.fetchTimeEntries();
-    console.log('[store] createRootStore: fetchTimeEntries called');
-  } catch (err) {
-    console.error('[store] createRootStore: failed to call fetchTimeEntries', err);
-  }
   return store;
 }
 },{"mobx-state-tree":"../node_modules/mobx-state-tree/dist/mobx-state-tree.module.js","./timeEntryStore":"stores/timeEntryStore.ts","../utils/api":"utils/api.ts"}],"App.tsx":[function(require,module,exports) {
@@ -141054,7 +141172,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63186" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52633" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

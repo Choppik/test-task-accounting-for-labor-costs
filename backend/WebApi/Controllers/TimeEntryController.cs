@@ -1,8 +1,10 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Driver;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using WebApi.Commands;
 using WebApi.DTO;
@@ -30,35 +32,32 @@ namespace WebApi.Controllers
 
         // GET api/timeentry
         [HttpGet]
-        public async Task<ActionResult<List<TimeEntryDTO>>> GetAll()
+        public async Task<ActionResult> GetAll([FromQuery] int? page = 1,
+            [FromQuery] int? pageSize = 20,
+            CancellationToken cancellationToken = default)
         {
-            var docs = await _ts.Find(Builders<TimeEntry>.Filter.Empty)
-                                        .Limit(1000)
-                                        .ToListAsync();
+            // 1. Безопасное приведение типов с дефолтными значениями
+            var safePage = page.HasValue && page.Value > 0 ? page.Value : 1;
+            var safePageSize = pageSize.HasValue && pageSize.Value > 0 && pageSize.Value <= 100
+                ? pageSize.Value
+                : 20; // Максимум 100 записей за запрос — защита от перегрузки БД
 
-            var empIds = docs.Select(d => d.EmployeeId).Where(id => !string.IsNullOrEmpty(id)).Distinct().ToList();
-            var projIds = docs.Select(d => d.ProjectId).Where(id => !string.IsNullOrEmpty(id)).Distinct().ToList();
-
-            var employees = empIds.Any()
-                ? await _employees.Find(e => empIds.Contains(e.Id)).ToListAsync()
-                : new List<Employee>();
-
-            var projects = projIds.Any()
-                ? await _projects.Find(p => projIds.Contains(p.Id)).ToListAsync()
-                : new List<Project>();
-
-            var empDict = employees.ToDictionary(e => e.Id, e => e.FullName);
-            var projDict = projects.ToDictionary(p => p.Id, p => p.Code);
-
-            var dtos = docs.Select(d =>
+            var query = new GetTimeEntriesQuery
             {
-                var dto = TimeEntryMapper.ToDTO(d);
-                dto.EmployeeFullName = d.EmployeeId != null && empDict.TryGetValue(d.EmployeeId, out var en) ? en : d.EmployeeId;
-                dto.ProjectCode = d.ProjectId != null && projDict.TryGetValue(d.ProjectId, out var pn) ? pn : d.ProjectId;
-                return dto;
-            }).ToList();
+                Page = safePage,
+                PageSize = safePageSize
+            };
 
-            return Ok(dtos);
+            try
+            {
+                var result = await _mediator.Send(query, cancellationToken);
+                return Ok(result.Rows);
+            }
+            catch (Exception ex)
+            {
+                // В реальном проекте лучше логировать ex и возвращать более понятный код ошибки
+                return StatusCode(500, $"Ошибка при получении списка табелей: {ex.Message}");
+            }
         }
 
         // GET api/timeentry/{id}

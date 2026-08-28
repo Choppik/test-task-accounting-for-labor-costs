@@ -42,8 +42,12 @@ async function fetchJson<T>(url: string, options?: RequestInit): Promise<T> {
 
 export { fetchJson, API_BASE };
 
-export function fetchTimeEntries() {
-    return fetchJson(`${API_BASE}/api/timeentry`);
+export function fetchTimeEntries(page: number, pageSize: number) {
+    const url = new URL(`${API_BASE}/api/timeentry`);
+    url.searchParams.set('page', String(page));
+    url.searchParams.set('pageSize', String(pageSize));
+
+    return fetchJson(url.toString());
 }
 
 export const fetchTimeEntriesFallback = fetchTimeEntries;

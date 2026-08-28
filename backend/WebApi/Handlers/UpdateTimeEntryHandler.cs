@@ -31,18 +31,16 @@ namespace WebApi.Handlers.Timesheets
             var existing = await _ts.Find(e => e.Id == req.Id).FirstOrDefaultAsync(cancellationToken);
             if (existing == null) return false;
 
-            var entryDate = req.Date.Date;
-
             var startUtc = new DateTime(req.Date.Year, req.Date.Month, req.Date.Day, 0, 0, 0, DateTimeKind.Utc);
 
-            var closed = await _periods.Find(p => p.Year == entryDate.Year && p.Month == entryDate.Month && p.IsClosed)
+            var closed = await _periods.Find(p => p.ClosedAt.Year == startUtc.Year && p.ClosedAt.Month == startUtc.Month)
                                        .FirstOrDefaultAsync(cancellationToken);
-            if (closed != null) throw new InvalidOperationException("Period is closed.");
+            if (closed != null) throw new InvalidOperationException($"Период {startUtc:yyyy-MM} закрыт.");
 
             var employee = await _employees.Find(e => e.Id == req.EmployeeId).FirstOrDefaultAsync(cancellationToken);
             if (employee == null) throw new InvalidOperationException("Employee not found.");
 
-            var hourlyRate = EmployeeSalaryService.GetRateAt(employee.SalaryHistory, entryDate);
+            var hourlyRate = EmployeeSalaryService.GetRateAt(employee.SalaryHistory, startUtc);
             var expectedCost = Math.Round(hourlyRate * req.Hours, 2);
 
             var checkResult = await _limitService.CheckHoursLimitAsync(
@@ -63,7 +61,7 @@ namespace WebApi.Handlers.Timesheets
                 .Set(e => e.Comment, req.Comment)
                 .Set(e => e.ModifiedBy, req.ModifiedBy ?? "system")
                 .Set(e => e.ModifiedAt, req.ModifiedAt)
-                .Set(e => e.Date, entryDate.ToUniversalTime())
+                .Set(e => e.Date, startUtc)
                 .Set(e => e.ProjectId, req.ProjectId)
                 .Set(e => e.ExpectedCost, expectedCost)
                 .Inc(e => e.Version, 1);
@@ -71,7 +69,7 @@ namespace WebApi.Handlers.Timesheets
             var result = await _ts.UpdateOneAsync(filter, update, cancellationToken: cancellationToken);
             if (result.ModifiedCount == 0)
             {
-                throw new InvalidOperationException("Update failed due to concurrent modification or stale version.");
+                throw new InvalidOperationException("Версия записи устарела. Необходимо открыть запись заново.");
             }
             return true;
         }

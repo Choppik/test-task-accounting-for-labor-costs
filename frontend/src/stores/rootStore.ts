@@ -6,67 +6,115 @@ const RootStore = types
     .model('RootStore', {
         timeEntries: types.array(TimeEntryModel),
         lastError: types.maybeNull(types.string),
-        loading: types.optional(types.boolean, false)
+        loading: types.optional(types.boolean, false),
+        // Опционально: можно хранить текущую страницу прямо в сторе, 
+        // чтобы после удаления/добавления оставаться на той же странице.
+        currentPage: types.optional(types.number, 1),
+        pageSize: types.optional(types.number, 20),
     })
     .actions(self => {
         const normalize = (t: any): TimeEntryModelType => {
-            return {
-                id: t.id ?? t._id ?? '',
-                employeeId: t.employeeId ?? t.employee ?? '',
-                projectId: t.projectId ?? t.project ?? '',
-                employeeFullName: t.employeeFullName ?? t.employeeId ?? '',
-                projectCode: t.projectCode ?? t.projectId,
-                date: t.date ?? t.Date ?? '',
-                hours: typeof t.hours === 'number' ? t.hours : Number(t.hours ?? 0),
-                expectedCost: t.expectedCost == null ? undefined : Number(t.expectedCost),
-                comment: t.comment == null ? null : String(t.comment),
-                createdBy: t.createdBy == null ? null : String(t.createdBy),
-                createdAt: t.createdAt == null ? null : String(t.createdAt),
-                modifiedBy: t.modifiedBy == null ? null : String(t.modifiedBy),
-                modifiedAt: t.modifiedAt == null ? null : String(t.modifiedAt),
-                version: typeof t.version === 'number' ? t.version : Number(t.version ?? 1)
-            } as TimeEntryModelType;
+            // Добавлен try/catch, чтобы один битый элемент не ломал всю загрузку
+            try {
+                return {
+                    id: t.id ?? t._id ?? '',
+                    employeeId: t.employeeId ?? t.employee ?? '',
+                    projectId: t.projectId ?? t.project ?? '',
+                    employeeFullName: t.employeeFullName ?? t.employeeId ?? 'Неизвестно',
+                    projectCode: t.projectCode ?? t.projectId ?? 'Без проекта',
+                    date: t.date ?? t.Date ?? '',
+                    // Безопасное приведение числа
+                    hours: (typeof t.hours === 'number')
+                        ? t.hours
+                        : (typeof t.hours === 'string' ? parseFloat(t.hours) : 0) || 0,
+                    expectedCost: t.expectedCost == null ? undefined : Number(t.expectedCost),
+                    comment: t.comment == null ? null : String(t.comment),
+                    createdBy: t.createdBy == null ? null : String(t.createdBy),
+                    createdAt: t.createdAt == null ? null : String(t.createdAt),
+                    modifiedBy: t.modifiedBy == null ? null : String(t.modifiedBy),
+                    modifiedAt: t.modifiedAt == null ? null : String(t.modifiedAt),
+                    version: typeof t.version === 'number' ? t.version : Number(t.version ?? 1)
+                } as TimeEntryModelType;
+            } catch (e) {
+                console.error('[store] normalize failed completely for item:', t, e);
+                // Возвращаем заглушку, чтобы не терять весь список
+                return {
+                    id: 'unknown-' + Math.random(),
+                    employeeId: '',
+                    projectId: '',
+                    employeeFullName: 'Ошибка данных',
+                    projectCode: '',
+                    date: '',
+                    hours: 0,
+                    expectedCost: undefined,
+                    comment: null,
+                    createdBy: null,
+                    createdAt: null,
+                    modifiedBy: null,
+                    modifiedAt: null,
+                    version: 1
+                };
+            }
         };
 
-        const fetchTimeEntries = flow(function* () {
-            console.log('[store] fetchTimeEntries: start');
+        // ✅ ГЛАВНОЕ ИЗМЕНЕНИЕ: теперь принимает page и pageSize
+        const fetchTimeEntries = flow(function* (page: number = 1, pageSize: number = 20) {
+            console.log('[store] fetchTimeEntries: start', { page, pageSize });
+
+            // Обновляем состояние стора
+            self.currentPage = page;
+            self.pageSize = pageSize;
             self.loading = true;
+
             try {
-                const raw: any = yield api.fetchTimeEntries();
-                console.log('[store] fetchTimeEntries: api returned', Array.isArray(raw) ? raw.length : raw);
+                // Вызываем API с параметрами
+                const raw: any = yield api.fetchTimeEntries(page, pageSize);
+                console.log('[store] fetchTimeEntries: api returned', raw);
+
                 self.timeEntries.clear();
 
+                let itemsToProcess: any[] = [];
+
+                // 🔍 ВАЖНО: Обрабатываем два возможных формата ответа от бэкенда
                 if (Array.isArray(raw)) {
-                    for (const item of raw) {
-                        try {
-                            const norm = normalize(item);
-                            self.timeEntries.push(norm);
-                        } catch (innerErr) {
-                            console.error('[store] fetchTimeEntries: normalize/push failed for item', item, innerErr);
-                        }
+                    // Вариант 1: Бэкенд вернул просто массив записей
+                    itemsToProcess = raw;
+                } else if (raw && typeof raw === 'object') {
+                    // Вариант 2: Бэкенд вернул объект { TotalRowCount, Rows }
+                    if (Array.isArray(raw.Rows)) {
+                        itemsToProcess = raw.Rows;
+                    } else {
+                        console.warn('[store] Unexpected response format', raw);
                     }
-                } else {
-                    console.warn('[store] fetchTimeEntries: api returned non-array', raw);
                 }
 
-                console.log('[store] fetchTimeEntries: timesheets length after push', self.timeEntries.length);
+                for (const item of itemsToProcess) {
+                    try {
+                        const norm = normalize(item);
+                        self.timeEntries.push(norm);
+                    } catch (innerErr) {
+                        console.error('[store] normalize failed', item, innerErr);
+                    }
+                }
+
+                console.log('[store] fetched items count:', self.timeEntries.length);
                 self.lastError = null;
             } catch (err: any) {
-                console.error('[store] fetchTimeEntries: error', err);
+                console.error('[store] fetchTimeEntries error', err);
                 self.timeEntries.clear();
                 self.lastError = err?.message ?? 'Ошибка при загрузке записей табеля';
             } finally {
                 self.loading = false;
-                console.log('[store] fetchTimeEntries: finished, loading=false');
+                console.log('[store] fetchTimeEntries finished');
             }
         });
 
         const addTimeEntry = flow(function* (payload: any) {
             try {
-                console.log('[store] addTimeEntry payload', payload);
-                const res = yield api.createTimeEntry(payload);
-                yield fetchTimeEntries();
-                return res;
+                console.log('[store] addTimeEntry', payload);
+                yield api.createTimeEntry(payload);
+                // После добавления перезагружаем текущую страницу
+                yield fetchTimeEntries(self.currentPage, self.pageSize);
             } catch (err: any) {
                 console.error('[store] addTimeEntry error', err);
                 self.lastError = err?.message ?? 'Ошибка при создании записи';
@@ -77,9 +125,9 @@ const RootStore = types
         const updateTimeEntry = flow(function* (id: string, payload: any) {
             try {
                 console.log('[store] updateTimeEntry', id, payload);
-                const res = yield api.updateTimeEntry(id, payload);
-                yield fetchTimeEntries();
-                return res;
+                yield api.updateTimeEntry(id, payload);
+                // После обновления перезагружаем текущую страницу
+                yield fetchTimeEntries(self.currentPage, self.pageSize);
             } catch (err: any) {
                 console.error('[store] updateTimeEntry error', err);
                 self.lastError = err?.message ?? 'Ошибка при обновлении записи';
@@ -89,10 +137,11 @@ const RootStore = types
 
         const deleteTimeEntry = flow(function* (id: string) {
             try {
+                console.log('[store] deleteTimeEntry', id);
                 yield api.deleteTimeEntry(id);
-                if (fetchTimeEntries) yield fetchTimeEntries();
-                return true;
-            } catch (err) {
+                // После удаления перезагружаем текущую страницу, чтобы не было дублей/пропусков
+                yield fetchTimeEntries(self.currentPage, self.pageSize);
+            } catch (err: any) {
                 console.error('[store] deleteTimeEntry error', err);
                 throw err;
             }
@@ -103,13 +152,14 @@ const RootStore = types
 
 export function createRootStore() {
     console.log('[store] createRootStore: creating store');
-    const store = RootStore.create({ timeEntries: [] as any, lastError: null, loading: false });
-    try {
-        (store as any).fetchTimeEntries();
-        console.log('[store] createRootStore: fetchTimeEntries called');
-    } catch (err) {
-        console.error('[store] createRootStore: failed to call fetchTimeEntries', err);
-    }
+    const store = RootStore.create({
+        timeEntries: [],
+        lastError: null,
+        loading: false,
+        currentPage: 1,
+        pageSize: 20
+    });
+
     return store;
 }
 

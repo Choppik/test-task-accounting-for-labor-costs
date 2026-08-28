@@ -36,10 +36,10 @@ namespace WebApi.Handlers.Timesheets
             var year = startUtc.Year;
             var month = startUtc.Month;
 
-            var closed = await _periods.Find(p => p.Year == year && p.Month == month && p.IsClosed)
+            var closed = await _periods.Find(p => p.ClosedAt.Year == year && p.ClosedAt.Month == month)
                                        .FirstOrDefaultAsync(cancellationToken);
             if (closed != null)
-                throw new InvalidOperationException($"Period {year}-{month} is closed.");
+                throw new InvalidOperationException($"Период {startUtc:yyyy-MM} закрыт.");
 
             var employee = await _employees.Find(e => e.Id == request.EmployeeId).FirstOrDefaultAsync(cancellationToken);
             if (employee == null)

@@ -44,8 +44,24 @@ namespace WebApi.Services
                 new CreateIndexOptions { Unique = false }));
 
             await periods.Indexes.CreateOneAsync(new CreateIndexModel<ClosedPeriod>(
-                Builders<ClosedPeriod>.IndexKeys.Ascending(p => p.Year).Ascending(p => p.Month),
+                Builders<ClosedPeriod>.IndexKeys.Ascending(p => p.ClosedAt),
                 new CreateIndexOptions { Unique = true }));
+
+            var periodsCountBefore = await periods.EstimatedDocumentCountAsync();
+            Console.WriteLine($"[SEED] Periods count before seed: {periodsCountBefore}");
+            if (periodsCountBefore == 0)
+            {
+                var hirePer = new DateTime(2026, 2, 1, 0, 0, 0, DateTimeKind.Utc);
+
+                var seedProjects = new List<ClosedPeriod>
+                {
+                    new() { ClosedBy = "admin", ClosedAt = hirePer }
+                };
+
+                await periods.InsertManyAsync(seedProjects);
+                var periodsCountAfter = await periods.EstimatedDocumentCountAsync();
+                Console.WriteLine($"[SEED] Periods count after seed: {periodsCountBefore}");
+            }
 
             var progCountBefore = await projects.EstimatedDocumentCountAsync();
             Console.WriteLine($"[SEED] Projects count before seed: {progCountBefore}");

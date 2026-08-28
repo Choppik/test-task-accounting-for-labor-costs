@@ -6,7 +6,6 @@ import {
     Intent,
     FormGroup,
     InputGroup,
-    Callout,
 } from '@blueprintjs/core';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
@@ -33,9 +32,14 @@ const TimeEntry: React.FC<Props> = ({
         employees,
         projects,
         store,
-    }) => {
+}) => {
     const isEdit = !!initial;
     const [serverError, setServerError] = useState<string | null>(null);
+
+    const handleCloseLocal = () => {
+        setServerError(null);
+        onClose();            
+    };
 
     const Schema = Yup.object().shape({
         employeeId: Yup.string().required('Сотрудник обязателен'),
@@ -64,7 +68,7 @@ const TimeEntry: React.FC<Props> = ({
     return (
         <Dialog
             isOpen={isOpen}
-            onClose={onClose}
+            onClose={handleCloseLocal}
             title={isEdit ? 'Редактировать запись' : 'Создать запись'}
         >
             <div className={Classes.DIALOG_BODY} style={{ padding: 12 }}>
@@ -239,7 +243,7 @@ const TimeEntry: React.FC<Props> = ({
                                     >
                                         {isEdit ? 'Подтвердить' : 'Добавить'}
                                     </Button>
-                                    <Button onClick={onClose}>Отмена</Button>
+                                    <Button onClick={handleCloseLocal}>Отмена</Button>
                                 </div>
                             </div>
                         </Form>
