@@ -15,11 +15,15 @@ namespace WebApi.Handlers.Timesheets
         private readonly IMongoCollection<Employee> _employees;
         private readonly IMongoCollection<ClosedPeriod> _periods;
 
-        public UpdateTimeEntryHandler(IMongoDatabase db)
+        private readonly ITimeEntryLimitService _limitService;
+
+        public UpdateTimeEntryHandler(ITimeEntryLimitService limitService, IMongoDatabase db)
         {
             _ts = db.GetCollection<TimeEntry>("TimeEntries");
             _employees = db.GetCollection<Employee>("Employees");
             _periods = db.GetCollection<ClosedPeriod>("ClosedPeriods");
+
+            _limitService = limitService;
         }
 
         public async Task<bool> Handle(UpdateTimeEntryCommand req, CancellationToken cancellationToken)
@@ -28,6 +32,8 @@ namespace WebApi.Handlers.Timesheets
             if (existing == null) return false;
 
             var entryDate = req.Date.Date;
+
+            var startUtc = new DateTime(req.Date.Year, req.Date.Month, req.Date.Day, 0, 0, 0, DateTimeKind.Utc);
 
             var closed = await _periods.Find(p => p.Year == entryDate.Year && p.Month == entryDate.Month && p.IsClosed)
                                        .FirstOrDefaultAsync(cancellationToken);
@@ -38,6 +44,18 @@ namespace WebApi.Handlers.Timesheets
 
             var hourlyRate = EmployeeSalaryService.GetRateAt(employee.SalaryHistory, entryDate);
             var expectedCost = Math.Round(hourlyRate * req.Hours, 2);
+
+            var checkResult = await _limitService.CheckHoursLimitAsync(
+                req.EmployeeId,
+                startUtc,
+                req.Hours,
+                cancellationToken
+            );
+
+            if (!checkResult.IsValid)
+            {
+                throw new InvalidOperationException(checkResult.ErrorMessage);
+            }
 
             var filter = Builders<TimeEntry>.Filter.Where(e => e.Id == req.Id && e.Version == req.Version);
             var update = Builders<TimeEntry>.Update

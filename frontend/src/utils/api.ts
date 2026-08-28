@@ -33,10 +33,8 @@ async function fetchJson<T>(url: string, options?: RequestInit): Promise<T> {
         throw new Error(userMessage);
     }
 
-    // 2. Обработка успешного ответа
-    // Если статус 204 (No Content) — тело пустое, JSON парсить нельзя!
     if (res.status === 204) {
-        return undefined as unknown as T; // Или можно вернуть true, если T — boolean
+        return undefined as unknown as T;
     }
 
     return res.json() as T;

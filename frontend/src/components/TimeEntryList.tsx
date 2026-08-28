@@ -46,9 +46,7 @@ const TimeEntryList: React.FC<Props> = ({ onClose }) => {
         }
     });
 
-    // И добавьте/замените функцию обработчика:
     const onCellClicked = (event: any) => {
-        // Если клик по колонке удаления — игнорируем открытие модального окна
         const field = event.colDef && (event.colDef.field || event.colDef.colId);
         if (field === 'act' || field === 'actions') {
             return;

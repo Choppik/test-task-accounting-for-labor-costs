@@ -19,10 +19,6 @@ const Home: React.FC = () => {
                     <Button intent="success" large onClick={() => setOpenReports(true)}>
                         Отчеты
                     </Button>
-
-                    <Button intent="success" large onClick={() => setOpenTimeEntry(true)}>
-                        Справочники
-                    </Button>
                 </div>
             </div>
 

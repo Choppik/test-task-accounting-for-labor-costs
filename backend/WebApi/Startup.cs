@@ -9,6 +9,7 @@ using Microsoft.OpenApi.Models;
 using MongoDB.Driver;
 using System;
 using WebApi.Commands;
+using WebApi.Models;
 using WebApi.Services;
 
 namespace WebApi
@@ -57,6 +58,14 @@ namespace WebApi
             });
 
             services.AddTransient<MongoSeeder>();
+
+            services.AddSingleton<ITimeEntryLimitService, TimeEntryLimitService>(sp =>
+            {
+                var mongoClient = sp.GetRequiredService<IMongoClient>();
+                var db = mongoClient.GetDatabase(dbName);
+                var collection = db.GetCollection<TimeEntry>("TimeEntries");
+                return new TimeEntryLimitService(collection);
+            });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

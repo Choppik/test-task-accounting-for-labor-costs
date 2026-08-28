@@ -51,8 +51,6 @@ const ReportProject: React.FC<Props> = ({ onClose }) => {
         recalculateTotals(visibleRows);
     }, [recalculateTotals]);
 
-
-
     const gridApiRef = React.useRef<any>(null);
 
     const calculateVisibleTotals = useCallback(() => {
@@ -85,14 +83,10 @@ const ReportProject: React.FC<Props> = ({ onClose }) => {
                 let userMessage = 'Не удалось загрузить отчёт.';
 
                 if (err instanceof Error) {
-                    // Если это сеть
                     if (err.message.includes('Failed to fetch')) {
                         userMessage = 'Нет соединения с сервером. Проверьте интернет.';
                     }
-                    // Если это ответ от сервера (JSON)
                     else {
-                        // Тут ты можешь распарсить err.message или взять из объекта ошибки, если используешь fetch напрямую
-                        // Но лучше: если ты используешь fetchJson, который кидает new Error(body.message)
                         userMessage = err.message;
                     }
                 }
@@ -119,7 +113,7 @@ const ReportProject: React.FC<Props> = ({ onClose }) => {
     const columnDefs = useMemo(() => [
         {
             headerName: 'Проект',
-            field: 'projectCode', // Проверь, точно ли поле называется projectCode (а не ProjectCode)
+            field: 'projectCode',
             flex: 2,
         },
         {
@@ -149,7 +143,7 @@ const ReportProject: React.FC<Props> = ({ onClose }) => {
         },
         {
             headerName: 'Освоено, %',
-            field: 'percentSpent', // У тебя в коде это поле percentSpent. Если бэкенд шлёт SpentPercent — поменяй здесь.
+            field: 'percentSpent',
             width: 150,
             valueFormatter: (params: { value: number | null | undefined }) => {
                 if (params.value === undefined || params.value === null) return '';

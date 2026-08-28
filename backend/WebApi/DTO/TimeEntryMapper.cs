@@ -13,14 +13,14 @@ namespace WebApi.DTO
                 Id = src.Id,
                 EmployeeId = src.EmployeeId,
                 ProjectId = src.ProjectId,
-                Date = src.Date.ToUniversalTime(),
+                Date = src.Date.ToLocalTime(),
                 Hours = src.Hours,
                 ExpectedCost = src.ExpectedCost,
                 Comment = src.Comment,
                 CreatedBy = src.CreatedBy,
-                CreatedAt = src.CreatedAt.ToUniversalTime(),
+                CreatedAt = src.CreatedAt.ToLocalTime(),
                 ModifiedBy = src.ModifiedBy,
-                ModifiedAt = src.ModifiedAt?.ToUniversalTime(),
+                ModifiedAt = src.ModifiedAt?.ToLocalTime(),
                 Version = src.Version
             };
         }

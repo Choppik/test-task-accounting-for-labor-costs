@@ -124235,17 +124235,22 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _react = _interopRequireDefault(require("react"));
+var _react = _interopRequireWildcard(require("react"));
 var _core = require("@blueprintjs/core");
 var _formik = require("formik");
 var Yup = _interopRequireWildcard(require("yup"));
 var api = _interopRequireWildcard(require("../utils/api"));
 function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function (e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, default: e }; if (null === e || "object" != typeof e && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (const t in e) "default" !== t && {}.hasOwnProperty.call(e, t) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, t)) && (i.get || i.set) ? o(f, t, i) : f[t] = e[t]); return f; })(e, t); }
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return _regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i.return) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), _regeneratorDefine2(u), _regeneratorDefine2(u, o, "Generator"), _regeneratorDefine2(u, n, function () { return this; }), _regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
 function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); } r ? i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n : (o("next", 0), o("throw", 1), o("return", 2)); }, _regeneratorDefine2(e, r, n, t); }
 function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
 function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 var isMultipleOfHalf = function isMultipleOfHalf(n) {
   return Math.abs(Math.round(n * 2) - n * 2) < 1e-8;
 };
@@ -124259,12 +124264,10 @@ var TimeEntry = function TimeEntry(_ref) {
     store = _ref.store;
   var _a, _b, _c, _d, _e, _f, _g;
   var isEdit = !!initial;
-  var getProjectById = function getProjectById(id) {
-    return projects.find(function (p) {
-      var _a, _b;
-      return ((_b = (_a = p.id) !== null && _a !== void 0 ? _a : p._id) !== null && _b !== void 0 ? _b : p.id) === id;
-    });
-  };
+  var _useState = (0, _react.useState)(null),
+    _useState2 = _slicedToArray(_useState, 2),
+    serverError = _useState2[0],
+    setServerError = _useState2[1];
   var Schema = Yup.object().shape({
     employeeId: Yup.string().required('Сотрудник обязателен'),
     projectId: Yup.string().required('Проект обязателен'),
@@ -124272,21 +124275,6 @@ var TimeEntry = function TimeEntry(_ref) {
     hours: Yup.number().required('Часы обязательны').min(0.5, 'Минимум 0.5').max(24, 'Максимум 24').test('half', 'Часы должны быть кратны 0.5', function (v) {
       return isMultipleOfHalf(Number(v));
     })
-  }).test('project-date', 'Дата должна быть в диапазоне проекта', function (values) {
-    var proj = getProjectById(values.projectId);
-    if (!proj) return true;
-    var date = new Date(values.date);
-    var start = proj.startDate ? new Date(proj.startDate) : null;
-    var end = proj.endDate ? new Date(proj.endDate) : null;
-    if (start && date < start) return this.createError({
-      path: 'date',
-      message: "\u0414\u0430\u0442\u0430 \u0440\u0430\u043D\u044C\u0448\u0435 \u043D\u0430\u0447\u0430\u043B\u0430 \u043F\u0440\u043E\u0435\u043A\u0442\u0430 (".concat(start.toLocaleDateString(), ")")
-    });
-    if (end && date > end) return this.createError({
-      path: 'date',
-      message: "\u0414\u0430\u0442\u0430 \u043F\u043E\u0437\u0436\u0435 \u043E\u043A\u043E\u043D\u0447\u0430\u043D\u0438\u044F \u043F\u0440\u043E\u0435\u043A\u0442\u0430 (".concat(end.toLocaleDateString(), ")")
-    });
-    return true;
   });
   var initialValues = {
     id: (_a = initial === null || initial === void 0 ? void 0 : initial.id) !== null && _a !== void 0 ? _a : '',
@@ -124311,11 +124299,13 @@ var TimeEntry = function TimeEntry(_ref) {
     enableReinitialize: true,
     onSubmit: function () {
       var _onSubmit = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee(values, _ref2) {
-        var setSubmitting, _a, payload, _t;
+        var setSubmitting, setErrors, _a, _b, payload, message, _t;
         return _regenerator().w(function (_context) {
           while (1) switch (_context.p = _context.n) {
             case 0:
-              setSubmitting = _ref2.setSubmitting;
+              setSubmitting = _ref2.setSubmitting, setErrors = _ref2.setErrors;
+              // Сбрасываем предыдущую ошибку перед новым запросом
+              setServerError(null);
               _context.p = 1;
               payload = {
                 employeeId: values.employeeId,
@@ -124394,7 +124384,16 @@ var TimeEntry = function TimeEntry(_ref) {
             case 12:
               _context.p = 12;
               _t = _context.v;
-              alert('Ошибка: ' + ((_a = _t === null || _t === void 0 ? void 0 : _t.message) !== null && _a !== void 0 ? _a : 'Не удалось сохранить'));
+              message = '';
+              if ((_b = (_a = _t === null || _t === void 0 ? void 0 : _t.response) === null || _a === void 0 ? void 0 : _a.data) === null || _b === void 0 ? void 0 : _b.message) {
+                message = _t.response.data.message;
+              } else if (_t === null || _t === void 0 ? void 0 : _t.message) {
+                message = _t.message;
+              } else {
+                message = 'Не удалось сохранить запись. Проверьте соединение или попробуйте позже.';
+              }
+              // ВАЖНО: Все ошибки (и ставка, и БД, и сеть) идут сюда
+              setServerError(message);
             case 13:
               _context.p = 13;
               setSubmitting(false);
@@ -124411,7 +124410,16 @@ var TimeEntry = function TimeEntry(_ref) {
     }()
   }, function (_ref3) {
     var isSubmitting = _ref3.isSubmitting;
-    return _react.default.createElement(_formik.Form, null, _react.default.createElement("div", {
+    return _react.default.createElement(_formik.Form, null, serverError && _react.default.createElement("div", {
+      style: {
+        padding: 12,
+        backgroundColor: '#ffebee',
+        color: '#c62828',
+        borderRadius: 4,
+        marginBottom: 16,
+        fontSize: 14
+      }
+    }, serverError), _react.default.createElement("div", {
       style: {
         display: 'grid',
         gridTemplateColumns: '1fr 1fr',
@@ -124434,7 +124442,9 @@ var TimeEntry = function TimeEntry(_ref) {
       }, e.fullName);
     })), _react.default.createElement("div", {
       style: {
-        color: 'red'
+        color: 'red',
+        fontSize: '12px',
+        marginTop: 4
       }
     }, _react.default.createElement(_formik.ErrorMessage, {
       name: "employeeId"
@@ -124455,7 +124465,9 @@ var TimeEntry = function TimeEntry(_ref) {
       }, (_e = p.name) !== null && _e !== void 0 ? _e : p.code);
     })), _react.default.createElement("div", {
       style: {
-        color: 'red'
+        color: 'red',
+        fontSize: '12px',
+        marginTop: 4
       }
     }, _react.default.createElement(_formik.ErrorMessage, {
       name: "projectId"
@@ -124468,7 +124480,9 @@ var TimeEntry = function TimeEntry(_ref) {
       type: "date"
     }), _react.default.createElement("div", {
       style: {
-        color: 'red'
+        color: 'red',
+        fontSize: '12px',
+        marginTop: 4
       }
     }, _react.default.createElement(_formik.ErrorMessage, {
       name: "date"
@@ -124482,7 +124496,9 @@ var TimeEntry = function TimeEntry(_ref) {
       step: "0.5"
     }), _react.default.createElement("div", {
       style: {
-        color: 'red'
+        color: 'red',
+        fontSize: '12px',
+        marginTop: 4
       }
     }, _react.default.createElement(_formik.ErrorMessage, {
       name: "hours"
@@ -140049,9 +140065,7 @@ var TimeEntryList = function TimeEntryList(_ref) {
       return node;
     }
   });
-  // И добавьте/замените функцию обработчика:
   var onCellClicked = function onCellClicked(event) {
-    // Если клик по колонке удаления — игнорируем открытие модального окна
     var field = event.colDef && (event.colDef.field || event.colDef.colId);
     if (field === 'act' || field === 'actions') {
       return;
@@ -140365,14 +140379,9 @@ var ReportProject = function ReportProject(_ref) {
             _t = _context.v;
             userMessage = 'Не удалось загрузить отчёт.';
             if (_t instanceof Error) {
-              // Если это сеть
               if (_t.message.includes('Failed to fetch')) {
                 userMessage = 'Нет соединения с сервером. Проверьте интернет.';
-              }
-              // Если это ответ от сервера (JSON)
-              else {
-                // Тут ты можешь распарсить err.message или взять из объекта ошибки, если используешь fetch напрямую
-                // Но лучше: если ты используешь fetchJson, который кидает new Error(body.message)
+              } else {
                 userMessage = _t.message;
               }
             }
@@ -140646,13 +140655,7 @@ var Home = function Home() {
     onClick: function onClick() {
       return setOpenReports(true);
     }
-  }, "\u041E\u0442\u0447\u0435\u0442\u044B"), _react.default.createElement(_core.Button, {
-    intent: "success",
-    large: true,
-    onClick: function onClick() {
-      return setOpenTimeEntry(true);
-    }
-  }, "\u0421\u043F\u0440\u0430\u0432\u043E\u0447\u043D\u0438\u043A\u0438"))), _react.default.createElement(_core.Dialog, {
+  }, "\u041E\u0442\u0447\u0435\u0442\u044B"))), _react.default.createElement(_core.Dialog, {
     icon: "list",
     isOpen: openTimeEntry,
     title: "\u0417\u0430\u043F\u0438\u0441\u0438 \u0442\u0430\u0431\u0435\u043B\u044F",
@@ -141051,7 +141054,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52654" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63186" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
