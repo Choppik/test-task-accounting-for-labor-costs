@@ -1,17 +1,11 @@
-﻿import React, { useState, useEffect, useMemo } from 'react';
+﻿import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { AgGridReact } from 'ag-grid-react';
-
-import 'ag-grid-community/dist/styles/ag-grid.css';
-import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
-
 import { Button, Intent, Classes } from '@blueprintjs/core';
 import * as api from '../utils/api';
-import { useStore } from '../stores/useStore';
 
 type Props = { onClose?: () => void };
 
 const ReportProject: React.FC<Props> = ({ onClose }) => {
-    const store = useStore();
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
@@ -23,22 +17,87 @@ const ReportProject: React.FC<Props> = ({ onClose }) => {
 
     const [rows, setRows] = useState<any[]>([]);
 
+    const [totals, setTotals] = useState({ totalHours: 0, totalCost: 0 });
+
+    const recalculateTotals = useCallback((data: any[]) => {
+        let totalHours = 0;
+        let totalCost = 0;
+
+        data.forEach((row) => {
+            const hours = Number(row.totalHours ?? 0);
+            const cost = Number(row.totalCost ?? 0);
+
+            totalHours += hours;
+            totalCost += cost;
+        });
+
+        setTotals({ totalHours, totalCost });
+    }, []);
+
+    const onFilterChanged = useCallback((params: any) => {
+        const api = params.api;
+        const visibleRows: any[] = [];
+
+        for (let i = 0; i < api.getDisplayedRowCount(); i++) {
+            const rowNode = api.getDisplayedRowAtIndex(i);
+
+            if (!rowNode) continue;
+
+            if (!rowNode.group) {
+                visibleRows.push(rowNode.data);
+            }
+        }
+
+        recalculateTotals(visibleRows);
+    }, [recalculateTotals]);
+
+
+
+    const gridApiRef = React.useRef<any>(null);
+
+    const calculateVisibleTotals = useCallback(() => {
+        if (!gridApiRef.current) return;
+        const api = gridApiRef.current;
+        const visibleRows: any[] = [];
+        for (let i = 0; i < api.getDisplayedRowCount(); i++) {
+            const node = api.getDisplayedRowAtIndex(i);
+            if (!node || node.group) continue;
+            visibleRows.push(node.data);
+        }
+        recalculateTotals(visibleRows);
+    }, [recalculateTotals]);
+
+    const onGridReady = useCallback((params: any) => {
+        gridApiRef.current = params.api;
+        calculateVisibleTotals();
+    }, [calculateVisibleTotals]);
+
+
     const loadReport = async () => {
         setLoading(true);
         setError(null);
+
         try {
             const data = await api.getProjectReport(year, month);
-            setRows(data);
-        } catch (err: any) {
-            console.error('Report load failed', err);
-            if (err.status === 400 && err.data?.errors) {
-                const errors = err.data.errors;
-                const message = Object.values(errors).flat().join('; ');
-                setError(`Ошибка параметров: ${message}`);
-            } else {
-                setError(err?.message ?? 'Не удалось загрузить отчёт');
-            }
-        } finally {
+            setRows(data as any[]);
+        }
+            catch (err: unknown) {
+                let userMessage = 'Не удалось загрузить отчёт.';
+
+                if (err instanceof Error) {
+                    // Если это сеть
+                    if (err.message.includes('Failed to fetch')) {
+                        userMessage = 'Нет соединения с сервером. Проверьте интернет.';
+                    }
+                    // Если это ответ от сервера (JSON)
+                    else {
+                        // Тут ты можешь распарсить err.message или взять из объекта ошибки, если используешь fetch напрямую
+                        // Но лучше: если ты используешь fetchJson, который кидает new Error(body.message)
+                        userMessage = err.message;
+                    }
+                }
+                setError(userMessage);
+            } finally {
             setLoading(false);
         }
     };
@@ -47,45 +106,82 @@ const ReportProject: React.FC<Props> = ({ onClose }) => {
         loadReport();
     }, []);
 
+    const getRowStyle = useMemo(() => (params: any) => {
+        if (params.data?.projectCode === 'Итого') {
+            return {
+                fontWeight: 'bold',
+                borderTop: '2px solid #ccc',
+            };
+        }
+        return undefined;
+    }, []);
+
     const columnDefs = useMemo(() => [
-        { headerName: 'Проект', field: 'projectName', flex: 2 },
-        { headerName: 'Код', field: 'projectCode', width: 100 },
         {
-            headerName: 'Бюджет', field: 'budgetRub', width: 120,
-            valueFormatter: (p: any) => p.value ? new Intl.NumberFormat('ru-RU').format(p.value) : '0'
+            headerName: 'Проект',
+            field: 'projectCode', // Проверь, точно ли поле называется projectCode (а не ProjectCode)
+            flex: 2,
         },
-        { headerName: 'Факт (часы)', field: 'totalHours', width: 120 },
         {
-            headerName: 'Факт (стоимость)', field: 'totalCost', width: 140,
-            valueFormatter: (p: any) => p.value ? new Intl.NumberFormat('ru-RU').format(p.value) : '0'
+            headerName: 'Часы',
+            field: 'totalHours',
+            width: 100,
+            valueFormatter: (params: { value: number | null | undefined }) =>
+                params.value ? params.value.toString() : '0'
+        },
+        {
+            headerName: 'Стоимость, руб',
+            field: 'totalCost',
+            width: 150,
+            valueFormatter: (params: { value: number | null | undefined }) => {
+                if (params.value === undefined || params.value === null) return '0';
+                return new Intl.NumberFormat('ru-RU').format(params.value);
+            },
+        },
+        {
+            headerName: 'Бюджет, руб',
+            field: 'budgetRub',
+            width: 150,
+            valueFormatter: (params: { value: number | null | undefined }) => {
+                if (params.value === undefined || params.value === null) return '';
+                return `${new Intl.NumberFormat('ru-RU').format(params.value)}`;
+            },
         },
         {
             headerName: 'Освоено, %',
-            field: 'percentSpent',
-            width: 100,
-            valueFormatter: (params: any) => {
-                if (params.value === undefined || params.value === null) return '-';
+            field: 'percentSpent', // У тебя в коде это поле percentSpent. Если бэкенд шлёт SpentPercent — поменяй здесь.
+            width: 150,
+            valueFormatter: (params: { value: number | null | undefined }) => {
+                if (params.value === undefined || params.value === null) return '';
                 return `${params.value.toFixed(1)}%`;
             },
             cellStyle: (params: any) => {
                 const percent = Number(params.value);
-                // Если перерасход — красный фон, иначе белый/нейтральный
-                return percent > 100 ? { backgroundColor: '#ffebee', color: '#c62828' } : null;
-            }
-        },
-        {
-            headerName: 'Начало', field: 'startDate', width: 110,
-            valueFormatter: (p: any) => p.value ? new Date(p.value).toLocaleDateString() : ''
-        },
-        {
-            headerName: 'Конец', field: 'endDate', width: 110,
-            valueFormatter: (p: any) => p.value ? new Date(p.value).toLocaleDateString() : ''
+                if (!Number.isFinite(percent)) return null;
+
+                if (percent > 100) {
+                    return { backgroundColor: '#ffebee', color: '#c62828' }; // Красный
+                }
+                if (percent >= 80 && percent <= 100) {
+                    return { backgroundColor: '#fff3e0', color: '#ef6c00' }; // Оранжевый
+                }
+                return null; // Нейтральный
+            },
         },
     ], []);
 
-    // Простая валидация прямо в обработчике — можно вынести в Yup, если нужно
     const validateYear = (val: string) => /^\d{4}$/.test(val);
     const validateMonth = (val: string) => /^(0[1-9]|1[0-2])$/.test(val);
+
+
+    // Формируем строку итогов
+    const footerRow = useMemo(() => [{
+        projectCode: 'Итого',
+        totalHours: totals.totalHours,
+        totalCost: totals.totalCost,
+        budgetRub: null,
+        percentSpent: null, 
+    }], [totals]);
 
     return (
         <div style={{ display: 'flex', flexDirection: 'column', gap: 16, padding: 16, maxHeight: '80vh', overflow: 'hidden' }}>
@@ -110,7 +206,6 @@ const ReportProject: React.FC<Props> = ({ onClose }) => {
                         value={month}
                         onChange={(e) => {
                             const val = e.target.value.replace(/\D/g, '').slice(0, 2);
-                            // Автодополнение до двух знаков при вводе одной цифры
                             setMonth(val.length === 1 ? `0${val}` : val);
                         }}
                         placeholder="03"
@@ -142,20 +237,24 @@ const ReportProject: React.FC<Props> = ({ onClose }) => {
                     borderRadius: 4,
                     marginBottom: 16
                 }}>
-                    ⚠️ {error}
+                     {error}
                 </div>
             )}
 
             {loading ? (
                 <div style={{ textAlign: 'center', padding: 40, color: '#5c7080' }}>Загрузка отчёта...</div>
             ) : (
-                <div style={{ height: 500, width: '100%' }}>
+                <div className="ag-theme-alpine" style={{ height: 500, width: '100%' }}>
                     <AgGridReact
                         rowData={rows}
                         columnDefs={columnDefs}
                         defaultColDef={{ resizable: true, sortable: true, filter: true }}
-                        pagination
-                        paginationPageSize={25}
+                        enableRangeSelection={true}
+                        pagination={false}
+                        pinnedBottomRowData={footerRow}
+                        getRowStyle={getRowStyle as unknown as (params: any) => any}
+                        onFilterChanged={onFilterChanged}
+                        onGridReady={onGridReady}
                     />
                 </div>
             )}

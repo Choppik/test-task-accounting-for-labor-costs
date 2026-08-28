@@ -65,7 +65,7 @@ namespace WebApi
 
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
+                //app.UseDeveloperExceptionPage(); Конфилкт с app.UseMiddleware<ExceptionMiddleware>();
             }
 
             app.UseCors(DevCorsPolicy);
@@ -81,7 +81,7 @@ namespace WebApi
                 endpoints.MapHealthChecks("/health");
             });
 
-            using (var scope = app.ApplicationServices.CreateScope())
+            using (var scope = app.ApplicationServices.CreateScope()) // Блок для заполнения начальных данных. В проде такого быть не должно.
             {
                 var seeder = scope.ServiceProvider.GetService<MongoSeeder>();
                 try

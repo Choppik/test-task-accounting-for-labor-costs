@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Threading.Tasks;
-using FluentValidation;
+﻿using FluentValidation;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
-using System.Text.Json;
+using MongoDB.Driver;
+using System;
+using System.Net;
+using System.Net.Sockets;
+using System.Threading.Tasks;
 
 namespace WebApi.Services
 {
@@ -29,48 +28,49 @@ namespace WebApi.Services
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Unhandled exception");
+                // Логируем ПОЛНУЮ ошибку (со стеком) — это для тебя, в консоль/Serilog
+                _logger.LogError(ex, "Unhandled exception occurred on path {Path}", httpContext.Request.Path);
+
                 await HandleExceptionAsync(httpContext, ex);
             }
         }
 
         private static Task HandleExceptionAsync(HttpContext context, Exception exception)
         {
-            // --- ГЛАВНОЕ ИЗМЕНЕНИЕ: обработка ошибок валидации ---
-            if (exception is ValidationException ve)
-            {
-                var errors = ve.Errors
-                    .GroupBy(e => e.PropertyName)
-                    .ToDictionary(
-                        g => g.Key,
-                        g => g.Select(err => err.ErrorMessage).ToArray()
-                    );
+            // 1. Валидация
+            if (exception is ValidationException ve) { /* ... */ }
 
+            // 2. Ошибки БД (MongoDB, SQL) — отдельная категория
+            if (exception is MongoConnectionException ||
+                exception is TimeoutException ||
+                exception.InnerException is SocketException)
+            {
                 var problem = new
                 {
-                    title = "Validation Error",
-                    detail = "Данные не прошли валидацию",
-                    status = (int)HttpStatusCode.BadRequest,
-                    errors // это тот самый JSON: { "Duration": ["Должна быть больше 0"], "EmployeeId": ["Обязательное поле"] }
+                    type = "DATABASE_UNAVAILABLE",
+                    title = "Не удалось подключиться к базе данных",
+                    status = (int)HttpStatusCode.ServiceUnavailable, // 503 вместо 500
+                    message = "Сервис временно недоступен из-за проблем с хранилищем данных.",
+                    traceId = context.TraceIdentifier
                 };
-
-                context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                context.Response.StatusCode = (int)HttpStatusCode.ServiceUnavailable;
                 return SendJsonAsync(context, problem);
             }
 
-            // Для всех остальных ошибок — стандартный ответ
+            // 3. Всё остальное
             var genericProblem = new
             {
-                title = "Internal Server Error",
-                detail = context.Request.Path + " : " + exception.Message,
-                status = (int)HttpStatusCode.InternalServerError
+                type = "INTERNAL_ERROR",
+                title = "Произошла ошибка на сервере",
+                status = (int)HttpStatusCode.InternalServerError,
+                message = "Сервис временно недоступен. Попробуйте позже.",
+                traceId = context.TraceIdentifier
             };
 
             context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
             return SendJsonAsync(context, genericProblem);
         }
 
-        // Вынес в отдельный метод, чтобы не дублировать сериализацию
         private static Task SendJsonAsync<T>(HttpContext context, T obj)
         {
             context.Response.ContentType = "application/json; charset=utf-8";

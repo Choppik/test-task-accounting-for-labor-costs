@@ -11,7 +11,7 @@ using WebApi.Queries;
 
 namespace WebApi.Handlers
 {
-    public class GetProjectsReportHandler : IRequestHandler<GetProjectsReportQuery, List<ProjectReportItem>>
+    public class GetProjectsReportHandler : IRequestHandler<GetProjectsReportQuery, List<ProjectReportItemDTO>>
     {
         private readonly IMongoCollection<Project> _projects;
 
@@ -20,7 +20,7 @@ namespace WebApi.Handlers
             _projects = database.GetCollection<Project>("Projects");
         }
 
-        public async Task<List<ProjectReportItem>> Handle(GetProjectsReportQuery request, CancellationToken cancellationToken)
+        public async Task<List<ProjectReportItemDTO>> Handle(GetProjectsReportQuery request, CancellationToken cancellationToken)
         {
             var startOfMonth = new DateTime(request.Year, request.Month, 1, 0, 0, 0, DateTimeKind.Utc);
             var endOfMonth = startOfMonth.AddMonths(1).AddSeconds(-1);
@@ -38,20 +38,6 @@ namespace WebApi.Handlers
                 new BsonDocument("EndDate", BsonNull.Value)
             };
             matchFilter.Add("$or", endDateConditions);
-
-            if (!string.IsNullOrWhiteSpace(request.SearchQuery))
-            {
-                var regex = new BsonRegularExpression(request.SearchQuery, "i");
-                var searchOr = new BsonArray
-                {
-                    new BsonDocument("Code", new BsonDocument("$regex", regex.Pattern)),
-                    new BsonDocument("Name", new BsonDocument("$regex", regex.Pattern))
-                };
-                matchFilter = new BsonDocument
-                {
-                    { "$and", new BsonArray { matchFilter, new BsonDocument("$or", searchOr) } }
-                };
-            }
 
             var skip = (request.Page - 1) * request.PageSize;
 
@@ -155,7 +141,7 @@ namespace WebApi.Handlers
             var result = await _projects.Aggregate<BsonDocument>(pipeline).ToListAsync(cancellationToken);
             Console.WriteLine($"[RESULT] Aggregation returned {result.Count} items.");
 
-            var reportItems = new List<ProjectReportItem>();
+            var reportItems = new List<ProjectReportItemDTO>();
 
             for (int i = 0; i < result.Count; i++)
             {
@@ -195,7 +181,7 @@ namespace WebApi.Handlers
                         else totalHours = Convert.ToInt32(hoursVal);
                     }
 
-                    reportItems.Add(new ProjectReportItem
+                    reportItems.Add(new ProjectReportItemDTO
                     {
                         Id = r["_id"].ToString(),
                         ProjectCode = r.GetValue("code")?.AsString ?? string.Empty,

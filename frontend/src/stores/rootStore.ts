@@ -89,7 +89,7 @@ const RootStore = types
 
         const deleteTimeEntry = flow(function* (id: string) {
             try {
-                yield api.deleteTimeEntry(id); // fetchJson теперь вернёт null при 204
+                yield api.deleteTimeEntry(id);
                 if (fetchTimeEntries) yield fetchTimeEntries();
                 return true;
             } catch (err) {

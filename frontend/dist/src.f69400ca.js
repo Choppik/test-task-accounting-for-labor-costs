@@ -110771,6 +110771,7 @@ exports.getProjectReport = getProjectReport;
 exports.updateTimeEntry = updateTimeEntry;
 function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return _regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i.return) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), _regeneratorDefine2(u), _regeneratorDefine2(u, o, "Generator"), _regeneratorDefine2(u, n, function () { return this; }), _regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
 function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); } r ? i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n : (o("next", 0), o("throw", 1), o("return", 2)); }, _regeneratorDefine2(e, r, n, t); }
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
 function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
 var API_BASE = exports.API_BASE = 'http://localhost:5000';
@@ -110778,41 +110779,65 @@ function fetchJson(_x, _x2) {
   return _fetchJson.apply(this, arguments);
 }
 function _fetchJson() {
-  _fetchJson = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee(url, init) {
-    var res, text, _t;
+  _fetchJson = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee(url, options) {
+    var res, userMessage, text, data, allErrors, _t, _t2;
     return _regenerator().w(function (_context) {
       while (1) switch (_context.p = _context.n) {
         case 0:
+          _context.p = 0;
           _context.n = 1;
-          return fetch(url, init);
+          return fetch(url, options);
         case 1:
           res = _context.v;
-          if (!(res.status === 204)) {
-            _context.n = 2;
-            break;
-          }
-          return _context.a(2, null);
-        case 2:
           _context.n = 3;
-          return res.text();
+          break;
+        case 2:
+          _context.p = 2;
+          _t = _context.v;
+          throw new Error('Нет соединения с сервером. Проверьте интернет или доступность сервиса.');
         case 3:
-          text = _context.v;
-          if (text) {
-            _context.n = 4;
+          if (res.ok) {
+            _context.n = 9;
             break;
           }
-          return _context.a(2, null);
-        case 4:
+          userMessage = "\u041E\u0448\u0438\u0431\u043A\u0430 \u0441\u0435\u0440\u0432\u0435\u0440\u0430: ".concat(res.status);
           _context.p = 4;
-          return _context.a(2, JSON.parse(text));
+          _context.n = 5;
+          return res.text();
         case 5:
-          _context.p = 5;
-          _t = _context.v;
-          throw new Error('Invalid JSON response: ' + _t.message);
+          text = _context.v;
+          if (text.trim()) {
+            _context.n = 6;
+            break;
+          }
+          throw new Error();
         case 6:
-          return _context.a(2);
+          data = JSON.parse(text);
+          if (data && typeof data.message === 'string') {
+            userMessage = data.message;
+          } else if (data && data.errors && _typeof(data.errors) === 'object') {
+            allErrors = Object.values(data.errors).flat();
+            if (allErrors.length > 0 && typeof allErrors[0] === 'string') {
+              userMessage = allErrors[0];
+            }
+          }
+          _context.n = 8;
+          break;
+        case 7:
+          _context.p = 7;
+          _t2 = _context.v;
+        case 8:
+          throw new Error(userMessage);
+        case 9:
+          if (!(res.status === 204)) {
+            _context.n = 10;
+            break;
+          }
+          return _context.a(2, undefined);
+        case 10:
+          return _context.a(2, res.json());
       }
-    }, _callee, null, [[4, 5]]);
+    }, _callee, null, [[4, 7], [0, 2]]);
   }));
   return _fetchJson.apply(this, arguments);
 }
@@ -110854,18 +110879,22 @@ function getProjectReport(_x3, _x4) {
 }
 function _getProjectReport() {
   _getProjectReport = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee2(year, month) {
+    var body;
     return _regenerator().w(function (_context2) {
       while (1) switch (_context2.n) {
         case 0:
+          body = JSON.stringify({
+            Year: year,
+            Month: month,
+            Page: 1,
+            PageSize: 20
+          });
           return _context2.a(2, fetchJson("".concat(API_BASE, "/api/reports/projects"), {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
             },
-            body: JSON.stringify({
-              year: year,
-              month: month
-            })
+            body: body
           }));
       }
     }, _callee2);
@@ -139966,7 +139995,7 @@ var TimeEntryList = function TimeEntryList(_ref) {
     setModalOpen = _useState10[1];
   var loadAll = /*#__PURE__*/function () {
     var _ref2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee() {
-      var _a, _b, _c, _d, _e, emps, projs, _t;
+      var _a, emps, projs, _t;
       return _regenerator().w(function (_context) {
         while (1) switch (_context.p = _context.n) {
           case 0:
@@ -139984,19 +140013,19 @@ var TimeEntryList = function TimeEntryList(_ref) {
             return api.fetchEmployees();
           case 3:
             emps = _context.v;
-            setEmployees(Array.isArray((_a = emps.items) !== null && _a !== void 0 ? _a : emps) ? (_b = emps.items) !== null && _b !== void 0 ? _b : emps : []);
+            setEmployees(Array.isArray(emps) ? emps : []);
             _context.n = 4;
             return api.fetchProjects();
           case 4:
             projs = _context.v;
-            setProjects(Array.isArray((_c = projs.items) !== null && _c !== void 0 ? _c : projs) ? (_d = projs.items) !== null && _d !== void 0 ? _d : projs : []);
+            setProjects(Array.isArray(projs) ? projs : []);
             _context.n = 6;
             break;
           case 5:
             _context.p = 5;
             _t = _context.v;
             console.error(_t);
-            setError((_e = _t === null || _t === void 0 ? void 0 : _t.message) !== null && _e !== void 0 ? _e : 'Ошибка загрузки');
+            setError((_a = _t === null || _t === void 0 ? void 0 : _t.message) !== null && _a !== void 0 ? _a : 'Ошибка загрузки');
           case 6:
             _context.p = 6;
             setLoading(false);
@@ -140138,7 +140167,7 @@ var TimeEntryList = function TimeEntryList(_ref) {
           onDoubleClick: function onDoubleClick(e) {
             return e.stopPropagation();
           }
-        }, "\u0423\u0434\u0430\u043B\u0438\u0442\u044C");
+        }, "X");
       }
     }];
   }, [store]);
@@ -140204,7 +140233,7 @@ var TimeEntryList = function TimeEntryList(_ref) {
       filter: true
     },
     pagination: true,
-    paginationPageSize: 25,
+    paginationPageSize: 20,
     onCellClicked: onCellClicked
   })), _react.default.createElement(_TimeEntry.default, {
     isOpen: modalOpen,
@@ -140219,66 +140248,7 @@ var TimeEntryList = function TimeEntryList(_ref) {
   }));
 };
 var _default = exports.default = TimeEntryList;
-},{"react":"../node_modules/react/index.js","ag-grid-react":"../node_modules/ag-grid-react/main.js","@blueprintjs/core":"../node_modules/@blueprintjs/core/lib/esm/index.js","../utils/api":"utils/api.ts","../stores/useStore":"stores/useStore.tsx","./TimeEntry":"components/TimeEntry.tsx","mobx-state-tree":"../node_modules/mobx-state-tree/dist/mobx-state-tree.module.js"}],"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
-var bundleURL = null;
-function getBundleURLCached() {
-  if (!bundleURL) {
-    bundleURL = getBundleURL();
-  }
-  return bundleURL;
-}
-function getBundleURL() {
-  // Attempt to find the URL of the current script and use that as the base URL
-  try {
-    throw new Error();
-  } catch (err) {
-    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
-    if (matches) {
-      return getBaseURL(matches[0]);
-    }
-  }
-  return '/';
-}
-function getBaseURL(url) {
-  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)?\/[^/]+(?:\?.*)?$/, '$1') + '/';
-}
-exports.getBundleURL = getBundleURLCached;
-exports.getBaseURL = getBaseURL;
-},{}],"../node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
-var bundle = require('./bundle-url');
-function updateLink(link) {
-  var newLink = link.cloneNode();
-  newLink.onload = function () {
-    link.remove();
-  };
-  newLink.href = link.href.split('?')[0] + '?' + Date.now();
-  link.parentNode.insertBefore(newLink, link.nextSibling);
-}
-var cssTimeout = null;
-function reloadCSS() {
-  if (cssTimeout) {
-    return;
-  }
-  cssTimeout = setTimeout(function () {
-    var links = document.querySelectorAll('link[rel="stylesheet"]');
-    for (var i = 0; i < links.length; i++) {
-      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
-        updateLink(links[i]);
-      }
-    }
-    cssTimeout = null;
-  }, 50);
-}
-module.exports = reloadCSS;
-},{"./bundle-url":"../node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"../node_modules/ag-grid-community/dist/styles/ag-grid.css":[function(require,module,exports) {
-var reloadCSS = require('_css_loader');
-module.hot.dispose(reloadCSS);
-module.hot.accept(reloadCSS);
-},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../node_modules/ag-grid-community/dist/styles/ag-theme-alpine.css":[function(require,module,exports) {
-var reloadCSS = require('_css_loader');
-module.hot.dispose(reloadCSS);
-module.hot.accept(reloadCSS);
-},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/ReportProject.tsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","ag-grid-react":"../node_modules/ag-grid-react/main.js","@blueprintjs/core":"../node_modules/@blueprintjs/core/lib/esm/index.js","../utils/api":"utils/api.ts","../stores/useStore":"stores/useStore.tsx","./TimeEntry":"components/TimeEntry.tsx","mobx-state-tree":"../node_modules/mobx-state-tree/dist/mobx-state-tree.module.js"}],"components/ReportProject.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -140287,11 +140257,8 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 var _react = _interopRequireWildcard(require("react"));
 var _agGridReact = require("ag-grid-react");
-require("ag-grid-community/dist/styles/ag-grid.css");
-require("ag-grid-community/dist/styles/ag-theme-alpine.css");
 var _core = require("@blueprintjs/core");
 var api = _interopRequireWildcard(require("../utils/api"));
-var _useStore = require("../stores/useStore");
 function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function (e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, default: e }; if (null === e || "object" != typeof e && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (const t in e) "default" !== t && {}.hasOwnProperty.call(e, t) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, t)) && (i.get || i.set) ? o(f, t, i) : f[t] = e[t]); return f; })(e, t); }
 function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return _regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i.return) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), _regeneratorDefine2(u), _regeneratorDefine2(u, o, "Generator"), _regeneratorDefine2(u, n, function () { return this; }), _regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
 function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); } r ? i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n : (o("next", 0), o("throw", 1), o("return", 2)); }, _regeneratorDefine2(e, r, n, t); }
@@ -140305,7 +140272,6 @@ function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" !=
 function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 var ReportProject = function ReportProject(_ref) {
   var onClose = _ref.onClose;
-  var store = (0, _useStore.useStore)();
   var _useState = (0, _react.useState)(false),
     _useState2 = _slicedToArray(_useState, 2),
     loading = _useState2[0],
@@ -140328,9 +140294,59 @@ var ReportProject = function ReportProject(_ref) {
     _useState0 = _slicedToArray(_useState9, 2),
     rows = _useState0[0],
     setRows = _useState0[1];
+  var _useState1 = (0, _react.useState)({
+      totalHours: 0,
+      totalCost: 0
+    }),
+    _useState10 = _slicedToArray(_useState1, 2),
+    totals = _useState10[0],
+    setTotals = _useState10[1];
+  var recalculateTotals = (0, _react.useCallback)(function (data) {
+    var totalHours = 0;
+    var totalCost = 0;
+    data.forEach(function (row) {
+      var _a, _b;
+      var hours = Number((_a = row.totalHours) !== null && _a !== void 0 ? _a : 0);
+      var cost = Number((_b = row.totalCost) !== null && _b !== void 0 ? _b : 0);
+      totalHours += hours;
+      totalCost += cost;
+    });
+    setTotals({
+      totalHours: totalHours,
+      totalCost: totalCost
+    });
+  }, []);
+  var onFilterChanged = (0, _react.useCallback)(function (params) {
+    var api = params.api;
+    var visibleRows = [];
+    for (var i = 0; i < api.getDisplayedRowCount(); i++) {
+      var rowNode = api.getDisplayedRowAtIndex(i);
+      if (!rowNode) continue;
+      if (!rowNode.group) {
+        visibleRows.push(rowNode.data);
+      }
+    }
+    recalculateTotals(visibleRows);
+  }, [recalculateTotals]);
+  var gridApiRef = _react.default.useRef(null);
+  var calculateVisibleTotals = (0, _react.useCallback)(function () {
+    if (!gridApiRef.current) return;
+    var api = gridApiRef.current;
+    var visibleRows = [];
+    for (var i = 0; i < api.getDisplayedRowCount(); i++) {
+      var node = api.getDisplayedRowAtIndex(i);
+      if (!node || node.group) continue;
+      visibleRows.push(node.data);
+    }
+    recalculateTotals(visibleRows);
+  }, [recalculateTotals]);
+  var onGridReady = (0, _react.useCallback)(function (params) {
+    gridApiRef.current = params.api;
+    calculateVisibleTotals();
+  }, [calculateVisibleTotals]);
   var loadReport = /*#__PURE__*/function () {
     var _ref2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee() {
-      var _a, _b, data, errors, message, _t;
+      var data, userMessage, _t;
       return _regenerator().w(function (_context) {
         while (1) switch (_context.p = _context.n) {
           case 0:
@@ -140347,14 +140363,20 @@ var ReportProject = function ReportProject(_ref) {
           case 3:
             _context.p = 3;
             _t = _context.v;
-            console.error('Report load failed', _t);
-            if (_t.status === 400 && ((_a = _t.data) === null || _a === void 0 ? void 0 : _a.errors)) {
-              errors = _t.data.errors;
-              message = Object.values(errors).flat().join('; ');
-              setError("\u041E\u0448\u0438\u0431\u043A\u0430 \u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u043E\u0432: ".concat(message));
-            } else {
-              setError((_b = _t === null || _t === void 0 ? void 0 : _t.message) !== null && _b !== void 0 ? _b : 'Не удалось загрузить отчёт');
+            userMessage = 'Не удалось загрузить отчёт.';
+            if (_t instanceof Error) {
+              // Если это сеть
+              if (_t.message.includes('Failed to fetch')) {
+                userMessage = 'Нет соединения с сервером. Проверьте интернет.';
+              }
+              // Если это ответ от сервера (JSON)
+              else {
+                // Тут ты можешь распарсить err.message или взять из объекта ошибки, если используешь fetch напрямую
+                // Но лучше: если ты используешь fetchJson, который кидает new Error(body.message)
+                userMessage = _t.message;
+              }
             }
+            setError(userMessage);
           case 4:
             _context.p = 4;
             setLoading(false);
@@ -140371,72 +140393,89 @@ var ReportProject = function ReportProject(_ref) {
   (0, _react.useEffect)(function () {
     loadReport();
   }, []);
+  var getRowStyle = (0, _react.useMemo)(function () {
+    return function (params) {
+      var _a;
+      if (((_a = params.data) === null || _a === void 0 ? void 0 : _a.projectCode) === 'Итого') {
+        return {
+          fontWeight: 'bold',
+          borderTop: '2px solid #ccc'
+        };
+      }
+      return undefined;
+    };
+  }, []);
   var columnDefs = (0, _react.useMemo)(function () {
     return [{
       headerName: 'Проект',
-      field: 'projectName',
+      field: 'projectCode',
       flex: 2
     }, {
-      headerName: 'Код',
-      field: 'projectCode',
-      width: 100
-    }, {
-      headerName: 'Бюджет',
-      field: 'budgetRub',
-      width: 120,
-      valueFormatter: function valueFormatter(p) {
-        return p.value ? new Intl.NumberFormat('ru-RU').format(p.value) : '0';
+      headerName: 'Часы',
+      field: 'totalHours',
+      width: 100,
+      valueFormatter: function valueFormatter(params) {
+        return params.value ? params.value.toString() : '0';
       }
     }, {
-      headerName: 'Факт (часы)',
-      field: 'totalHours',
-      width: 120
-    }, {
-      headerName: 'Факт (стоимость)',
+      headerName: 'Стоимость, руб',
       field: 'totalCost',
-      width: 140,
-      valueFormatter: function valueFormatter(p) {
-        return p.value ? new Intl.NumberFormat('ru-RU').format(p.value) : '0';
+      width: 150,
+      valueFormatter: function valueFormatter(params) {
+        if (params.value === undefined || params.value === null) return '0';
+        return new Intl.NumberFormat('ru-RU').format(params.value);
+      }
+    }, {
+      headerName: 'Бюджет, руб',
+      field: 'budgetRub',
+      width: 150,
+      valueFormatter: function valueFormatter(params) {
+        if (params.value === undefined || params.value === null) return '';
+        return "".concat(new Intl.NumberFormat('ru-RU').format(params.value));
       }
     }, {
       headerName: 'Освоено, %',
       field: 'percentSpent',
-      width: 100,
+      width: 150,
       valueFormatter: function valueFormatter(params) {
-        if (params.value === undefined || params.value === null) return '-';
+        if (params.value === undefined || params.value === null) return '';
         return "".concat(params.value.toFixed(1), "%");
       },
       cellStyle: function cellStyle(params) {
         var percent = Number(params.value);
-        // Если перерасход — красный фон, иначе белый/нейтральный
-        return percent > 100 ? {
-          backgroundColor: '#ffebee',
-          color: '#c62828'
-        } : null;
-      }
-    }, {
-      headerName: 'Начало',
-      field: 'startDate',
-      width: 110,
-      valueFormatter: function valueFormatter(p) {
-        return p.value ? new Date(p.value).toLocaleDateString() : '';
-      }
-    }, {
-      headerName: 'Конец',
-      field: 'endDate',
-      width: 110,
-      valueFormatter: function valueFormatter(p) {
-        return p.value ? new Date(p.value).toLocaleDateString() : '';
+        if (!Number.isFinite(percent)) return null;
+        if (percent > 100) {
+          return {
+            backgroundColor: '#ffebee',
+            color: '#c62828'
+          }; // Красный
+        }
+        if (percent >= 80 && percent <= 100) {
+          return {
+            backgroundColor: '#fff3e0',
+            color: '#ef6c00'
+          }; // Оранжевый
+        }
+        return null; // Нейтральный
       }
     }];
   }, []);
-  // Простая валидация прямо в обработчике — можно вынести в Yup, если нужно
   var validateYear = function validateYear(val) {
     return /^\d{4}$/.test(val);
   };
   var validateMonth = function validateMonth(val) {
     return /^(0[1-9]|1[0-2])$/.test(val);
   };
+  // Формируем строку итогов
+  var footerRow = (0, _react.useMemo)(function () {
+    return [{
+      projectCode: 'Итого',
+      totalHours: totals.totalHours,
+      totalCost: totals.totalCost,
+      budgetRub: null,
+      percentSpent: null
+    }];
+  }, [totals]);
   return _react.default.createElement("div", {
     style: {
       display: 'flex',
@@ -140491,7 +140530,6 @@ var ReportProject = function ReportProject(_ref) {
     value: month,
     onChange: function onChange(e) {
       var val = e.target.value.replace(/\D/g, '').slice(0, 2);
-      // Автодополнение до двух знаков при вводе одной цифры
       setMonth(val.length === 1 ? "0".concat(val) : val);
     },
     placeholder: "03",
@@ -140516,13 +140554,14 @@ var ReportProject = function ReportProject(_ref) {
       borderRadius: 4,
       marginBottom: 16
     }
-  }, "\u26A0\uFE0F ", error), loading ? _react.default.createElement("div", {
+  }, error), loading ? _react.default.createElement("div", {
     style: {
       textAlign: 'center',
       padding: 40,
       color: '#5c7080'
     }
   }, "\u0417\u0430\u0433\u0440\u0443\u0437\u043A\u0430 \u043E\u0442\u0447\u0451\u0442\u0430...") : _react.default.createElement("div", {
+    className: "ag-theme-alpine",
     style: {
       height: 500,
       width: '100%'
@@ -140535,12 +140574,16 @@ var ReportProject = function ReportProject(_ref) {
       sortable: true,
       filter: true
     },
-    pagination: true,
-    paginationPageSize: 25
+    enableRangeSelection: true,
+    pagination: false,
+    pinnedBottomRowData: footerRow,
+    getRowStyle: getRowStyle,
+    onFilterChanged: onFilterChanged,
+    onGridReady: onGridReady
   })));
 };
 var _default = exports.default = ReportProject;
-},{"react":"../node_modules/react/index.js","ag-grid-react":"../node_modules/ag-grid-react/main.js","ag-grid-community/dist/styles/ag-grid.css":"../node_modules/ag-grid-community/dist/styles/ag-grid.css","ag-grid-community/dist/styles/ag-theme-alpine.css":"../node_modules/ag-grid-community/dist/styles/ag-theme-alpine.css","@blueprintjs/core":"../node_modules/@blueprintjs/core/lib/esm/index.js","../utils/api":"utils/api.ts","../stores/useStore":"stores/useStore.tsx"}],"components/Home.tsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","ag-grid-react":"../node_modules/ag-grid-react/main.js","@blueprintjs/core":"../node_modules/@blueprintjs/core/lib/esm/index.js","../utils/api":"utils/api.ts"}],"components/Home.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -140899,7 +140942,58 @@ var App = function App() {
   }, _react.default.createElement(_Home.default, null)));
 };
 var _default = exports.default = App;
-},{"react":"../node_modules/react/index.js","@blueprintjs/core":"../node_modules/@blueprintjs/core/lib/esm/index.js","./components/Home":"components/Home.tsx","./stores/rootStore":"stores/rootStore.ts","./stores/useStore":"stores/useStore.tsx"}],"../node_modules/@blueprintjs/core/lib/css/blueprint.css":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","@blueprintjs/core":"../node_modules/@blueprintjs/core/lib/esm/index.js","./components/Home":"components/Home.tsx","./stores/rootStore":"stores/rootStore.ts","./stores/useStore":"stores/useStore.tsx"}],"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+var bundleURL = null;
+function getBundleURLCached() {
+  if (!bundleURL) {
+    bundleURL = getBundleURL();
+  }
+  return bundleURL;
+}
+function getBundleURL() {
+  // Attempt to find the URL of the current script and use that as the base URL
+  try {
+    throw new Error();
+  } catch (err) {
+    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
+    if (matches) {
+      return getBaseURL(matches[0]);
+    }
+  }
+  return '/';
+}
+function getBaseURL(url) {
+  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)?\/[^/]+(?:\?.*)?$/, '$1') + '/';
+}
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+},{}],"../node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
+var bundle = require('./bundle-url');
+function updateLink(link) {
+  var newLink = link.cloneNode();
+  newLink.onload = function () {
+    link.remove();
+  };
+  newLink.href = link.href.split('?')[0] + '?' + Date.now();
+  link.parentNode.insertBefore(newLink, link.nextSibling);
+}
+var cssTimeout = null;
+function reloadCSS() {
+  if (cssTimeout) {
+    return;
+  }
+  cssTimeout = setTimeout(function () {
+    var links = document.querySelectorAll('link[rel="stylesheet"]');
+    for (var i = 0; i < links.length; i++) {
+      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
+        updateLink(links[i]);
+      }
+    }
+    cssTimeout = null;
+  }, 50);
+}
+module.exports = reloadCSS;
+},{"./bundle-url":"../node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"../node_modules/@blueprintjs/core/lib/css/blueprint.css":[function(require,module,exports) {
 
         var reloadCSS = require('_css_loader');
         module.hot.dispose(reloadCSS);
@@ -140911,7 +141005,15 @@ var _default = exports.default = App;
         module.hot.dispose(reloadCSS);
         module.hot.accept(reloadCSS);
       
-},{"./..\\..\\resources\\icons\\icons-16.eot":[["icons-16.cb463fa1.eot","../node_modules/@blueprintjs/icons/resources/icons/icons-16.eot"],"../node_modules/@blueprintjs/icons/resources/icons/icons-16.eot"],"./..\\..\\resources\\icons\\icons-16.woff":[["icons-16.0347b35c.woff","../node_modules/@blueprintjs/icons/resources/icons/icons-16.woff"],"../node_modules/@blueprintjs/icons/resources/icons/icons-16.woff"],"./..\\..\\resources\\icons\\icons-16.ttf":[["icons-16.f39daaaa.ttf","../node_modules/@blueprintjs/icons/resources/icons/icons-16.ttf"],"../node_modules/@blueprintjs/icons/resources/icons/icons-16.ttf"],"./..\\..\\resources\\icons\\icons-20.eot":[["icons-20.603e6047.eot","../node_modules/@blueprintjs/icons/resources/icons/icons-20.eot"],"../node_modules/@blueprintjs/icons/resources/icons/icons-20.eot"],"./..\\..\\resources\\icons\\icons-20.woff":[["icons-20.8ebf1bff.woff","../node_modules/@blueprintjs/icons/resources/icons/icons-20.woff"],"../node_modules/@blueprintjs/icons/resources/icons/icons-20.woff"],"./..\\..\\resources\\icons\\icons-20.ttf":[["icons-20.73310a02.ttf","../node_modules/@blueprintjs/icons/resources/icons/icons-20.ttf"],"../node_modules/@blueprintjs/icons/resources/icons/icons-20.ttf"],"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"index.tsx":[function(require,module,exports) {
+},{"./..\\..\\resources\\icons\\icons-16.eot":[["icons-16.cb463fa1.eot","../node_modules/@blueprintjs/icons/resources/icons/icons-16.eot"],"../node_modules/@blueprintjs/icons/resources/icons/icons-16.eot"],"./..\\..\\resources\\icons\\icons-16.woff":[["icons-16.0347b35c.woff","../node_modules/@blueprintjs/icons/resources/icons/icons-16.woff"],"../node_modules/@blueprintjs/icons/resources/icons/icons-16.woff"],"./..\\..\\resources\\icons\\icons-16.ttf":[["icons-16.f39daaaa.ttf","../node_modules/@blueprintjs/icons/resources/icons/icons-16.ttf"],"../node_modules/@blueprintjs/icons/resources/icons/icons-16.ttf"],"./..\\..\\resources\\icons\\icons-20.eot":[["icons-20.603e6047.eot","../node_modules/@blueprintjs/icons/resources/icons/icons-20.eot"],"../node_modules/@blueprintjs/icons/resources/icons/icons-20.eot"],"./..\\..\\resources\\icons\\icons-20.woff":[["icons-20.8ebf1bff.woff","../node_modules/@blueprintjs/icons/resources/icons/icons-20.woff"],"../node_modules/@blueprintjs/icons/resources/icons/icons-20.woff"],"./..\\..\\resources\\icons\\icons-20.ttf":[["icons-20.73310a02.ttf","../node_modules/@blueprintjs/icons/resources/icons/icons-20.ttf"],"../node_modules/@blueprintjs/icons/resources/icons/icons-20.ttf"],"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../node_modules/ag-grid-community/dist/styles/ag-grid.css":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../node_modules/ag-grid-community/dist/styles/ag-theme-alpine.css":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"index.tsx":[function(require,module,exports) {
 "use strict";
 
 require("whatwg-fetch");
@@ -140949,7 +141051,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51770" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52654" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

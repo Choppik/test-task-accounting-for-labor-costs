@@ -1,12 +1,8 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using MongoDB.Bson;
 using MongoDB.Driver;
-using System;
-using System.Linq;
 using System.Threading.Tasks;
 using WebApi.DTO;
-using WebApi.Models;
 using WebApi.Queries;
 
 namespace WebApi.Controllers
@@ -25,34 +21,16 @@ namespace WebApi.Controllers
         [HttpPost("projects")]
         public async Task<IActionResult> GetProjectsReport([FromBody] ReportDTO request)
         {
-            if (string.IsNullOrWhiteSpace(request.Year) || string.IsNullOrWhiteSpace(request.Month))
+            var query = new GetProjectsReportQuery
             {
-                return BadRequest(new { message = "Год и месяц обязательны" });
-            }
+                Year = int.Parse(request.Year),
+                Month = int.Parse(request.Month),
+                Page = request.Page,
+                PageSize = request.PageSize
+            };
 
-            if (!int.TryParse(request.Year, out var year) || !int.TryParse(request.Month, out var month))
-            {
-                return BadRequest(new { message = "Год и месяц должны быть корректными числами" });
-            }
-
-            try
-            {
-                var query = new GetProjectsReportQuery
-                {
-                    Year = year,
-                    Month = month,
-                    SearchQuery = request.Q,
-                    Page = request.Page,
-                    PageSize = request.PageSize
-                };
-
-                var result = await _mediator.Send(query);
-                return Ok(result);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, new { message = "Ошибка при формировании отчёта", details = ex.Message });
-            }
+            var result = await _mediator.Send(query);
+            return Ok(result);
         }
     }
 }

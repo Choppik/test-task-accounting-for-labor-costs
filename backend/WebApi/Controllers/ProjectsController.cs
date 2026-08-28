@@ -1,9 +1,6 @@
-﻿using MediatR;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using MongoDB.Bson;
 using MongoDB.Driver;
-using System;
-using System.Linq;
 using System.Threading.Tasks;
 using WebApi.Models;
 
@@ -26,7 +23,7 @@ namespace WebApi.Controllers
             var filter = string.IsNullOrWhiteSpace(q)
                 ? Builders<Project>.Filter.Empty
                 : Builders<Project>.Filter.Or(
-                    Builders<Project>.Filter.Regex(e => e.Code, new MongoDB.Bson.BsonRegularExpression(q, "i"))
+                    Builders<Project>.Filter.Regex(e => e.Code, new BsonRegularExpression(q, "i"))
                   );
 
             var skip = (page - 1) * pageSize;
@@ -47,6 +44,7 @@ namespace WebApi.Controllers
                               .Project(x => new { id = x.Id, code = x.Code })
                               .FirstOrDefaultAsync();
             if (e == null) return NotFound();
+
             return Ok(e);
         }
     }

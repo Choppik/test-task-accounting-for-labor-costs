@@ -2,7 +2,7 @@
 
 namespace WebApi.DTO
 {
-    public class ProjectReportItem
+    public class ProjectReportItemDTO
     {
         public string Id { get; set; }
         public string ProjectCode { get; set; }

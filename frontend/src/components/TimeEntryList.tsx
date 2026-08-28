@@ -1,6 +1,6 @@
 ﻿import React, { useEffect, useState, useMemo } from 'react';
 import { AgGridReact } from 'ag-grid-react';
-import { Button, Intent } from '@blueprintjs/core';
+import { Button } from '@blueprintjs/core';
 import * as api from '../utils/api';
 import { useStore } from '../stores/useStore';
 import TimeEntry from './TimeEntry';
@@ -25,9 +25,9 @@ const TimeEntryList: React.FC<Props> = ({ onClose }) => {
         try {
             if (store.fetchTimeEntries) await store.fetchTimeEntries();
             const emps = await api.fetchEmployees();
-            setEmployees(Array.isArray(emps.items ?? emps) ? (emps.items ?? emps) : []);
+            setEmployees(Array.isArray(emps) ? (emps) : []);
             const projs = await api.fetchProjects();
-            setProjects(Array.isArray(projs.items ?? projs) ? (projs.items ?? projs) : []);
+            setProjects(Array.isArray(projs) ? (projs) : []);
         } catch (e: any) {
             console.error(e);
             setError(e?.message ?? 'Ошибка загрузки');
@@ -104,7 +104,7 @@ const TimeEntryList: React.FC<Props> = ({ onClose }) => {
                         onClick={handleClick}
                         onMouseDown={(e) => e.stopPropagation()}
                         onDoubleClick={(e) => e.stopPropagation()}>
-                        Удалить
+                        X
                     </button>
                 );
             }
@@ -132,7 +132,7 @@ const TimeEntryList: React.FC<Props> = ({ onClose }) => {
                     columnDefs={columnDefs}
                     defaultColDef={{ resizable: true, sortable: true, filter: true }}
                     pagination
-                    paginationPageSize={25}
+                    paginationPageSize={20}
                     onCellClicked={onCellClicked}
                 />
             </div>

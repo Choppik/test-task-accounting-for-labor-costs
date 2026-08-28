@@ -1,19 +1,45 @@
 ﻿const API_BASE = 'http://localhost:5000';
 
-async function fetchJson(url: string, init?: RequestInit) {
-    const res = await fetch(url, init);
-    // если нет контента — вернуть null (или undefined)
-    if (res.status === 204) return null;
-
-    const text = await res.text();
-    if (!text) return null; // пустой ответ — безопасно возвращаем null
+async function fetchJson<T>(url: string, options?: RequestInit): Promise<T> {
+    let res: Response;
 
     try {
-        return JSON.parse(text);
-    } catch (err) {
-        // если не JSON — пробуем вернуть raw text или бросаем
-        throw new Error('Invalid JSON response: ' + (err as Error).message);
+        res = await fetch(url, options);
+    } catch (networkError) {
+        throw new Error('Нет соединения с сервером. Проверьте интернет или доступность сервиса.');
     }
+
+    if (!res.ok) {
+        let userMessage = `Ошибка сервера: ${res.status}`;
+
+        try {
+            const text = await res.text();
+            if (!text.trim()) throw new Error();
+
+            const data = JSON.parse(text);
+
+            if (data && typeof data.message === 'string') {
+                userMessage = data.message;
+            } else if (data && data.errors && typeof data.errors === 'object') {
+                const allErrors = Object.values(data.errors).flat();
+                if (allErrors.length > 0 && typeof allErrors[0] === 'string') {
+                    userMessage = allErrors[0];
+                }
+            }
+        } catch {
+            // Если не JSON — оставляем дефолтное сообщение
+        }
+
+        throw new Error(userMessage);
+    }
+
+    // 2. Обработка успешного ответа
+    // Если статус 204 (No Content) — тело пустое, JSON парсить нельзя!
+    if (res.status === 204) {
+        return undefined as unknown as T; // Или можно вернуть true, если T — boolean
+    }
+
+    return res.json() as T;
 }
 
 export { fetchJson, API_BASE };
@@ -54,10 +80,18 @@ export function fetchProjects() {
     return fetchJson(`${API_BASE}/api/projects`);
 }
 
+
 export async function getProjectReport(year: string, month: string) {
+    const body = JSON.stringify({
+        Year: year,
+        Month: month,
+        Page: 1,
+        PageSize: 20,
+    });
+
     return fetchJson(`${API_BASE}/api/reports/projects`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ year, month })
+        body,
     });
 }
