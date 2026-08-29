@@ -124311,7 +124311,6 @@ var TimeEntry = function TimeEntry(_ref) {
           while (1) switch (_context.p = _context.n) {
             case 0:
               setSubmitting = _ref2.setSubmitting, setErrors = _ref2.setErrors;
-              // Сбрасываем предыдущую ошибку перед новым запросом
               setServerError(null);
               _context.p = 1;
               payload = {
@@ -124564,7 +124563,6 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 var TimeEntryList = function TimeEntryList(_ref) {
   var onClose = _ref.onClose;
   var store = (0, _useStore.useStore)();
-  // Локальные стейты для полей пагинации
   var _useState = (0, _react.useState)(1),
     _useState2 = _slicedToArray(_useState, 2),
     page = _useState2[0],
@@ -140824,14 +140822,11 @@ var RootStore = _mobxStateTree.types.model('RootStore', {
   timeEntries: _mobxStateTree.types.array(_timeEntryStore.TimeEntryModel),
   lastError: _mobxStateTree.types.maybeNull(_mobxStateTree.types.string),
   loading: _mobxStateTree.types.optional(_mobxStateTree.types.boolean, false),
-  // Опционально: можно хранить текущую страницу прямо в сторе, 
-  // чтобы после удаления/добавления оставаться на той же странице.
   currentPage: _mobxStateTree.types.optional(_mobxStateTree.types.number, 1),
   pageSize: _mobxStateTree.types.optional(_mobxStateTree.types.number, 20)
 }).actions(function (self) {
   var normalize = function normalize(t) {
     var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o;
-    // Добавлен try/catch, чтобы один битый элемент не ломал всю загрузку
     try {
       return {
         id: (_b = (_a = t.id) !== null && _a !== void 0 ? _a : t._id) !== null && _b !== void 0 ? _b : '',
@@ -140840,7 +140835,6 @@ var RootStore = _mobxStateTree.types.model('RootStore', {
         employeeFullName: (_h = (_g = t.employeeFullName) !== null && _g !== void 0 ? _g : t.employeeId) !== null && _h !== void 0 ? _h : 'Неизвестно',
         projectCode: (_k = (_j = t.projectCode) !== null && _j !== void 0 ? _j : t.projectId) !== null && _k !== void 0 ? _k : 'Без проекта',
         date: (_m = (_l = t.date) !== null && _l !== void 0 ? _l : t.Date) !== null && _m !== void 0 ? _m : '',
-        // Безопасное приведение числа
         hours: typeof t.hours === 'number' ? t.hours : (typeof t.hours === 'string' ? parseFloat(t.hours) : 0) || 0,
         expectedCost: t.expectedCost == null ? undefined : Number(t.expectedCost),
         comment: t.comment == null ? null : String(t.comment),
@@ -140852,7 +140846,6 @@ var RootStore = _mobxStateTree.types.model('RootStore', {
       };
     } catch (e) {
       console.error('[store] normalize failed completely for item:', t, e);
-      // Возвращаем заглушку, чтобы не терять весь список
       return {
         id: 'unknown-' + Math.random(),
         employeeId: '',
@@ -140871,7 +140864,6 @@ var RootStore = _mobxStateTree.types.model('RootStore', {
       };
     }
   };
-  // ✅ ГЛАВНОЕ ИЗМЕНЕНИЕ: теперь принимает page и pageSize
   var fetchTimeEntries = (0, _mobxStateTree.flow)(function () {
     var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
     var pageSize = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 20;
@@ -140884,7 +140876,6 @@ var RootStore = _mobxStateTree.types.model('RootStore', {
               page: page,
               pageSize: pageSize
             });
-            // Обновляем состояние стора
             self.currentPage = page;
             self.pageSize = pageSize;
             self.loading = true;
@@ -140895,12 +140886,10 @@ var RootStore = _mobxStateTree.types.model('RootStore', {
             raw = _context.v;
             console.log('[store] fetchTimeEntries: api returned', raw);
             self.timeEntries.clear();
-            itemsToProcess = []; // 🔍 ВАЖНО: Обрабатываем два возможных формата ответа от бэкенда
+            itemsToProcess = [];
             if (Array.isArray(raw)) {
-              // Вариант 1: Бэкенд вернул просто массив записей
               itemsToProcess = raw;
             } else if (raw && _typeof(raw) === 'object') {
-              // Вариант 2: Бэкенд вернул объект { TotalRowCount, Rows }
               if (Array.isArray(raw.Rows)) {
                 itemsToProcess = raw.Rows;
               } else {
@@ -141172,7 +141161,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52633" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58906" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

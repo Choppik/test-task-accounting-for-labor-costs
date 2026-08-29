@@ -61,7 +61,7 @@ namespace WebApi.Services
                     type = "BUSINESS_RULE_VIOLATION",
                     title = "Нарушение бизнес-правила",
                     status = (int)HttpStatusCode.BadRequest,
-                    message = ioe.Message, // <-- это тот самый понятный текст из хендлера
+                    message = ioe.Message,
                     traceId = context.TraceIdentifier
                 };
 

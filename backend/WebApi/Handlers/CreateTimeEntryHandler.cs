@@ -9,7 +9,7 @@ using WebApi.Services;
 
 namespace WebApi.Handlers.Timesheets
 {
-    public class CreateTimetEntryHandler : IRequestHandler<CreateTimeEntryCommand, string>
+    public class CreateTimeEntryHandler : IRequestHandler<CreateTimeEntryCommand, string>
     {
         private readonly IMongoCollection<TimeEntry> _ts;
         private readonly IMongoCollection<Employee> _employees;
@@ -18,7 +18,7 @@ namespace WebApi.Handlers.Timesheets
 
         private readonly ITimeEntryLimitService _limitService;
 
-        public CreateTimetEntryHandler(ITimeEntryLimitService limitService, IMongoDatabase db)
+        public CreateTimeEntryHandler(ITimeEntryLimitService limitService, IMongoDatabase db)
         {
             _ts = db.GetCollection<TimeEntry>("TimeEntries");
             _employees = db.GetCollection<Employee>("Employees");

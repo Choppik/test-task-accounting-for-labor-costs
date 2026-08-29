@@ -7,14 +7,12 @@ const RootStore = types
         timeEntries: types.array(TimeEntryModel),
         lastError: types.maybeNull(types.string),
         loading: types.optional(types.boolean, false),
-        // Опционально: можно хранить текущую страницу прямо в сторе, 
-        // чтобы после удаления/добавления оставаться на той же странице.
+
         currentPage: types.optional(types.number, 1),
         pageSize: types.optional(types.number, 20),
     })
     .actions(self => {
         const normalize = (t: any): TimeEntryModelType => {
-            // Добавлен try/catch, чтобы один битый элемент не ломал всю загрузку
             try {
                 return {
                     id: t.id ?? t._id ?? '',
@@ -23,7 +21,6 @@ const RootStore = types
                     employeeFullName: t.employeeFullName ?? t.employeeId ?? 'Неизвестно',
                     projectCode: t.projectCode ?? t.projectId ?? 'Без проекта',
                     date: t.date ?? t.Date ?? '',
-                    // Безопасное приведение числа
                     hours: (typeof t.hours === 'number')
                         ? t.hours
                         : (typeof t.hours === 'string' ? parseFloat(t.hours) : 0) || 0,
@@ -37,7 +34,6 @@ const RootStore = types
                 } as TimeEntryModelType;
             } catch (e) {
                 console.error('[store] normalize failed completely for item:', t, e);
-                // Возвращаем заглушку, чтобы не терять весь список
                 return {
                     id: 'unknown-' + Math.random(),
                     employeeId: '',
@@ -57,17 +53,14 @@ const RootStore = types
             }
         };
 
-        // ✅ ГЛАВНОЕ ИЗМЕНЕНИЕ: теперь принимает page и pageSize
         const fetchTimeEntries = flow(function* (page: number = 1, pageSize: number = 20) {
             console.log('[store] fetchTimeEntries: start', { page, pageSize });
 
-            // Обновляем состояние стора
             self.currentPage = page;
             self.pageSize = pageSize;
             self.loading = true;
 
             try {
-                // Вызываем API с параметрами
                 const raw: any = yield api.fetchTimeEntries(page, pageSize);
                 console.log('[store] fetchTimeEntries: api returned', raw);
 
@@ -75,12 +68,9 @@ const RootStore = types
 
                 let itemsToProcess: any[] = [];
 
-                // 🔍 ВАЖНО: Обрабатываем два возможных формата ответа от бэкенда
                 if (Array.isArray(raw)) {
-                    // Вариант 1: Бэкенд вернул просто массив записей
                     itemsToProcess = raw;
                 } else if (raw && typeof raw === 'object') {
-                    // Вариант 2: Бэкенд вернул объект { TotalRowCount, Rows }
                     if (Array.isArray(raw.Rows)) {
                         itemsToProcess = raw.Rows;
                     } else {
@@ -113,7 +103,6 @@ const RootStore = types
             try {
                 console.log('[store] addTimeEntry', payload);
                 yield api.createTimeEntry(payload);
-                // После добавления перезагружаем текущую страницу
                 yield fetchTimeEntries(self.currentPage, self.pageSize);
             } catch (err: any) {
                 console.error('[store] addTimeEntry error', err);
@@ -126,7 +115,6 @@ const RootStore = types
             try {
                 console.log('[store] updateTimeEntry', id, payload);
                 yield api.updateTimeEntry(id, payload);
-                // После обновления перезагружаем текущую страницу
                 yield fetchTimeEntries(self.currentPage, self.pageSize);
             } catch (err: any) {
                 console.error('[store] updateTimeEntry error', err);
@@ -139,7 +127,6 @@ const RootStore = types
             try {
                 console.log('[store] deleteTimeEntry', id);
                 yield api.deleteTimeEntry(id);
-                // После удаления перезагружаем текущую страницу, чтобы не было дублей/пропусков
                 yield fetchTimeEntries(self.currentPage, self.pageSize);
             } catch (err: any) {
                 console.error('[store] deleteTimeEntry error', err);

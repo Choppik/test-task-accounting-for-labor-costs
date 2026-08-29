@@ -10,7 +10,6 @@ type Props = { onClose?: () => void };
 const TimeEntryList: React.FC<Props> = ({ onClose }) => {
     const store = useStore();
 
-    // Локальные стейты для полей пагинации
     const [page, setPage] = useState(1);
     const [pageSize, setPageSize] = useState(20);
 

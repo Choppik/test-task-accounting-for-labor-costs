@@ -77,7 +77,6 @@ const TimeEntry: React.FC<Props> = ({
                     validationSchema={Schema}
                     enableReinitialize
                     onSubmit={async (values, { setSubmitting, setErrors }) => {
-                        // Сбрасываем предыдущую ошибку перед новым запросом
                         setServerError(null);
 
                         try {
